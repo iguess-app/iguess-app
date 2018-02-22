@@ -9,7 +9,7 @@ class LaunchContainer extends Component<void, void, void> {
   render() {
     return (
         <Container>
-          <Text>iGuess is working!</Text>
+          <Text>iGuess</Text>
         </Container>
     )
   }
