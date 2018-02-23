@@ -4,7 +4,7 @@ import Kernel from './src'
 
 export default class App extends React.Component {
   render () {
-    return <Kernel />
+      return (<Kernel />)
   }
 }
 
