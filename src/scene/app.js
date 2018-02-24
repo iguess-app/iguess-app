@@ -7,7 +7,7 @@ import { styles } from '@components/NavigationBar'
 
 const scenes = Actions.create(
   <Scene key="app" navigationBarStyle={styles.container}>
-    <Scene key="home" component={LaunchContainer} title="Home" />
+    <Scene key="home" component={LaunchContainer}/>
   </Scene>
 )
 

@@ -1,7 +1,8 @@
 /* @flow */
+import { DEFAULT_BACKGROUND_COLOR } from '@theme/colors'
 
 export const styles = {
   container: {
-    backgroundColor: 'black',
+    backgroundColor: DEFAULT_BACKGROUND_COLOR,
   },
 }

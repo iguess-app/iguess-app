@@ -4,7 +4,7 @@ const INCREMENT = 'INCREMENT'
 const DECREMENT = 'DECREMENT'
 
 type Action = Object<{ type: string }>
-  type Counter = number
+type Counter = number
 
 export default function counter(state: Counter = 0, action: Action): Counter {
   switch (action.type) {
