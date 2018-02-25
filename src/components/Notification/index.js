@@ -14,9 +14,9 @@ type Props = {
 const Notification = (props: Props) => {
   const { onPress, showNotification, isShowNotification } = props
   return (
-      <TouchableOpacity onPress={() => showNotification(!isShowNotification)}>
-        <Image source={bellIcon} style={styles.icon}/>
-      </TouchableOpacity>
+    <TouchableOpacity onPress={() => showNotification(!isShowNotification)}>
+      <Image source={bellIcon} style={styles.icon}/>
+    </TouchableOpacity>
   )
 }
 

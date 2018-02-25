@@ -1,14 +1,15 @@
 /* @flow */
 
 import React, { Component } from 'react'
-import { View } from 'react-native'
-import Swiper from 'react-native-swiper'
+import { View, Text } from 'react-native'
 import Container from '@components/Container'
 import Notification from '@components/Notification'
 import Lines from '@containers/Lines'
 import Profiles from '@containers/Profiles'
 import Leagues from '@containers/Leagues'
+import NavigationBar from '@components/NavigationBar'
 import { DEFAULT_BACKGROUND_COLOR } from '@theme/colors'
+import Swiper from '@components/Swiper'
 
 class LaunchContainer extends Component<void, void, void> {
   render() {
@@ -17,7 +18,8 @@ class LaunchContainer extends Component<void, void, void> {
         <View>
           <Notification onPress={() => console.log('notification clicked')}/>
         </View>
-        <Swiper loop={false} index={1} showsPagination={false}>
+        <NavigationBar/>
+        <Swiper>
           <Profiles/>
           <Lines />
           <Leagues />
