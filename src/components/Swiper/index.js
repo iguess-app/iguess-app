@@ -9,7 +9,7 @@ type Props = {
   onSwiperChange: Function
 }
 
-const CustomSwipper = (props: Props) => {
+const CustomSwiper = (props: Props) => {
   const { children, onSwiperChange } = props
   return (
    <Swiper
@@ -31,4 +31,4 @@ function mapDispatchToProps (dispatch) {
 export default connect(
   null,
   mapDispatchToProps
-)(CustomSwipper)
+)(CustomSwiper)

@@ -27,6 +27,7 @@ const Item = (props: ItemProps) => {
 
 const NavigationBar = (props: NavigationProps) => {
   const { activeSwiperScreen } = props
+
   return (
     <View style={{ height: 60 }}>
       <View style={styles.container}>
