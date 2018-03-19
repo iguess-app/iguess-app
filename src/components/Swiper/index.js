@@ -2,7 +2,7 @@ import React from 'react'
 import Swiper from 'react-native-swiper'
 import { connect } from 'react-redux'
 import { View } from 'react-native'
-import { changeSwiperChange } from '@store/modules/flags'
+import { changeSwiperChange } from '@redux/flags/flags'
 
 type Props = {
   children: Element,

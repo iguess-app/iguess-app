@@ -3,7 +3,7 @@
 import React from 'react'
 import { TouchableOpacity, Image } from 'react-native'
 import { connect } from 'react-redux'
-import { showNotification } from '@store/modules/flags'
+import { showNotification } from '@redux/flags/flags'
 import bellIcon from './bell.png'
 import styles from './styles'
 
