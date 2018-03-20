@@ -21,13 +21,3 @@ export default function reduce(state: Flags = initialState, action: Action = {})
       return state;
   }
 }
-
-export const changeSwiperChange = (payload): Action => ({
-    type: types.ACTIVE_SCREEN_SWIPER,
-    payload
-})
-  
-export const showNotification = (payload): Action => ({
-    type: types.NOTIFICATION,
-    payload
-})
