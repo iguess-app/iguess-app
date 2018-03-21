@@ -16,7 +16,7 @@ class LaunchContainer extends Component<void, void, void> {
     return (
       <Container>
         <View>
-          <Notification onPress={() => console.log('notification clicked')}/>
+          <Notification unread={true} onPress={() => console.log('Will show notification')}/>
         </View>
         <NavigationBar/>
         <Swiper>

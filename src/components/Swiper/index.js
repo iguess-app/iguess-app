@@ -2,7 +2,6 @@ import React from 'react'
 import Swiper from 'react-native-swiper'
 import { connect } from 'react-redux'
 import { View } from 'react-native'
-import { changeSwiperChange } from '@redux/flags/actions'
 
 type Props = {
   children: Element,
@@ -22,13 +21,10 @@ const CustomSwiper = (props: Props) => {
   )
 }
 
-function mapDispatchToProps (dispatch) {
-  return {
-    onSwiperChange: (index) => dispatch(changeSwiperChange(index))
-  }
-}
+// function mapDispatchToProps (dispatch) {
+//   return {
+//     onSwiperChange: (index) => dispatch(changeSwiper(index))
+//   }
+// }
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(CustomSwiper)
+export default CustomSwiper;
