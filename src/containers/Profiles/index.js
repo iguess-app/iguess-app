@@ -11,5 +11,4 @@ const Profiles = () => (
   </Wrapper>
 )
 
-
-export default Profiles
+export default Profiles;
