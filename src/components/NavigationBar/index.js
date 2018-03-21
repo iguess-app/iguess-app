@@ -2,46 +2,50 @@
 
 import React, { Element } from 'react'
 import { View, Text } from 'react-native'
-import styles from './styles'
+import styled from 'styled-components';
+import { SECONDARY_COLOR } from '@theme/colors'
 
 type NavigationProps = {
   children: Element,
   activeSwiperScreen: number
 }
 
-type ItemProps = {
-  children: Element,
-  currentScreen: number,
-  id: number
-}
-
-const Item = (props: ItemProps) => {
-  const { children, currentScreen, id } = props
-  return (
-    <Text style={currentScreen === id ? styles.itemActive : styles.item}>
-      { children }
-    </Text>
-  )
-}
-
 const NavigationBar = (props: NavigationProps) => {
   const { activeSwiperScreen } = props
 
   return (
-    <View style={{ height: 60 }}>
-      <View style={styles.container}>
-        <Item id={0} currentScreen={activeSwiperScreen}>
+    <Wrapper>
+      <NavBar>
+        <Item active={activeSwiperScreen == 0}>
           Profiles
         </Item>
-        <Item id={1} currentScreen={activeSwiperScreen}>
+        <Item active={activeSwiperScreen == 1}>
           Lines
         </Item>
-        <Item id={2} currentScreen={activeSwiperScreen}>
+        <Item active={activeSwiperScreen == 2}>
           Leagues
         </Item>
-      </View>
-    </View>
+      </NavBar>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.View`
+  height: 60;
+`
+
+const NavBar = styled.View`
+  flex: 1;
+  flexDirection: row;
+  paddingLeft: 10;
+`
+
+const Item = styled.Text`
+  color: ${props => props.active ? SECONDARY_COLOR : '#FFF' };
+  paddingHorizontal: 20;
+  paddingVertical: 20;
+  fontWeight: bold;
+`
+
 
 export default NavigationBar;
