@@ -10,4 +10,4 @@ const scenes = Actions.create(
   </Scene>
 )
 
-export default scenes
+export default scenes;

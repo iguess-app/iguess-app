@@ -10,13 +10,14 @@ import Leagues from '@containers/Leagues'
 import NavigationBar from '@components/NavigationBar'
 import { DEFAULT_BACKGROUND_COLOR } from '@theme/colors'
 import Swiper from '@components/Swiper'
+import { connect } from 'react-redux';
 
 class LaunchContainer extends Component<void, void, void> {
   render() {
     return (
       <Container>
         <View>
-          <Notification unread={true} onPress={() => console.log('Will show notification')}/>
+          <Notification unread={this.props.unreadNotification} onPress={(unread) => console.log(unread)}/>
         </View>
         <NavigationBar/>
         <Swiper>
@@ -29,4 +30,10 @@ class LaunchContainer extends Component<void, void, void> {
   }
 }
 
-export default LaunchContainer
+function mapStateToProps(state) {
+  return {
+    unreadNotification: state.flags.notification
+  }
+}
+
+export default connect(mapStateToProps)(LaunchContainer);
