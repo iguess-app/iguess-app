@@ -19,8 +19,4 @@ const Notification = (props: Props) => {
   )
 }
 
-Notification.defaultProps = {
-  onPress: () => true
-}
-
 export default Notification;

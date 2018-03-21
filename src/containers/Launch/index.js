@@ -11,13 +11,18 @@ import NavigationBar from '@components/NavigationBar'
 import { DEFAULT_BACKGROUND_COLOR } from '@theme/colors'
 import Swiper from '@components/Swiper'
 import { connect } from 'react-redux';
+import { showNotification } from '@redux/flags/actions';
 
 class LaunchContainer extends Component<void, void, void> {
+  
   render() {
+
+    const dispatch = this.props.dispatch;
+
     return (
       <Container>
         <View>
-          <Notification unread={this.props.unreadNotification} onPress={(unread) => console.log(unread)}/>
+          <Notification unread={this.props.unreadNotification} onPress={(status) => dispatch(showNotification(status))}/>
         </View>
         <NavigationBar/>
         <Swiper>
@@ -29,6 +34,8 @@ class LaunchContainer extends Component<void, void, void> {
     )
   }
 }
+
+
 
 function mapStateToProps(state) {
   return {
