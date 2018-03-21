@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
-import Container from '@components/Container'
 import Notification from '@components/Notification'
 import Lines from '@containers/Lines'
 import Profiles from '@containers/Profiles'
@@ -12,6 +11,7 @@ import { DEFAULT_BACKGROUND_COLOR } from '@theme/colors'
 import Swiper from '@components/Swiper'
 import { connect } from 'react-redux';
 import { showNotification, swipe } from '@redux/flags/actions';
+import styled from 'styled-components';
 
 class LaunchContainer extends Component<void, void, void> {
   
@@ -22,9 +22,7 @@ class LaunchContainer extends Component<void, void, void> {
 
     return (
       <Container>
-        <View>
-          <Notification unread={unreadNotification} onPress={(status) => dispatch(showNotification(status))}/>
-        </View>
+        <Notification unread={unreadNotification} onPress={(status) => dispatch(showNotification(status))}/>
         <NavigationBar activeSwiperScreen={activeSwiperScreen}/>
         <Swiper change={(index) => dispatch(swipe(index))}>
           <Profiles/>
@@ -36,7 +34,11 @@ class LaunchContainer extends Component<void, void, void> {
   }
 }
 
-
+const Container = styled.View`
+    flex: 1;
+    paddingTop: 40;
+    backgroundColor: ${DEFAULT_BACKGROUND_COLOR};
+`
 
 function mapStateToProps(state) {
   return {

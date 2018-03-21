@@ -1,7 +1,7 @@
 /* @flow */
 
 import React from 'react'
-import { TouchableOpacity, Image } from 'react-native'
+import { TouchableOpacity, Image, View } from 'react-native'
 import whiteBell from './bell.png'
 import redBell from './red-bell.png'
 import styled from 'styled-components';
@@ -13,9 +13,11 @@ type Props = {
 const Notification = (props: Props) => {
 
   return (
-    <TouchableOpacity onPress={() => props.onPress(props.unread)}>
-      <Bell source={ props.unread ? redBell : whiteBell }/>
-    </TouchableOpacity>
+    <View>
+      <TouchableOpacity onPress={() => props.onPress(props.unread)}>
+        <Bell source={ props.unread ? redBell : whiteBell }/>
+      </TouchableOpacity>
+    </View>
   )
 }
 
