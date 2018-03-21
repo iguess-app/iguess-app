@@ -2,17 +2,13 @@
 
 import React, { Element } from 'react'
 import { View } from 'react-native'
-import styles from './styles'
+import styled from 'styled-components'
+import { DEFAULT_BACKGROUND_COLOR } from '@theme/colors'
 
-type Props = {
-  children: Element,
-}
+const container = styled.View`
+flex: 1;
+paddingTop: 40;
+backgroundColor: ${DEFAULT_BACKGROUND_COLOR};
+`
 
-const Container = (props: Props) => {
-  const { children } = props
-  return (
-      <View style={ styles.container }>{ children }</View>
-  )
-}
-
-export default Container
+export default container;
