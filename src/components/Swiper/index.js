@@ -9,22 +9,16 @@ type Props = {
 }
 
 const CustomSwiper = (props: Props) => {
-  const { children, onSwiperChange } = props
+  const { children, change } = props
   return (
    <Swiper
       loop={false}
       index={1}
       showsPagination={false}
-      onIndexChanged={(index) => onSwiperChange(index)}>
+      onIndexChanged={(index) => change(index)}>
       { children }
     </Swiper>
   )
 }
-
-// function mapDispatchToProps (dispatch) {
-//   return {
-//     onSwiperChange: (index) => dispatch(changeSwiper(index))
-//   }
-// }
 
 export default CustomSwiper;

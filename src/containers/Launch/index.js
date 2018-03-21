@@ -11,7 +11,7 @@ import NavigationBar from '@components/NavigationBar'
 import { DEFAULT_BACKGROUND_COLOR } from '@theme/colors'
 import Swiper from '@components/Swiper'
 import { connect } from 'react-redux';
-import { showNotification } from '@redux/flags/actions';
+import { showNotification, swipe } from '@redux/flags/actions';
 
 class LaunchContainer extends Component<void, void, void> {
   
@@ -25,7 +25,7 @@ class LaunchContainer extends Component<void, void, void> {
           <Notification unread={this.props.unreadNotification} onPress={(status) => dispatch(showNotification(status))}/>
         </View>
         <NavigationBar/>
-        <Swiper>
+        <Swiper change={(index) => dispatch(swipe(index))}>
           <Profiles/>
           <Lines />
           <Leagues />
