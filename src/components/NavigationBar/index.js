@@ -31,7 +31,7 @@ const NavigationBar = (props: NavigationProps) => {
 }
 
 const Wrapper = styled.View`
-  height: 60;
+  height: 26.7%;
 `
 
 const NavBar = styled.View`
