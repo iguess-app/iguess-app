@@ -1,28 +1,15 @@
 /* @flow */
 
 import React from 'react'
-import { View, StyleSheet, Text } from 'react-native'
-import { DEFAULT_BACKGROUND_COLOR } from '@theme/colors'
+import styled from 'styled-components';
+import Wrapper from '@components/Wrapper';
+import SceneName from '@components/SceneName';
 
 const Profiles = () => (
-  <View style={styles.container}>
-    <Text style={styles.text}>Profiles</Text>
-  </View>
+  <Wrapper>
+    <SceneName>Profiles</SceneName>
+  </Wrapper>
 )
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: DEFAULT_BACKGROUND_COLOR
-  },
-  text: {
-    color: '#fff',
-    fontSize: 30,
-    fontWeight: 'bold'
-  }
-})
 
 
 export default Profiles
