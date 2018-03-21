@@ -18,13 +18,14 @@ class LaunchContainer extends Component<void, void, void> {
   render() {
 
     const dispatch = this.props.dispatch;
+    const { unreadNotification, activeSwiperScreen } = this.props
 
     return (
       <Container>
         <View>
-          <Notification unread={this.props.unreadNotification} onPress={(status) => dispatch(showNotification(status))}/>
+          <Notification unread={unreadNotification} onPress={(status) => dispatch(showNotification(status))}/>
         </View>
-        <NavigationBar/>
+        <NavigationBar activeSwiperScreen={activeSwiperScreen}/>
         <Swiper change={(index) => dispatch(swipe(index))}>
           <Profiles/>
           <Lines />
@@ -39,7 +40,8 @@ class LaunchContainer extends Component<void, void, void> {
 
 function mapStateToProps(state) {
   return {
-    unreadNotification: state.flags.notification
+    unreadNotification: state.flags.notification,
+    activeSwiperScreen: state.flags.activeSwiperScreen
   }
 }
 

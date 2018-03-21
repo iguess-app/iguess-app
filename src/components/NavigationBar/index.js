@@ -2,7 +2,6 @@
 
 import React, { Element } from 'react'
 import { View, Text } from 'react-native'
-import { connect } from 'react-redux'
 import styles from './styles'
 
 type NavigationProps = {
@@ -45,12 +44,4 @@ const NavigationBar = (props: NavigationProps) => {
   )
 }
 
-function mapStateToProps (state) {
-  return {
-    activeSwiperScreen: state.flags.activeSwiperScreen
-  }
-}
-
-export default connect(
-  mapStateToProps
-)(NavigationBar)
+export default NavigationBar;
