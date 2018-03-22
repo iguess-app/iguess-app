@@ -1,7 +1,7 @@
 /* @flow */
 
 import React, { Element } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Dimensions } from 'react-native'
 import styled from 'styled-components';
 import { SECONDARY_COLOR } from '@theme/colors'
 
@@ -10,14 +10,16 @@ type NavigationProps = {
   activeSwiperScreen: number
 }
 
+screen = Dimensions.get('window');
+
 const NavigationBar = (props: NavigationProps) => {
   const { activeSwiperScreen } = props
 
   return (
     <Wrapper>
-      <NavBar>
+      <SceneList>
         <Item active={activeSwiperScreen == 0}>
-          Profiles
+          Profile
         </Item>
         <Item active={activeSwiperScreen == 1}>
           Lines
@@ -25,27 +27,28 @@ const NavigationBar = (props: NavigationProps) => {
         <Item active={activeSwiperScreen == 2}>
           Leagues
         </Item>
-      </NavBar>
+      </SceneList>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.View`
-  height: 26.7%;
+  height: ${screen.height*0.267};
 `
 
-const NavBar = styled.View`
+const SceneList = styled.View`
   flex: 1;
   flexDirection: row;
-  paddingLeft: 10;
+  marginLeft: ${props => screen.width*0.085};
+  marginTop: ${screen.height*0.036};
 `
 
 const Item = styled.Text`
-  color: ${props => props.active ? SECONDARY_COLOR : '#FFF' };
-  paddingHorizontal: 20;
-  paddingVertical: 20;
-  fontWeight: bold;
+  color: white;
+  fontWeight: ${props => props.active ? 'bold' : 'normal' };
+  marginRight: ${screen.width * 0.12};
 `
 
+0.021
 
 export default NavigationBar;

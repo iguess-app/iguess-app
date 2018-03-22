@@ -7,8 +7,7 @@ import redBell from './red-bell.png'
 import styled from 'styled-components';
 
 screen = Dimensions.get('window');
-console.log(Math.round(screen.width*0.058))
-console.log(Math.round(screen.height*0.018))
+
 type Props = {
   onPress: Function
 }

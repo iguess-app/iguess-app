@@ -6,7 +6,7 @@ import Notification from '@components/Notification'
 import Lines from '@containers/Lines'
 import Profiles from '@containers/Profiles'
 import Leagues from '@containers/Leagues'
-import ScenesLine from '@components/ScenesLine'
+import NavigationBar from '@components/NavigationBar'
 import { DEFAULT_BACKGROUND_COLOR } from '@theme/colors'
 import Swiper from '@components/Swiper'
 import { connect } from 'react-redux';
@@ -23,7 +23,7 @@ class LaunchContainer extends Component<void, void, void> {
     return (
       <Container>
         <Notification unread={unreadNotification} onPress={(status) => dispatch(showNotification(status))}/>
-        <ScenesLine activeSwiperScreen={activeSwiperScreen}/>
+        <NavigationBar activeSwiperScreen={activeSwiperScreen}/>
         <Swiper change={(index) => dispatch(swipe(index))}>
           <Profiles/>
           <Lines />
