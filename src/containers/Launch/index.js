@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import Notification from '@components/Notification';
+import AddGuessline from '@components/AddGuessline';
 import Lines from '@containers/Lines';
 import Profiles from '@containers/Profiles';
 import Leagues from '@containers/Leagues';
@@ -11,6 +12,7 @@ import Swiper from '@components/Swiper';
 import { connect } from 'react-redux';
 import { showNotification, swipe } from '@redux/flags/actions';
 import styled from 'styled-components';
+import { View } from 'react-native';
 
 class LaunchContainer extends Component<void, void, void> {
   render() {
@@ -19,11 +21,11 @@ class LaunchContainer extends Component<void, void, void> {
 
     return (
       <Container>
-        <Notification
-          unread={unreadNotification}
-          onPress={status => dispatch(showNotification(status))}
+        <NavigationBar
+          activeSwiperScreen={activeSwiperScreen}
+          onPressNotification={status => dispatch(showNotification(status))}
+          unreadNotification={unreadNotification}
         />
-        <NavigationBar activeSwiperScreen={activeSwiperScreen} />
         <Swiper change={index => dispatch(swipe(index))}>
           <Profiles />
           <Lines />

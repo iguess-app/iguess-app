@@ -3,6 +3,9 @@
 import React, { Element } from 'react';
 import styled from 'styled-components';
 import ball from './ball.png';
+import Notification from '@components/Notification';
+import { View } from 'react-native';
+import AddGuessline from '../AddGuessline/index';
 
 type NavigationProps = {
   children: Element,
@@ -10,10 +13,17 @@ type NavigationProps = {
 };
 
 const NavigationBar = (props: NavigationProps) => {
-  const { activeSwiperScreen } = props;
+  const { activeSwiperScreen, onPressNotification, unreadNotification } = props;
 
   return (
     <Wrapper>
+      <View style={{ flexDirection: 'row' }}>
+        <Notification
+          unread={unreadNotification}
+          onPress={onPressNotification}
+        />
+        <AddGuessline />
+      </View>
       <SceneList>
         <Item active={activeSwiperScreen == 0}>Profile</Item>
         <Item active={activeSwiperScreen == 1}>Lines</Item>
@@ -30,9 +40,9 @@ const Wrapper = styled.View`
 `;
 
 const SceneList = styled.View`
-  flex: 1;
   flex-direction: row;
   margin-left: 32;
+  margin-right: 32;
   margin-top: 24;
 `;
 
@@ -54,7 +64,7 @@ const Line = styled.View`
   border-color: #fff;
   margin-left: 49;
   position: absolute;
-  margin-top: 50;
+  margin-top: 80;
 `;
 
 const ballPosition = [52, 124, 204];
@@ -64,7 +74,7 @@ const Ball = styled.Image.attrs({
   width: 16;
   height: 16;
   position: absolute;
-  margin-top: 44;
+  margin-top: 74;
   margin-left: ${props => ballPosition[props.active]};
   z-index: 1;
 `;
