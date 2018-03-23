@@ -13,6 +13,7 @@ import { connect } from 'react-redux';
 import { showNotification, swipe } from '@redux/flags/actions';
 import styled from 'styled-components';
 import { View } from 'react-native';
+import background from './background.png';
 
 class LaunchContainer extends Component<void, void, void> {
   render() {
@@ -21,6 +22,9 @@ class LaunchContainer extends Component<void, void, void> {
 
     return (
       <Container>
+        <View style={{ position: 'absolute' }}>
+          <Background source={background} />
+        </View>
         <NavigationBar
           activeSwiperScreen={activeSwiperScreen}
           onPressNotification={status => dispatch(showNotification(status))}
@@ -39,7 +43,11 @@ class LaunchContainer extends Component<void, void, void> {
 const Container = styled.View`
   flex: 1;
   padding-top: 40;
-  background-color: ${DEFAULT_BACKGROUND_COLOR};
+`;
+
+const Background = styled.Image`
+  flex: 1;
+  resizemode: cover;
 `;
 
 function mapStateToProps(state) {
