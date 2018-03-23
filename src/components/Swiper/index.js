@@ -1,24 +1,23 @@
-import React from 'react'
-import Swiper from 'react-native-swiper'
-import { connect } from 'react-redux'
-import { View } from 'react-native'
+import React from 'react';
+import Swiper from 'react-native-swiper';
 
 type Props = {
   children: Element,
-  onSwiperChange: Function
-}
+  onSwiperChange: Function,
+};
 
 const CustomSwiper = (props: Props) => {
-  const { children, change } = props
+  const { children, change } = props;
   return (
-   <Swiper
+    <Swiper
       loop={false}
       index={1}
       showsPagination={false}
-      onIndexChanged={(index) => change(index)}>
-      { children }
+      onIndexChanged={index => change(index)}
+    >
+      {children}
     </Swiper>
-  )
-}
+  );
+};
 
 export default CustomSwiper;

@@ -1,7 +1,6 @@
 /* @flow */
 
 import React, { Component } from 'react';
-import { View } from 'react-native';
 import Notification from '@components/Notification';
 import Lines from '@containers/Lines';
 import Profiles from '@containers/Profiles';
