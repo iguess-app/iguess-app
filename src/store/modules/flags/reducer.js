@@ -5,13 +5,16 @@ import * as types from './actionTypes';
 
 const initialState = Immutable({
   notification: false,
-  activeSwiperScreen: 1
+  activeSwiperScreen: 1,
 });
 
-type Action = Object<{ type: string, payload: bool }>
-type Flags = Object<{ notification: bool, activeSwiperScreen: number }>
+type Action = Object<{ type: string, payload: boolean }>;
+type Flags = Object<{ notification: boolean, activeSwiperScreen: number }>;
 
-export default function reduce(state: Flags = initialState, action: Action = {}): Flags {
+export default function reduce(
+  state: Flags = initialState,
+  action: Action = {},
+): Flags {
   switch (action.type) {
     case types.NOTIFICATION:
       return Object.assign({}, state, { notification: !state.notification });
