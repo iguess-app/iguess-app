@@ -2,6 +2,7 @@
 
 import React, { Element } from 'react';
 import styled from 'styled-components';
+import ball from './ball.png';
 
 type NavigationProps = {
   children: Element,
@@ -19,12 +20,13 @@ const NavigationBar = (props: NavigationProps) => {
         <Item active={activeSwiperScreen == 2}>Leagues</Item>
       </SceneList>
       <Line />
+      <Ball active={activeSwiperScreen} />
     </Wrapper>
   );
 };
 
 const Wrapper = styled.View`
-  height: 144;
+  height: 300;
 `;
 
 const SceneList = styled.View`
@@ -35,17 +37,36 @@ const SceneList = styled.View`
 `;
 
 const Item = styled.Text`
-  color: white;
+  color: #fff;
+  height: 14;
+  font-size: 12;
+  text-align: left;
   font-weight: ${props => (props.active ? 'bold' : 'normal')};
   margin-right: 45;
 `;
 
 const Line = styled.View`
-  width: 163;
-  height: 1.5;
+  width: 326;
+  height: 0.5;
   opacity: 0.2;
   border-style: solid;
   border-width: 0.5;
+  border-color: #fff;
+  margin-left: 49;
+  position: absolute;
+  margin-top: 50;
+`;
+
+const ballPosition = [52, 124, 204];
+const Ball = styled.Image.attrs({
+  source: ball,
+})`
+  width: 16;
+  height: 16;
+  position: absolute;
+  margin-top: 44;
+  margin-left: ${props => ballPosition[props.active]};
+  z-index: 1;
 `;
 
 export default NavigationBar;
