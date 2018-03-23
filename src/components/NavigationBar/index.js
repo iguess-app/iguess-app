@@ -24,7 +24,7 @@ const NavigationBar = (props: NavigationProps) => {
 };
 
 const Wrapper = styled.View`
-  height: 100;
+  height: 144;
 `;
 
 const SceneList = styled.View`
