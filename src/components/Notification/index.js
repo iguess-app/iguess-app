@@ -24,7 +24,7 @@ const Notification = (props: Props) => {
 Bell = styled.Image`
   width: 22;
   height: 24;
-  marginLeft: 32;
+  margin-left: 32;
 `
 
 export default Notification;

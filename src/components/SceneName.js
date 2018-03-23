@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 const SceneName = styled.Text`
     color: #000;
-    fontSize: 30;
-    fontWeight: bold;
+    font-size: 30;
+    font-weight: bold;
 `
 
 export default SceneName;

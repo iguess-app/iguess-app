@@ -36,8 +36,8 @@ class LaunchContainer extends Component<void, void, void> {
 
 const Container = styled.View`
     flex: 1;
-    paddingTop: 40;
-    backgroundColor: ${DEFAULT_BACKGROUND_COLOR};
+    padding-top: 40;
+    background-color: ${DEFAULT_BACKGROUND_COLOR};
 `
 
 function mapStateToProps(state) {
