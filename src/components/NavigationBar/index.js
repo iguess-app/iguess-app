@@ -10,8 +10,6 @@ type NavigationProps = {
   activeSwiperScreen: number
 }
 
-screen = Dimensions.get('window');
-
 const NavigationBar = (props: NavigationProps) => {
   const { activeSwiperScreen } = props
 
@@ -28,27 +26,34 @@ const NavigationBar = (props: NavigationProps) => {
           Leagues
         </Item>
       </SceneList>
+      <Line />
     </Wrapper>
   )
 }
 
 const Wrapper = styled.View`
-  height: ${screen.height*0.267};
+  height: 100;
 `
 
 const SceneList = styled.View`
   flex: 1;
   flexDirection: row;
-  marginLeft: ${props => screen.width*0.085};
-  marginTop: ${screen.height*0.036};
+  marginLeft: 32;
+  marginTop: 24;
 `
 
 const Item = styled.Text`
   color: white;
   fontWeight: ${props => props.active ? 'bold' : 'normal' };
-  marginRight: ${screen.width * 0.12};
+  marginRight: 45;
 `
 
-0.021
+const Line = styled.View`
+  width: 163;
+  height: 1.5;
+  opacity: 0.2;
+  borderStyle: solid;
+  borderWidth: 0.5;
+`
 
 export default NavigationBar;
