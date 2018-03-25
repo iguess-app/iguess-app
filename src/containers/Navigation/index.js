@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { showNotification } from '@redux/flags/actions';
 import LineNavigationButtons from '@components/LineNavigationButtons';
 import SceneList from '@components/SceneList/index';
+import TouchableSelectLine from '@components/TouchableSelectLine';
 
 class Navigation extends Component {
   render() {
@@ -19,6 +20,7 @@ class Navigation extends Component {
           onPressNotification={status => dispatch(showNotification(status))}
         />
         <SceneList activeSwiperScreen={activeSwiperScreen} />
+        <TouchableSelectLine />
       </Wrapper>
     );
   }
