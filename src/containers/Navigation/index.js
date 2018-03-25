@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { showNotification } from '@redux/flags/actions';
-import NavigationButtons from '@components/NavigationButtons';
+import LineNavigationButtons from '@components/LineNavigationButtons';
 import SceneList from '@components/SceneList/index';
 
 class Navigation extends Component {
@@ -14,7 +14,7 @@ class Navigation extends Component {
 
     return (
       <Wrapper>
-        <NavigationButtons
+        <LineNavigationButtons
           unreadNotification={unreadNotification}
           onPressNotification={status => dispatch(showNotification(status))}
         />

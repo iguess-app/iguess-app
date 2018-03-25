@@ -3,7 +3,7 @@ import Notification from '@components/Notification';
 import AddGuessline from '@components/AddGuessline';
 import styled from 'styled-components';
 
-const NavigationButtons = props => {
+const LineNavigationButtons = props => {
   const { unreadNotification, onPressNotification } = props;
 
   return (
@@ -18,4 +18,4 @@ const ButtonsView = styled.View`
   flex-direction: row;
 `;
 
-export default NavigationButtons;
+export default LineNavigationButtons;
