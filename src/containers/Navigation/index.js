@@ -27,7 +27,7 @@ class Navigation extends Component {
 }
 
 const Wrapper = styled.View`
-  height: 300;
+  height: 280;
 `;
 
 function mapStateToProps(state) {
