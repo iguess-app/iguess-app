@@ -42,8 +42,7 @@ const Line = styled.View`
   border-width: 0.5;
   border-color: #fff;
   margin-left: 49;
-  position: absolute;
-  margin-top: 80;
+  margin-top: 20;
 `;
 
 const ballPosition = [52, 124, 204];
@@ -52,10 +51,9 @@ const Ball = styled.Image.attrs({
 })`
   width: 16;
   height: 16;
-  position: absolute;
-  margin-top: 74;
   margin-left: ${props => ballPosition[props.active]};
   z-index: 1;
+  margin-top: -8;
 `;
 
 export default SceneList;
