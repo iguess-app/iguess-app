@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import whiteBell from './bell.png';
-import redBell from './red-bell.png';
+import whiteBell from '@assets/images/bell.png';
+import redBell from '@assets/images/red-bell.png';
 import styled from 'styled-components';
 
 type Props = {

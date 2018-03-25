@@ -9,7 +9,7 @@ import Swiper from '@components/Swiper';
 import { connect } from 'react-redux';
 import { swipe } from '@redux/flags/actions';
 import styled from 'styled-components';
-import background from './background.png';
+import background from '@assets/images/background.png';
 
 class LaunchContainer extends Component<void, void, void> {
   render() {

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import add from './add-guessline.png';
+import add from '@assets/images/add-guessline.png';
 import styled from 'styled-components';
 
 const AddGuessline = () => {

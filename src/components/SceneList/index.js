@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { View } from 'react-native';
-import ball from './ball.png';
+import ball from '@assets/images/ball.png';
 
 const SceneList = props => {
   const { activeSwiperScreen } = props;

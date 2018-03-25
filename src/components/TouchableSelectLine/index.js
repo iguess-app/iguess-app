@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import chevron from './chevron-down.png';
-import { View } from 'react-native';
+import chevron from '@assets/images/chevron-down.png';
 
 export default class TouchableSelectLine extends Component {
   render() {
