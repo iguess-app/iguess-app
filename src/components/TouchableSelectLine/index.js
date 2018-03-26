@@ -5,10 +5,10 @@ import chevron from '@assets/images/chevron-down.png';
 export default class TouchableSelectLine extends Component {
   render() {
     return (
-      <Touchable onPress={console.log('Will display user leagues')}>
+      <Touchable onPress={console.log('Will display user lines')}>
         <Season>SEASON 2018/19</Season>
         <Row>
-          <LeagueName>English Premier League</LeagueName>
+          <LineName>English Premier League</LineName>
           <Chevron />
         </Row>
         <PointsView>
@@ -35,7 +35,7 @@ const Season = styled.Text`
   color: #fff;
 `;
 
-const LeagueName = styled.Text`
+const LineName = styled.Text`
   width: 289;
   font-size: 24;
   margin-top: 12;
