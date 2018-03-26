@@ -2,12 +2,19 @@
 
 import React from 'react';
 import Wrapper from '@components/Wrapper';
-import SceneName from '@components/SceneName';
+import { View, Name } from '@components/Scene';
 
-const Leagues = () => (
-  <Wrapper>
-    <SceneName>Leagues</SceneName>
-  </Wrapper>
-);
+const Leagues = props => {
+  const { children } = props;
+
+  return (
+    <Wrapper>
+      {children}
+      <View>
+        <Name>Leagues</Name>
+      </View>
+    </Wrapper>
+  );
+};
 
 export default Leagues;

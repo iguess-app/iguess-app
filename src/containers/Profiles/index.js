@@ -2,12 +2,19 @@
 
 import React from 'react';
 import Wrapper from '@components/Wrapper';
-import SceneName from '@components/SceneName';
+import { View, Name } from '@components/Scene';
 
-const Profiles = () => (
-  <Wrapper>
-    <SceneName>Profiles</SceneName>
-  </Wrapper>
-);
+const Profiles = props => {
+  const { children } = props;
+
+  return (
+    <Wrapper>
+      {children}
+      <View>
+        <Name>Profiles</Name>
+      </View>
+    </Wrapper>
+  );
+};
 
 export default Profiles;

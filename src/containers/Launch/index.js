@@ -4,25 +4,24 @@ import React, { Component } from 'react';
 import Lines from '@containers/Lines';
 import Profiles from '@containers/Profiles';
 import Leagues from '@containers/Leagues';
-import Navigation from '@containers/Navigation';
 import Swiper from '@components/Swiper';
 import { connect } from 'react-redux';
 import { swipe } from '@redux/flags/actions';
 import styled from 'styled-components';
 import background from '@assets/images/background.png';
+import Navigation from '@containers/Navigation';
 
 class LaunchContainer extends Component<void, void, void> {
   render() {
     const dispatch = this.props.dispatch;
-
+    let navigation = <Navigation />;
     return (
       <Container>
         <Background source={background} />
-        <Navigation />
         <Swiper change={index => dispatch(swipe(index))}>
-          <Profiles />
-          <Lines />
-          <Leagues />
+          <Profiles>{navigation}</Profiles>
+          <Lines>{navigation}</Lines>
+          <Leagues>{navigation}</Leagues>
         </Swiper>
       </Container>
     );
