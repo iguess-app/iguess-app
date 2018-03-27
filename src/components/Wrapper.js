@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.View`
+const Wrapper = styled.ScrollView`
   flex: 1;
-  justify-content: center;
-  align-items: center;
 `;
 
 export default Wrapper;
