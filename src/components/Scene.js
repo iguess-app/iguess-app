@@ -7,6 +7,7 @@ export const Name = styled.Text`
 `;
 
 export const View = styled.View`
+  width: 100%;
   flex: 1;
   background-color: #fff;
 `;

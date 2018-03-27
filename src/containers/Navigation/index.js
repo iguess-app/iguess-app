@@ -29,7 +29,6 @@ class Navigation extends Component {
 const Wrapper = styled.View`
   flex: 1;
   height: 280;
-  background-color: blue;
 `;
 
 function mapStateToProps(state) {
