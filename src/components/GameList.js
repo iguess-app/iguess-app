@@ -1,26 +1,18 @@
 import React, { Component } from 'react';
-import { FlatList, Text } from 'react-native';
+import GameCard from './GameCard';
+import styled from 'styled-components';
 
 export default class GameList extends Component {
   render() {
     return (
-      <FlatList
-        data={[
-          { key: 'Devin' },
-          { key: 'Jackson' },
-          { key: 'James' },
-          { key: 'Joel' },
-          { key: 'John' },
-          { key: 'Jillian' },
-          { key: 'Jimmy' },
-          { key: 'Julie' },
-        ]}
-        renderItem={({ item }) => (
-          <Text style={{ padding: 30, fontSize: 20, height: 44 }}>
-            {item.key}
-          </Text>
-        )}
+      <List
+        data={[{ key: 'Brazil' }, { key: 'Germany' }, { key: 'Italy' }]}
+        renderItem={({ item }) => <GameCard name={item.key} />}
       />
     );
   }
 }
+
+const List = styled.FlatList`
+  margin-top: 16;
+`;
