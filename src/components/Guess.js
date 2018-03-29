@@ -35,10 +35,13 @@ const ButtonImage = styled.Image`
   height: 24;
 `;
 
-const Value = styled.Text`
+const Value = styled.Text.attrs({
+  guessed: props => (props.children !== '- - - -' ? true : false),
+})`
   font-size: 8;
   font-weight: bold;
   opacity: 0.6;
-  color: #043874;
+  color: ${props => (props.guessed ? '#4D6980' : '#043874')};
 `;
+
 export default Guess;
