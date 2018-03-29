@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Wrapper from '@components/Wrapper';
-import { View, Name } from '@components/Scene';
+import { View } from '@components/Scene';
 import GameList from '@components/GameList';
 
 const Lines = props => {

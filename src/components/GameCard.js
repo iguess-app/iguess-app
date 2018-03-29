@@ -6,7 +6,7 @@ import Team from '@components/Team';
 import Guess from '@components/Guess';
 import versus from '@assets/images/vs.png';
 
-const GameCard = props => {
+const GameCard = () => {
   return (
     <Card>
       <HomeTeam name="Arsenal" image={arsenal} />

@@ -4,7 +4,7 @@ import plus from '@assets/images/plus.png';
 import minus from '@assets/images/minus.png';
 import { TouchableOpacity } from 'react-native';
 
-const Guess = props => {
+const Guess = () => {
   return (
     <Wrapper>
       <TouchableImage source={plus} />
