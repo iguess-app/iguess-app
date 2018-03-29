@@ -17,7 +17,7 @@ const GameCard = () => {
       <HomeTeam name="Arsenal" image={arsenal} />
       <Guess />
       <GameInfo scheduled="16H 45M" />
-      <Guess />
+      <Guess value="100" />
       <AwayTeam name="Liverpool" image={liverpool} />
     </Card>
   );
