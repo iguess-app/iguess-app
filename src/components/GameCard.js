@@ -11,13 +11,21 @@ const GameCard = props => {
     <Card>
       <HomeTeam name="Arsenal" image={arsenal} />
       <Guess />
-      <MidWrapper>
-        <ScheduledTime>16H 45M</ScheduledTime>
-        <VS />
-      </MidWrapper>
+      <GameInfo scheduled="16H 45M" />
       <Guess />
       <AwayTeam name="Liverpool" image={liverpool} />
     </Card>
+  );
+};
+
+const GameInfo = props => {
+  const { scheduled } = props;
+
+  return (
+    <MidWrapper>
+      <ScheduledTime>{scheduled}</ScheduledTime>
+      <VS />
+    </MidWrapper>
   );
 };
 
