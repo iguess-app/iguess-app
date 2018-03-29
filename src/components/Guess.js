@@ -25,7 +25,7 @@ const TouchableImage = props => {
 };
 
 const Wrapper = styled.View`
-  margin-left: 8;
+  margin-horizontal: 8;
   flex-direction: column;
 `;
 

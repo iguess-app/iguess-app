@@ -15,6 +15,7 @@ const GameCard = props => {
         <ScheduledTime>16H 45M</ScheduledTime>
         <VS />
       </MidWrapper>
+      <Guess />
       <AwayTeam name="Liverpool" image={liverpool} />
     </Card>
   );
@@ -24,9 +25,7 @@ const HomeTeam = styled(Team)`
   align-self: flex-start;
 `;
 
-const AwayTeam = styled(Team)`
-  margin-left: 64;
-`;
+const AwayTeam = styled(Team)``;
 
 const VS = styled.Image.attrs({
   source: versus,
@@ -45,7 +44,8 @@ const ScheduledTime = styled.Text`
 `;
 
 const MidWrapper = styled.View`
-  margin-left: 24;
+  margin-left: 10;
+  margin-right: 10;
   flex-direction: column;
   justify-content: center;
 `;
