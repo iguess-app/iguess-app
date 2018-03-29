@@ -15,17 +15,21 @@ const Team = props => {
 const TeamView = styled.View`
   margin-horizontal: 16;
   margin-top: 40;
+  align-items: center;
 `;
 
 const TeamName = styled.Text`
-  opacity: 0.4;
+  opacity: 0.8;
   font-size: 12;
+  font-weight: bold;
+  margin-top: 4;
   color: #4d6980;
 `;
 
 const TeamImage = styled.Image`
   width: 44;
   height: 53;
+  resize-mode: contain;
 `;
 
 export default Team;

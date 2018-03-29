@@ -1,22 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
 import arsenal from '@assets/images/arsenal.png';
+import liverpool from '@assets/images/liverpool.png';
 import Team from '@components/Team';
 
 const GameCard = props => {
   return (
     <Card>
-      <AwayTeam name="Arsenal" image={arsenal} />
+      <HomeTeam name="Arsenal" image={arsenal} />
+      <AwayTeam name="Liverpool" image={liverpool} />
     </Card>
   );
 };
 
+const HomeTeam = styled(Team)`
+  align-self: flex-start;
+`;
+
 const AwayTeam = styled(Team)`
-  align-self: flex-end;
+  margin-left: 160;
 `;
 
 const Card = styled.View`
-  flex-direction: column;
+  flex-direction: row;
   width: 312;
   height: 144;
   margin-bottom: 27;
