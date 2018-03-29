@@ -5,6 +5,11 @@ import liverpool from '@assets/images/liverpool.png';
 import Team from '@components/Team';
 import Guess from '@components/Guess';
 import versus from '@assets/images/vs.png';
+import {
+  CARD_BACKGROUND_COLOR,
+  CARD_BORDER_COLOR,
+  SCHEDULED_TIME_COLOR,
+} from '@theme';
 
 const GameCard = () => {
   return (
@@ -48,7 +53,7 @@ const VS = styled.Image.attrs({
 
 const ScheduledTime = styled.Text`
   font-size: 10;
-  color: #4d6980;
+  color: ${SCHEDULED_TIME_COLOR};
 `;
 
 const MidWrapper = styled.View`
@@ -64,7 +69,8 @@ const Card = styled.View`
   height: 144;
   margin-bottom: 27;
   margin-horizontal: 32;
-  border-color: rgba(149, 177, 205, 0.25);
+  border-color: ${CARD_BORDER_COLOR};
+  background-color: ${CARD_BACKGROUND_COLOR};
   border-radius: 4;
   border-width: 1;
   border-style: solid;

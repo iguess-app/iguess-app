@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { CARD_TEAM_NAME_COLOR } from '@theme';
 
 const Team = props => {
   const { name, image, style } = props;
@@ -23,7 +24,7 @@ const TeamName = styled.Text`
   font-size: 12;
   font-weight: bold;
   margin-top: 4;
-  color: #4d6980;
+  color: ${CARD_TEAM_NAME_COLOR};
 `;
 
 const TeamImage = styled.Image`

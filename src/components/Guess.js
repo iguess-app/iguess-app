@@ -3,12 +3,15 @@ import styled from 'styled-components';
 import plus from '@assets/images/plus.png';
 import minus from '@assets/images/minus.png';
 import { TouchableOpacity } from 'react-native';
+import { GUESS_GUESSED_TEXT_COLOR, GUESS_DEFAULT_TEXT_COLOR } from '../theme';
+
+const defaultValue = '- - - -';
 
 const Guess = () => {
   return (
     <Wrapper>
       <TouchableImage source={plus} />
-      <Value>- - - -</Value>
+      <Value>{defaultValue}</Value>
       <TouchableImage source={minus} />
     </Wrapper>
   );
@@ -36,12 +39,13 @@ const ButtonImage = styled.Image`
 `;
 
 const Value = styled.Text.attrs({
-  guessed: props => (props.children !== '- - - -' ? true : false),
+  guessed: props => (props.children !== defaultValue ? true : false),
 })`
   font-size: 8;
   font-weight: bold;
-  opacity: 0.6;
-  color: ${props => (props.guessed ? '#4D6980' : '#043874')};
+  opacity: ${props => (props.guessed ? 1 : 0.6)};
+  color: ${props =>
+    props.guessed ? GUESS_GUESSED_TEXT_COLOR : GUESS_DEFAULT_TEXT_COLOR};
 `;
 
 export default Guess;
