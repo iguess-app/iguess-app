@@ -41,9 +41,10 @@ const ButtonImage = styled.Image`
 const Value = styled.Text.attrs({
   guessed: props => (props.children !== defaultValue ? true : false),
 })`
-  font-size: 8;
+  font-size: ${props => (props.guessed ? 20 : 8)};
   font-weight: bold;
-  opacity: ${props => (props.guessed ? 1 : 0.6)};
+  text-align: center;
+  opacity: ${props => (props.guessed ? 0.9 : 0.6)};
   color: ${props =>
     props.guessed ? GUESS_GUESSED_TEXT_COLOR : GUESS_DEFAULT_TEXT_COLOR};
 `;
