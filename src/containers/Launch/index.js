@@ -8,8 +8,8 @@ import Swiper from '@components/Swiper';
 import { connect } from 'react-redux';
 import { swipe } from '@redux/flags/actions';
 import styled from 'styled-components';
-import background from '@assets/images/background.png';
 import Navigation from '@containers/Navigation';
+import { BACKGROUND } from '@theme';
 
 class LaunchContainer extends Component<void, void, void> {
   render() {
@@ -17,7 +17,7 @@ class LaunchContainer extends Component<void, void, void> {
     let navigation = <Navigation />;
     return (
       <Container>
-        <Background source={background} />
+        <Background />
         <Swiper change={index => dispatch(swipe(index))}>
           <Profiles>{navigation}</Profiles>
           <Lines>{navigation}</Lines>
@@ -33,7 +33,9 @@ const Container = styled.View`
   padding-top: 40;
 `;
 
-const Background = styled.Image`
+const Background = styled.Image.attrs({
+  source: BACKGROUND,
+})`
   flex: 1;
   resize-mode: cover;
   position: absolute;
