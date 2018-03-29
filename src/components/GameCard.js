@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import arsenal from '@assets/images/arsenal.png';
 import liverpool from '@assets/images/liverpool.png';
 import Team from '@components/Team';
+import Guess from '@components/Guess';
 
 const GameCard = props => {
   return (
     <Card>
       <HomeTeam name="Arsenal" image={arsenal} />
+      <Guess />
       <AwayTeam name="Liverpool" image={liverpool} />
     </Card>
   );
@@ -18,7 +20,7 @@ const HomeTeam = styled(Team)`
 `;
 
 const AwayTeam = styled(Team)`
-  margin-left: 160;
+  margin-left: 136;
 `;
 
 const Card = styled.View`
