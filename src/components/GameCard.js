@@ -6,10 +6,14 @@ import Team from '@components/Team';
 const GameCard = props => {
   return (
     <Card>
-      <Team name="Arsenal" image={arsenal} />
+      <AwayTeam name="Arsenal" image={arsenal} />
     </Card>
   );
 };
+
+const AwayTeam = styled(Team)`
+  align-self: flex-end;
+`;
 
 const Card = styled.View`
   flex-direction: column;
@@ -21,12 +25,6 @@ const Card = styled.View`
   border-radius: 4;
   border-width: 1;
   border-style: solid;
-`;
-
-const CardName = styled.Text`
-  color: black;
-  margin: auto;
-  font-weight: bold;
 `;
 
 export default GameCard;

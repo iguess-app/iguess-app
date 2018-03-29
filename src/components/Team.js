@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Team = props => {
-  const { name, image } = props;
+  const { name, image, style } = props;
 
   return (
-    <TeamView>
+    <TeamView style={style}>
       <TeamImage source={image} />
       <TeamName>{name}</TeamName>
     </TeamView>
@@ -13,7 +13,6 @@ const Team = props => {
 };
 
 const TeamView = styled.View`
-  align-self: flex-end;
   margin-horizontal: 16;
   margin-top: 40;
 `;
