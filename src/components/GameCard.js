@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import arsenal from '@assets/images/arsenal.png';
+import Team from '@components/Team';
 
 const GameCard = props => {
-  const { name } = props;
-
   return (
     <Card>
       <Team name="Arsenal" image={arsenal} />
@@ -12,35 +11,8 @@ const GameCard = props => {
   );
 };
 
-const Team = props => {
-  const { name, image } = props;
-
-  return (
-    <TeamView>
-      <TeamImage source={image} />
-      <TeamName>{name}</TeamName>
-    </TeamView>
-  );
-};
-
-const TeamView = styled.View`
-  margin-horizontal: 16;
-  margin-top: 40;
-`;
-
-const TeamName = styled.Text`
-  opacity: 0.4;
-  font-size: 12;
-  color: #4d6980;
-`;
-
-const TeamImage = styled.Image`
-  width: 44;
-  height: 53;
-`;
-
 const Card = styled.View`
-  flex-direction: row;
+  flex-direction: column;
   width: 312;
   height: 144;
   margin-bottom: 27;
