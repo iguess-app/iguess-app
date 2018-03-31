@@ -11,12 +11,14 @@ import {
   SCHEDULED_TIME_COLOR,
 } from '@theme';
 
+let ISODate = new Date().toISOString();
+
 const GameCard = () => {
   return (
     <Card>
       <HomeTeam name="Arsenal" image={arsenal} />
       <Guess />
-      <GameInfo scheduled="16H 45M" />
+      <GameInfo scheduled={ISODate} />
       <Guess value="100" />
       <AwayTeam name="Liverpool" image={liverpool} />
     </Card>
@@ -25,10 +27,13 @@ const GameCard = () => {
 
 const GameInfo = props => {
   const { scheduled } = props;
-
+  const time = scheduled
+    .slice(11, 16)
+    .replace(':', 'H ')
+    .concat('M');
   return (
     <MidWrapper>
-      <ScheduledTime>{scheduled}</ScheduledTime>
+      <ScheduledTime>{time}</ScheduledTime>
       <VS />
     </MidWrapper>
   );
