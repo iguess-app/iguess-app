@@ -4,7 +4,7 @@ import plus from '@assets/images/plus.png';
 import plusDisabled from '@assets/images/plus-disabled.png';
 import minusDisabled from '@assets/images/minus.png';
 import minus from '@assets/images/minus-disabled.png';
-import { TouchableOpacity, Image } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { GUESS_GUESSED_TEXT_COLOR, GUESS_DEFAULT_TEXT_COLOR } from '../theme';
 
 const defaultValue = '- - - -';
@@ -15,7 +15,7 @@ const Guess = props => {
   let plus = <EnabledButton type="plus" />;
   let minus = <EnabledButton type="minus" />;
 
-  if (parseInt(value) <= 0 || value === undefined || '') {
+  if (value < 0 || value === undefined || value === '') {
     value = defaultValue;
     minus = <DisabledButton type="minus" />;
   } else if (parseInt(value) >= 99) {
@@ -26,7 +26,7 @@ const Guess = props => {
   return (
     <Wrapper>
       {plus}
-      <Value>{value ? value : defaultValue}</Value>
+      <Value>{value}</Value>
       {minus}
     </Wrapper>
   );
