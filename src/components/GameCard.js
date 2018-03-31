@@ -5,6 +5,7 @@ import liverpool from '@assets/images/liverpool.png';
 import Team from '@components/Team';
 import Guess from '@components/Guess';
 import versus from '@assets/images/vs.png';
+import getTimeFromISO from '../helpers/index';
 import {
   CARD_BACKGROUND_COLOR,
   CARD_BORDER_COLOR,
@@ -27,10 +28,8 @@ const GameCard = () => {
 
 const GameInfo = props => {
   const { scheduled } = props;
-  const time = scheduled
-    .slice(11, 16)
-    .replace(':', 'H ')
-    .concat('M');
+  const time = getTimeFromISO(scheduled);
+
   return (
     <MidWrapper>
       <ScheduledTime>{time}</ScheduledTime>
