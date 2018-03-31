@@ -5,21 +5,24 @@ import liverpool from '@assets/images/liverpool.png';
 import Team from '@components/Team';
 import Guess from '@components/Guess';
 import versus from '@assets/images/vs.png';
-import getTimeFromISO from '../helpers/index';
+import { getTimeFromDate, compareDateWithToday } from '../helpers/index';
+
 import {
   CARD_BACKGROUND_COLOR,
   CARD_BORDER_COLOR,
   SCHEDULED_TIME_COLOR,
 } from '@theme';
 
-let ISODate = new Date().toISOString();
+let mockedISODate = new Date(
+  'Sun Apr 01 2018 18:30:21 GMT-0300 (-03)',
+).toISOString();
 
 const GameCard = () => {
   return (
     <Card>
       <HomeTeam name="Arsenal" image={arsenal} />
       <Guess />
-      <GameInfo scheduled={ISODate} />
+      <GameInfo scheduled={mockedISODate} />
       <Guess value="100" />
       <AwayTeam name="Liverpool" image={liverpool} />
     </Card>
@@ -28,7 +31,16 @@ const GameCard = () => {
 
 const GameInfo = props => {
   const { scheduled } = props;
-  const time = getTimeFromISO(scheduled);
+
+  let time = getTimeFromDate(scheduled);
+
+  let comparison = compareDateWithToday(scheduled);
+
+  if (comparison == 1) {
+    time = 'TOMORROW';
+  } else if (comparison == -1) {
+    time = 'YESTERDAY';
+  }
 
   return (
     <MidWrapper>
