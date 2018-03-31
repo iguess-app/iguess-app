@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import arsenal from '@assets/images/arsenal.png';
 import liverpool from '@assets/images/liverpool.png';
@@ -13,21 +13,26 @@ import {
   SCHEDULED_TIME_COLOR,
 } from '@theme';
 
-let mockedISODate = new Date(
-  'Sun Apr 01 2018 18:30:21 GMT-0300 (-03)',
-).toISOString();
+let mockedISODate = new Date().toISOString();
 
-const GameCard = () => {
-  return (
-    <Card>
-      <HomeTeam name="Arsenal" image={arsenal} />
-      <Guess />
-      <GameInfo scheduled={mockedISODate} />
-      <Guess value="100" />
-      <AwayTeam name="Liverpool" image={liverpool} />
-    </Card>
-  );
-};
+class GameCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { HomeGuess: '', AwayGuess: 20 };
+  }
+
+  render() {
+    return (
+      <Card>
+        <HomeTeam name="Arsenal" image={arsenal} />
+        <Guess value={this.state.HomeGuess} />
+        <GameInfo scheduled={mockedISODate} />
+        <Guess value={this.state.AwayGuess} />
+        <AwayTeam name="Liverpool" image={liverpool} />
+      </Card>
+    );
+  }
+}
 
 const GameInfo = props => {
   const { scheduled } = props;

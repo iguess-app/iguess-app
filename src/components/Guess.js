@@ -15,7 +15,7 @@ const Guess = props => {
   let plus = <EnabledButton type="plus" />;
   let minus = <EnabledButton type="minus" />;
 
-  if (parseInt(value) <= 0 || value === undefined) {
+  if (parseInt(value) <= 0 || value === undefined || '') {
     value = defaultValue;
     minus = <DisabledButton type="minus" />;
   } else if (parseInt(value) >= 99) {
