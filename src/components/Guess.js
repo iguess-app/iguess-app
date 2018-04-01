@@ -10,10 +10,10 @@ import { GUESS_GUESSED_TEXT_COLOR, GUESS_DEFAULT_TEXT_COLOR } from '../theme';
 const defaultValue = '- - - -';
 
 const Guess = props => {
-  let { value } = props;
+  let { value, onPress } = props;
 
-  let plus = <EnabledButton type="plus" />;
-  let minus = <EnabledButton type="minus" />;
+  let plus = <EnabledButton type="plus" onPress={onPress} />;
+  let minus = <EnabledButton type="minus" onPress={onPress} />;
 
   if (value < 0 || value === undefined || value === '') {
     value = defaultValue;
@@ -33,12 +33,14 @@ const Guess = props => {
 };
 
 const EnabledButton = props => {
-  const { type } = props;
+  const { type, onPress } = props;
 
-  const source = type === 'plus' ? plus : minus;
+  const isPlus = type === 'plus';
+  const source = isPlus ? plus : minus;
+  const operation = isPlus ? 'ADD 1' : 'SUBTRACT 1';
 
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => onPress(operation)}>
       <ButtonImage source={source} />
     </TouchableOpacity>
   );

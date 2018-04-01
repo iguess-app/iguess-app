@@ -9,7 +9,7 @@ export default class GameList extends Component {
         data={this.props.games}
         renderItem={({ item }) => (
           <GameCard
-            name={item.key}
+            id={item.key}
             HomeGuess={item.HomeGuess}
             AwayGuess={item.AwayGuess}
           />

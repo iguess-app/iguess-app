@@ -21,12 +21,24 @@ class GameCard extends Component {
   }
 
   render() {
+    const { HomeGuess, AwayGuess, id } = this.props;
+
     return (
       <Card>
         <HomeTeam name="Arsenal" image={arsenal} />
-        <Guess value={this.props.HomeGuess} />
+        <Guess
+          value={HomeGuess}
+          onPress={operation =>
+            console.log(operation, 'on', HomeGuess, '–– Card id:', id)
+          }
+        />
         <GameInfo scheduled={mockedISODate} />
-        <Guess value={this.props.AwayGuess} />
+        <Guess
+          value={AwayGuess}
+          onPress={operation =>
+            console.log(operation, 'on', AwayGuess, '–– Card id:', id)
+          }
+        />
         <AwayTeam name="Liverpool" image={liverpool} />
       </Card>
     );
