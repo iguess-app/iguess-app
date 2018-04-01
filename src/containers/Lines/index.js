@@ -11,6 +11,7 @@ import * as gamesSelectors from '@redux/games/reducer';
 class Lines extends Component {
   componentDidMount() {
     this.props.dispatch(gamesActions.fetchGames());
+    this.props.dispatch(gamesActions.makeGuess('Italy'));
   }
 
   render() {
