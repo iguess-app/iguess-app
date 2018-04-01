@@ -18,16 +18,15 @@ let mockedISODate = new Date().toISOString();
 class GameCard extends Component {
   constructor(props) {
     super(props);
-    this.state = { HomeGuess: '', AwayGuess: 20 };
   }
 
   render() {
     return (
       <Card>
         <HomeTeam name="Arsenal" image={arsenal} />
-        <Guess value={this.state.HomeGuess} />
+        <Guess value={this.props.HomeGuess} />
         <GameInfo scheduled={mockedISODate} />
-        <Guess value={this.state.AwayGuess} />
+        <Guess value={this.props.AwayGuess} />
         <AwayTeam name="Liverpool" image={liverpool} />
       </Card>
     );

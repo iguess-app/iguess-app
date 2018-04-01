@@ -6,8 +6,14 @@ export default class GameList extends Component {
   render() {
     return (
       <List
-        data={[{ key: 'Brazil' }, { key: 'Germany' }, { key: 'Italy' }]}
-        renderItem={({ item }) => <GameCard name={item.key} />}
+        data={this.props.games}
+        renderItem={({ item }) => (
+          <GameCard
+            name={item.key}
+            HomeGuess={item.HomeGuess}
+            AwayGuess={item.AwayGuess}
+          />
+        )}
       />
     );
   }
