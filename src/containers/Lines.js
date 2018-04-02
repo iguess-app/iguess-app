@@ -6,8 +6,9 @@ import { connect } from 'react-redux';
 import * as gamesActions from '@redux/games/actions';
 import * as gamesSelectors from '@redux/games/reducer';
 import SelectedLine from '@components/SelectedLine';
-import LineNavigation from './LineNavigation';
 import { SceneWrapper, ScrollWrapper } from '@components/Scene';
+import styled from 'styled-components';
+import SettingsButton from '@components/SettingsButton';
 
 class Lines extends Component {
   componentDidMount() {
@@ -20,7 +21,9 @@ class Lines extends Component {
 
     return (
       <SceneWrapper>
-        <LineNavigation />
+        <Navigation>
+          <SettingsButton />
+        </Navigation>
         <ScrollWrapper>
           <SelectedLine
             season="2018"
@@ -39,5 +42,10 @@ function mapStateToProps(state) {
     games: gamesSelectors.getGames(state),
   };
 }
+
+const Navigation = styled.View`
+  flex-direction: row;
+  flex: 0.05;
+`;
 
 export default connect(mapStateToProps)(Lines);
