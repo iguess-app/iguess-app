@@ -3,21 +3,14 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { showNotification } from '@redux/flags/actions';
 import LineNavigationButtons from '@components/LineNavigationButtons';
 import SelectedLine from '@components/SelectedLine';
 
 class Navigation extends Component {
   render() {
-    const dispatch = this.props.dispatch;
-    const { unreadNotification } = this.props;
-
     return (
       <Wrapper>
-        <LineNavigationButtons
-          unreadNotification={unreadNotification}
-          onPressNotification={status => dispatch(showNotification(status))}
-        />
+        <LineNavigationButtons />
         <SelectedLine
           season="2018"
           selectedLine="Russian World Cup"
@@ -33,10 +26,7 @@ const Wrapper = styled.View`
 `;
 
 function mapStateToProps(state) {
-  return {
-    unreadNotification: state.flags.notification,
-    activeSwiperScreen: state.flags.activeSwiperScreen,
-  };
+  return {};
 }
 
 export default connect(mapStateToProps)(Navigation);
