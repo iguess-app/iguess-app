@@ -1,7 +1,7 @@
 /* @flow */
 
 import React, { Component } from 'react';
-import { View } from '@components/Scene';
+import { SceneView } from '@components/Scene';
 import GameList from '@components/GameList';
 import { connect } from 'react-redux';
 import * as gamesActions from '@redux/games/actions';
@@ -29,9 +29,7 @@ class Lines extends Component {
             selectedLine="Russian World Cup"
             points="57"
           />
-          <View>
-            <GameList games={games} />
-          </View>
+          <GameList games={games} />
         </ScrollWrapper>
       </SceneWrapper>
     );
