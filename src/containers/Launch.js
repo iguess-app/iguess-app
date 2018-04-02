@@ -1,9 +1,7 @@
-/* @flow */
-
 import React, { Component } from 'react';
 import Lines from '@containers/Lines';
 import Settings from '@containers/Settings';
-import Swiper from '@components/Swiper';
+import Swiper from 'react-native-swiper';
 import { connect } from 'react-redux';
 import { swipe } from '@redux/flags/actions';
 import styled from 'styled-components';
@@ -18,9 +16,15 @@ class LaunchContainer extends Component<void, void, void> {
     return (
       <Container>
         {background}
-        <Swiper change={index => dispatch(swipe(index))}>
+        <Swiper
+          loop={false}
+          index={1}
+          showsPagination={false}
+          onIndexChanged={index => dispatch(swipe(index))}
+          ref={ref => (this.swiper = ref)}
+        >
           <Settings />
-          <Lines />
+          <Lines swipe={() => this.swiper.scrollBy(-1)} />
         </Swiper>
       </Container>
     );

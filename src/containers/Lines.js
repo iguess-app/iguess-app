@@ -17,12 +17,12 @@ class Lines extends Component {
   }
 
   render() {
-    const { games } = this.props;
+    const { games, swipe } = this.props;
 
     return (
       <SceneWrapper>
         <Navigation>
-          <SettingsButton onPress={() => console.log('Settings')} />
+          <SettingsButton onPress={() => swipe()} />
         </Navigation>
         <ScrollWrapper>
           <SelectedLine
