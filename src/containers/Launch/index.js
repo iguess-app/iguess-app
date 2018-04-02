@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import Lines from '@containers/Lines';
-import Profiles from '@containers/Profiles';
+import Settings from '@containers/Settings';
 import Swiper from '@components/Swiper';
 import { connect } from 'react-redux';
 import { swipe } from '@redux/flags/actions';
@@ -18,7 +18,7 @@ class LaunchContainer extends Component<void, void, void> {
       <Container>
         <Background />
         <Swiper change={index => dispatch(swipe(index))}>
-          <Profiles>{navigation}</Profiles>
+          <Settings />
           <Lines>{navigation}</Lines>
         </Swiper>
       </Container>
