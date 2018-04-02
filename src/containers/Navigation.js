@@ -18,7 +18,11 @@ class Navigation extends Component {
           unreadNotification={unreadNotification}
           onPressNotification={status => dispatch(showNotification(status))}
         />
-        <TouchableSelectLine />
+        <TouchableSelectLine
+          season="2018"
+          selectedLine="Russian World Cup"
+          points="57"
+        />
       </Wrapper>
     );
   }

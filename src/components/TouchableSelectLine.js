@@ -5,16 +5,18 @@ import { SELECT_LINE_PRIMARY_TEXT, SELECT_LINE_POINTS_TEXT } from '@theme';
 
 export default class TouchableSelectLine extends Component {
   render() {
+    const { season, selectedLine, points } = this.props;
+
     return (
       <Touchable onPress={() => console.log('Will display user lines')}>
-        <Season>SEASON 2018/19</Season>
+        <Season>{season}</Season>
         <Row>
-          <LineName>English Premier League</LineName>
+          <LineName>{selectedLine}</LineName>
           <Chevron />
         </Row>
         <PointsView>
-          <Points>57</Points>
-          <PointsText>POINTS</PointsText>
+          <Points>{points}</Points>
+          <PointsText>{points > 1 ? 'POINTS' : 'POINT'}</PointsText>
         </PointsView>
       </Touchable>
     );
