@@ -13,3 +13,11 @@ export const View = styled.ScrollView`
   flex: 1;
   background-color: ${SCENE_BACKGROUND_COLOR};
 `;
+
+export const ScrollWrapper = styled.ScrollView`
+  flex: 1;
+`;
+
+export const SceneWrapper = styled.View`
+  flex: 1;
+`;

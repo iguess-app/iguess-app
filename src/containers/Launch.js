@@ -7,19 +7,17 @@ import Swiper from '@components/Swiper';
 import { connect } from 'react-redux';
 import { swipe } from '@redux/flags/actions';
 import styled from 'styled-components';
-import Navigation from '@containers/Navigation';
 import { BACKGROUND } from '@theme';
 
 class LaunchContainer extends Component<void, void, void> {
   render() {
     const dispatch = this.props.dispatch;
-    let navigation = <Navigation />;
     return (
       <Container>
         <Background />
         <Swiper change={index => dispatch(swipe(index))}>
           <Settings />
-          <Lines>{navigation}</Lines>
+          <Lines />
         </Swiper>
       </Container>
     );

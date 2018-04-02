@@ -1,14 +1,13 @@
 import React from 'react';
-import Wrapper from '@components/Wrapper';
-import { View, Name } from '@components/Scene';
+import { SceneWrapper, ScrollWrapper, Name } from '@components/Scene';
 
 const Settings = props => {
   return (
-    <Wrapper>
-      <View>
+    <SceneWrapper>
+      <ScrollWrapper>
         <Name>Settings</Name>
-      </View>
-    </Wrapper>
+      </ScrollWrapper>
+    </SceneWrapper>
   );
 };
 

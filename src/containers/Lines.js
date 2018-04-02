@@ -1,12 +1,15 @@
 /* @flow */
 
 import React, { Component } from 'react';
-import Wrapper from '@components/Wrapper';
 import { View } from '@components/Scene';
 import GameList from '@components/GameList';
 import { connect } from 'react-redux';
 import * as gamesActions from '@redux/games/actions';
 import * as gamesSelectors from '@redux/games/reducer';
+import SelectedLine from '@components/SelectedLine';
+import styled from 'styled-components';
+import LineNavigation from './LineNavigation';
+import { SceneWrapper, ScrollWrapper } from '@components/Scene';
 
 class Lines extends Component {
   componentDidMount() {
@@ -15,15 +18,22 @@ class Lines extends Component {
   }
 
   render() {
-    const { children, games } = this.props;
+    const { games } = this.props;
 
     return (
-      <Wrapper>
-        {children}
-        <View>
-          <GameList games={games} />
-        </View>
-      </Wrapper>
+      <SceneWrapper>
+        <LineNavigation />
+        <ScrollWrapper>
+          <SelectedLine
+            season="2018"
+            selectedLine="Russian World Cup"
+            points="57"
+          />
+          <View>
+            <GameList games={games} />
+          </View>
+        </ScrollWrapper>
+      </SceneWrapper>
     );
   }
 }
