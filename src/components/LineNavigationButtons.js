@@ -1,6 +1,5 @@
 import React from 'react';
 import Notification from '@components/Notification';
-import AddGuessline from '@components/AddGuessline';
 import styled from 'styled-components';
 
 const LineNavigationButtons = props => {
@@ -9,7 +8,6 @@ const LineNavigationButtons = props => {
   return (
     <ButtonsView>
       <Notification unread={unreadNotification} onPress={onPressNotification} />
-      <AddGuessline />
     </ButtonsView>
   );
 };
