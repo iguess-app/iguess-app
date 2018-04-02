@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import chevron from '@assets/images/chevron-down.png';
 import { SELECT_LINE_PRIMARY_TEXT, SELECT_LINE_POINTS_TEXT } from '@theme';
 
 export default class TouchableSelectLine extends Component {
@@ -8,22 +7,21 @@ export default class TouchableSelectLine extends Component {
     const { season, selectedLine, points } = this.props;
 
     return (
-      <Touchable onPress={() => console.log('Will display user lines')}>
+      <Wrapper>
         <Season>{season}</Season>
         <Row>
           <LineName>{selectedLine}</LineName>
-          <Chevron />
         </Row>
         <PointsView>
           <Points>{points}</Points>
           <PointsText>{points > 1 ? 'POINTS' : 'POINT'}</PointsText>
         </PointsView>
-      </Touchable>
+      </Wrapper>
     );
   }
 }
 
-const Touchable = styled.TouchableOpacity`
+const Wrapper = styled.View`
   height: 100;
   margin-top: 32;
   padding-left: 32;
@@ -71,15 +69,6 @@ const PointsText = styled.Text`
   font-size: 14;
   font-weight: bold;
   color: ${SELECT_LINE_POINTS_TEXT};
-`;
-
-const Chevron = styled.Image.attrs({
-  source: chevron,
-})`
-  margin-top: 24;
-  width: 14;
-  height: 9;
-  z-index: 1;
 `;
 
 const Row = styled.View`

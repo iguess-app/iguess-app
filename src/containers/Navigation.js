@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { showNotification } from '@redux/flags/actions';
 import LineNavigationButtons from '@components/LineNavigationButtons';
-import TouchableSelectLine from '@components/TouchableSelectLine';
+import SelectedLine from '@components/SelectedLine';
 
 class Navigation extends Component {
   render() {
@@ -18,7 +18,7 @@ class Navigation extends Component {
           unreadNotification={unreadNotification}
           onPressNotification={status => dispatch(showNotification(status))}
         />
-        <TouchableSelectLine
+        <SelectedLine
           season="2018"
           selectedLine="Russian World Cup"
           points="57"
