@@ -1,13 +1,11 @@
 import React from 'react';
-import Notification from '@components/Notification';
+import SettingsButton from '@components/SettingsButton';
 import styled from 'styled-components';
 
 const LineNavigationButtons = props => {
-  const { unreadNotification, onPressNotification } = props;
-
   return (
     <ButtonsView>
-      <Notification unread={unreadNotification} onPress={onPressNotification} />
+      <SettingsButton />
     </ButtonsView>
   );
 };
