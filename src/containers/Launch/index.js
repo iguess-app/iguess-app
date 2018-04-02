@@ -3,7 +3,6 @@
 import React, { Component } from 'react';
 import Lines from '@containers/Lines';
 import Profiles from '@containers/Profiles';
-import Leagues from '@containers/Leagues';
 import Swiper from '@components/Swiper';
 import { connect } from 'react-redux';
 import { swipe } from '@redux/flags/actions';
@@ -21,7 +20,6 @@ class LaunchContainer extends Component<void, void, void> {
         <Swiper change={index => dispatch(swipe(index))}>
           <Profiles>{navigation}</Profiles>
           <Lines>{navigation}</Lines>
-          <Leagues>{navigation}</Leagues>
         </Swiper>
       </Container>
     );
