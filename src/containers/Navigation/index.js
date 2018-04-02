@@ -5,13 +5,12 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { showNotification } from '@redux/flags/actions';
 import LineNavigationButtons from '@components/LineNavigationButtons';
-import SceneList from '@components/SceneList/index';
 import TouchableSelectLine from '@components/TouchableSelectLine';
 
 class Navigation extends Component {
   render() {
     const dispatch = this.props.dispatch;
-    const { unreadNotification, activeSwiperScreen } = this.props;
+    const { unreadNotification } = this.props;
 
     return (
       <Wrapper>
@@ -19,7 +18,6 @@ class Navigation extends Component {
           unreadNotification={unreadNotification}
           onPressNotification={status => dispatch(showNotification(status))}
         />
-        <SceneList activeSwiperScreen={activeSwiperScreen} />
         <TouchableSelectLine />
       </Wrapper>
     );

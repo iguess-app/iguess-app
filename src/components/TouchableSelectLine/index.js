@@ -6,7 +6,7 @@ import { SELECT_LINE_PRIMARY_TEXT, SELECT_LINE_POINTS_TEXT } from '@theme';
 export default class TouchableSelectLine extends Component {
   render() {
     return (
-      <Touchable onPress={console.log('Will display user lines')}>
+      <Touchable onPress={() => console.log('Will display user lines')}>
         <Season>SEASON 2018/19</Season>
         <Row>
           <LineName>English Premier League</LineName>
