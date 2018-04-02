@@ -22,7 +22,7 @@ class Lines extends Component {
     return (
       <SceneWrapper>
         <Navigation>
-          <SettingsButton />
+          <SettingsButton onPress={() => console.log('Settings')} />
         </Navigation>
         <ScrollWrapper>
           <SelectedLine

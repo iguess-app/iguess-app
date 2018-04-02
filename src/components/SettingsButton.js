@@ -4,11 +4,10 @@ import gear from '@assets/images/gear.png';
 import styled from 'styled-components';
 
 const SettingsButton = props => {
+  const { onPress } = props;
   return (
     <View>
-      <TouchableOpacity
-        onPress={() => console.log('Will display settings page')}
-      >
+      <TouchableOpacity onPress={() => onPress()}>
         <Gear source={gear} />
       </TouchableOpacity>
     </View>
