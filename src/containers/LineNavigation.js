@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import LineNavigationButtons from '@components/LineNavigationButtons';
-import SelectedLine from '@components/SelectedLine';
 
 class LineNavigation extends Component {
   render() {

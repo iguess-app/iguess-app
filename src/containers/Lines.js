@@ -1,13 +1,11 @@
 /* @flow */
 
 import React, { Component } from 'react';
-import { SceneView } from '@components/Scene';
 import GameList from '@components/GameList';
 import { connect } from 'react-redux';
 import * as gamesActions from '@redux/games/actions';
 import * as gamesSelectors from '@redux/games/reducer';
 import SelectedLine from '@components/SelectedLine';
-import styled from 'styled-components';
 import LineNavigation from './LineNavigation';
 import { SceneWrapper, ScrollWrapper } from '@components/Scene';
 
