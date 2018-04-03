@@ -5,6 +5,9 @@ import close from '@assets/images/close-settings.png';
 import { SETTINGS_TEXT_COLOR, SETTINGS_BORDER_COLOR } from '@theme';
 import { TouchableOpacity } from 'react-native';
 import conversation from '@assets/images/conversation.png';
+import web from '@assets/images/web.png';
+import blog from '@assets/images/blog.png';
+import store from '@assets/images/store.png';
 
 const Settings = props => {
   return (
@@ -13,6 +16,9 @@ const Settings = props => {
         <Close />
         <Title>SETTINGS</Title>
         <Touchable icon={conversation} text="Contact" />
+        <Touchable icon={web} text="Languages" />
+        <Touchable icon={blog} text="Terms and Conditions" />
+        <Touchable icon={store} text="About us" />
       </ScrollWrapper>
     </SceneWrapper>
   );
