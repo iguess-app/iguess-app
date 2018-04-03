@@ -3,11 +3,11 @@ import { SceneWrapper, ScrollWrapper, Name } from '@components/Scene';
 import styled from 'styled-components';
 import close from '@assets/images/close-settings.png';
 import { SETTINGS_TEXT_COLOR, SETTINGS_BORDER_COLOR } from '@theme';
-import { TouchableOpacity } from 'react-native';
 import conversation from '@assets/images/conversation.png';
 import web from '@assets/images/web.png';
 import blog from '@assets/images/blog.png';
 import store from '@assets/images/store.png';
+import exit from '@assets/images/exit.png';
 
 const Settings = props => {
   return (
@@ -15,25 +15,33 @@ const Settings = props => {
       <ScrollWrapper>
         <Close />
         <Title>SETTINGS</Title>
-        <Touchable icon={conversation} text="Contact" />
-        <Touchable icon={web} text="Languages" />
-        <Touchable icon={blog} text="Terms and Conditions" />
-        <Touchable icon={store} text="About us" />
+        <TouchableRow icon={conversation} text="Contact" />
+        <TouchableRow icon={web} text="Languages" />
+        <TouchableRow icon={blog} text="Terms and Conditions" />
+        <TouchableRow icon={store} text="About us" />
+        <Logout />
       </ScrollWrapper>
     </SceneWrapper>
   );
 };
 
-const Touchable = props => {
+const TouchableRow = props => {
   const { icon, text } = props;
 
   return (
-    <TouchableOpacity>
-      <TouchableView>
-        <Icon source={icon} />
-        <TouchableText>{text}</TouchableText>
-      </TouchableView>
-    </TouchableOpacity>
+    <TouchableView>
+      <Icon source={icon} />
+      <CustomText>{text}</CustomText>
+    </TouchableView>
+  );
+};
+
+const Logout = () => {
+  return (
+    <LogoutView>
+      <Icon source={exit} />
+      <CustomText>Log out</CustomText>
+    </LogoutView>
   );
 };
 
@@ -48,13 +56,13 @@ const Close = styled.Image.attrs({
 const Title = styled.Text`
   margin-top: 40;
   margin-left: 32;
-  margin-bottom: 16;
+  margin-bottom: 24;
   font-size: 24;
   font-weight: bold;
   color: ${SETTINGS_TEXT_COLOR};
 `;
 
-const TouchableView = styled.View`
+const TouchableView = styled.TouchableOpacity`
   flex-direction: row;
   border-top = solid;
   border-color: ${SETTINGS_BORDER_COLOR};
@@ -70,7 +78,7 @@ const Icon = styled.Image`
   margin-top: 24;
 `;
 
-const TouchableText = styled.Text`
+const CustomText = styled.Text`
   font-size: 14;
   font-weight: bold;
   margin-left: 20;
@@ -78,4 +86,8 @@ const TouchableText = styled.Text`
   color: ${SETTINGS_TEXT_COLOR};
 `;
 
+const LogoutView = styled.TouchableOpacity`
+  flex-direction: row;
+  margin-top: 152;
+`;
 export default Settings;
