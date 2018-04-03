@@ -24,7 +24,7 @@ class GameCard extends Component {
     const { HomeGuess, AwayGuess, id } = this.props;
 
     return (
-      <Card>
+      <Card style={cardStyle}>
         <HomeTeam name="Arsenal" image={arsenal} />
         <Guess
           value={HomeGuess}
@@ -95,6 +95,18 @@ const MidWrapper = styled.View`
   justify-content: center;
 `;
 
+// Having problems with styled components + box-shadow in this version
+// Didn't work on Android devices
+const cardStyle = {
+  shadowOpacity: 0.16,
+  shadowColor: '#4D6980',
+  shadowOffset: {
+    width: 8,
+    heigth: 16,
+  },
+  shadowRadius: 8,
+};
+
 const Card = styled.View`
   flex-direction: row;
   width: 312;
@@ -102,10 +114,9 @@ const Card = styled.View`
   margin-bottom: 27;
   margin-horizontal: 32;
   border-color: ${CARD_BORDER_COLOR};
-  background-color: ${CARD_BACKGROUND_COLOR};
+  background-color: ${CARD_BACKGROUND_COLOR}
   border-radius: 4;
   border-width: 1;
-  border-style: solid;
 `;
 
 export default GameCard;
