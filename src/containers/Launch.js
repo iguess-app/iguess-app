@@ -23,7 +23,7 @@ class LaunchContainer extends Component<void, void, void> {
           onIndexChanged={index => dispatch(swipe(index))}
           ref={ref => (this.swiper = ref)}
         >
-          <Settings />
+          <Settings swipe={() => this.swiper.scrollBy(1)} />
           <Lines swipe={() => this.swiper.scrollBy(-1)} />
         </Swiper>
       </Container>

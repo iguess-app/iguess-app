@@ -8,12 +8,15 @@ import web from '@assets/images/web.png';
 import blog from '@assets/images/blog.png';
 import store from '@assets/images/store.png';
 import exit from '@assets/images/exit.png';
+import { TouchableOpacity } from 'react-native';
 
 const Settings = props => {
+  const { swipe } = props;
+
   return (
     <SceneWrapper>
       <ScrollWrapper>
-        <Close />
+        <Close onPress={swipe} />
         <Title>SETTINGS</Title>
         <TouchableRow icon={conversation} text="Contact" />
         <TouchableRow icon={web} text="Languages" />
@@ -45,7 +48,17 @@ const Logout = () => {
   );
 };
 
-const Close = styled.Image.attrs({
+const Close = props => {
+  const { onPress } = props;
+
+  return (
+    <TouchableOpacity onPress={() => onPress()}>
+      <CloseImage />
+    </TouchableOpacity>
+  );
+};
+
+const CloseImage = styled.Image.attrs({
   source: close,
 })`
   width: 16;
