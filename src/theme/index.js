@@ -9,6 +9,7 @@ export const SELECT_LINE_PRIMARY_TEXT = CARD_BACKGROUND_COLOR; // white
 export const SELECT_LINE_POINTS_TEXT = '#694CFE'; // purple-blue
 export const GUESS_GUESSED_TEXT_COLOR = CARD_TEAM_NAME_COLOR; // gray
 export const GUESS_DEFAULT_TEXT_COLOR = '#043874'; // darker gray
+export const SETTINGS_TEXT_COLOR = '#553DD1'; // purple
 
 // BACKGROUND
 

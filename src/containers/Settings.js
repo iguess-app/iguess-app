@@ -9,6 +9,7 @@ const Settings = props => {
     <SceneWrapper>
       <ScrollWrapper>
         <Close />
+        <Title>Settings</Title>
       </ScrollWrapper>
     </SceneWrapper>
   );
@@ -20,6 +21,14 @@ const Close = styled.Image.attrs({
   width: 16;
   height: 16;
   margin-left: 32;
+`;
+
+const Title = styled.Text`
+  margin-top: 40;
+  font-size: 24;
+  margin-left: 32;
+  font-weight: bold;
+  color: ${SETTINGS_TEXT_COLOR};
 `;
 
 export default Settings;
