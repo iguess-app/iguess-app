@@ -4,7 +4,24 @@
 
 `$ yarn install`
 
-`$ react-native run-ios` or `$ react-native run-android`
+`$ react-native eject`
+
+### iOS
+
+`$ react-native run-ios`
+
+### Android
+
+`$ touch android/local.properties`
+
+Paste your Android SDK Path inside `local.properties` like below:
+Windows: `sdk.dir = C:/Users/USERNAME/AppData/Local/Android/sdk`
+macOS: `sdk.dir = /Users/USERNAME/Library/Android/sdk`
+linux: `sdk.dir = /home/USERNAME/Android/Sdk`
+
+Finally:
+
+`$ react-native run-android`
 
 ## Folder structure
 
