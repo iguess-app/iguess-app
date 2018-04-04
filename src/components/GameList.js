@@ -28,7 +28,6 @@ const List = styled.FlatList`
 
 export const Wrapper = styled.ScrollView`
   margin-top: 60;
-  width: 100%;
   flex: 1;
   background-color: ${SCENE_BACKGROUND_COLOR};
 `;

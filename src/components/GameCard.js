@@ -112,11 +112,11 @@ const Card = styled.View`
   width: 312;
   height: 144;
   margin-bottom: 27;
-  margin-horizontal: 32;
   border-color: ${CARD_BORDER_COLOR};
   background-color: ${CARD_BACKGROUND_COLOR}
   border-radius: 4;
   border-width: 1;
+  align-self: center;
 `;
 
 export default GameCard;

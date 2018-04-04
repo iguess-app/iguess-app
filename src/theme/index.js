@@ -14,4 +14,4 @@ export const SETTINGS_BORDER_COLOR = '#E4EBF2'; // light gray
 
 // BACKGROUND
 
-export BACKGROUND from '@assets/images/background.png';
+export DEFAULT_BACKGROUND from '@assets/images/background.png';
