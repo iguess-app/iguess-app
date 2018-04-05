@@ -39,17 +39,23 @@ class Lines extends Component {
   render() {
     const { games, swipe } = this.props;
 
-    const NavigationSelectedLine = this.state.selectedOpacity < 0.1 ? 1 : 0;
+    const Touchable =
+      this.state.selectedOpacity < 0.2 ? (
+        <NavSelectedLine scroll={this.scroll} />
+      ) : (
+        undefined
+      );
 
     return (
       <SceneWrapper>
         <Navigation>
           <SettingsButton onPress={() => swipe()} />
-          <NavSelectedLine />
+          {Touchable}
         </Navigation>
         <ScrollWrapper
           onScroll={this._changeSelectedLineOpacity.bind(this)}
-          scrollEventThrottle={8}
+          scrollEventThrottle={16}
+          innerRef={ref => (this.scroll = ref)}
         >
           <SelectedLine
             season="2018"
@@ -64,9 +70,12 @@ class Lines extends Component {
   }
 }
 
-const NavSelectedLine = () => {
+const NavSelectedLine = props => {
+  const { scroll } = props;
+
+  const initialPosition = { x: 0, y: 0, animated: true };
   return (
-    <NavTouchable>
+    <NavTouchable onPress={() => scroll.scrollTo(initialPosition)}>
       <NavText>Russian World Cup</NavText>
       <Chevron />
     </NavTouchable>
