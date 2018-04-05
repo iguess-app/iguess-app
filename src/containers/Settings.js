@@ -1,5 +1,5 @@
 import React from 'react';
-import { SceneWrapper, ScrollWrapper, Name } from '@components/Scene';
+import { SceneWrapper, ScrollWrapper } from '@components/Scene';
 import styled from 'styled-components';
 import close from '@assets/images/close-settings.png';
 import { SETTINGS_TEXT_COLOR, SETTINGS_BORDER_COLOR } from '@theme';

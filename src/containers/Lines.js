@@ -11,9 +11,27 @@ import styled from 'styled-components';
 import SettingsButton from '@components/SettingsButton';
 
 class Lines extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { selectedOpacity: 1 };
+  }
+
   componentDidMount() {
     this.props.dispatch(gamesActions.fetchGames());
     this.props.dispatch(gamesActions.makeGuess('Italy'));
+  }
+
+  _changeSelectedLineOpacity(event) {
+    let offset = event.nativeEvent.contentOffset.y;
+    let opacity = 1;
+
+    if (offset <= 0) {
+      opacity = 1;
+    } else {
+      opacity = 1 / (0.5 * offset);
+    }
+
+    this.setState({ selectedOpacity: opacity });
   }
 
   render() {
@@ -24,11 +42,15 @@ class Lines extends Component {
         <Navigation>
           <SettingsButton onPress={() => swipe()} />
         </Navigation>
-        <ScrollWrapper>
+        <ScrollWrapper
+          onScroll={this._changeSelectedLineOpacity.bind(this)}
+          scrollEventThrottle={16}
+        >
           <SelectedLine
             season="2018"
             selectedLine="Russian World Cup"
             points="57"
+            opacity={this.state.selectedOpacity}
           />
           <GameList games={games} />
         </ScrollWrapper>

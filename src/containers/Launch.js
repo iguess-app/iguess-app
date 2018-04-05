@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { swipe } from '@redux/flags/actions';
 import styled from 'styled-components';
 import { DEFAULT_BACKGROUND, SCENE_BACKGROUND_COLOR } from '@theme';
-import { ImageBackground } from 'react-native';
 
 class LaunchContainer extends Component<void, void, void> {
   render() {
