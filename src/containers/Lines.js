@@ -33,18 +33,14 @@ class Lines extends Component {
   render() {
     const { games, swipe } = this.props;
 
-    const Touchable =
-      this.state.selectedOpacity < 0.2 ? (
-        <NavSelectedLine scroll={this.scroll} />
-      ) : (
-        undefined
-      );
-
     return (
       <SceneWrapper source={DEFAULT_BACKGROUND}>
         <Navigation>
           <SettingsButton onPress={swipe} />
-          {Touchable}
+          <SecondarySelectedLine
+            scroll={this.scroll}
+            principalOpacity={this.state.selectedOpacity}
+          />
         </Navigation>
         <ScrollWrapper
           onScroll={this._changeSelectedLineOpacity.bind(this)}
@@ -64,23 +60,21 @@ class Lines extends Component {
   }
 }
 
-const NavSelectedLine = props => {
-  const { scroll } = props;
+const SecondarySelectedLine = props => {
+  const { scroll, principalOpacity } = props;
 
-  const initialPosition = { x: 0, y: 0, animated: true };
-  return (
-    <NavTouchable onPress={() => scroll.scrollTo(initialPosition)}>
-      <NavText>Russian World Cup</NavText>
-      <Chevron />
-    </NavTouchable>
-  );
+  if (principalOpacity < 0.2) {
+    const initialPosition = { x: 0, y: 0, animated: true };
+    return (
+      <NavTouchable onPress={() => scroll.scrollTo(initialPosition)}>
+        <NavText>Russian World Cup</NavText>
+        <Chevron />
+      </NavTouchable>
+    );
+  }
+
+  return null;
 };
-
-function mapStateToProps(state) {
-  return {
-    games: gamesSelectors.getGames(state),
-  };
-}
 
 const Navigation = styled.View`
   flex-direction: row;
@@ -107,5 +101,11 @@ const Chevron = styled.Image.attrs({
   resize-mode: contain;
   margin-top: 4;
 `;
+
+function mapStateToProps(state) {
+  return {
+    games: gamesSelectors.getGames(state),
+  };
+}
 
 export default connect(mapStateToProps)(Lines);
