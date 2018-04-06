@@ -7,12 +7,12 @@ export default class TouchableSelectLine extends Component {
     const { season, selectedLine, points, opacity } = this.props;
 
     return (
-      <Wrapper opacity={opacity}>
-        <Season>{season}</Season>
-        <Row>
+      <Wrapper>
+        <Season opacity={opacity}>{season}</Season>
+        <Row opacity={opacity}>
           <LineName>{selectedLine}</LineName>
         </Row>
-        <PointsView>
+        <PointsView opacity={opacity}>
           <Points>{points}</Points>
           <PointsText>{points > 1 ? 'POINTS' : 'POINT'}</PointsText>
         </PointsView>
@@ -27,7 +27,6 @@ const Wrapper = styled.View`
   margin-top: 32;
   padding-left: 32;
   padding-right: 32;
-  opacity: ${props => props.opacity};
 `;
 
 const Season = styled.Text`
@@ -36,6 +35,7 @@ const Season = styled.Text`
   font-weight: bold;
   text-align: left;
   color: ${SELECT_LINE_PRIMARY_TEXT};
+  opacity: ${props => props.opacity};
 `;
 
 const LineName = styled.Text`
