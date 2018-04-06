@@ -12,7 +12,6 @@ import SettingsButton from '@components/SettingsButton';
 import { SELECT_LINE_PRIMARY_TEXT } from '@theme';
 import chevronDown from '@assets/images/chevron-down.png';
 import { DEFAULT_BACKGROUND } from '@theme';
-import { Actions } from 'react-native-router-flux';
 
 class Lines extends Component {
   constructor(props) {
@@ -51,7 +50,7 @@ class Lines extends Component {
     return (
       <SceneWrapper source={DEFAULT_BACKGROUND}>
         <Navigation>
-          <SettingsButton onPress={() => Actions.settings()} />
+          <SettingsButton onPress={swipe} />
           {Touchable}
         </Navigation>
         <ScrollWrapper

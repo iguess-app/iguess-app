@@ -5,16 +5,13 @@ import Swiper from 'react-native-swiper';
 import { connect } from 'react-redux';
 import { swipe } from '@redux/flags/actions';
 import styled from 'styled-components';
-import { DEFAULT_BACKGROUND, SCENE_BACKGROUND_COLOR } from '@theme';
 
 class LaunchContainer extends Component<void, void, void> {
   render() {
-    const { dispatch, activeSwiperScreen } = this.props;
-
-    const background = activeSwiperScreen == 0 ? undefined : DEFAULT_BACKGROUND;
+    const { dispatch } = this.props;
 
     return (
-      <BackgroundContainer source={background}>
+      <BackgroundContainer>
         <Swiper
           loop={false}
           index={1}
@@ -30,10 +27,8 @@ class LaunchContainer extends Component<void, void, void> {
   }
 }
 
-const BackgroundContainer = styled.ImageBackground`
+const BackgroundContainer = styled.View`
   flex: 1;
-  padding-top: 40;
-  background-color: ${SCENE_BACKGROUND_COLOR};
 `;
 
 function mapStateToProps(state) {
