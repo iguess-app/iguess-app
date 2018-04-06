@@ -84,6 +84,7 @@ const TouchableView = styled.TouchableOpacity`
 
 const Icon = styled.Image`
   height: 24;
+  width: 30;
   resize-mode: contain;
   margin-left: 32;
   margin-top: 24;

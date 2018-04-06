@@ -83,8 +83,10 @@ const Navigation = styled.View`
 
 const NavTouchable = styled.TouchableOpacity`
   flex-direction: row;
+  flex: 1;
+  justifycontent: flex-end;
   margin-top: 2;
-  margin-left: 105;
+  margin-right: 24;
 `;
 
 const NavText = styled.Text`
@@ -98,8 +100,8 @@ const Chevron = styled.Image.attrs({
   source: chevronDown,
 })`
   width: 14;
-  resize-mode: contain;
   margin-top: 4;
+  resize-mode: contain;
 `;
 
 function mapStateToProps(state) {

@@ -24,7 +24,6 @@ export default class TouchableSelectLine extends Component {
 const Wrapper = styled.View`
   flex: 0.8;
   height: 100;
-  margin-top: 32;
   padding-left: 32;
   padding-right: 32;
 `;
@@ -41,36 +40,36 @@ const Season = styled.Text`
 const LineName = styled.Text`
   width: 289;
   font-size: 24;
-  margin-top: 12;
   font-weight: bold;
   text-align: left;
-  color: #fff;
+  margin-top: 12;
+  color: ${SELECT_LINE_PRIMARY_TEXT};
 `;
 
 const PointsView = styled.View`
-  margin-top: 24;
   flex-direction: row;
+  margin-top: 24;
   width: 104;
   height: 40;
-  border-radius: 26;
+  border-radius: 24;
   background-color: ${SELECT_LINE_PRIMARY_TEXT};
   justify-content: center;
 `;
 
 const Points = styled.Text`
-  margin: auto;
-  margin-right: 4;
-  color: ${SELECT_LINE_POINTS_TEXT};
   font-size: 22.4;
   font-weight: bold;
+  color: ${SELECT_LINE_POINTS_TEXT};
+  margin: auto;
+  margin-right: 4;
 `;
 
 const PointsText = styled.Text`
-  margin: auto;
-  margin-left: 0;
   font-size: 14;
   font-weight: bold;
   color: ${SELECT_LINE_POINTS_TEXT};
+  margin: auto;
+  margin-left: 0;
 `;
 
 const Row = styled.View`
