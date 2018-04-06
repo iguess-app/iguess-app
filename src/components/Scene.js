@@ -3,7 +3,7 @@ import { SCENE_BACKGROUND_COLOR } from '../theme/index';
 
 export const Name = styled.Text`
   color: black;
-  font-size: 300;
+  font-size: 28;
   font-weight: bold;
 `;
 

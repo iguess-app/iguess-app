@@ -1,18 +1,18 @@
 import React from 'react';
-import Lines from '@containers/Lines';
-import Settings from '@containers/Settings';
-import LaunchContainer from '@containers/Launch';
 import { Router, Stack, Scene } from 'react-native-router-flux';
 import { Provider } from 'react-redux';
 import createStore from '@store/create';
+import Settings from '@containers/Settings';
+import LaunchContainer from '@containers/Launch';
+import Contact from '@components/Contact';
 
 const Routes = () => {
   return (
     <Router>
       <Stack key="root">
         <Scene key="launch" component={LaunchContainer} hideNavBar={true} />
-        <Scene key="lines" component={Lines} hideNavBar={true} />
         <Scene key="settings" component={Settings} hideNavBar={true} />
+        <Scene key="contact" component={Contact} hideNavBar={true} />
       </Stack>
     </Router>
   );
