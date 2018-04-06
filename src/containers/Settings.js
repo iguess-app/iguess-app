@@ -9,6 +9,7 @@ import blog from '@assets/images/blog.png';
 import store from '@assets/images/store.png';
 import exit from '@assets/images/exit.png';
 import { TouchableOpacity } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 const Settings = props => {
   const { swipe } = props;
@@ -16,7 +17,7 @@ const Settings = props => {
   return (
     <SceneWrapper>
       <ScrollWrapper>
-        <Close onPress={swipe} />
+        <Close onPress={() => Actions.lines()} />
         <Title>SETTINGS</Title>
         <TouchableRow icon={conversation} text="Contact" />
         <TouchableRow icon={web} text="Languages" />
@@ -103,4 +104,5 @@ const LogoutView = styled.TouchableOpacity`
   flex-direction: row;
   margin-top: 152;
 `;
+
 export default Settings;
