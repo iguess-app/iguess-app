@@ -1,5 +1,5 @@
 import React from 'react';
-import { SceneWrapper, ScrollWrapper } from '@components/Scene';
+import { SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
 import close from '@assets/images/close-settings.png';
 import { SETTINGS_TEXT_COLOR, SETTINGS_BORDER_COLOR } from '@theme';
@@ -15,15 +15,13 @@ const Settings = props => {
 
   return (
     <SceneWrapper>
-      <ScrollWrapper>
-        <Close onPress={swipe} />
-        <Title>SETTINGS</Title>
-        <TouchableRow icon={conversation} text="Contact" />
-        <TouchableRow icon={web} text="Languages" />
-        <TouchableRow icon={blog} text="Terms and Conditions" />
-        <TouchableRow icon={store} text="About us" />
-        <Logout />
-      </ScrollWrapper>
+      <Close onPress={swipe} />
+      <Title>SETTINGS</Title>
+      <TouchableRow icon={conversation} text="Contact" />
+      <TouchableRow icon={web} text="Languages" />
+      <TouchableRow icon={blog} text="Terms and Conditions" />
+      <TouchableRow icon={store} text="About us" />
+      <Logout />
     </SceneWrapper>
   );
 };

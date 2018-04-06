@@ -9,9 +9,8 @@ import SelectedLine from '@components/SelectedLine';
 import { SceneWrapper, ScrollWrapper } from '@components/Scene';
 import styled from 'styled-components';
 import SettingsButton from '@components/SettingsButton';
-import { SELECT_LINE_PRIMARY_TEXT } from '@theme';
+import { SELECT_LINE_PRIMARY_TEXT, DEFAULT_BACKGROUND } from '@theme';
 import chevronDown from '@assets/images/chevron-down.png';
-import { DEFAULT_BACKGROUND } from '@theme';
 
 class Lines extends Component {
   constructor(props) {
