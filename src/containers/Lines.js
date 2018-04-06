@@ -25,13 +25,7 @@ class Lines extends Component {
 
   _changeSelectedLineOpacity(event) {
     let offset = event.nativeEvent.contentOffset.y;
-    let opacity = 1;
-
-    if (offset <= 0) {
-      opacity = 1;
-    } else {
-      opacity = 1 / (0.5 * offset);
-    }
+    let opacity = offset <= 0 ? 1 : 1 / (0.3 * offset);
 
     this.setState({ selectedOpacity: opacity });
   }
