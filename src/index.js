@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import createStore from '@store/create';
 import Settings from '@containers/Settings';
 import LaunchContainer from '@containers/Launch';
-import Contact from '@components/Contact';
+import Support from '@components/Support';
 
 const Routes = () => {
   return (
@@ -12,7 +12,7 @@ const Routes = () => {
       <Stack key="root">
         <Scene key="launch" component={LaunchContainer} hideNavBar={true} />
         <Scene key="settings" component={Settings} hideNavBar={true} />
-        <Scene key="contact" component={Contact} hideNavBar={true} />
+        <Scene key="support" component={Support} hideNavBar={true} />
       </Stack>
     </Router>
   );

@@ -20,8 +20,8 @@ const Settings = props => {
       <Title>SETTINGS</Title>
       <TouchableRow
         icon={conversation}
-        text="Contact"
-        onPress={() => Actions.contact()}
+        text="Support"
+        onPress={() => Actions.support()}
       />
       <TouchableRow icon={web} text="Languages" />
       <TouchableRow icon={blog} text="Terms and Conditions" />
