@@ -84,7 +84,7 @@ const Navigation = styled.View`
 const NavTouchable = styled.TouchableOpacity`
   flex-direction: row;
   flex: 1;
-  justifycontent: flex-end;
+  justify-content: flex-end;
   margin-top: 2;
   margin-right: 24;
 `;
