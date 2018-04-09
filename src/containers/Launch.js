@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { swipe } from '@redux/flags/actions';
 import styled from 'styled-components';
 
-class LaunchContainer extends Component<void, void, void> {
+class Launch extends Component<void, void, void> {
   render() {
     const { dispatch } = this.props;
 
@@ -37,4 +37,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(LaunchContainer);
+export default connect(mapStateToProps)(Launch);
