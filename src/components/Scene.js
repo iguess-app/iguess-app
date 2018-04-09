@@ -45,6 +45,7 @@ const Title = styled.Text`
   color: ${SETTINGS_TEXT_COLOR};
   margin-left: 32;
 `;
+
 const CloseImage = styled.Image.attrs({
   source: close,
 })`

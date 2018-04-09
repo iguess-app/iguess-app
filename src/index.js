@@ -5,6 +5,9 @@ import createStore from '@store/create';
 import Settings from '@containers/Settings';
 import Launch from '@containers/Launch';
 import Support from '@components/Support';
+import Languages from '@components/Languages';
+import Terms from '@components/Terms';
+import About from '@components/About';
 
 const Routes = () => {
   return (
@@ -13,6 +16,9 @@ const Routes = () => {
         <Scene key="launch" component={Launch} hideNavBar={true} />
         <Scene key="settings" component={Settings} hideNavBar={true} />
         <Scene key="support" component={Support} hideNavBar={true} />
+        <Scene key="languages" component={Languages} hideNavBar={true} />
+        <Scene key="terms" component={Terms} hideNavBar={true} />
+        <Scene key="about" component={About} hideNavBar={true} />
       </Stack>
     </Router>
   );

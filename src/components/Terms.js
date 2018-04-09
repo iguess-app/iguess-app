@@ -1,12 +1,12 @@
 import React from 'react';
 import { SceneWrapper, SceneHeader } from '@components/Scene';
 
-const Support = () => {
+const Terms = () => {
   return (
     <SceneWrapper>
-      <SceneHeader title="Support" />
+      <SceneHeader title="Terms" />
     </SceneWrapper>
   );
 };
 
-export default Support;
+export default Terms;

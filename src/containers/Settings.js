@@ -23,9 +23,21 @@ const Settings = props => {
         text="Support"
         onPress={() => Actions.support()}
       />
-      <TouchableRow icon={web} text="Languages" />
-      <TouchableRow icon={blog} text="Terms and Conditions" />
-      <TouchableRow icon={store} text="About us" />
+      <TouchableRow
+        icon={web}
+        text="Languages"
+        onPress={() => Actions.languages()}
+      />
+      <TouchableRow
+        icon={blog}
+        text="Terms and Conditions"
+        onPress={() => Actions.terms()}
+      />
+      <TouchableRow
+        icon={store}
+        text="About us"
+        onPress={() => Actions.about()}
+      />
       <Logout />
     </SceneWrapper>
   );
