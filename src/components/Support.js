@@ -1,4 +1,5 @@
 import React from 'react';
+import { Linking } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import { Header, Content, SceneDescription } from '@components/SecondaryScene';
 import styled from 'styled-components';
@@ -22,18 +23,26 @@ const Support = () => {
       </Content>
       <OptionsWrapper>
         <Option icon={mail} text="support@iguess.com" />
-        <Option icon={facebookIcon} text="Talk with us on facebook" />
-        <Option icon={twitterIcon} text="Talk with us on twitter" />
+        <Option
+          icon={facebookIcon}
+          text="Talk with us on facebook"
+          url="https://www.facebook.com"
+        />
+        <Option
+          icon={twitterIcon}
+          text="Talk with us on twitter"
+          url="https://www.twitter.com"
+        />
       </OptionsWrapper>
     </SceneWrapper>
   );
 };
 
 const Option = props => {
-  const { icon, text } = props;
+  const { icon, text, url } = props;
 
   return (
-    <TouchableWrapper>
+    <TouchableWrapper onPress={() => Linking.openURL(url)}>
       <OptionIcon source={icon} />
       <OptionText>{text}</OptionText>
       <Chevron />
