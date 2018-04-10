@@ -1,11 +1,14 @@
 import React from 'react';
 import { SceneWrapper } from '@components/Scene';
-import SceneHeader from './SceneHeader';
+import SecondaryScene from '@components/SecondaryScene';
 
 const Terms = () => {
   return (
     <SceneWrapper>
-      <SceneHeader title="Terms and conditions" />
+      <SecondaryScene
+        title="Terms and conditions"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eleifend vitae ipsum."
+      />
     </SceneWrapper>
   );
 };

@@ -1,11 +1,14 @@
 import React from 'react';
 import { SceneWrapper } from '@components/Scene';
-import SceneHeader from './SceneHeader';
+import SecondaryScene from '@components/SecondaryScene';
 
 const About = () => {
   return (
     <SceneWrapper>
-      <SceneHeader title="About" />
+      <SecondaryScene
+        title="About us"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      />
     </SceneWrapper>
   );
 };

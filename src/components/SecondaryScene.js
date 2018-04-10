@@ -3,6 +3,22 @@ import { SETTINGS_TEXT_COLOR } from '@theme';
 import close from '@assets/images/close-settings.png';
 import { Actions } from 'react-native-router-flux';
 import styled from 'styled-components';
+import { TouchableOpacity, View } from 'react-native';
+
+const SecondaryScene = props => {
+  const { title, description } = props;
+
+  const descriptionComponent = description ? (
+    <Description>{description}</Description>
+  ) : null;
+
+  return (
+    <View>
+      <SceneHeader title={title} />
+      {descriptionComponent}
+    </View>
+  );
+};
 
 const SceneHeader = props => {
   const { title } = props;
@@ -16,24 +32,22 @@ const SceneHeader = props => {
 };
 
 const Close = () => (
-  <Touchable onPress={() => Actions.pop()}>
+  <TouchableOpacity onPress={() => Actions.pop()}>
     <CloseImage />
-  </Touchable>
+  </TouchableOpacity>
 );
 
-const Touchable = styled.TouchableOpacity`
-  margin-right: 32;
-`;
 const HeaderWrapper = styled.View`
   flex-direction: row;
   justify-content: space-between;
+  padding-left: 32;
+  padding-right: 32;
 `;
 
 const Title = styled.Text`
   font-size: 14;
   font-weight: bold;
   color: ${SETTINGS_TEXT_COLOR};
-  margin-left: 32;
 `;
 
 const CloseImage = styled.Image.attrs({
@@ -44,4 +58,14 @@ const CloseImage = styled.Image.attrs({
   height: 16;
 `;
 
-export default SceneHeader;
+const Description = styled.Text`
+  margin-top: 24;
+  font-size: 32;
+  font-weight: bold;
+  text-align: left;
+  color: ${SETTINGS_TEXT_COLOR};
+  padding-left: 32;
+  padding-right: 32;
+`;
+
+export default SecondaryScene;

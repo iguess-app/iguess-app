@@ -1,11 +1,11 @@
 import React from 'react';
 import { SceneWrapper } from '@components/Scene';
-import SceneHeader from './SceneHeader';
+import SecondaryScene from '@components/SecondaryScene';
 
 const Languages = () => {
   return (
     <SceneWrapper>
-      <SceneHeader title="Languages" />
+      <SecondaryScene title="Languages" />
     </SceneWrapper>
   );
 };
