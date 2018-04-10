@@ -4,8 +4,9 @@ import close from '@assets/images/close-settings.png';
 import { Actions } from 'react-native-router-flux';
 import styled from 'styled-components';
 import { TouchableOpacity, View } from 'react-native';
+import { SUBTEXT_SECONDARY_SCENE } from '@theme';
 
-const SecondaryScene = props => {
+export const Header = props => {
   const { title, description, image } = props;
 
   const descriptionComponent = description ? (
@@ -16,21 +17,13 @@ const SecondaryScene = props => {
 
   return (
     <View>
-      <SceneHeader title={title} />
+      <TopWrapper>
+        <Title>{title.toUpperCase()}</Title>
+        <Close />
+      </TopWrapper>
       {imageComponent}
       {descriptionComponent}
     </View>
-  );
-};
-
-const SceneHeader = props => {
-  const { title } = props;
-
-  return (
-    <HeaderWrapper>
-      <Title>{title.toUpperCase()}</Title>
-      <Close />
-    </HeaderWrapper>
   );
 };
 
@@ -40,7 +33,15 @@ const Close = () => (
   </TouchableOpacity>
 );
 
-const HeaderWrapper = styled.View`
+export const Content = styled.Text`
+  font-size: 14;
+  color: ${SUBTEXT_SECONDARY_SCENE}
+  margin-top: 10;
+  padding-right: 32;
+  padding-left: 32;
+`;
+
+const TopWrapper = styled.View`
   flex-direction: row;
   justify-content: space-between;
   padding-left: 32;
@@ -77,5 +78,3 @@ const HeaderImage = styled.Image`
   width: 100%;
   margin-top: 24;
 `;
-
-export default SecondaryScene;
