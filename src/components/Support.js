@@ -22,7 +22,11 @@ const Support = () => {
         ultricies.
       </Content>
       <OptionsWrapper>
-        <Option icon={mail} text="support@iguess.com" />
+        <Option
+          icon={mail}
+          text="support@iguess.com"
+          url="mailto:support@iguess.com"
+        />
         <Option
           icon={facebookIcon}
           text="Talk with us on facebook"
