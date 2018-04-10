@@ -46,6 +46,7 @@ const Terms = () => {
 };
 
 const Scroll = styled.ScrollView`
-  margin-top: 14;
+  margin-bottom: 16;
 `;
+
 export default Terms;

@@ -4,7 +4,7 @@ import close from '@assets/images/close-settings.png';
 import { Actions } from 'react-native-router-flux';
 import styled from 'styled-components';
 import { TouchableOpacity, View } from 'react-native';
-import { SUBTEXT_SECONDARY_SCENE } from '@theme';
+import { TEXT_SECONDARY_SCENE } from '@theme';
 
 export const Header = props => {
   const { title } = props;
@@ -27,7 +27,7 @@ const Close = () => (
 
 export const Content = styled.Text`
   font-size: 14;
-  color: ${SUBTEXT_SECONDARY_SCENE}
+  color: ${TEXT_SECONDARY_SCENE}
   margin-top: 10;
   padding-right: 32;
   padding-left: 32;
@@ -36,6 +36,7 @@ export const Content = styled.Text`
 const TopWrapper = styled.View`
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 16;
   padding-left: 32;
   padding-right: 32;
 `;
@@ -55,7 +56,6 @@ const CloseImage = styled.Image.attrs({
 `;
 
 export const SceneDescription = styled.Text`
-  margin-top: 24;
   font-size: 32;
   font-weight: bold;
   text-align: left;
@@ -68,5 +68,4 @@ export const HeaderImage = styled.Image`
   opacity: 0.9;
   height: 160;
   width: 100%;
-  margin-top: 24;
 `;
