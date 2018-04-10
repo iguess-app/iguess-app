@@ -3,6 +3,7 @@ import { SceneWrapper } from '@components/Scene';
 import { Header, SceneDescription, Content } from '@components/SecondaryScene';
 import aboutImage from '@assets/images/about-image.png';
 import styled from 'styled-components';
+import { RATE_BUTTON_COLOR, RATE_TEXT_COLOR } from '@theme';
 
 const About = () => {
   return (
@@ -38,10 +39,17 @@ const About = () => {
           bibendum mi, et tristique nisi. Proin aliquet tellus non magna
           feugiat, ut ultricies magna convallis. Fusce nec sagittis nunc.
         </Content>
+        <RateButton />
       </Scroll>
     </SceneWrapper>
   );
 };
+
+const RateButton = () => (
+  <RateButtonWrapper onPress={() => console.log('Rate app')}>
+    <RateText>RATE THIS APP</RateText>
+  </RateButtonWrapper>
+);
 
 const BoldContent = styled(Content)`
   font-weight: bold;
@@ -52,10 +60,30 @@ const BoldContent = styled(Content)`
 const Scroll = styled.ScrollView`
   margin-bottom: 16;
 `;
+
 const HeaderImage = styled.Image`
   opacity: 0.9;
   height: 160;
   width: 100%;
+  margin-bottom: 32;
+`;
+
+const RateButtonWrapper = styled.TouchableOpacity`
+  width: 311px;
+  height: 56px;
+  border-radius: 38px;
+  background-color: ${RATE_BUTTON_COLOR}
+  margin-top: 32;
+  margin-left: 32;
+  margin-right: 32;
+  align-items: center;
+`;
+
+const RateText = styled.Text`
+  margin-top: 18;
+  font-size: 15;
+  font-weight: bold;
+  color: ${RATE_TEXT_COLOR};
 `;
 
 export default About;
