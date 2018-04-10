@@ -3,7 +3,7 @@ import { SceneWrapper } from '@components/Scene';
 import { Header, SceneDescription, Content } from '@components/SecondaryScene';
 import aboutImage from '@assets/images/about-image.png';
 import styled from 'styled-components';
-import { RATE_BUTTON_COLOR, RATE_TEXT_COLOR } from '@theme';
+import { RATE_BUTTON_COLOR, RATE_TEXT_COLOR, FOLLOW_US_COLOR } from '@theme';
 
 const About = () => {
   return (
@@ -40,6 +40,7 @@ const About = () => {
           feugiat, ut ultricies magna convallis. Fusce nec sagittis nunc.
         </Content>
         <RateButton />
+        <Follow>Follow us</Follow>
       </Scroll>
     </SceneWrapper>
   );
@@ -74,6 +75,7 @@ const RateButtonWrapper = styled.TouchableOpacity`
   border-radius: 38px;
   background-color: ${RATE_BUTTON_COLOR}
   margin-top: 32;
+  margin-bottom: 32;
   margin-left: 32;
   margin-right: 32;
   align-items: center;
@@ -84,6 +86,14 @@ const RateText = styled.Text`
   font-size: 15;
   font-weight: bold;
   color: ${RATE_TEXT_COLOR};
+`;
+
+const Follow = styled.Text`
+  align-self: center;
+  font-size: 16;
+  font-weight: bold;
+  color: ${FOLLOW_US_COLOR}
+  margin-bottom: 16;
 `;
 
 export default About;
