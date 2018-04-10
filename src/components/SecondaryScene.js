@@ -6,15 +6,18 @@ import styled from 'styled-components';
 import { TouchableOpacity, View } from 'react-native';
 
 const SecondaryScene = props => {
-  const { title, description } = props;
+  const { title, description, image } = props;
 
   const descriptionComponent = description ? (
     <Description>{description}</Description>
   ) : null;
 
+  const imageComponent = image ? <HeaderImage source={image} /> : null;
+
   return (
     <View>
       <SceneHeader title={title} />
+      {imageComponent}
       {descriptionComponent}
     </View>
   );
@@ -66,6 +69,13 @@ const Description = styled.Text`
   color: ${SETTINGS_TEXT_COLOR};
   padding-left: 32;
   padding-right: 32;
+`;
+
+const HeaderImage = styled.Image`
+  opacity: 0.9;
+  height: 160;
+  width: 100%;
+  margin-top: 24;
 `;
 
 export default SecondaryScene;
