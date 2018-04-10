@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { TEXT_SECONDARY_SCENE } from '@theme';
 import chevronRight from '@assets/images/chevron-right.png';
 import mail from '@assets/images/mail.png';
+import facebookIcon from '@assets/images/facebook-icon.png';
+import twitterIcon from '@assets/images/twitter-icon.png';
 
 const Support = () => {
   return (
@@ -18,7 +20,11 @@ const Support = () => {
         vitae ipsum vehicula malesuada. Ut scelerisque nunc non consequat
         ultricies.
       </Content>
-      <Option icon={mail} text="support@iguess.com" />
+      <OptionsWrapper>
+        <Option icon={mail} text="support@iguess.com" />
+        <Option icon={facebookIcon} text="Talk with us on facebook" />
+        <Option icon={twitterIcon} text="Talk with us on twitter" />
+      </OptionsWrapper>
     </SceneWrapper>
   );
 };
@@ -35,12 +41,16 @@ const Option = props => {
   );
 };
 
+const OptionsWrapper = styled.View`
+  margin-top: 32;
+`;
+
 const TouchableWrapper = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
   margin-left: 32;
   margin-right: 32;
-  margin-bottom: 40;
+  margin-bottom: 32;
 `;
 
 const OptionIcon = styled.Image`
