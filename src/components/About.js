@@ -1,16 +1,20 @@
 import React from 'react';
 import { SceneWrapper } from '@components/Scene';
-import { Header } from '@components/SecondaryScene';
+import {
+  Header,
+  SceneDescription,
+  HeaderImage,
+} from '@components/SecondaryScene';
 import aboutImage from '@assets/images/about-image.png';
 
 const About = () => {
   return (
     <SceneWrapper>
-      <Header
-        title="About us"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        image={aboutImage}
-      />
+      <Header title="About us" />
+      <SceneDescription>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </SceneDescription>
+      <HeaderImage source={aboutImage} />
     </SceneWrapper>
   );
 };

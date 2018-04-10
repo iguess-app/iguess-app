@@ -1,16 +1,17 @@
 import React from 'react';
 import { SceneWrapper } from '@components/Scene';
-import { Header, Content } from '@components/SecondaryScene';
+import { Header, Content, SceneDescription } from '@components/SecondaryScene';
 import styled from 'styled-components';
 
 const Terms = () => {
   return (
     <SceneWrapper>
-      <Header
-        title="Terms and conditions"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eleifend vitae ipsum."
-      />
+      <Header title="Terms and conditions" />
       <Scroll>
+        <SceneDescription>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
+          eleifend vitae ipsum.
+        </SceneDescription>
         <Content>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
           eleifend vitae ipsum vehicula malesuada. Ut scelerisque nunc non

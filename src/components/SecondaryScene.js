@@ -7,13 +7,7 @@ import { TouchableOpacity, View } from 'react-native';
 import { SUBTEXT_SECONDARY_SCENE } from '@theme';
 
 export const Header = props => {
-  const { title, description, image } = props;
-
-  const descriptionComponent = description ? (
-    <Description>{description}</Description>
-  ) : null;
-
-  const imageComponent = image ? <HeaderImage source={image} /> : null;
+  const { title } = props;
 
   return (
     <View>
@@ -21,8 +15,6 @@ export const Header = props => {
         <Title>{title.toUpperCase()}</Title>
         <Close />
       </TopWrapper>
-      {imageComponent}
-      {descriptionComponent}
     </View>
   );
 };
@@ -62,7 +54,7 @@ const CloseImage = styled.Image.attrs({
   height: 16;
 `;
 
-const Description = styled.Text`
+export const SceneDescription = styled.Text`
   margin-top: 24;
   font-size: 32;
   font-weight: bold;
@@ -72,7 +64,7 @@ const Description = styled.Text`
   padding-right: 32;
 `;
 
-const HeaderImage = styled.Image`
+export const HeaderImage = styled.Image`
   opacity: 0.9;
   height: 160;
   width: 100%;
