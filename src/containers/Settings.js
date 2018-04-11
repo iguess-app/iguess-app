@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import close from '@assets/images/close-settings.png';
 import { SETTINGS_TEXT_COLOR, SETTINGS_BORDER_COLOR } from '@theme';
 import conversation from '@assets/images/conversation.png';
-import web from '@assets/images/web.png';
 import blog from '@assets/images/blog.png';
 import store from '@assets/images/store.png';
 import exit from '@assets/images/exit.png';
@@ -22,11 +21,6 @@ const Settings = props => {
         icon={conversation}
         text="Support"
         onPress={() => Actions.support()}
-      />
-      <TouchableRow
-        icon={web}
-        text="Languages"
-        onPress={() => Actions.languages()}
       />
       <TouchableRow
         icon={blog}
@@ -76,6 +70,7 @@ const Close = props => {
 const CloseImage = styled.Image.attrs({
   source: close,
 })`
+  margin-top: 32;
   width: 16;
   height: 16;
   margin-left: 32;
