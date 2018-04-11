@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import { SCENE_BACKGROUND_COLOR } from '../theme/index';
 
@@ -11,8 +12,24 @@ export const ScrollWrapper = styled.ScrollView`
   flex: 1;
 `;
 
-export const SceneWrapper = styled.ImageBackground`
-  padding-top: 40;
+export const SceneBackground = styled.ImageBackground`
+  margin-top: 20;
+  padding-top: 20;
   flex: 1;
   background-color: ${SCENE_BACKGROUND_COLOR};
+`;
+
+export const SceneWrapper = props => {
+  const { source, children } = props;
+
+  return (
+    <SceneView>
+      <SceneBackground source={source}>{children}</SceneBackground>
+    </SceneView>
+  );
+};
+
+const SceneView = styled.View`
+  flex: 1;
+  background-color: white;
 `;
