@@ -55,7 +55,7 @@ const DisabledButton = props => {
 };
 
 const Wrapper = styled.View`
-  margin-vertical: 20;
+  align-self: center;
   margin-horizontal: 8;
   flex-direction: column;
 `;
