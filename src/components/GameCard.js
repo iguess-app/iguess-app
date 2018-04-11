@@ -102,7 +102,7 @@ const cardStyle = {
   shadowColor: '#4D6980',
   shadowOffset: {
     width: 8,
-    heigth: 16,
+    height: 16,
   },
   shadowRadius: 8,
 };
@@ -111,7 +111,7 @@ const Card = styled.View`
   flex-direction: row;
   width: 312;
   height: 144;
-  margin-bottom: 27;
+  margin-bottom: 40;
   border-color: ${CARD_BORDER_COLOR};
   background-color: ${CARD_BACKGROUND_COLOR}
   border-radius: 4;
