@@ -28,7 +28,7 @@ const Close = () => (
 export const Content = styled.Text`
   font-size: 14;
   color: ${TEXT_SECONDARY_SCENE}
-  margin-top: 10;
+  margin-top: 16;
   padding-right: 32;
   padding-left: 32;
 `;
