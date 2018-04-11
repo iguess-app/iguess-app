@@ -34,7 +34,7 @@ class Lines extends Component {
     const { games, swipe } = this.props;
 
     return (
-      <SceneWrapper source={DEFAULT_BACKGROUND}>
+      <SceneWrapper background={DEFAULT_BACKGROUND}>
         <Navigation>
           <SettingsButton onPress={swipe} />
           <SecondarySelectedLine

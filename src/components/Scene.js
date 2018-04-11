@@ -20,11 +20,11 @@ export const SceneBackground = styled.ImageBackground`
 `;
 
 export const SceneWrapper = props => {
-  const { source, children } = props;
+  const { background, children } = props;
 
   return (
     <SceneView>
-      <SceneBackground source={source}>{children}</SceneBackground>
+      <SceneBackground source={background}>{children}</SceneBackground>
     </SceneView>
   );
 };
