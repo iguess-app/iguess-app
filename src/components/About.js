@@ -64,14 +64,13 @@ const BoldContent = styled(Content)`
 `;
 
 const Scroll = styled.ScrollView`
-  margin-bottom: 16;
+  margin-bottom: 24;
 `;
 
 const HeaderImage = styled.Image`
   opacity: 0.9;
   height: 160;
   width: 100%;
-  margin-bottom: 32;
 `;
 
 const RateButtonWrapper = styled.TouchableOpacity`

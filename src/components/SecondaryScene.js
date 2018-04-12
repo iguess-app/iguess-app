@@ -70,8 +70,3 @@ export const SceneDescription = styled.Text`
   padding-right: 32;
   margin-top: 24;
 `;
-
-export const HeaderImage = styled.Image`
-  opacity: 0.9;
-  width: 100%;
-`;
