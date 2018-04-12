@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { SCENE_BACKGROUND_COLOR } from '../theme/index';
+import { SCENE_BACKGROUND_COLOR, STATUS_BAR_DEFAULT_COLOR } from '@theme';
 
 export const Name = styled.Text`
   color: black;
@@ -14,16 +14,15 @@ export const ScrollWrapper = styled.ScrollView`
 
 export const SceneBackground = styled.ImageBackground`
   margin-top: 20;
-  padding-top: 20;
   flex: 1;
   background-color: ${SCENE_BACKGROUND_COLOR};
 `;
 
 export const SceneWrapper = props => {
-  const { background, children } = props;
+  const { background, children, statusColor } = props;
 
   return (
-    <SceneView>
+    <SceneView color={statusColor}>
       <SceneBackground source={background}>{children}</SceneBackground>
     </SceneView>
   );
@@ -31,5 +30,6 @@ export const SceneWrapper = props => {
 
 const SceneView = styled.View`
   flex: 1;
-  background-color: white;
+  background-color: ${props =>
+    props.color ? props.color : STATUS_BAR_DEFAULT_COLOR};
 `;

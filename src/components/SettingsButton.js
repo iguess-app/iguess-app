@@ -1,16 +1,14 @@
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import gear from '@assets/images/gear.png';
 import styled from 'styled-components';
 
 const SettingsButton = props => {
   const { onPress } = props;
   return (
-    <View>
-      <TouchableOpacity onPress={() => onPress()}>
-        <Gear source={gear} />
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity onPress={() => onPress()}>
+      <Gear source={gear} />
+    </TouchableOpacity>
   );
 };
 

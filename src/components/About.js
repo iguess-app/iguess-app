@@ -1,14 +1,19 @@
 import React from 'react';
 import { SceneWrapper } from '@components/Scene';
-import { Header, SceneDescription, Content } from '@components/SecondaryScene';
+import { NavBar, SceneDescription, Content } from '@components/SecondaryScene';
 import aboutImage from '@assets/images/about-image.png';
 import styled from 'styled-components';
-import { RATE_BUTTON_COLOR, RATE_TEXT_COLOR, FOLLOW_US_COLOR } from '@theme';
+import {
+  RATE_BUTTON_COLOR,
+  RATE_TEXT_COLOR,
+  FOLLOW_US_COLOR,
+  SECONDARY_SCENE_NAVBAR_COLOR,
+} from '@theme';
 
 const About = () => {
   return (
-    <SceneWrapper>
-      <Header title="About us" />
+    <SceneWrapper statusColor={SECONDARY_SCENE_NAVBAR_COLOR}>
+      <NavBar title="About us" />
       <Scroll>
         <HeaderImage source={aboutImage} />
         <SceneDescription>

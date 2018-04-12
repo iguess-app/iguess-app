@@ -78,6 +78,7 @@ const SecondarySelectedLine = props => {
 
 const Navigation = styled.View`
   flex-direction: row;
+  margin-top: 26;
   flex: 0.08;
 `;
 

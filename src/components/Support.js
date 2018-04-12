@@ -1,18 +1,19 @@
 import React from 'react';
 import { Linking } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
-import { Header, Content, SceneDescription } from '@components/SecondaryScene';
+import { NavBar, Content, SceneDescription } from '@components/SecondaryScene';
 import styled from 'styled-components';
 import { TEXT_SECONDARY_SCENE } from '@theme';
 import chevronRight from '@assets/images/chevron-right.png';
 import mail from '@assets/images/mail.png';
 import facebookIcon from '@assets/images/facebook-icon.png';
 import twitterIcon from '@assets/images/twitter-icon.png';
+import { SECONDARY_SCENE_NAVBAR_COLOR } from '@theme/';
 
 const Support = () => {
   return (
-    <SceneWrapper>
-      <Header title="Support" />
+    <SceneWrapper statusColor={SECONDARY_SCENE_NAVBAR_COLOR}>
+      <NavBar title="Support" />
       <SceneDescription>
         Fale com alguém do nosso time ou contate-nos nas redes sociais.
       </SceneDescription>
