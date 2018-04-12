@@ -1,3 +1,7 @@
+// Will be deleted
+// The data should be retrieved from the API
+// with correct formatation
+
 export const getTimeFromDate = ISODate => {
   return ISODate.slice(11, 16)
     .replace(':', 'H ')

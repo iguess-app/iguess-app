@@ -2,11 +2,11 @@ import React from 'react';
 import { Router, Stack, Scene } from 'react-native-router-flux';
 import { Provider } from 'react-redux';
 import createStore from '@store/create';
-import Settings from '@containers/Settings';
-import Launch from '@containers/Launch';
-import Support from '@components/Support';
-import Terms from '@components/Terms';
-import About from '@components/About';
+import Settings from '@scenes/Settings';
+import Launch from '@scenes/Launch';
+import Support from '@scenes/Support';
+import Terms from '@scenes/Terms';
+import About from '@scenes/About';
 
 const Routes = () => {
   return (

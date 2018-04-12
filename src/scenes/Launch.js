@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Lines from '@containers/Lines';
-import Settings from '@containers/Settings';
+import Lines from '@scenes/Lines';
+import Settings from '@scenes/Settings';
 import Swiper from 'react-native-swiper';
 import { connect } from 'react-redux';
 import { swipe } from '@redux/flags/actions';
