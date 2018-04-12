@@ -63,12 +63,14 @@ class Lines extends Component {
 const SecondarySelectedLine = props => {
   const { scroll, principalOpacity } = props;
 
+  const opacity = principalOpacity => 1 - 2.5 * principalOpacity;
+
   if (principalOpacity < 0.2) {
     const initialPosition = { x: 0, y: 0, animated: true };
     return (
       <NavTouchable onPress={() => scroll.scrollTo(initialPosition)}>
-        <NavText>Russian World Cup</NavText>
-        <Chevron />
+        <NavText opacity={opacity(principalOpacity)}>Russian World Cup</NavText>
+        <Chevron opacity={opacity(principalOpacity)} />
       </NavTouchable>
     );
   }
@@ -95,6 +97,7 @@ const NavText = styled.Text`
   font-weight: bold;
   color: ${SELECT_LINE_PRIMARY_TEXT};
   margin-right: 16;
+  opacity: ${props => props.opacity};
 `;
 
 const Chevron = styled.Image.attrs({
