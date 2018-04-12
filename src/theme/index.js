@@ -21,4 +21,5 @@ export const HEADER_TEXT_COLOR = '#FFF'; // white
 
 // BACKGROUND
 
-export DEFAULT_BACKGROUND from '@assets/images/background.png';
+export LINES_BACKGROUND from '@assets/images/lines-background.png';
+export HOME_BACKGROUND from '@assets/images/home-background.png';

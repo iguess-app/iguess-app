@@ -9,7 +9,7 @@ import SelectedLine from '@components/SelectedLine';
 import { SceneWrapper, ScrollWrapper } from '@components/Scene';
 import styled from 'styled-components';
 import SettingsButton from '@components/SettingsButton';
-import { SELECT_LINE_PRIMARY_TEXT, DEFAULT_BACKGROUND } from '@theme';
+import { SELECT_LINE_PRIMARY_TEXT, LINES_BACKGROUND } from '@theme';
 import chevronDown from '@assets/images/chevron-down.png';
 
 class Lines extends Component {
@@ -34,7 +34,7 @@ class Lines extends Component {
     const { games, swipe } = this.props;
 
     return (
-      <SceneWrapper background={DEFAULT_BACKGROUND}>
+      <SceneWrapper background={LINES_BACKGROUND}>
         <Navigation>
           <SettingsButton onPress={swipe} />
           <SecondarySelectedLine

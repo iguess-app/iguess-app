@@ -7,11 +7,13 @@ import Core from '@scenes/Core';
 import Support from '@scenes/Support';
 import Terms from '@scenes/Terms';
 import About from '@scenes/About';
+import Home from '@scenes/Home';
 
 const Routes = () => {
   return (
     <Router>
       <Stack key="root">
+        <Scene key="home" component={Home} hideNavBar={true} />
         <Scene key="core" component={Core} hideNavBar={true} />
         <Scene key="settings" component={Settings} hideNavBar={true} />
         <Scene key="support" component={Support} hideNavBar={true} />
