@@ -7,6 +7,8 @@ import {
   PRIMARY_BUTTON_COLOR,
   PRIMARY_BUTTON_TEXT_COLOR,
 } from '@theme';
+import { TouchableOpacity } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 const Terms = () => {
   return (
@@ -14,6 +16,7 @@ const Terms = () => {
       <HomeText>Lorem ipsum dolor sit amet, consectetur.</HomeText>
       <AccountButton text="create my account" />
       <AccountButton text="sign in" type="transparent" />
+      <TermsButton />
     </SceneWrapper>
   );
 };
@@ -24,7 +27,7 @@ const HomeText = styled.Text`
   color: ${HOME_TEXT_COLOR};
   padding-left: 40;
   padding-right: 40;
-  margin-top: 170;
+  margin-top: 168;
   margin-bottom: 210;
 `;
 
@@ -70,6 +73,22 @@ const ButtonText = styled.Text`
   font-size: 15;
   font-weight: bold;
   color: ${PRIMARY_BUTTON_TEXT_COLOR};
+`;
+
+const TermsButton = () => {
+  return (
+    <TouchableOpacity onPress={() => Actions.terms()}>
+      <TermsText>Terms and conditions</TermsText>
+    </TouchableOpacity>
+  );
+};
+
+const TermsText = styled.Text`
+  font-size: 14;
+  font-weight: bold;
+  color: ${PRIMARY_BUTTON_TEXT_COLOR};
+  text-decoration-line: underline;
+  align-self: center;
 `;
 
 export default Terms;
