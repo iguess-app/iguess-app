@@ -37,10 +37,18 @@ const AccountButton = props => {
   const textComponent = <ButtonText>{text.toUpperCase()}</ButtonText>;
 
   if (type === 'transparent') {
-    return <TransparentTouchable>{textComponent}</TransparentTouchable>;
+    return (
+      <TransparentTouchable onPress={() => Actions.signin()}>
+        {textComponent}
+      </TransparentTouchable>
+    );
   }
 
-  return <MainTouchable>{textComponent}</MainTouchable>;
+  return (
+    <MainTouchable onPress={() => Actions.signup()}>
+      {textComponent}
+    </MainTouchable>
+  );
 };
 
 const MainTouchable = styled.TouchableOpacity`
