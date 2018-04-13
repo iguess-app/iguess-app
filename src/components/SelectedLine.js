@@ -4,17 +4,17 @@ import { SELECT_LINE_PRIMARY_TEXT, SELECT_LINE_POINTS_TEXT } from '@theme';
 
 export default class TouchableSelectLine extends Component {
   render() {
-    const { season, selectedLine, points, opacity } = this.props;
+    const { season, name, points, opacity } = this.props;
+
+    const pointsLabel = points > 1 ? 'POINTS' : 'POINT';
 
     return (
       <Wrapper>
         <Season opacity={opacity}>{season}</Season>
-        <Row opacity={opacity}>
-          <LineName>{selectedLine}</LineName>
-        </Row>
+        <LineName opacity={opacity}>{name}</LineName>
         <PointsView opacity={opacity}>
           <Points>{points}</Points>
-          <PointsText>{points > 1 ? 'POINTS' : 'POINT'}</PointsText>
+          <PointsText>{pointsLabel}</PointsText>
         </PointsView>
       </Wrapper>
     );
@@ -42,18 +42,19 @@ const LineName = styled.Text`
   font-size: 24;
   font-weight: bold;
   text-align: left;
-  margin-top: 12;
   color: ${SELECT_LINE_PRIMARY_TEXT};
+  margin-top: 12;
+  opacity: ${props => props.opacity};
 `;
 
 const PointsView = styled.View`
   flex-direction: row;
-  margin-top: 24;
+  justify-content: center;
   width: 104;
   height: 40;
   border-radius: 24;
   background-color: ${SELECT_LINE_PRIMARY_TEXT};
-  justify-content: center;
+  margin-top: 24;
 `;
 
 const Points = styled.Text`
@@ -70,8 +71,4 @@ const PointsText = styled.Text`
   color: ${SELECT_LINE_POINTS_TEXT};
   margin: auto;
   margin-left: 0;
-`;
-
-const Row = styled.View`
-  flex-direction: row;
 `;
