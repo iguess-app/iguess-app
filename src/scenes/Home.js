@@ -10,7 +10,7 @@ import {
 import { TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-const Terms = () => {
+const Home = () => {
   return (
     <SceneWrapper background={HOME_BACKGROUND}>
       <HomeText>Lorem ipsum dolor sit amet, consectetur.</HomeText>
@@ -91,4 +91,4 @@ const TermsText = styled.Text`
   align-self: center;
 `;
 
-export default Terms;
+export default Home;
