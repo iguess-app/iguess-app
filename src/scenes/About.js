@@ -4,8 +4,8 @@ import { NavBar, SceneDescription, Content } from '@components/SecondaryScene';
 import aboutImage from '@assets/images/about-image.png';
 import styled from 'styled-components';
 import {
-  RATE_BUTTON_COLOR,
-  RATE_TEXT_COLOR,
+  PRIMARY_BUTTON_COLOR,
+  PRIMARY_BUTTON_TEXT_COLOR,
   FOLLOW_US_COLOR,
   SECONDARY_SCENE_NAVBAR_COLOR,
 } from '@theme';
@@ -77,7 +77,7 @@ const RateButtonWrapper = styled.TouchableOpacity`
   width: 311px;
   height: 56px;
   border-radius: 38px;
-  background-color: ${RATE_BUTTON_COLOR}
+  background-color: ${PRIMARY_BUTTON_COLOR}
   margin-top: 32;
   margin-bottom: 32;
   margin-left: 32;
@@ -89,7 +89,7 @@ const RateText = styled.Text`
   margin-top: 18;
   font-size: 15;
   font-weight: bold;
-  color: ${RATE_TEXT_COLOR};
+  color: ${PRIMARY_BUTTON_TEXT_COLOR};
 `;
 
 const Follow = styled.Text`

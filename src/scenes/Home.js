@@ -1,17 +1,75 @@
 import React from 'react';
 import { SceneWrapper } from '@components/Scene';
-import { SceneDescription } from '@components/SecondaryScene';
 import { HOME_BACKGROUND } from '@theme';
+import styled from 'styled-components';
+import {
+  HOME_TEXT_COLOR,
+  PRIMARY_BUTTON_COLOR,
+  PRIMARY_BUTTON_TEXT_COLOR,
+} from '@theme';
 
 const Terms = () => {
   return (
     <SceneWrapper background={HOME_BACKGROUND}>
-      <SceneDescription>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eleifend
-        vitae ipsum.
-      </SceneDescription>
+      <HomeText>Lorem ipsum dolor sit amet, consectetur.</HomeText>
+      <AccountButton text="create my account" />
+      <AccountButton text="sign in" type="transparent" />
     </SceneWrapper>
   );
 };
+
+const HomeText = styled.Text`
+  font-size: 26;
+  text-align: center;
+  color: ${HOME_TEXT_COLOR};
+  padding-left: 40;
+  padding-right: 40;
+  margin-top: 170;
+  margin-bottom: 210;
+`;
+
+const AccountButton = props => {
+  const { text, type } = props;
+
+  const textComponent = <ButtonText>{text.toUpperCase()}</ButtonText>;
+
+  if (type === 'transparent') {
+    return <TransparentTouchable>{textComponent}</TransparentTouchable>;
+  }
+
+  return <MainTouchable>{textComponent}</MainTouchable>;
+};
+
+const MainTouchable = styled.TouchableOpacity`
+  width: 311px;
+  height: 56px;
+  border-radius: 38px;
+  background-color: ${PRIMARY_BUTTON_COLOR};
+  margin-left: 32;
+  margin-right: 32;
+  align-items: center;
+`;
+
+const TransparentTouchable = styled.TouchableOpacity`
+  width: 311px;
+  height: 56px;
+  border-radius: 38px;
+  background-color: rgba(42, 43, 86, 0.65);
+  margin-top: 24;
+  margin-bottom: 32;
+  margin-left: 32;
+  margin-right: 32;
+  align-items: center;
+  border-style: solid;
+  border-width: 2;
+  border-color: white;
+`;
+
+const ButtonText = styled.Text`
+  margin-top: 18;
+  font-size: 15;
+  font-weight: bold;
+  color: ${PRIMARY_BUTTON_TEXT_COLOR};
+`;
 
 export default Terms;
