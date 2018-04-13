@@ -40,7 +40,11 @@ const AccountButton = props => {
     return <TransparentTouchable>{textComponent}</TransparentTouchable>;
   }
 
-  return <MainTouchable>{textComponent}</MainTouchable>;
+  return (
+    <MainTouchable onPress={() => Actions.signup()}>
+      {textComponent}
+    </MainTouchable>
+  );
 };
 
 const MainTouchable = styled.TouchableOpacity`
