@@ -45,16 +45,16 @@ const TopWrapper = styled.ImageBackground`
   align-items: center;
   padding-top: 20;
   padding-left: 32;
-  padding-right: 32;
+  padding-right: 52;
   height: 80;
 `;
 
-export const Content = styled.Text`
-  font-size: 14;
-  color: ${TEXT_SECONDARY_SCENE}
-  margin-top: 16;
-  padding-right: 32;
-  padding-left: 32;
+const BackImage = styled.Image.attrs({
+  source: chevronLeft,
+})`
+  width: 16;
+  height: 16;
+  resize-mode: contain;
 `;
 
 const Title = styled.Text`
@@ -66,12 +66,12 @@ const Title = styled.Text`
   color: ${HEADER_TEXT_COLOR};
 `;
 
-const BackImage = styled.Image.attrs({
-  source: chevronLeft,
-})`
-  width: 16;
-  height: 16;
-  resize-mode: contain;
+export const Content = styled.Text`
+  font-size: 14;
+  color: ${TEXT_SECONDARY_SCENE}
+  margin-top: 16;
+  padding-right: 32;
+  padding-left: 32;
 `;
 
 export const SceneDescription = styled.Text`
