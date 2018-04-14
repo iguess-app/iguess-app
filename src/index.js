@@ -1,15 +1,17 @@
 import React from 'react';
 import { Router, Stack, Scene } from 'react-native-router-flux';
+import {
+  Home,
+  Core,
+  Settings,
+  Support,
+  Terms,
+  About,
+  SignUp,
+  SignIn,
+} from '@scenes';
 import { Provider } from 'react-redux';
 import createStore from '@store/create';
-import Settings from '@scenes/Settings';
-import Core from '@scenes/Core';
-import Support from '@scenes/Support';
-import Terms from '@scenes/Terms';
-import About from '@scenes/About';
-import Home from '@scenes/Home';
-import SignUp from '@scenes/SignUp';
-import SignIn from '@scenes/SignIn';
 
 const Routes = () => {
   return (
