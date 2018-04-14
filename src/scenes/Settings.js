@@ -73,7 +73,7 @@ const CloseImage = styled.Image.attrs({
   width: 16;
   height: 16;
   margin-left: 32;
-  margin-top: 32;
+  margin-top: 52;
 `;
 
 const Title = styled.Text`

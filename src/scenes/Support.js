@@ -8,11 +8,10 @@ import chevronRight from '@assets/images/chevron-right.png';
 import mail from '@assets/images/mail.png';
 import facebookIcon from '@assets/images/facebook-icon.png';
 import twitterIcon from '@assets/images/twitter-icon.png';
-import { SECONDARY_SCENE_NAVBAR_COLOR } from '@theme/';
 
 const Support = () => {
   return (
-    <SceneWrapper statusColor={SECONDARY_SCENE_NAVBAR_COLOR}>
+    <SceneWrapper>
       <NavBar title="Support" />
       <SceneDescription>
         Fale com alguém do nosso time ou contate-nos nas redes sociais.

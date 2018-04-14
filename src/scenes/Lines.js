@@ -81,7 +81,7 @@ const SecondarySelectedLine = props => {
 const Navigation = styled.View`
   flex: 0.08;
   flex-direction: row;
-  margin-top: 26;
+  margin-top: 46;
 `;
 
 const NavTouchable = styled.TouchableOpacity`

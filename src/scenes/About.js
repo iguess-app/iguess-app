@@ -7,12 +7,11 @@ import {
   PRIMARY_BUTTON_COLOR,
   PRIMARY_BUTTON_TEXT_COLOR,
   FOLLOW_US_COLOR,
-  SECONDARY_SCENE_NAVBAR_COLOR,
 } from '@theme';
 
 const About = () => {
   return (
-    <SceneWrapper statusColor={SECONDARY_SCENE_NAVBAR_COLOR}>
+    <SceneWrapper>
       <NavBar title="About us" />
       <Scroll>
         <HeaderImage source={aboutImage} />

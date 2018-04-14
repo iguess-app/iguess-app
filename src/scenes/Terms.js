@@ -2,11 +2,10 @@ import React from 'react';
 import { SceneWrapper } from '@components/Scene';
 import { NavBar, Content, SceneDescription } from '@components/SecondaryScene';
 import styled from 'styled-components';
-import { SECONDARY_SCENE_NAVBAR_COLOR } from '@theme';
 
 const Terms = () => {
   return (
-    <SceneWrapper statusColor={SECONDARY_SCENE_NAVBAR_COLOR}>
+    <SceneWrapper>
       <NavBar title="Terms and conditions" />
       <Scroll>
         <SceneDescription>

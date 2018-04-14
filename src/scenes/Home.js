@@ -27,7 +27,7 @@ const HomeText = styled.Text`
   color: ${HOME_TEXT_COLOR};
   padding-left: 40;
   padding-right: 40;
-  margin-top: 168;
+  margin-top: 178;
   margin-bottom: 210;
 `;
 

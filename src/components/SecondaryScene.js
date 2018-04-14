@@ -30,6 +30,7 @@ const Back = () => (
 const TopWrapper = styled.View`
   flex-direction: row;
   align-items: center;
+  padding-top: 20;
   padding-left: 32;
   padding-right: 32;
   height: 80;

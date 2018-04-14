@@ -5,7 +5,7 @@ import { SECONDARY_SCENE_NAVBAR_COLOR } from '@theme';
 
 const SignUp = () => {
   return (
-    <SceneWrapper statusColor={SECONDARY_SCENE_NAVBAR_COLOR}>
+    <SceneWrapper>
       <NavBar title="Sign up" />
       <SceneDescription>Sign up here</SceneDescription>
     </SceneWrapper>

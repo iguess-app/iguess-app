@@ -16,7 +16,6 @@ export const TEXT_SECONDARY_SCENE = CARD_TEAM_NAME_COLOR; // gray
 export const PRIMARY_BUTTON_COLOR = '#19D88C'; // green
 export const PRIMARY_BUTTON_TEXT_COLOR = '#FFF'; // white
 export const FOLLOW_US_COLOR = SETTINGS_TEXT_COLOR; // purple
-export const STATUS_BAR_DEFAULT_COLOR = '#FFF'; // white
 export const HEADER_TEXT_COLOR = '#FFF'; // white
 export const HOME_TEXT_COLOR = '#FFF'; // white
 
