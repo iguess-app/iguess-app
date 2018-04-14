@@ -3,11 +3,8 @@ import { Linking } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import { NavBar, Content, SceneDescription } from '@components/Scene';
 import styled from 'styled-components';
+import { chevronRight, mail, facebookIcon, twitterIcon } from '@assets/images';
 import { TEXT_SECONDARY_SCENE } from '@theme';
-import chevronRight from '@assets/images/chevron-right.png';
-import mail from '@assets/images/mail.png';
-import facebookIcon from '@assets/images/facebook-icon.png';
-import twitterIcon from '@assets/images/twitter-icon.png';
 
 const Support = () => {
   return (

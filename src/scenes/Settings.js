@@ -3,11 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 import { SceneWrapper } from '@components/Scene';
 import { Actions } from 'react-native-router-flux';
-import conversation from '@assets/images/conversation.png';
-import close from '@assets/images/close-settings.png';
-import blog from '@assets/images/blog.png';
-import store from '@assets/images/store.png';
-import exit from '@assets/images/exit.png';
+import { conversation, close, blog, store, exit } from '@assets/images';
 import { SETTINGS_TEXT_COLOR, SETTINGS_BORDER_COLOR } from '@theme';
 
 const Settings = props => {

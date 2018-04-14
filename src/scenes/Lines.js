@@ -7,7 +7,7 @@ import SettingsButton from '@components/SettingsButton';
 import { connect } from 'react-redux';
 import * as gamesActions from '@redux/games/actions';
 import * as gamesSelectors from '@redux/games/reducer';
-import chevronDown from '@assets/images/chevron-down.png';
+import { chevronDown } from '@assets/images';
 import { SELECT_LINE_PRIMARY_TEXT, DEFAULT_BACKGROUND } from '@theme';
 
 class Lines extends Component {

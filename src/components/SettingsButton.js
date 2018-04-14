@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import gear from '@assets/images/gear.png';
+import { gear } from '@assets/images';
 import styled from 'styled-components';
 
 const SettingsButton = props => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { SceneWrapper } from '@components/Scene';
 import { NavBar, SceneDescription, Content } from '@components/Scene';
-import aboutImage from '@assets/images/about-image.png';
+import { aboutImage } from '@assets/images';
 import styled from 'styled-components';
 import {
   PRIMARY_BUTTON_COLOR,

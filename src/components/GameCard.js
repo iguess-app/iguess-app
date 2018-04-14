@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import arsenal from '@assets/images/arsenal.png';
-import liverpool from '@assets/images/liverpool.png';
 import Team from '@components/Team';
 import Guess from '@components/Guess';
-import versus from '@assets/images/vs.png';
+import { arsenal, liverpool, versus } from '@assets/images';
 import { getTimeFromDate, compareDateWithToday } from '../helpers/index';
 
 import {

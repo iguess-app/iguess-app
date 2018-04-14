@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 import { Actions } from 'react-native-router-flux';
-import chevronLeft from '@assets/images/chevron-left.png';
+import { chevronLeft } from '@assets/images';
 import {
   TEXT_SECONDARY_SCENE,
   HEADER_TEXT_COLOR,

@@ -20,5 +20,5 @@ export const HOME_TEXT_COLOR = '#FFF'; // white
 
 // BACKGROUND
 
-export DEFAULT_BACKGROUND from '@assets/images/default-background.png';
-export HOME_BACKGROUND from '@assets/images/home-background.png';
+export DEFAULT_BACKGROUND from '@assets/images/defaultBackground.png';
+export HOME_BACKGROUND from '@assets/images/homeBackground.png';
