@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import { TouchableOpacity } from 'react-native';
 import {
   TEXT_SECONDARY_SCENE,
-  SECONDARY_SCENE_NAVBAR_COLOR,
   HEADER_TEXT_COLOR,
+  DEFAULT_BACKGROUND,
 } from '@theme';
 import chevronLeft from '@assets/images/chevron-left.png';
 
@@ -14,7 +14,7 @@ export const NavBar = props => {
   const { title } = props;
 
   return (
-    <TopWrapper>
+    <TopWrapper source={DEFAULT_BACKGROUND}>
       <Back />
       <Title>{title.toUpperCase()}</Title>
     </TopWrapper>
@@ -27,14 +27,13 @@ const Back = () => (
   </TouchableOpacity>
 );
 
-const TopWrapper = styled.View`
+const TopWrapper = styled.ImageBackground`
   flex-direction: row;
   align-items: center;
   padding-top: 20;
   padding-left: 32;
   padding-right: 32;
   height: 80;
-  background-color: ${SECONDARY_SCENE_NAVBAR_COLOR};
 `;
 
 export const Content = styled.Text`

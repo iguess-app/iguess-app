@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import * as gamesActions from '@redux/games/actions';
 import * as gamesSelectors from '@redux/games/reducer';
 import chevronDown from '@assets/images/chevron-down.png';
-import { SELECT_LINE_PRIMARY_TEXT, LINES_BACKGROUND } from '@theme';
+import { SELECT_LINE_PRIMARY_TEXT, DEFAULT_BACKGROUND } from '@theme';
 
 class Lines extends Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class Lines extends Component {
     const { games, swipe } = this.props;
 
     return (
-      <SceneWrapper background={LINES_BACKGROUND}>
+      <SceneWrapper background={DEFAULT_BACKGROUND}>
         <Navigation>
           <SettingsButton onPress={swipe} />
           <SecondarySelectedLine

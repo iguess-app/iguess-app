@@ -11,7 +11,6 @@ export const GUESS_GUESSED_TEXT_COLOR = CARD_TEAM_NAME_COLOR; // gray
 export const GUESS_DEFAULT_TEXT_COLOR = '#043874'; // darker gray
 export const SETTINGS_TEXT_COLOR = '#553DD1'; // purple
 export const SETTINGS_BORDER_COLOR = '#E4EBF2'; // light gray
-export const SECONDARY_SCENE_NAVBAR_COLOR = SETTINGS_TEXT_COLOR; // gray
 export const TEXT_SECONDARY_SCENE = CARD_TEAM_NAME_COLOR; // gray
 export const PRIMARY_BUTTON_COLOR = '#19D88C'; // green
 export const PRIMARY_BUTTON_TEXT_COLOR = '#FFF'; // white
@@ -21,5 +20,5 @@ export const HOME_TEXT_COLOR = '#FFF'; // white
 
 // BACKGROUND
 
-export LINES_BACKGROUND from '@assets/images/lines-background.png';
+export DEFAULT_BACKGROUND from '@assets/images/default-background.png';
 export HOME_BACKGROUND from '@assets/images/home-background.png';
