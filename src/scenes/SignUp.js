@@ -1,6 +1,6 @@
 import React from 'react';
 import { SceneWrapper } from '@components/Scene';
-import { NavBar, SceneDescription } from '@components/SecondaryScene';
+import { NavBar, SceneDescription } from '@components/Scene';
 import { SECONDARY_SCENE_NAVBAR_COLOR } from '@theme';
 
 const SignUp = () => {

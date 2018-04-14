@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import GameList from '@components/GameList';
 import SelectedLine from '@components/SelectedLine';
-import { SceneWrapper, ScrollWrapper } from '@components/Scene';
+import { SceneWrapper } from '@components/Scene';
 import SettingsButton from '@components/SettingsButton';
 import { connect } from 'react-redux';
 import * as gamesActions from '@redux/games/actions';
@@ -41,7 +41,7 @@ class Lines extends Component {
             principalOpacity={this.state.selectedOpacity}
           />
         </Navigation>
-        <ScrollWrapper
+        <Scroll
           onScroll={this._changeSelectedLineOpacity.bind(this)}
           scrollEventThrottle={16}
           innerRef={ref => (this.scroll = ref)}
@@ -53,7 +53,7 @@ class Lines extends Component {
             opacity={this.state.selectedOpacity}
           />
           <GameList games={games} />
-        </ScrollWrapper>
+        </Scroll>
       </SceneWrapper>
     );
   }
@@ -77,6 +77,10 @@ const SecondarySelectedLine = props => {
 
   return null;
 };
+
+const Scroll = styled.ScrollView`
+  flex: 1;
+`;
 
 const Navigation = styled.View`
   flex: 0.08;

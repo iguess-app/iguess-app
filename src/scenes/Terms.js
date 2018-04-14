@@ -1,6 +1,6 @@
 import React from 'react';
 import { SceneWrapper } from '@components/Scene';
-import { NavBar, Content, SceneDescription } from '@components/SecondaryScene';
+import { NavBar, Content, SceneDescription } from '@components/Scene';
 import styled from 'styled-components';
 
 const Terms = () => {

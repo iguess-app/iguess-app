@@ -1,7 +1,7 @@
 import React from 'react';
 import { Linking } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
-import { NavBar, Content, SceneDescription } from '@components/SecondaryScene';
+import { NavBar, Content, SceneDescription } from '@components/Scene';
 import styled from 'styled-components';
 import { TEXT_SECONDARY_SCENE } from '@theme';
 import chevronRight from '@assets/images/chevron-right.png';

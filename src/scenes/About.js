@@ -1,6 +1,6 @@
 import React from 'react';
 import { SceneWrapper } from '@components/Scene';
-import { NavBar, SceneDescription, Content } from '@components/SecondaryScene';
+import { NavBar, SceneDescription, Content } from '@components/Scene';
 import aboutImage from '@assets/images/about-image.png';
 import styled from 'styled-components';
 import {
