@@ -112,7 +112,7 @@ const CustomText = styled.Text`
 
 const LogoutView = styled.TouchableOpacity`
   flex-direction: row;
-  margin-top: 152;
+  margin-top: 216;
 `;
 
 export default Settings;
