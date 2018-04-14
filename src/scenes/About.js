@@ -1,7 +1,8 @@
 import React from 'react';
+import { TouchableOpacity, Linking } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import { NavBar, SceneDescription, Content } from '@components/Scene';
-import { aboutImage } from '@assets/images';
+import { aboutImage, facebookIcon, twitterIcon } from '@assets/images';
 import styled from 'styled-components';
 import {
   PRIMARY_BUTTON_COLOR,
@@ -44,7 +45,11 @@ const About = () => {
           feugiat, ut ultricies magna convallis. Fusce nec sagittis nunc.
         </Content>
         <RateButton />
-        <Follow>Follow us</Follow>
+        <FollowText>Follow us</FollowText>
+        <FollowRow>
+          <TouchableIcon icon={facebookIcon} url="https://www.facebook.com" />
+          <TouchableIcon icon={twitterIcon} url="https://www.twitter.com" />
+        </FollowRow>
       </Scroll>
     </SceneWrapper>
   );
@@ -55,6 +60,16 @@ const RateButton = () => (
     <RateText>RATE THIS APP</RateText>
   </RateButtonWrapper>
 );
+
+const TouchableIcon = props => {
+  const { icon, url } = props;
+
+  return (
+    <TouchableOpacity onPress={() => Linking.openURL(url)}>
+      <Icon source={icon} />
+    </TouchableOpacity>
+  );
+};
 
 const BoldContent = styled(Content)`
   font-weight: bold;
@@ -91,12 +106,25 @@ const RateText = styled.Text`
   color: ${PRIMARY_BUTTON_TEXT_COLOR};
 `;
 
-const Follow = styled.Text`
+const FollowText = styled.Text`
   align-self: center;
   font-size: 16;
   font-weight: bold;
   color: ${FOLLOW_US_COLOR}
   margin-bottom: 16;
+`;
+
+const FollowRow = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 8;
+  margin-left: 120;
+  margin-right: 120;
+`;
+
+const Icon = styled.Image`
+  width: 56;
+  height: 56;
 `;
 
 export default About;
