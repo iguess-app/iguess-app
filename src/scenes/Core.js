@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Lines from '@scenes/Lines';
 import Settings from '@scenes/Settings';
+import { setStatusBarStyle } from '../helpers';
 import Swiper from 'react-native-swiper';
 import { connect } from 'react-redux';
 import { swipe } from '@redux/flags/actions';
@@ -8,7 +9,9 @@ import styled from 'styled-components';
 
 class Core extends Component<void, void, void> {
   render() {
-    const { dispatch } = this.props;
+    const { dispatch, activeSwiperScreen } = this.props;
+
+    setStatusBarStyle(activeSwiperScreen == 0 ? 'black' : 'white');
 
     return (
       <BackgroundContainer>

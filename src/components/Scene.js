@@ -3,6 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 import { Actions } from 'react-native-router-flux';
 import { chevronLeft } from '@assets/images';
+import { setStatusBarStyle } from '../helpers';
 import {
   TEXT_SECONDARY_SCENE,
   HEADER_TEXT_COLOR,
@@ -26,6 +27,8 @@ export const SceneWrapper = props => {
 export const NavBar = props => {
   const { title } = props;
 
+  setStatusBarStyle('white');
+
   return (
     <TopWrapper source={DEFAULT_BACKGROUND}>
       <Back />
@@ -35,7 +38,12 @@ export const NavBar = props => {
 };
 
 const Back = () => (
-  <TouchableOpacity onPress={() => Actions.pop()}>
+  <TouchableOpacity
+    onPress={() => {
+      Actions.pop();
+      setStatusBarStyle('black');
+    }}
+  >
     <BackImage />
   </TouchableOpacity>
 );

@@ -1,7 +1,8 @@
+import { StatusBar } from 'react-native';
+
 // Will be deleted
 // The data should be retrieved from the API
 // with correct formatation
-
 export const getTimeFromDate = ISODate => {
   return ISODate.slice(11, 16)
     .replace(':', 'H ')
@@ -36,6 +37,16 @@ export const compareDateWithToday = ISODate => {
   }
 
   return 0;
+};
+
+export const setStatusBarStyle = style => {
+  if (style === 'dark') {
+    StatusBar.setBarStyle('dark-content');
+  } else if (style === 'white') {
+    StatusBar.setBarStyle('light-content');
+  } else {
+    StatusBar.setBarStyle('default');
+  }
 };
 
 export default getTimeFromDate;
