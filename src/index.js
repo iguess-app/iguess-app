@@ -17,8 +17,8 @@ const Routes = () => {
   return (
     <Router>
       <Stack key="root">
-        <Scene key="core" component={Core} hideNavBar={true} />
         <Scene key="home" component={Home} hideNavBar={true} />
+        <Scene key="core" component={Core} hideNavBar={true} />
         <Scene key="signup" component={SignUp} hideNavBar={true} />
         <Scene key="signin" component={SignIn} hideNavBar={true} />
         <Scene key="settings" component={Settings} hideNavBar={true} />
