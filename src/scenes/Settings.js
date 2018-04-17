@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 import { SceneWrapper } from '@components/Scene';
 import { Actions } from 'react-native-router-flux';
-import { conversation, close, blog, store, exit } from '@assets/images';
+import { conversation, closeSettings, blog, store, exit } from '@assets/images';
 import { SETTINGS_TEXT_COLOR, SETTINGS_BORDER_COLOR } from '@theme';
 
 const Settings = props => {
@@ -64,7 +64,7 @@ const Close = props => {
 };
 
 const CloseImage = styled.Image.attrs({
-  source: close,
+  source: closeSettings,
 })`
   width: 16;
   height: 16;
