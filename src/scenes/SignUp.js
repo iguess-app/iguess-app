@@ -32,12 +32,12 @@ class SignUp extends Component {
             placeholder="My password"
             onChangeText={text => this.setState({ text })}
           />
-          <CreateView>
+          <ButtonView>
             <MainButton
               text="Create my account"
               onPress={() => console.log('Create my account')}
             />
-          </CreateView>
+          </ButtonView>
           <Terms>
             Eu concordo com os{' '}
             <Link onPress={() => Actions.terms()}>termos de uso</Link>.
@@ -48,7 +48,7 @@ class SignUp extends Component {
   }
 }
 
-const CreateView = styled.View`
+const ButtonView = styled.View`
   margin-top: 26;
   margin-bottom: 16;
 `;
