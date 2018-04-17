@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { SceneWrapper } from '@components/Scene';
-import { NavBar } from '@components/Scene';
+import { SceneWrapper, NavBar } from '@components/Scene';
+import { MainButton } from '@components/Button';
+import { Actions } from 'react-native-router-flux';
 import { INPUT_BORDER_COLOR } from '@theme';
 
 class SignUp extends Component {
@@ -14,7 +15,7 @@ class SignUp extends Component {
     return (
       <SceneWrapper>
         <NavBar title="Sign up" />
-        <ContentWrapper>
+        <Wrapper>
           <Input
             placeholder="My name"
             onChangeText={text => this.setState({ text })}
@@ -31,11 +32,26 @@ class SignUp extends Component {
             placeholder="My password"
             onChangeText={text => this.setState({ text })}
           />
-        </ContentWrapper>
+          <CreateView>
+            <MainButton
+              text="Create my account"
+              onPress={() => console.log('Create my account')}
+            />
+          </CreateView>
+          <Terms>
+            Eu concordo com os{' '}
+            <Link onPress={() => Actions.terms()}>termos de uso</Link>.
+          </Terms>
+        </Wrapper>
       </SceneWrapper>
     );
   }
 }
+
+const CreateView = styled.View`
+  margin-top: 26;
+  margin-bottom: 16;
+`;
 
 const Input = styled.TextInput`
   height: 40;
@@ -44,9 +60,20 @@ const Input = styled.TextInput`
   margin-top: 48;
 `;
 
-const ContentWrapper = styled.View`
+const Wrapper = styled.View`
   margin-left: 32;
   margin-right: 32;
+`;
+
+const Terms = styled.Text`
+  font-size: 14;
+  color: #4d6980;
+  align-self: center;
+`;
+
+const Link = Terms.extend`
+  font-weight: bold;
+  text-decoration-line: underline;
 `;
 
 export default SignUp;
