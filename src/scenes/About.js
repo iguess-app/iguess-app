@@ -2,6 +2,7 @@ import React from 'react';
 import { TouchableOpacity, Linking } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import { NavBar, SceneDescription, Content } from '@components/Scene';
+import { MainButton } from '@components/Button';
 import { aboutImage, facebookIcon, twitterIcon } from '@assets/images';
 import styled from 'styled-components';
 import {
@@ -44,7 +45,12 @@ const About = () => {
           bibendum mi, et tristique nisi. Proin aliquet tellus non magna
           feugiat, ut ultricies magna convallis. Fusce nec sagittis nunc.
         </Content>
-        <RateButton />
+        <RateView>
+          <MainButton
+            text="Rate this app"
+            onPress={() => console.log('Rate app')}
+          />
+        </RateView>
         <FollowText>Follow us</FollowText>
         <FollowRow>
           <TouchableIcon icon={facebookIcon} url="https://www.facebook.com" />
@@ -55,12 +61,6 @@ const About = () => {
   );
 };
 
-const RateButton = () => (
-  <RateButtonWrapper onPress={() => console.log('Rate app')}>
-    <RateText>RATE THIS APP</RateText>
-  </RateButtonWrapper>
-);
-
 const TouchableIcon = props => {
   const { icon, url } = props;
 
@@ -70,6 +70,10 @@ const TouchableIcon = props => {
     </TouchableOpacity>
   );
 };
+
+const RateView = styled.View`
+  margin-vertical: 32;
+`;
 
 const BoldContent = styled(Content)`
   font-weight: bold;
@@ -85,25 +89,6 @@ const HeaderImage = styled.Image`
   opacity: 0.9;
   height: 160;
   width: 100%;
-`;
-
-const RateButtonWrapper = styled.TouchableOpacity`
-  width: 311px;
-  height: 56px;
-  border-radius: 38px;
-  background-color: ${PRIMARY_BUTTON_COLOR}
-  margin-top: 32;
-  margin-bottom: 32;
-  margin-left: 32;
-  margin-right: 32;
-  align-items: center;
-`;
-
-const RateText = styled.Text`
-  margin-top: 18;
-  font-size: 15;
-  font-weight: bold;
-  color: ${PRIMARY_BUTTON_TEXT_COLOR};
 `;
 
 const FollowText = styled.Text`
