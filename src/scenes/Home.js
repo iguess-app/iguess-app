@@ -11,8 +11,10 @@ const Home = () => {
   return (
     <SceneWrapper background={HOME_BACKGROUND}>
       <HomeText>Lorem ipsum dolor sit amet, consectetur.</HomeText>
-      <MainButton text="create my account" onPress={() => Actions.signup()} />
-      <TransparentButton text="sign in" onPress={() => Actions.signin()} />
+      <ButtonsView>
+        <MainButton text="create my account" onPress={() => Actions.signup()} />
+        <TransparentButton text="sign in" onPress={() => Actions.signin()} />
+      </ButtonsView>
       <TermsButton />
     </SceneWrapper>
   );
@@ -42,6 +44,10 @@ const TermsText = styled.Text`
   color: ${PRIMARY_BUTTON_TEXT_COLOR};
   text-decoration-line: underline;
   align-self: center;
+`;
+
+const ButtonsView = styled.View`
+  margin-horizontal: 32;
 `;
 
 export default Home;

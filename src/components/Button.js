@@ -27,8 +27,6 @@ const MainTouchable = styled.TouchableOpacity`
   height: 56px;
   border-radius: 38px;
   background-color: ${PRIMARY_BUTTON_COLOR};
-  margin-left: 32;
-  margin-right: 32;
   align-items: center;
 `;
 
@@ -39,8 +37,6 @@ const TransparentTouchable = styled.TouchableOpacity`
   background-color: rgba(42, 43, 86, 0.65);
   margin-top: 24;
   margin-bottom: 32;
-  margin-left: 32;
-  margin-right: 32;
   align-items: center;
   border-style: solid;
   border-width: 2;

@@ -5,11 +5,7 @@ import { NavBar, SceneDescription, Content } from '@components/Scene';
 import { MainButton } from '@components/Button';
 import { aboutImage, facebookIcon, twitterIcon } from '@assets/images';
 import styled from 'styled-components';
-import {
-  PRIMARY_BUTTON_COLOR,
-  PRIMARY_BUTTON_TEXT_COLOR,
-  FOLLOW_US_COLOR,
-} from '@theme';
+import { FOLLOW_US_COLOR } from '@theme';
 
 const About = () => {
   return (
@@ -73,6 +69,7 @@ const TouchableIcon = props => {
 
 const RateView = styled.View`
   margin-vertical: 32;
+  margin-horizontal: 32;
 `;
 
 const BoldContent = styled(Content)`
