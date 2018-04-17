@@ -41,7 +41,6 @@ const Back = () => (
   <TouchableOpacity
     onPress={() => {
       Actions.pop();
-      setStatusBarStyle('black');
     }}
   >
     <BackImage />
