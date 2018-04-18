@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { SceneWrapper, NavBar } from '@components/Scene';
 import { MainButton } from '@components/Button';
+import Input from '@components/Input';
 import { Actions } from 'react-native-router-flux';
 import { INPUT_BORDER_COLOR } from '@theme';
 
 class SignUp extends Component {
   constructor(props) {
     super(props);
-    this.state = { text: '' };
+    this.state = { name: '', username: '', email: '', password: '' };
   }
 
   render() {
@@ -16,31 +17,52 @@ class SignUp extends Component {
       <SceneWrapper>
         <NavBar title="Sign up" />
         <Wrapper>
-          <Input
-            placeholder="My name"
-            onChangeText={text => this.setState({ text })}
+          <Input placeholder="Name" 
+            value = {this.state.name}
+            onChangeText={value => this.setState({name: value})}
+            autoCapitalize="words"
+            autoCorrect={false}
+            enablesReturnKeyAutomatically={true}
+            maxLength={30}
+            onEndEditing={() => console.log('End editing name')}
+            returnKeyType="done"
           />
           <Input
-            placeholder="My username"
-            onChangeText={text => this.setState({ text })}
+            placeholder="@username"
+            value = {this.state.username}
+            onChangeText= {value => this.setState({username: value.replace(/\s/g, '') })}
+            autoCapitalize="none"
+            autoCorrect={false}
+            enablesReturnKeyAutomatically={true}
+            maxLength={25}
+            onEndEditing={() => console.log('End editing username', this.state.username)}
+            returnKeyType="done"
           />
           <Input
-            placeholder="My e-mail"
-            onChangeText={text => this.setState({ text })}
+            placeholder="E-mail"
+            onChangeText={value => this.setState({email: value.replace(/\s/g, '')})}
+            keyboardType="email-address"
+            autoCapitalize="none"
+            autoCorrect={false}
+            enablesReturnKeyAutomatically={true}
+            maxLength={30}
+            onEndEditing={() => console.log('End editing e-mail')}
+            returnKeyType="done"
           />
           <Input
-            placeholder="My password"
-            onChangeText={text => this.setState({ text })}
+            placeholder="Password"
+            onChangeText={value => this.setState({password: value })}
+            password={true}
           />
           <ButtonView>
             <MainButton
               text="Create my account"
-              onPress={() => console.log('Create my account')}
+              onPress={() => console.log('Create my account', this.state.name)}
             />
           </ButtonView>
           <Terms>
             Eu concordo com os{' '}
-            <Link onPress={() => Actions.terms()}>termos de uso</Link>.
+            <TextLink onPress={() => Actions.terms()}>termos de uso</TextLink>.
           </Terms>
         </Wrapper>
       </SceneWrapper>
@@ -49,15 +71,8 @@ class SignUp extends Component {
 }
 
 const ButtonView = styled.View`
-  margin-top: 26;
+  margin-top: 24;
   margin-bottom: 16;
-`;
-
-const Input = styled.TextInput`
-  height: 40;
-  border-bottom-width: 1;
-  border-color: ${INPUT_BORDER_COLOR};
-  margin-top: 48;
 `;
 
 const Wrapper = styled.View`
@@ -71,7 +86,7 @@ const Terms = styled.Text`
   align-self: center;
 `;
 
-const Link = Terms.extend`
+const TextLink = Terms.extend`
   font-weight: bold;
   text-decoration-line: underline;
 `;
