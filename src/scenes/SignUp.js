@@ -20,11 +20,8 @@ class SignUp extends Component {
             value = {this.state.name}
             onChangeText={value => this.setState({name: value})}
             autoCapitalize="words"
-            autoCorrect={false}
-            enablesReturnKeyAutomatically={true}
             maxLength={30}
             onEndEditing={() => this.nameInput.setStatus('success')}
-            returnKeyType="done"
             innerRef = {ref => this.nameInput = ref}
           />
           <TextInput
@@ -32,22 +29,17 @@ class SignUp extends Component {
             value = {this.state.username}
             onChangeText= {value => this.setState({username: value.replace(/\s/g, '') })}
             autoCapitalize="none"
-            autoCorrect={false}
-            enablesReturnKeyAutomatically={true}
             maxLength={25}
             onEndEditing={() => console.log('End editing username', this.state.username)}
-            returnKeyType="done"
           />
           <TextInput
             placeholder="E-mail"
+            value = {this.state.email}
             onChangeText={value => this.setState({email: value.replace(/\s/g, '')})}
             keyboardType="email-address"
             autoCapitalize="none"
-            autoCorrect={false}
-            enablesReturnKeyAutomatically={true}
             maxLength={30}
             onEndEditing={() => console.log('End editing e-mail')}
-            returnKeyType="done"
           />
           <TextInput
             placeholder="Password"

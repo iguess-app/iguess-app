@@ -27,7 +27,10 @@ export default class Input extends Component {
 
   render() {
     const textInputColor = this.state.status !== '' ? this._getColor() : undefined;
-    return <TextField {...this.props} tintColor={this._getColor()} placeholderTextColor={this._getColor()} textInputStyle={{color: textInputColor}}/>
+    return <TextField tintColor={this._getColor()} placeholderTextColor={this._getColor()} textInputStyle={{color: textInputColor}} 
+    autoCorrect={false}
+            enablesReturnKeyAutomatically={true}
+    {...this.props} />
   }
 
 }
