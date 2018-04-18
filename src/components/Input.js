@@ -22,7 +22,7 @@ export default class Input extends Component {
   }
 
   render() {
-    return <TextField {...this.props} tintColor={this._getColor()} />
+    return <TextField {...this.props} tintColor={this._getColor()} placeholderTextColor={this._getColor()} />
   }
 
 }
@@ -35,4 +35,3 @@ const TextField = MKTextField
   color: INPUT_FLOAT_LABEL_COLOR,
 })
 .build();
-
