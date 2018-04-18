@@ -4,7 +4,6 @@ import { SceneWrapper, NavBar } from '@components/Scene';
 import { MainButton } from '@components/Button';
 import Input from '@components/Input';
 import { Actions } from 'react-native-router-flux';
-import { INPUT_BORDER_COLOR } from '@theme';
 
 class SignUp extends Component {
   constructor(props) {
@@ -17,7 +16,7 @@ class SignUp extends Component {
       <SceneWrapper>
         <NavBar title="Sign up" />
         <Wrapper>
-          <Input placeholder="Name" 
+          <TextInput placeholder="Name" 
             value = {this.state.name}
             onChangeText={value => this.setState({name: value})}
             autoCapitalize="words"
@@ -27,7 +26,7 @@ class SignUp extends Component {
             onEndEditing={() => console.log('End editing name')}
             returnKeyType="done"
           />
-          <Input
+          <TextInput
             placeholder="@username"
             value = {this.state.username}
             onChangeText= {value => this.setState({username: value.replace(/\s/g, '') })}
@@ -38,7 +37,7 @@ class SignUp extends Component {
             onEndEditing={() => console.log('End editing username', this.state.username)}
             returnKeyType="done"
           />
-          <Input
+          <TextInput
             placeholder="E-mail"
             onChangeText={value => this.setState({email: value.replace(/\s/g, '')})}
             keyboardType="email-address"
@@ -49,7 +48,7 @@ class SignUp extends Component {
             onEndEditing={() => console.log('End editing e-mail')}
             returnKeyType="done"
           />
-          <Input
+          <TextInput
             placeholder="Password"
             onChangeText={value => this.setState({password: value })}
             password={true}
@@ -69,6 +68,10 @@ class SignUp extends Component {
     );
   }
 }
+
+const TextInput = styled(Input)`
+  margin-top: 44;
+`
 
 const ButtonView = styled.View`
   margin-top: 24;

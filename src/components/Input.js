@@ -1,17 +1,38 @@
-import React from 'react';
-import { MKTextField } from 'react-native-material-kit';
+import React, {Component} from 'react';
+import { MKTextField, MKColor } from 'react-native-material-kit';
 import styled from 'styled-components';
+import { INPUT_BORDER_COLOR, INPUT_FLOAT_LABEL_COLOR } from '@theme';
 
-const TextField = MKTextField.textfieldWithFloatingLabel()
-  .withFloatingLabelFont({
-    fontSize: 12,
-    fontWeight: 'bold',
-    color: '#4D6980',
-  })
-  .build();
+export default class Input extends Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = {status: ''};
+  }
 
-const Input = styled(TextField)`
-  margin-top: 44;
-`;
+  _getTintColor() {
 
-export default Input;
+    if(this.state.status === 'error') {
+      return MKColor.Red;
+    } else if(this.state.status === 'success') {
+      return MKColor.Green;
+    } 
+
+    return INPUT_BORDER_COLOR;
+  }
+
+  render() {
+    const TextField = MKTextField
+    .textfieldWithFloatingLabel()
+    .withFloatingLabelFont({
+      fontSize: 12,
+      fontWeight: 'bold',
+      color: INPUT_FLOAT_LABEL_COLOR,
+    })
+    .withTintColor(this._getTintColor())
+    .build();
+
+    return <TextField {...this.props} />
+  }
+
+}

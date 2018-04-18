@@ -18,6 +18,7 @@ export const FOLLOW_US_COLOR = SETTINGS_TEXT_COLOR; // purple
 export const HEADER_TEXT_COLOR = '#FFF'; // white
 export const HOME_TEXT_COLOR = '#FFF'; // white
 export const INPUT_BORDER_COLOR = '#CAD2D9'; // gray
+export const INPUT_FLOAT_LABEL_COLOR = '#4D6980'
 
 // BACKGROUND
 
