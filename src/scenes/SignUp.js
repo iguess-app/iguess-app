@@ -23,8 +23,9 @@ class SignUp extends Component {
             autoCorrect={false}
             enablesReturnKeyAutomatically={true}
             maxLength={30}
-            onEndEditing={() => console.log('End editing name')}
+            onEndEditing={() => this.nameInput.setStatus('success')}
             returnKeyType="done"
+            innerRef = {ref => this.nameInput = ref}
           />
           <TextInput
             placeholder="@username"

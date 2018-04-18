@@ -21,8 +21,13 @@ export default class Input extends Component {
     return INPUT_DEFAULT_COLOR;
   }
 
+  setStatus(status) {
+    this.setState({status: status});
+  }
+
   render() {
-    return <TextField {...this.props} tintColor={this._getColor()} placeholderTextColor={this._getColor()} />
+    const textInputColor = this.state.status !== '' ? this._getColor() : undefined;
+    return <TextField {...this.props} tintColor={this._getColor()} placeholderTextColor={this._getColor()} textInputStyle={{color: textInputColor}}/>
   }
 
 }
