@@ -1,5 +1,4 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 import { Actions } from 'react-native-router-flux';
 import { chevronLeft } from '@assets/images';
@@ -20,20 +19,19 @@ const NavBar = props => {
 };
 
 const Back = () => (
-  <TouchableOpacity
+  <BackTouchable
     onPress={() => {
       Actions.pop();
     }}
   >
     <BackImage />
-  </TouchableOpacity>
+  </BackTouchable>
 );
 
 const NavWrapper = styled.ImageBackground`
   flex-direction: row;
   align-items: center;
   padding-top: 20;
-  padding-left: 32;
   padding-right: 52;
   height: 80;
 `;
@@ -45,6 +43,11 @@ const BackImage = styled.Image.attrs({
   height: 16;
   resize-mode: contain;
 `;
+
+const BackTouchable = styled.TouchableOpacity`
+  padding-horizontal: 32;
+  padding-vertical: 10;
+`
 
 const Title = styled.Text`
   flex-direction: row;
