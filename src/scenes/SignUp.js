@@ -20,14 +20,14 @@ class SignUp extends Component {
             value = {this.state.name}
             onChangeText={value => this.setState({name: value})}
             autoCapitalize="words"
-            maxLength={30}
+            maxLength={25}
             onEndEditing={() => this.nameInput.setStatus('success')}
             innerRef = {ref => this.nameInput = ref}
           />
           <TextInput
             placeholder="@username"
             value = {this.state.username}
-            onChangeText= {value => this.setState({username: value.replace(/\s/g, '') })}
+            onChangeText= {value => this.setState({username: value.replace(/[^a-z0-9._]/g, '') })}
             autoCapitalize="none"
             maxLength={25}
             onEndEditing={() => console.log('End editing username', this.state.username)}
