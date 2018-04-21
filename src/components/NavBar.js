@@ -32,7 +32,7 @@ const NavWrapper = styled.ImageBackground`
   flex-direction: row;
   align-items: center;
   padding-top: 20;
-  padding-right: 52;
+  margin-right: 4;
   height: 80;
 `;
 
@@ -56,6 +56,7 @@ const Title = styled.Text`
   font-size: 14;
   font-weight: bold;
   color: ${HEADER_TEXT_COLOR};
+  margin-right: 48;
 `;
 
 export default NavBar;
