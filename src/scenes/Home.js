@@ -50,7 +50,7 @@ const TermsText = styled.Text`
 `;
 
 const ButtonsView = styled.View`
-  margin-horizontal: 32;
+  align-self: center;
 `;
 
 export default Home;
