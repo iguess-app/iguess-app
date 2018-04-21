@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { SceneWrapper, NavBar } from '@components/Scene';
+import { InputSceneWrapper, NavBar } from '@components/Scene';
 import { MainButton } from '@components/Button';
 import Input from '@components/Input';
 import { Actions } from 'react-native-router-flux';
@@ -13,7 +13,7 @@ class SignUp extends Component {
 
   render() {
     return (
-      <SceneWrapper>
+      <InputSceneWrapper>
         <NavBar title="Sign up" />
         <Wrapper>
           <TextInput placeholder="Name" 
@@ -57,7 +57,7 @@ class SignUp extends Component {
             <TextLink onPress={() => Actions.terms()}>termos de uso</TextLink>.
           </Terms>
         </Wrapper>
-      </SceneWrapper>
+      </InputSceneWrapper>
     );
   }
 }

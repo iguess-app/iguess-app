@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SceneWrapper } from '@components/Scene';
+import { InputSceneWrapper } from '@components/Scene';
 import { NavBar } from '@components/Scene';
 import { MainButton } from '@components/Button';
 import styled from 'styled-components';
@@ -12,7 +12,7 @@ class SignUp extends Component {
 
   render() {
     return (
-      <SceneWrapper>
+      <InputSceneWrapper>
         <NavBar title="Sign in" />
         <Wrapper>
           <Input
@@ -27,7 +27,7 @@ class SignUp extends Component {
             <MainButton text="Sign in" onPress={() => console.log('Sign in')} />
           </ButtonView>
         </Wrapper>
-      </SceneWrapper>
+      </InputSceneWrapper>
     );
   }
 }
