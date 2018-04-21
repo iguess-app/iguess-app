@@ -68,8 +68,8 @@ const TouchableIcon = props => {
 };
 
 const RateView = styled.View`
+  align-self: center;
   margin-vertical: 32;
-  margin-horizontal: 32;
 `;
 
 const BoldContent = styled(Content)`
