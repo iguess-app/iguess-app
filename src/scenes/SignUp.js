@@ -69,6 +69,7 @@ const TextInput = styled(Input)`
 const ButtonView = styled.View`
   margin-top: 24;
   margin-bottom: 16;
+  align-self: center;
 `;
 
 const Wrapper = styled.View`
