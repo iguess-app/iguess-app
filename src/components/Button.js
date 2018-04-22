@@ -22,6 +22,16 @@ export const TransparentButton = props => {
   );
 };
 
+export const InativeButton = props => {
+  const { text } = props;
+
+  return (
+    <Inative>
+      <ButtonText>{text.toUpperCase()}</ButtonText>
+    </Inative>
+  )
+}
+
 const MainTouchable = styled.TouchableOpacity`
   width: 311px;
   height: 56px;
@@ -42,6 +52,15 @@ const TransparentTouchable = styled.TouchableOpacity`
   border-width: 2;
   border-color: white;
 `;
+
+const Inative = styled.View`
+  width: 311px;
+  height: 56px;
+  border-radius: 38px;
+  background-color: ${PRIMARY_BUTTON_COLOR};
+  opacity: 0.32;
+  align-items: center;
+`
 
 const ButtonText = styled.Text`
   margin-top: 18;
