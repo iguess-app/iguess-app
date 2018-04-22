@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Platform } from 'react-native';
 import { MKTextField } from 'react-native-material-kit';
 import styled from 'styled-components';
 import { INPUT_DEFAULT_COLOR, INPUT_FLOAT_LABEL_COLOR, INPUT_SUCCESS_COLOR, INPUT_ERROR_COLOR } from '@theme';
@@ -26,11 +27,13 @@ export default class Input extends Component {
   }
 
   render() {
-    const textInputColor = this.state.status !== '' ? this._getColor() : undefined;
-    return <TextField tintColor={this._getColor()} placeholderTextColor={this._getColor()} textInputStyle={{color: textInputColor}} 
+    const textInputColor = this.state.status !== '' ? {color: this._getColor()} : undefined;
+    const textInputColorOS = Platform.select({ios: textInputColor, android: undefined});
+    return <TextField tintColor={this._getColor()} placeholderTextColor={this._getColor()} textInputStyle={textInputColorOS} 
     autoCorrect={false}
     enablesReturnKeyAutomatically={true}
     onFocus={() => this.setStatus('')}
+    ref = {ref => this.textField = ref}
     {...this.props} />
   }
 
