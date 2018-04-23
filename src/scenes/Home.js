@@ -12,7 +12,7 @@ const Home = () => {
   setStatusBarStyle('white');
 
   return (
-    <SceneWrapper background={HOME_BACKGROUND}>
+    <SceneWrapper background={HOME_BACKGROUND} style={{borderColor: 'red', borderWidth: 1}}>
       <HomeText>Lorem ipsum dolor sit amet, consectetur.</HomeText>
       <ButtonsView>
         <MainButton text="create my account" onPress={() => Actions.signup()} />
@@ -29,8 +29,8 @@ const HomeText = styled.Text`
   color: ${HOME_TEXT_COLOR};
   padding-left: 40;
   padding-right: 40;
-  margin-top: 178;
-  margin-bottom: 210;
+  margin-top: 46%;
+  margin-bottom: 56%;
 `;
 
 const TermsButton = () => {
@@ -47,10 +47,12 @@ const TermsText = styled.Text`
   color: ${PRIMARY_BUTTON_TEXT_COLOR};
   text-decoration-line: underline;
   align-self: center;
+  margin-top: 8%;
 `;
 
 const ButtonsView = styled.View`
   align-self: center;
+  margin-horizontal: 5%;
 `;
 
 export default Home;

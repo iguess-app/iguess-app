@@ -33,30 +33,29 @@ export const InativeButton = props => {
 }
 
 const MainTouchable = styled.TouchableOpacity`
-  width: 311px;
-  height: 56px;
-  border-radius: 38px;
+  min-width: 100%;
+  min-height: 9%;
+  border-radius: 38;
   background-color: ${PRIMARY_BUTTON_COLOR};
   align-items: center;
 `;
 
 const TransparentTouchable = styled.TouchableOpacity`
-  width: 311px;
-  height: 56px;
-  border-radius: 38px;
-  background-color: rgba(42, 43, 86, 0.65);
-  margin-top: 24;
-  margin-bottom: 32;
-  align-items: center;
+  min-width: 100%;
+  min-height: 9%;
+  border-radius: 38;
   border-style: solid;
   border-width: 2;
   border-color: white;
+  background-color: rgba(42, 43, 86, 0.65);
+  margin-top: 5%;
+  align-items: center;
 `;
 
 const Inative = styled.View`
-  width: 311px;
-  height: 56px;
-  border-radius: 38px;
+  min-width: 279;
+  height: 56;
+  border-radius: 38;
   background-color: ${PRIMARY_BUTTON_COLOR};
   opacity: 0.32;
   align-items: center;
