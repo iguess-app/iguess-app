@@ -3,7 +3,6 @@ import { Router, Stack, Scene } from 'react-native-router-flux';
 import {
   Home,
   Core,
-  Settings,
   Support,
   Terms,
   About,
@@ -21,7 +20,6 @@ const Routes = () => {
         <Scene key="core" component={Core} hideNavBar={true} />
         <Scene key="signup" component={SignUp} hideNavBar={true} />
         <Scene key="signin" component={SignIn} hideNavBar={true} />
-        <Scene key="settings" component={Settings} hideNavBar={true} />
         <Scene key="support" component={Support} hideNavBar={true} />
         <Scene key="terms" component={Terms} hideNavBar={true} />
         <Scene key="about" component={About} hideNavBar={true} />
