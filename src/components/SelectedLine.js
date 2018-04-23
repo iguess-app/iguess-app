@@ -24,8 +24,8 @@ export default class TouchableSelectLine extends Component {
 const Wrapper = styled.View`
   flex: 0.8;
   height: 100;
-  padding-left: 32;
-  padding-right: 32;
+  padding-left: 8%;
+  padding-right: 8%;
 `;
 
 const Season = styled.Text`

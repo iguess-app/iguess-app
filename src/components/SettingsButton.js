@@ -15,7 +15,6 @@ const SettingsButton = props => {
 const Gear = styled.Image`
   width: 24;
   height: 24;
-  margin-left: 32;
 `;
 
 export default SettingsButton;
