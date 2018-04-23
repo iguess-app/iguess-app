@@ -1,6 +1,12 @@
 import React from 'react';
+import { Dimensions } from 'react-native';
 import styled from 'styled-components';
 import { PRIMARY_BUTTON_COLOR, PRIMARY_BUTTON_TEXT_COLOR } from '@theme';
+
+const {
+  width,
+  height
+} = Dimensions.get('window');
 
 export const MainButton = props => {
   const { text, onPress } = props;
@@ -33,16 +39,17 @@ export const InativeButton = props => {
 }
 
 const MainTouchable = styled.TouchableOpacity`
-  min-width: 100%;
-  min-height: 9%;
+  width: ${0.829*width};
+  height: ${0.0819*height};
   border-radius: 38;
   background-color: ${PRIMARY_BUTTON_COLOR};
   align-items: center;
+  justify-content: center;
 `;
 
 const TransparentTouchable = styled.TouchableOpacity`
-  min-width: 100%;
-  min-height: 9%;
+  width: ${0.829*width};
+  height: ${0.0819*height};
   border-radius: 38;
   border-style: solid;
   border-width: 2;
@@ -50,20 +57,22 @@ const TransparentTouchable = styled.TouchableOpacity`
   background-color: rgba(42, 43, 86, 0.65);
   margin-top: 5%;
   align-items: center;
+  justify-content: center;
 `;
 
 const Inative = styled.View`
-  min-width: 279;
-  height: 56;
+  width: ${0.829*width};
+  height: ${0.0819*height};
   border-radius: 38;
   background-color: ${PRIMARY_BUTTON_COLOR};
   opacity: 0.32;
   align-items: center;
+  justify-content: center;
 `
 
 const ButtonText = styled.Text`
-  margin-top: 18;
   font-size: 15;
   font-weight: bold;
+  text-align: center;
   color: ${PRIMARY_BUTTON_TEXT_COLOR};
 `;
