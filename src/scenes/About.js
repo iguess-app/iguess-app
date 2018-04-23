@@ -1,11 +1,16 @@
 import React from 'react';
-import { TouchableOpacity, Linking } from 'react-native';
+import { TouchableOpacity, Linking, Dimensions } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import { NavBar, SceneDescription, Content } from '@components/Scene';
 import { MainButton } from '@components/Button';
 import { aboutImage, facebookIcon, twitterIcon } from '@assets/images';
 import styled from 'styled-components';
 import { FOLLOW_US_COLOR } from '@theme';
+
+const {
+  width,
+  height
+} = Dimensions.get('window');
 
 const About = () => {
   return (
@@ -70,6 +75,7 @@ const TouchableIcon = props => {
 const RateView = styled.View`
   align-self: center;
   margin-vertical: 32;
+  margin-horizontal: 5%;
 `;
 
 const BoldContent = styled(Content)`
@@ -100,8 +106,7 @@ const FollowRow = styled.View`
   flex-direction: row;
   justify-content: space-between;
   margin-top: 8;
-  margin-left: 120;
-  margin-right: 120;
+  margin-horizontal: ${0.29*width};
 `;
 
 const Icon = styled.Image`
