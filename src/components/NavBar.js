@@ -44,7 +44,7 @@ const BackImage = styled.Image.attrs({
 `;
 
 const BackTouchable = styled.TouchableOpacity`
-  padding-horizontal: 32;
+  padding-horizontal: 8%;
   padding-vertical: 10;
 `
 
