@@ -1,4 +1,5 @@
 import React from 'react';
+import { Dimensions } from 'react-native';
 import styled from 'styled-components';
 import { TouchableWithoutFeedback, Keyboard, View } from 'react-native';
 import {
@@ -6,6 +7,12 @@ import {
   SETTINGS_TEXT_COLOR,
   SCENE_BACKGROUND_COLOR,
 } from '@theme';
+
+const {
+  width,
+  height
+} = Dimensions.get('window');
+
 
 export const SceneWrapper = props => {
   const { background, children } = props;
@@ -42,9 +49,8 @@ export const SceneBackground = styled.ImageBackground`
 export const Content = styled.Text`
   font-size: 14;
   color: ${TEXT_SECONDARY_SCENE};
-  margin-top: 16;
-  padding-right: 32;
-  padding-left: 32;
+  margin-top: ${0.0239*height};
+  padding-horizontal: ${0.0853*width};
 `;
 
 export const SceneDescription = styled.Text`
@@ -52,7 +58,6 @@ export const SceneDescription = styled.Text`
   font-weight: bold;
   text-align: left;
   color: ${SETTINGS_TEXT_COLOR};
-  padding-left: 32;
-  padding-right: 32;
-  margin-top: 24;
+  padding-horizontal: ${0.0853*width};
+  margin-top: ${0.0359*height};
 `;
