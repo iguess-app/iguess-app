@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { InputSceneWrapper, NavBar } from '@components/Scene';
-import { MainButton } from '@components/Button';
+import { MainButton, InativeButton } from '@components/Button';
 import Input from '@components/Input';
 import { Actions } from 'react-native-router-flux';
+import { WIDTH_REL, HEIGHT_REL, SIGN_UP_TERMS_COLOR } from '@theme';
 
 class SignUp extends Component {
   constructor(props) {
@@ -11,7 +12,12 @@ class SignUp extends Component {
     this.state = { name: '', username: '', email: '', password: '' };
   }
 
+  _verifyName() {
+    this.nameInput.setStatus('success')
+  }
+
   render() {
+
     return (
       <InputSceneWrapper>
         <NavBar title="Sign up" />
@@ -47,7 +53,7 @@ class SignUp extends Component {
             password={true}
           />
           <ButtonView>
-            <MainButton
+            <InativeButton
               text="Create my account"
               onPress={() => console.log('Create my account', this.state.name)}
             />
@@ -63,23 +69,22 @@ class SignUp extends Component {
 }
 
 const TextInput = styled(Input)`
-  margin-top: 44;
+  margin-top: ${38*HEIGHT_REL};
 `
 
 const ButtonView = styled.View`
-  margin-top: 24;
-  margin-bottom: 16;
+  margin-top: ${24*HEIGHT_REL};
+  margin-bottom: ${16*HEIGHT_REL};
   align-self: center;
 `;
 
 const Wrapper = styled.View`
-  margin-left: 32;
-  margin-right: 32;
+  margin-horizontal: ${32*WIDTH_REL};
 `;
 
 const Terms = styled.Text`
   font-size: 14;
-  color: #4d6980;
+  color: ${SIGN_UP_TERMS_COLOR};
   align-self: center;
 `;
 

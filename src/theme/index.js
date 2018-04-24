@@ -1,3 +1,5 @@
+import { Dimensions } from 'react-native';
+
 // COLORS
 
 export const SCENE_BACKGROUND_COLOR = '#FFF'; // white
@@ -21,8 +23,20 @@ export const INPUT_DEFAULT_COLOR = '#CAD2D9'; // gray
 export const INPUT_FLOAT_LABEL_COLOR = '#4D6980'; // darker-gray
 export const INPUT_SUCCESS_COLOR = '#19D88C'; // green
 export const INPUT_ERROR_COLOR = '#EE4042'; // red
+export const SIGN_UP_TERMS_COLOR = '#4D6980';
 
 // BACKGROUND
 
 export DEFAULT_BACKGROUND from '@assets/images/defaultBackground.png';
 export HOME_BACKGROUND from '@assets/images/homeBackground.png';
+
+// SIZES
+
+const {
+  width,
+  height
+} = Dimensions.get('window');
+
+// Constants that relate actual dimensions to Zeplin prototype dimensions
+export const WIDTH_REL = width/375;
+export const HEIGHT_REL = height/667;
