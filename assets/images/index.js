@@ -18,3 +18,4 @@ export plusDisabled from './plusDisabled.png';
 export store from './store.png';
 export twitterIcon from './twitterIcon.png';
 export vs from './vs.png';
+export instagramIcom from './instagramIcon.png';

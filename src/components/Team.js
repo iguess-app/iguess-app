@@ -1,6 +1,12 @@
 import React from 'react';
+import { Dimensions } from 'react-native';
 import styled from 'styled-components';
 import { CARD_TEAM_NAME_COLOR } from '@theme';
+
+const {
+  width,
+  height
+} = Dimensions.get('window');
 
 const Team = props => {
   const { name, image, style } = props;
@@ -14,8 +20,8 @@ const Team = props => {
 };
 
 const TeamView = styled.View`
-  margin-horizontal: 16;
-  margin-top: 40;
+  margin-horizontal: ${0.04*width};
+  margin-top: ${0.0599*height};
   align-items: center;
 `;
 
@@ -28,8 +34,8 @@ const TeamName = styled.Text`
 `;
 
 const TeamImage = styled.Image`
-  width: 44;
-  height: 53;
+  width: ${0.117*width};
+  height: ${0.0794*height};
   resize-mode: contain;
 `;
 

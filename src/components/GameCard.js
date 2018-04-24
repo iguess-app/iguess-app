@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
+import { Dimensions } from 'react-native';
 import styled from 'styled-components';
 import Team from '@components/Team';
 import Guess from '@components/Guess';
-import { arsenal, liverpool, versus } from '@assets/images';
+import { arsenal, liverpool, vs } from '@assets/images';
 import { getTimeFromDate, compareDateWithToday } from '../helpers/index';
-
 import {
   CARD_BACKGROUND_COLOR,
   CARD_BORDER_COLOR,
   SCHEDULED_TIME_COLOR,
 } from '@theme';
+
+const {
+  width,
+  height
+} = Dimensions.get('window');
+
 
 let mockedISODate = new Date().toISOString();
 
@@ -71,13 +77,11 @@ const HomeTeam = styled(Team)`
 const AwayTeam = styled(Team)``;
 
 const VS = styled.Image.attrs({
-  source: versus,
+  source: vs,
 })`
-  width: 40;
-  height: 52;
+  width: ${0.106*width};
+  height: ${0.0779*height};
   resize-mode: contain;
-  margin-left: auto;
-  margin-right: auto;
   margin-top: 8;
 `;
 
@@ -87,10 +91,10 @@ const ScheduledTime = styled.Text`
 `;
 
 const MidWrapper = styled.View`
-  margin-left: 10;
-  margin-right: 10;
+  margin-horizontal: ${0.0266*width};
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 `;
 
 // Having problems with styled components + box-shadow in this version
@@ -107,14 +111,15 @@ const cardStyle = {
 
 const Card = styled.View`
   flex-direction: row;
-  width: 312;
-  height: 144;
-  margin-bottom: 40;
+  width: ${0.882*width};
+  height: ${0.216*height};
+  margin-bottom: ${0.0599*height};
   border-color: ${CARD_BORDER_COLOR};
   background-color: ${CARD_BACKGROUND_COLOR}
   border-radius: 4;
   border-width: 1;
   align-self: center;
+  justify-content: center;
 `;
 
 export default GameCard;

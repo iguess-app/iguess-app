@@ -1,10 +1,15 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Dimensions } from 'react-native';
 import styled from 'styled-components';
 import { SceneWrapper } from '@components/Scene';
 import { Actions } from 'react-native-router-flux';
 import { conversation, closeSettings, blog, store, exit } from '@assets/images';
 import { SETTINGS_TEXT_COLOR, SETTINGS_BORDER_COLOR } from '@theme';
+
+const {
+  width,
+  height
+} = Dimensions.get('window');
 
 const Settings = props => {
   const { swipe } = props;
@@ -66,49 +71,49 @@ const Close = props => {
 const CloseImage = styled.Image.attrs({
   source: closeSettings,
 })`
-  width: 16;
-  height: 16;
-  margin-left: 32;
-  margin-top: 52;
+  width: ${0.0426*width};
+  height: ${0.0239*height};
+  margin-left: 8%;
+  margin-top: ${0.0779*height};
 `;
 
 const Title = styled.Text`
   font-size: 24;
   font-weight: bold;
   color: ${SETTINGS_TEXT_COLOR};
-  margin-top: 40;
-  margin-left: 32;
-  margin-bottom: 24;
+  margin-top: ${0.06*height};
+  margin-left: 8%;
+  margin-bottom: ${0.03598*height};
 `;
 
 const TouchableView = styled.TouchableOpacity`
   flex-direction: row;
-  height: 72;
+  height: ${0.11*height};
   border-top = solid;
   border-color: ${SETTINGS_BORDER_COLOR};
   border-top-width: 1;
   border-bottom-width: 1;
+  align-items: center;
 `;
 
 const Icon = styled.Image`
-  height: 24;
-  width: 30;
+  height: ${0.036*height};
+  width: ${0.08*width};
   resize-mode: contain;
-  margin-left: 32;
-  margin-top: 24;
+  margin-left: ${0.08*width};
 `;
 
 const CustomText = styled.Text`
   font-size: 14;
   font-weight: bold;
   color: ${SETTINGS_TEXT_COLOR};
-  margin-left: 20;
-  margin-top: 28;
+  margin-left: ${0.053*width};
 `;
 
 const LogoutView = styled.TouchableOpacity`
   flex-direction: row;
-  margin-top: 216;
+  align-items: center;
+  margin-top: ${0.32*height};
 `;
 
 export default Settings;

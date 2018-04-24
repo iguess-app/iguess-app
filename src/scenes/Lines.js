@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Dimensions } from 'react-native';
 import styled from 'styled-components';
 import GameList from '@components/GameList';
 import SelectedLine from '@components/SelectedLine';
@@ -9,6 +10,11 @@ import * as gamesActions from '@redux/games/actions';
 import * as gamesSelectors from '@redux/games/reducer';
 import { chevronDown } from '@assets/images';
 import { SELECT_LINE_PRIMARY_TEXT, DEFAULT_BACKGROUND } from '@theme';
+
+const {
+  width,
+  height
+} = Dimensions.get('window');
 
 class Lines extends Component {
   constructor(props) {
@@ -85,7 +91,8 @@ const Scroll = styled.ScrollView`
 const Navigation = styled.View`
   flex: 0.08;
   flex-direction: row;
-  margin-top: 46;
+  margin-top: ${0.0689*height};
+  margin-horizontal: 8%;
 `;
 
 const NavTouchable = styled.TouchableOpacity`
@@ -93,7 +100,6 @@ const NavTouchable = styled.TouchableOpacity`
   flex-direction: row;
   justify-content: flex-end;
   margin-top: 2;
-  margin-right: 24;
 `;
 
 const NavText = styled.Text`
@@ -107,7 +113,7 @@ const NavText = styled.Text`
 const Chevron = styled.Image.attrs({
   source: chevronDown,
 })`
-  width: 14;
+  width: ${0.0373*width};
   resize-mode: contain;
   margin-top: 4;
 `;
