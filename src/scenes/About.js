@@ -1,16 +1,11 @@
 import React from 'react';
-import { TouchableOpacity, Linking, Dimensions } from 'react-native';
+import { TouchableOpacity, Linking } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import { NavBar, SceneDescription, Content } from '@components/Scene';
 import { MainButton } from '@components/Button';
 import { aboutImage, facebookIcon, twitterIcon } from '@assets/images';
 import styled from 'styled-components';
-import { FOLLOW_US_COLOR } from '@theme';
-
-const {
-  width,
-  height
-} = Dimensions.get('window');
+import { FOLLOW_US_COLOR, WIDTH_REL } from '@theme';
 
 const About = () => {
   return (
@@ -106,7 +101,7 @@ const FollowRow = styled.View`
   flex-direction: row;
   justify-content: space-between;
   margin-top: 8;
-  margin-horizontal: ${0.29*width};
+  margin-horizontal: ${110*WIDTH_REL};
 `;
 
 const Icon = styled.Image`
