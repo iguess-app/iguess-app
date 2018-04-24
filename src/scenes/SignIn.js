@@ -4,7 +4,7 @@ import { NavBar } from '@components/Scene';
 import { MainButton } from '@components/Button';
 import Input from '@components/Input';
 import styled from 'styled-components';
-import { INPUT_BORDER_COLOR } from '@theme';
+import { INPUT_BORDER_COLOR, WIDTH_REL, HEIGHT_REL } from '@theme';
 
 class SignUp extends Component {
   constructor(props) {
@@ -34,17 +34,16 @@ class SignUp extends Component {
 }
 
 const Wrapper = styled.View`
-  margin-left: 32;
-  margin-right: 32;
+  margin-horizontal: ${32*WIDTH_REL};
 `;
 
 const TextInput = styled(Input)`
-  margin-top: 48;
+  margin-top: ${48*HEIGHT_REL};
 `;
 
 const ButtonView = styled.View`
-  margin-top: 32;
-  margin-bottom: 16;
+  margin-top: ${32*HEIGHT_REL};
+  margin-bottom: ${16*HEIGHT_REL};
   align-self: center;
 `;
 
