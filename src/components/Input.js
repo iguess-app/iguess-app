@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Platform } from 'react-native';
 import { MKTextField } from 'react-native-material-kit';
 import styled from 'styled-components';
-import { INPUT_DEFAULT_COLOR, INPUT_FLOAT_LABEL_COLOR, INPUT_SUCCESS_COLOR, INPUT_ERROR_COLOR } from '@theme';
+import { INPUT_DEFAULT_COLOR, INPUT_FLOAT_LABEL_COLOR, INPUT_SUCCESS_COLOR, INPUT_ERROR_COLOR, INPUT_TINT_COLOR } from '@theme';
 
 export default class Input extends Component {
   
@@ -22,14 +22,17 @@ export default class Input extends Component {
     return INPUT_DEFAULT_COLOR;
   }
 
+  _textInputColor() {
+    return Platform.select({ios: {color: this._getColor()}, android: undefined});
+  }
+
   setStatus(status) {
     this.setState({status: status});
   }
 
   render() {
-    const textInputColor = this.state.status !== '' ? {color: this._getColor()} : undefined;
-    const textInputColorOS = Platform.select({ios: textInputColor, android: undefined});
-    return <TextField tintColor={this._getColor()} placeholderTextColor={this._getColor()} textInputStyle={textInputColorOS} 
+
+    return <TextField placeholderTextColor={this._getColor()} textInputStyle={this._textInputColor()} 
     autoCorrect={false}
     enablesReturnKeyAutomatically={true}
     onFocus={() => this.setStatus('')}
@@ -46,4 +49,5 @@ const TextField = MKTextField
   fontWeight: 'bold',
   color: INPUT_FLOAT_LABEL_COLOR,
 })
+.withTintColor(INPUT_TINT_COLOR)
 .build();

@@ -19,11 +19,12 @@ export const PRIMARY_BUTTON_TEXT_COLOR = '#FFF'; // white
 export const FOLLOW_US_COLOR = SETTINGS_TEXT_COLOR; // purple
 export const HEADER_TEXT_COLOR = '#FFF'; // white
 export const HOME_TEXT_COLOR = '#FFF'; // white
-export const INPUT_DEFAULT_COLOR = '#CAD2D9'; // gray
+export const INPUT_TINT_COLOR = '#CAD2D9';
+export const INPUT_DEFAULT_COLOR = '#4D6980'; // gray
 export const INPUT_FLOAT_LABEL_COLOR = '#4D6980'; // darker-gray
 export const INPUT_SUCCESS_COLOR = '#19D88C'; // green
 export const INPUT_ERROR_COLOR = '#EE4042'; // red
-export const SIGN_UP_TERMS_COLOR = '#4D6980';
+export const SIGN_UP_TERMS_COLOR = '#4D6980'; // darker-gray
 
 // BACKGROUND
 
