@@ -9,14 +9,18 @@ export default class Input extends Component {
   
   constructor(props) {
     super(props);
-    this.state = {status: '', errorMsg: ''};
+
+    // default: undefined
+    // success: true
+    // error: false
+    this.state = {status: undefined, errorMsg: ''};
   }
 
   _getColor() {
 
-    if(this.state.status === 'error') {
+    if(this.state.status === false) {
       return INPUT_ERROR_COLOR;
-    } else if(this.state.status === 'success') {
+    } else if(this.state.status === true) {
       return INPUT_SUCCESS_COLOR;
     } 
     
@@ -24,7 +28,7 @@ export default class Input extends Component {
   }
 
   _getTintColor() {
-    const tintColor = this.state.status === '' ? INPUT_TINT_COLOR : this._getColor();
+    const tintColor = this.state.status === undefined ? INPUT_TINT_COLOR : this._getColor();
     return tintColor;
   }
 
@@ -32,16 +36,20 @@ export default class Input extends Component {
     return Platform.select({ios: {color: this._getColor()}, android: undefined});
   }
 
+  getStatus() {
+    return this.state.status;
+  }
+
   error(msg = undefined) {
-    this.setState({status: 'error', errorMsg: msg});
+    this.setState({status: false, errorMsg: msg});
   }
 
   reset() {
-    this.setState({status: '', errorMsg: ''});
+    this.setState({status: undefined, errorMsg: ''});
   }
 
   success() {
-    this.setState({status: 'success'});
+    this.setState({status: true});
   }
 
   render() {
