@@ -13,7 +13,13 @@ class SignUp extends Component {
   }
 
   _verifyName() {
-    this.nameInput.setStatus('success')
+
+    if(this.state.name.length < 3) {
+      this.nameInput.setStatus('error');
+    } else {
+      this.nameInput.setStatus('success');
+    }
+
   }
 
   render() {
@@ -27,7 +33,7 @@ class SignUp extends Component {
             onChangeText={value => this.setState({name: value})}
             autoCapitalize="words"
             maxLength={25}
-            onEndEditing={() => this.nameInput.setStatus('success')}
+            onEndEditing={() => this._verifyName()}
             innerRef = {ref => this.nameInput = ref}
           />
           <TextInput
