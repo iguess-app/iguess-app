@@ -14,13 +14,61 @@ class SignUp extends Component {
 
   _verifyName() {
 
-    if(this.state.name.length < 3) {
-      this.nameInput.error('Name should have 3 or more characters')
-    } else {
+    if(this.state.name.length > 3) {
       this.nameInput.success();
+    } else if(this.state.name.length === 0) {
+      this.nameInput.reset();
+    } else {
+      this.nameInput.error('Name should have 3 or more characters');
     }
 
   }
+
+  _verifyUsername() {
+    
+    if(this.state.username.length > 3) {
+      this.usernameInput.success();
+    } else if(this.state.username.length === 0) {
+      this.usernameInput.reset();
+    }  else {
+      this.usernameInput.error('Username should have 3 or more characters');
+    }
+
+  }
+
+  _verifyMail() {
+    
+    if(this.state.email.length === 0) {
+      this.emailInput.reset();
+      return null;
+    }
+
+    // A regex will be defined
+    const matchRegex = true;
+    if (matchRegex) {
+      this.emailInput.success();
+    } else {
+      this.emailInput.error('Doesn\'t look like an email...');
+    }
+
+  }
+
+  _verifyPassword() {
+
+    if(this.state.password.length === 0) {
+      this.passwordInput.reset();
+      return null;
+    }
+
+    // A regex will be defined
+    const matchRegex = true;
+    if (matchRegex) {
+      this.passwordInput.success();
+    } else {
+      this.passwordInput.error('Password error');
+    }
+
+  };
 
   render() {
 
@@ -42,7 +90,8 @@ class SignUp extends Component {
             onChangeText= {value => this.setState({username: value.replace(/[^a-z0-9._]/g, '') })}
             autoCapitalize="none"
             maxLength={25}
-            onEndEditing={() => console.log('End editing username', this.state.username)}
+            onEndEditing={() => this._verifyUsername()}
+            innerRef = {ref => this.usernameInput = ref}
           />
           <TextInput
             placeholder="E-mail"
@@ -51,18 +100,19 @@ class SignUp extends Component {
             keyboardType="email-address"
             autoCapitalize="none"
             maxLength={30}
-            onEndEditing={() => console.log('End editing e-mail')}
+            onEndEditing={() => this._verifyMail()}
+            innerRef = {ref => this.emailInput = ref}
           />
           <TextInput
             placeholder="Password"
             onChangeText={value => this.setState({password: value })}
             password={true}
+            maxLength={30}
+            onEndEditing={() => this._verifyPassword()}
+            innerRef = {ref => this.passwordInput = ref}
           />
           <ButtonView>
-            <InativeButton
-              text="Create my account"
-              onPress={() => console.log('Create my account', this.state.name)}
-            />
+            <InativeButton text="Create my account"/>
           </ButtonView>
           <Terms>
             Eu concordo com os{' '}
