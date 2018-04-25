@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { InputSceneWrapper, NavBar } from '@components/Scene';
-import { MainButton, InativeButton } from '@components/Button';
+import { MainButton } from '@components/Button';
 import Input from '@components/Input';
 import { Actions } from 'react-native-router-flux';
 import { WIDTH_REL, HEIGHT_REL, SIGN_UP_TERMS_COLOR } from '@theme';
@@ -70,6 +70,13 @@ class SignUp extends Component {
 
   };
 
+  _submit() {
+    const status = this.nameInput.getStatus() && this.usernameInput.getStatus() && this.emailInput.getStatus() && this.passwordInput.getStatus();
+    if(status) {
+      Actions.core()
+    }
+  }
+
   render() {
 
     return (
@@ -112,7 +119,7 @@ class SignUp extends Component {
             innerRef = {ref => this.passwordInput = ref}
           />
           <ButtonView>
-            <InativeButton text="Create my account"/>
+            <MainButton text="Create my account" onPress={() => this._submit()}/>
           </ButtonView>
           <Terms>
             Eu concordo com os{' '}
