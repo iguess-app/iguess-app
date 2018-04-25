@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
-import { Platform } from 'react-native';
+import { Platform, View } from 'react-native';
 import { MKTextField } from 'react-native-material-kit';
 import styled from 'styled-components';
-import { INPUT_DEFAULT_COLOR, INPUT_FLOAT_LABEL_COLOR, INPUT_SUCCESS_COLOR, INPUT_ERROR_COLOR, INPUT_TINT_COLOR } from '@theme';
+import { info } from '@assets/images';
+import { INPUT_DEFAULT_COLOR, INPUT_FLOAT_LABEL_COLOR, INPUT_SUCCESS_COLOR, INPUT_ERROR_COLOR, INPUT_TINT_COLOR, WIDTH_REL, HEIGHT_REL } from '@theme';
 
 export default class Input extends Component {
   
   constructor(props) {
     super(props);
-    this.state = {status: ''};
+    this.state = {status: '', errorMsg: ''};
   }
 
   _getColor() {
@@ -22,25 +23,77 @@ export default class Input extends Component {
     return INPUT_DEFAULT_COLOR;
   }
 
+  _getTintColor() {
+    const tintColor = this.state.status === '' ? INPUT_TINT_COLOR : this._getColor();
+    return tintColor;
+  }
+
   _textInputColor() {
     return Platform.select({ios: {color: this._getColor()}, android: undefined});
   }
 
-  setStatus(status) {
-    this.setState({status: status});
+  error(msg = undefined) {
+    this.setState({status: 'error', errorMsg: msg});
+  }
+
+  reset() {
+    this.setState({status: '', errorMsg: ''});
+  }
+
+  success() {
+    this.setState({status: 'success'});
   }
 
   render() {
 
-    return <TextField placeholderTextColor={this._getColor()} textInputStyle={this._textInputColor()} 
-    autoCorrect={false}
-    enablesReturnKeyAutomatically={true}
-    onFocus={() => this.setStatus('')}
-    ref = {ref => this.textField = ref}
-    {...this.props} />
+    return (
+      <View>
+        <TextField tintColor={this._getTintColor()} placeholderTextColor={this._getColor()} textInputStyle={this._textInputColor()} 
+          autoCorrect={false}
+          enablesReturnKeyAutomatically={true}
+          onFocus={() => this.reset()}
+          ref = {ref => this.textField = ref}
+          {...this.props} />
+        <ErrorMessage>{this.state.errorMsg}</ErrorMessage>
+      </View>
+    );
   }
 
 }
+
+const ErrorMessage = (props) => {
+  const { children } = props;
+
+  if(children === '' || children === undefined) {
+    return null;
+  }
+
+  return (
+    <ErrorView>
+      <InfoIcon />
+      <ErrorText>{children}</ErrorText>
+    </ErrorView>
+  )
+}
+
+const ErrorText = styled.Text`
+  font-size: 14;
+  margin-left: ${8*WIDTH_REL};
+  color: ${INPUT_ERROR_COLOR};
+`
+
+const ErrorView = styled.View`
+  flex-direction: row;
+  margin-top: ${8*HEIGHT_REL};
+`
+
+const InfoIcon = styled.Image.attrs({
+  source: info,
+})`
+  width: ${16*WIDTH_REL};
+  height: ${16*HEIGHT_REL};
+  resize-mode: contain;
+`
 
 const TextField = MKTextField
 .textfieldWithFloatingLabel()
@@ -49,5 +102,4 @@ const TextField = MKTextField
   fontWeight: 'bold',
   color: INPUT_FLOAT_LABEL_COLOR,
 })
-.withTintColor(INPUT_TINT_COLOR)
 .build();

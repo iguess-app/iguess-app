@@ -15,9 +15,9 @@ class SignUp extends Component {
   _verifyName() {
 
     if(this.state.name.length < 3) {
-      this.nameInput.setStatus('error');
+      this.nameInput.error('Name should have 3 or more characters')
     } else {
-      this.nameInput.setStatus('success');
+      this.nameInput.success();
     }
 
   }

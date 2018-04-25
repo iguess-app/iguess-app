@@ -19,3 +19,4 @@ export store from './store.png';
 export twitterIcon from './twitterIcon.png';
 export vs from './vs.png';
 export instagramIcom from './instagramIcon.png';
+export info from './info.png';
