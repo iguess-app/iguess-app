@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Alert } from 'react-native';
 import styled from 'styled-components';
 import { SceneWrapper } from '@components/Scene';
 import { Actions } from 'react-native-router-flux';
@@ -44,12 +44,21 @@ const TouchableRow = props => {
   );
 };
 
+const _logoutAlert = () => {
+  Alert.alert(
+    'LOG OUT',
+    'Are you sure you want to log out?',
+    [{ text: 'YES', onPress: () => Actions.home()}, { text: 'Cancel' }],
+    { cancelable: false },
+  );
+};
+
 const Logout = () => {
   return (
-    <LogoutView>
+    <LogoutTouchable onPress={() => _logoutAlert()}>
       <Icon source={exit} />
       <CustomText>Log out</CustomText>
-    </LogoutView>
+    </LogoutTouchable>
   );
 };
 
@@ -105,7 +114,7 @@ const CustomText = styled.Text`
   margin-left: ${20*WIDTH_REL};
 `;
 
-const LogoutView = styled.TouchableOpacity`
+const LogoutTouchable = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
   margin-top: ${216*HEIGHT_REL};
