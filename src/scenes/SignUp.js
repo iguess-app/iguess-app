@@ -71,7 +71,25 @@ class SignUp extends Component {
   };
 
   _submit() {
+
+    if(this.state.name.length === 0) {
+      this.nameInput.error('Can\'t be empty');
+    }
+
+    if(this.state.username.length === 0) {
+      this.usernameInput.error('Can\'t be empty');
+    }
+
+    if(this.state.email.length === 0) {
+      this.emailInput.error('Can\'t be empty');
+    }
+
+    if(this.state.password.length === 0) {
+      this.passwordInput.error('Can\'t be empty');
+    }
+
     const status = this.nameInput.getStatus() && this.usernameInput.getStatus() && this.emailInput.getStatus() && this.passwordInput.getStatus();
+
     if(status) {
       Actions.core()
     }
