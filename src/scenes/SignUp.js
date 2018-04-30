@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { InputSceneWrapper, NavBar } from '@components/Scene';
 import { MainButton } from '@components/Button';
+import ServerError from '@components/ServerError';
 import Input from '@components/Input';
 import { Actions } from 'react-native-router-flux';
 import { WIDTH_REL, HEIGHT_REL, SIGN_UP_TERMS_COLOR } from '@theme';
@@ -144,6 +145,7 @@ class SignUp extends Component {
             <TextLink onPress={() => Actions.terms()}>termos de uso</TextLink>.
           </Terms>
         </Wrapper>
+        <ServerError />
       </InputSceneWrapper>
     );
   }

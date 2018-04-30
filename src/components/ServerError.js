@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { KeyboardAvoidingView, View } from 'react-native';
 import styled from 'styled-components';
 import { thumbsDown } from '@assets/images';
 import { INPUT_ERROR_COLOR, HEIGHT_REL, WIDTH_REL } from '@theme';
@@ -19,6 +20,7 @@ class ServerError extends Component {
 
     if(this.state.opacity > 0){
       return (
+        <KeyboardAvoiding behavior="position" enabled>
         <ErrorView opacity={this.state.opacity}>
           <Icon />
           <ErrorText>
@@ -26,6 +28,7 @@ class ServerError extends Component {
             Tente novamente mais tarde.
           </ErrorText>
         </ErrorView>
+        </KeyboardAvoiding>
       );
     } else {
       clearInterval(this.timer)
@@ -34,14 +37,17 @@ class ServerError extends Component {
   }
 }
 
+const KeyboardAvoiding = styled.KeyboardAvoidingView`
+  width: 100%;
+  position: absolute;
+  margin-top: ${587*HEIGHT_REL};
+`
 
-export const ErrorView = styled.View`
+const ErrorView = styled.View`
   flex-direction: row;
   width: 100%;
   height: ${80*HEIGHT_REL};
   background-color: ${INPUT_ERROR_COLOR};
-  position: absolute;
-  margin-top: ${587*HEIGHT_REL};
   align-items: center;
 `
 
