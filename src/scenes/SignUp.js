@@ -91,9 +91,40 @@ class SignUp extends Component {
 
     const status = this.nameInput.getStatus() && this.usernameInput.getStatus() && this.emailInput.getStatus() && this.passwordInput.getStatus();
 
-    if(status) {
-      Actions.core()
+    if(true) {
+      this._register();
     }
+  }
+
+  _register() {
+
+    const requestInfo = {
+      method: 'POST',
+      headers: new Headers({
+        'Content-type': 'application/json',
+        'request_id': 'postmanRequest',
+        'hardware_fingerprint': 'postmanRequest',
+        'platform': 'Android',
+        'os_version': '7.0.1',
+        'app_version': '1.0.0',
+        'phone_model': 'XT-1792',
+        'phone_fabricator': 'Motorola',
+      }),
+      body: JSON.stringify({
+        "userName" : "raniel",
+        "name": "Raniel",
+        "password" : "raniel",
+        "email" : "raniel@live.com",
+      })
+    }
+
+    fetch('https://iguess-666666.appspot.com/login/signUp', requestInfo)
+    .then(response => response.json())
+    .then(response => {
+      if(response.statusCode === 406){
+        this.usernameInput.error(response.message)
+      }
+    })
   }
 
   render() {
