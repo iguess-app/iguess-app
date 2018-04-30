@@ -55,7 +55,7 @@ const Title = styled.Text`
   font-size: 14;
   font-weight: bold;
   color: ${HEADER_TEXT_COLOR};
-  margin-right: 48;
+  margin-right: 64;
 `;
 
 export default NavBar;

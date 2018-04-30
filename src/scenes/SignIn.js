@@ -4,6 +4,7 @@ import { NavBar } from '@components/Scene';
 import { MainButton } from '@components/Button';
 import Input from '@components/Input';
 import styled from 'styled-components';
+import { Actions } from 'react-native-router-flux';
 import { INPUT_BORDER_COLOR, WIDTH_REL, HEIGHT_REL } from '@theme';
 
 class SignUp extends Component {
@@ -25,7 +26,7 @@ class SignUp extends Component {
             onChangeText={text => this.setState({ text })}
           />
           <ButtonView>
-            <MainButton text="Sign in" onPress={() => console.log('Sign in')} />
+            <MainButton text="Sign in" onPress={() => Actions.core()} />
           </ButtonView>
         </Wrapper>
       </InputSceneWrapper>

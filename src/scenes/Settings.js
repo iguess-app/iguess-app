@@ -1,15 +1,10 @@
 import React from 'react';
-import { TouchableOpacity, Dimensions } from 'react-native';
+import { TouchableOpacity, Alert } from 'react-native';
 import styled from 'styled-components';
 import { SceneWrapper } from '@components/Scene';
 import { Actions } from 'react-native-router-flux';
 import { conversation, closeSettings, blog, store, exit } from '@assets/images';
-import { SETTINGS_TEXT_COLOR, SETTINGS_BORDER_COLOR } from '@theme';
-
-const {
-  width,
-  height
-} = Dimensions.get('window');
+import { SETTINGS_TEXT_COLOR, SETTINGS_BORDER_COLOR, WIDTH_REL, HEIGHT_REL } from '@theme';
 
 const Settings = props => {
   const { swipe } = props;
@@ -49,12 +44,21 @@ const TouchableRow = props => {
   );
 };
 
+const _logoutAlert = () => {
+  Alert.alert(
+    'LOG OUT',
+    'Are you sure you want to log out?',
+    [{ text: 'YES', onPress: () => Actions.home()}, { text: 'Cancel' }],
+    { cancelable: false },
+  );
+};
+
 const Logout = () => {
   return (
-    <LogoutView>
+    <LogoutTouchable onPress={() => _logoutAlert()}>
       <Icon source={exit} />
       <CustomText>Log out</CustomText>
-    </LogoutView>
+    </LogoutTouchable>
   );
 };
 
@@ -71,24 +75,24 @@ const Close = props => {
 const CloseImage = styled.Image.attrs({
   source: closeSettings,
 })`
-  width: ${0.0426*width};
-  height: ${0.0239*height};
-  margin-left: 8%;
-  margin-top: ${0.0779*height};
+  width: ${16*WIDTH_REL};
+  height: ${16*HEIGHT_REL};
+  margin-left: ${32*WIDTH_REL};
+  margin-top: ${52*HEIGHT_REL};
 `;
 
 const Title = styled.Text`
   font-size: 24;
   font-weight: bold;
   color: ${SETTINGS_TEXT_COLOR};
-  margin-top: ${0.06*height};
-  margin-left: 8%;
-  margin-bottom: ${0.03598*height};
+  margin-top: ${40*HEIGHT_REL};
+  margin-left: ${32*WIDTH_REL};
+  margin-bottom: ${24*HEIGHT_REL};
 `;
 
 const TouchableView = styled.TouchableOpacity`
   flex-direction: row;
-  height: ${0.11*height};
+  height: ${72*HEIGHT_REL};
   border-top = solid;
   border-color: ${SETTINGS_BORDER_COLOR};
   border-top-width: 1;
@@ -97,23 +101,23 @@ const TouchableView = styled.TouchableOpacity`
 `;
 
 const Icon = styled.Image`
-  height: ${0.036*height};
-  width: ${0.08*width};
+  height: ${24*HEIGHT_REL};
+  width: ${30*WIDTH_REL};
   resize-mode: contain;
-  margin-left: ${0.08*width};
+  margin-left: ${32*WIDTH_REL};
 `;
 
 const CustomText = styled.Text`
   font-size: 14;
   font-weight: bold;
   color: ${SETTINGS_TEXT_COLOR};
-  margin-left: ${0.053*width};
+  margin-left: ${20*WIDTH_REL};
 `;
 
-const LogoutView = styled.TouchableOpacity`
+const LogoutTouchable = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
-  margin-top: ${0.32*height};
+  margin-top: ${216*HEIGHT_REL};
 `;
 
 export default Settings;

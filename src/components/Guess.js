@@ -1,14 +1,8 @@
 import React from 'react';
-import { Dimensions } from 'react-native';
 import styled from 'styled-components';
 import { TouchableOpacity } from 'react-native';
 import { plus, plusDisabled, minus, minusDisabled } from '@assets/images';
-import { GUESS_GUESSED_TEXT_COLOR, GUESS_DEFAULT_TEXT_COLOR } from '@theme';
-
-const {
-  width,
-  height
-} = Dimensions.get('window');
+import { GUESS_GUESSED_TEXT_COLOR, GUESS_DEFAULT_TEXT_COLOR, HEIGHT_REL, WIDTH_REL } from '@theme';
 
 const defaultValue = '- - - -';
 
@@ -60,13 +54,13 @@ const DisabledButton = props => {
 const Wrapper = styled.View`
   align-self: center;
   align-items: center;
-  margin-horizontal: ${0.021*width};
+  margin-horizontal: ${8*WIDTH_REL};
   flex-direction: column;
 `;
 
 const ButtonImage = styled.Image`
-  width: ${0.064*width};
-  height: ${0.0359*height};
+  width: ${24*WIDTH_REL};
+  height: ${24*HEIGHT_REL};
 `;
 
 const Value = styled.Text.attrs({

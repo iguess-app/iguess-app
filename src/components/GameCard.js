@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Dimensions } from 'react-native';
 import styled from 'styled-components';
 import Team from '@components/Team';
 import Guess from '@components/Guess';
@@ -9,12 +8,9 @@ import {
   CARD_BACKGROUND_COLOR,
   CARD_BORDER_COLOR,
   SCHEDULED_TIME_COLOR,
+  HEIGHT_REL,
+  WIDTH_REL,
 } from '@theme';
-
-const {
-  width,
-  height
-} = Dimensions.get('window');
 
 
 let mockedISODate = new Date().toISOString();
@@ -79,8 +75,8 @@ const AwayTeam = styled(Team)``;
 const VS = styled.Image.attrs({
   source: vs,
 })`
-  width: ${0.106*width};
-  height: ${0.0779*height};
+  width: ${40*WIDTH_REL};
+  height: ${52*HEIGHT_REL};
   resize-mode: contain;
   margin-top: 8;
 `;
@@ -91,7 +87,7 @@ const ScheduledTime = styled.Text`
 `;
 
 const MidWrapper = styled.View`
-  margin-horizontal: ${0.0266*width};
+  margin-horizontal: ${10*WIDTH_REL};
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -111,9 +107,9 @@ const cardStyle = {
 
 const Card = styled.View`
   flex-direction: row;
-  width: ${0.882*width};
-  height: ${0.216*height};
-  margin-bottom: ${0.0599*height};
+  width: ${312*WIDTH_REL};
+  height: ${144*HEIGHT_REL};
+  margin-bottom: ${40*HEIGHT_REL};
   border-color: ${CARD_BORDER_COLOR};
   background-color: ${CARD_BACKGROUND_COLOR}
   border-radius: 4;
