@@ -26,9 +26,9 @@ export const InputSceneWrapper = props => {
   return (
     <SceneBackground source={background}>
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <KeyboardAvoidingView behavior="padding">
+      <View>
         {children}
-      </KeyboardAvoidingView>
+      </View>
     </TouchableWithoutFeedback>
     </SceneBackground>
   );
