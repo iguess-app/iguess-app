@@ -1,18 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { thumbsDown } from '@assets/images';
 import { INPUT_ERROR_COLOR, HEIGHT_REL, WIDTH_REL } from '@theme';
 
-const ServerError = () => {
-  return (
-      <ErrorView>
-        <Icon />
-        <ErrorText>
-          Houve algum problema no servidor. 
-          Tente novamente mais tarde.
-        </ErrorText>
-      </ErrorView>
-  )
+class ServerError extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {opacity: 1}
+  }
+
+  componentDidMount() {
+    this.timer = setInterval(() => {
+      this.setState({opacity: this.state.opacity - 0.01})
+    }, 25);
+  }
+
+  render() {
+
+    if(this.state.opacity > 0){
+      return (
+        <ErrorView opacity={this.state.opacity}>
+          <Icon />
+          <ErrorText>
+            Houve algum problema no servidor. 
+            Tente novamente mais tarde.
+          </ErrorText>
+        </ErrorView>
+      );
+    } else {
+      clearInterval(this.timer)
+      return null;
+    }
+  }
 }
 
 
