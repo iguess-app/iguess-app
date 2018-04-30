@@ -7,6 +7,13 @@ import Input from '@components/Input';
 import { Actions } from 'react-native-router-flux';
 import { WIDTH_REL, HEIGHT_REL, SIGN_UP_TERMS_COLOR } from '@theme';
 
+var errors = Object.freeze({
+  usernameAlreadyUsed: 20003,
+  emailAlreadyUsed: 20004,
+  passwordAlert: 20001,
+  notAEmail: 20006,
+});
+
 class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -73,6 +80,9 @@ class SignUp extends Component {
 
   _submit() {
 
+    // Just to mitigate a bug, will be changed
+    this._verifyPassword();
+
     if(this.state.name.length === 0) {
       this.nameInput.error('Can\'t be empty');
     }
@@ -111,9 +121,9 @@ class SignUp extends Component {
         'phone_fabricator': 'Motorola',
       }),
       body: JSON.stringify({
-        "userName" : "raniel",
+        "userName" : "raniel12",
         "name": "Raniel",
-        "password" : "raniel",
+        "password" : "123456",
         "email" : "raniel@live.com",
       })
     }
@@ -121,9 +131,17 @@ class SignUp extends Component {
     fetch('https://iguess-666666.appspot.com/login/signUp', requestInfo)
     .then(response => response.json())
     .then(response => {
-      if(response.statusCode === 406){
-        this.usernameInput.error(response.message)
+
+      if(response.errorCode === errors.usernameAlreadyUsed) {
+        this.usernameInput.error(response.message);
+      } else if(response.errorCode === errors.notAEmail) {
+        this.emailInput.error(response.message);
+      } else if (response.errorCode ===  errors.emailAlreadyUsed) {
+        this.emailInput.error(response.message);
+      } else if(response.errorCode === response.passwordAlert) {
+        this.passwordInput.error(response.message);
       }
+
     })
   }
 
