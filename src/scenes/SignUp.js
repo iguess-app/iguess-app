@@ -22,7 +22,7 @@ class SignUp extends Component {
 
   _verifyName() {
 
-    if(this.state.name.length > 3) {
+    if(this.state.name.length >= 3) {
       this.nameInput.success();
     } else if(this.state.name.length === 0) {
       this.nameInput.reset();
@@ -34,12 +34,12 @@ class SignUp extends Component {
 
   _verifyUsername() {
     
-    if(this.state.username.length > 3) {
+    if(this.state.username.length >= 4) {
       this.usernameInput.success();
     } else if(this.state.username.length === 0) {
       this.usernameInput.reset();
     }  else {
-      this.usernameInput.error('Username should have 3 or more characters');
+      this.usernameInput.error('Username should have 4 or more characters');
     }
 
   }
