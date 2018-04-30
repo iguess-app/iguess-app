@@ -44,8 +44,8 @@ class SignUp extends Component {
     }
 
     // A regex will be defined
-    const matchRegex = true;
-    if (matchRegex) {
+    const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (regex.test(this.state.email)) {
       this.emailInput.success();
     } else {
       this.emailInput.error('Doesn\'t look like an email...');
