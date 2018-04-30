@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TouchableWithoutFeedback, Keyboard, View } from 'react-native';
+import { TouchableWithoutFeedback, Keyboard, View, KeyboardAvoidingView } from 'react-native';
 import {
   TEXT_SECONDARY_SCENE,
   SETTINGS_TEXT_COLOR,
@@ -26,9 +26,9 @@ export const InputSceneWrapper = props => {
   return (
     <SceneBackground source={background}>
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View>
+      <KeyboardAvoidingView behavior="padding">
         {children}
-      </View>
+      </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
     </SceneBackground>
   );

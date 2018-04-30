@@ -58,7 +58,6 @@ export default class Input extends Component {
       <View>
         <TextField tintColor={this._getTintColor()} placeholderTextColor={this._getColor()} textInputStyle={this._textInputColor()} 
           autoCorrect={false}
-          enablesReturnKeyAutomatically={true}
           onFocus={() => this.reset()}
           ref = {ref => this.textField = ref}
           {...this.props} />
