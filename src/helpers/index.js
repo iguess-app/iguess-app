@@ -49,7 +49,7 @@ export const setStatusBarStyle = style => {
   }
 };
 
-export const request = (url, body) => {
+export const request = (url, body = '') => {
   
   const requestInfo = {
     method: 'POST',
@@ -66,7 +66,7 @@ export const request = (url, body) => {
     body: body,
   }
 
-  return fetch(url, requestInfo);
+  return fetch(url, requestInfo).then(response => response.json());
 }
 
 export default getTimeFromDate;
