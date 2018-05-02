@@ -101,7 +101,7 @@ class SignUp extends Component {
 
     const status = this.nameInput.getStatus() && this.usernameInput.getStatus() && this.emailInput.getStatus() && this.passwordInput.getStatus();
 
-    if(true) {
+    if(status) {
       this._register();
     }
   }
@@ -121,10 +121,10 @@ class SignUp extends Component {
         'phone_fabricator': 'Motorola',
       }),
       body: JSON.stringify({
-        "userName" : "raniel12",
-        "name": "Raniel",
-        "password" : "123456",
-        "email" : "raniel@live.com",
+        "userName" : this.state.username,
+        "name": this.state.name,
+        "password" : this.state.password,
+        "email" : this.state.email,
       })
     }
 
@@ -132,15 +132,21 @@ class SignUp extends Component {
     .then(response => response.json())
     .then(response => {
 
-      if(response.errorCode === errors.usernameAlreadyUsed) {
-        this.usernameInput.error(response.message);
-      } else if(response.errorCode === errors.notAEmail) {
-        this.emailInput.error(response.message);
-      } else if (response.errorCode ===  errors.emailAlreadyUsed) {
-        this.emailInput.error(response.message);
-      } else if(response.errorCode === response.passwordAlert) {
-        this.passwordInput.error(response.message);
-      }
+      console.log(response);
+
+      if(response.token !== undefined) {
+        Actions.core();
+      } else if(response.statusCode === 406){
+        if(response.errorCode === errors.usernameAlreadyUsed) {
+          this.usernameInput.error(response.message);
+        } else if(response.errorCode === errors.notAEmail) {
+          this.emailInput.error(response.message);
+        } else if (response.errorCode ===  errors.emailAlreadyUsed) {
+          this.emailInput.error(response.message);
+        } else if(response.errorCode === response.passwordAlert) {
+          this.passwordInput.error(response.message);
+        }
+      } 
 
     })
   }
