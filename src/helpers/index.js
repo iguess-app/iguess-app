@@ -49,4 +49,24 @@ export const setStatusBarStyle = style => {
   }
 };
 
+export const request = (url, body) => {
+  
+  const requestInfo = {
+    method: 'POST',
+    headers: new Headers({
+      'Content-type': 'application/json',
+      'request_id': 'postmanRequest',
+      'hardware_fingerprint': 'postmanRequest',
+      'platform': 'Android',
+      'os_version': '7.0.1',
+      'app_version': '1.0.0',
+      'phone_model': 'XT-1792',
+      'phone_fabricator': 'Motorola',
+    }),
+    body: body,
+  }
+
+  return fetch(url, requestInfo);
+}
+
 export default getTimeFromDate;

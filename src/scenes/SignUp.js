@@ -7,6 +7,7 @@ import ServerError from '@components/ServerError';
 import Input from '@components/Input';
 import { Actions } from 'react-native-router-flux';
 import { WIDTH_REL, HEIGHT_REL, SIGN_UP_TERMS_COLOR } from '@theme';
+import { request } from '../helpers';
 
 var errors = Object.freeze({
   usernameAlreadyUsed: 20003,
@@ -106,27 +107,14 @@ class SignUp extends Component {
 
   _register() {
 
-    const requestInfo = {
-      method: 'POST',
-      headers: new Headers({
-        'Content-type': 'application/json',
-        'request_id': 'postmanRequest',
-        'hardware_fingerprint': 'postmanRequest',
-        'platform': 'Android',
-        'os_version': '7.0.1',
-        'app_version': '1.0.0',
-        'phone_model': 'XT-1792',
-        'phone_fabricator': 'Motorola',
-      }),
-      body: JSON.stringify({
+    const body = JSON.stringify({
         "userName" : this.state.username,
         "name": this.state.name,
         "password" : this.state.password,
         "email" : this.state.email,
-      })
-    }
+      });
 
-    fetch('https://iguess-666666.appspot.com/login/signUp', requestInfo)
+    request('https://iguess-666666.appspot.com/login/signUp', body)
     .then(response => response.json())
     .then(response => {
 
