@@ -19,7 +19,7 @@ var errors = Object.freeze({
 class SignUp extends Component {
   constructor(props) {
     super(props);
-    this.state = { name: '', username: '', email: '', password: '' };
+    this.state = { name: '', username: '', email: '', password: '', error: false};
   }
 
   _verifyName() {
@@ -117,6 +117,8 @@ class SignUp extends Component {
 
   _register() {
 
+    this.setState({error: false});
+
     const body = JSON.stringify({
         "userName" : this.state.username,
         "name": this.state.name,
@@ -144,9 +146,12 @@ class SignUp extends Component {
       } 
 
     })
+    .catch(response => this.setState({error: true}));
   }
 
   render() {
+
+    const errorCard = this.state.error ? <ServerError /> : null;
 
     return (
       <InputSceneWrapper>
@@ -196,7 +201,7 @@ class SignUp extends Component {
             <TextLink onPress={() => Actions.terms()}>termos de uso</TextLink>.
           </Terms>
         </Wrapper>
-        <ServerError />
+        {errorCard}
       </InputSceneWrapper>
     );
   }
