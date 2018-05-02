@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Keyboard } from 'react-native';
 import styled from 'styled-components';
 import { InputSceneWrapper, NavBar } from '@components/Scene';
 import { MainButton } from '@components/Button';
@@ -22,84 +23,81 @@ class SignUp extends Component {
 
   _verifyName() {
 
+    let correct = false;
+
     if(this.state.name.length >= 3) {
       this.nameInput.success();
+      correct = true;
     } else if(this.state.name.length === 0) {
-      this.nameInput.reset();
+      this.nameInput.error('Can\'t be empty');
     } else {
       this.nameInput.error('Name should have 3 or more characters');
     }
+
+    return correct;
 
   }
 
   _verifyUsername() {
     
+    let correct = false;
+
     if(this.state.username.length >= 4) {
       this.usernameInput.success();
+      correct = true;
     } else if(this.state.username.length === 0) {
-      this.usernameInput.reset();
+      this.usernameInput.error('Can\'t be empty');
     }  else {
       this.usernameInput.error('Username should have 4 or more characters');
     }
 
+    return correct;
   }
 
   _verifyMail() {
     
-    if(this.state.email.length === 0) {
-      this.emailInput.reset();
-      return null;
-    }
+    let correct = false;
 
     // A regex will be defined
     const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (regex.test(this.state.email)) {
       this.emailInput.success();
+      correct = true;
+    } else if(this.state.email.length === 0) {
+      this.emailInput.error('Can\'t be empty');
     } else {
       this.emailInput.error('Doesn\'t look like an email...');
     }
+
+    return correct;
 
   }
 
   _verifyPassword() {
 
-    if(this.state.password.length === 0) {
-      this.passwordInput.reset();
-      return null;
-    }
+    let correct = false;
 
     // A regex will be defined
-    const matchRegex = true;
-    if (matchRegex) {
+    const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    if (regex.test(this.state.password)) {
       this.passwordInput.success();
+      correct = true;
+    } else if(this.state.password.length === 0) {
+      this.passwordInput.error('Can\'t be empty');
     } else {
-      this.passwordInput.error('Password error');
+      this.passwordInput.error('Password should contain at least 8 characters, 1 letter and 1 number');
     }
+
+    return correct;
 
   };
 
   _submit() {
 
-    // Just to mitigate a bug, will be changed
-    this._verifyPassword();
+    // Dismiss keyboard
+    Keyboard.dismiss();
 
-    if(this.state.name.length === 0) {
-      this.nameInput.error('Can\'t be empty');
-    }
-
-    if(this.state.username.length === 0) {
-      this.usernameInput.error('Can\'t be empty');
-    }
-
-    if(this.state.email.length === 0) {
-      this.emailInput.error('Can\'t be empty');
-    }
-
-    if(this.state.password.length === 0) {
-      this.passwordInput.error('Can\'t be empty');
-    }
-
-    const status = this.nameInput.getStatus() && this.usernameInput.getStatus() && this.emailInput.getStatus() && this.passwordInput.getStatus();
+    const status = this._verifyName() && this._verifyUsername() && this._verifyMail() && this._verifyPassword();
 
     if(status) {
       this._register();
@@ -162,7 +160,7 @@ class SignUp extends Component {
             onChangeText={value => this.setState({name: value})}
             autoCapitalize="words"
             maxLength={25}
-            onEndEditing={() => this._verifyName()}
+            onBlur={() => this._verifyName()}
             innerRef = {ref => this.nameInput = ref}
           />
           <TextInput
@@ -171,7 +169,7 @@ class SignUp extends Component {
             onChangeText= {value => this.setState({username: value.replace(/[^a-z0-9._]/g, '') })}
             autoCapitalize="none"
             maxLength={25}
-            onEndEditing={() => this._verifyUsername()}
+            onBlur={() => this._verifyUsername()}
             innerRef = {ref => this.usernameInput = ref}
           />
           <TextInput
@@ -181,15 +179,16 @@ class SignUp extends Component {
             keyboardType="email-address"
             autoCapitalize="none"
             maxLength={30}
-            onEndEditing={() => this._verifyMail()}
+            onBlur={() => this._verifyMail()}
             innerRef = {ref => this.emailInput = ref}
           />
           <TextInput
             placeholder="Password"
             onChangeText={value => this.setState({password: value })}
             password={true}
+            autoCapitalize="none"
             maxLength={30}
-            onEndEditing={() => this._verifyPassword()}
+            onBlur={() => this._verifyPassword()}
             innerRef = {ref => this.passwordInput = ref}
           />
           <ButtonView>
