@@ -66,7 +66,13 @@ export const request = (url, body = '') => {
     body: body,
   }
 
-  return fetch(url, requestInfo).then(response => response.json());
+  const promise = new Promise((resolve, eject) => {
+    fetch(url, requestInfo)
+    .then(response => resolve(response.json()))
+    .catch(response => reject(response.json()));
+  })
+
+  return promise;
 }
 
 export default getTimeFromDate;
