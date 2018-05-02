@@ -49,7 +49,7 @@ export default class Input extends Component {
   }
 
   success() {
-    this.setState({status: true});
+    this.setState({status: true, errorMsg: ''});
   }
 
   render() {
