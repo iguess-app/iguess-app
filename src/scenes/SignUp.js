@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import { Keyboard } from 'react-native';
+import { Keyboard, Text } from 'react-native';
 import styled from 'styled-components';
 import { InputSceneWrapper, NavBar } from '@components/Scene';
 import { MainButton } from '@components/Button';
 import ServerError from '@components/ServerError';
 import Input from '@components/Input';
 import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
+import { getToken } from '@redux/authentication/reducer';
+import { login } from '@redux/authentication/actions';
 import { WIDTH_REL, HEIGHT_REL, SIGN_UP_TERMS_COLOR } from '@theme';
 import { get, post } from '../helpers';
 
@@ -119,7 +122,8 @@ class SignUp extends Component {
     const status = this._verifyName() && this._verifyUsername() && this._verifyMail() && this._verifyPassword();
 
     if(status) {
-      this._register();
+      // this._register();
+      this.props.dispatch(login('TOKEN'));
     }
   }
 
@@ -208,6 +212,7 @@ class SignUp extends Component {
             Eu concordo com os{' '}
             <TextLink onPress={() => Actions.terms()}>termos de uso</TextLink>.
           </Terms>
+          <Text>Token: {this.props.authenticationToken}</Text>
         </Wrapper>
         {errorCard}
       </InputSceneWrapper>
@@ -240,4 +245,10 @@ const TextLink = Terms.extend`
   text-decoration-line: underline;
 `;
 
-export default SignUp;
+function mapStateToProps(state) {
+  return {
+    authenticationToken: getToken(state),
+  };
+}
+
+export default connect(mapStateToProps)(SignUp);
