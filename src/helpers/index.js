@@ -49,10 +49,8 @@ export const setStatusBarStyle = style => {
   }
 };
 
-export const request = (url, method = 'GET', body = '') => {
-  
-  const requestInfo = {
-    method: method,
+const requestInfo = (method = 'GET', body = '') => {
+  return({method: method,
     headers: new Headers({
       'Content-type': 'application/json',
       'request_id': 'postmanRequest',
@@ -64,10 +62,27 @@ export const request = (url, method = 'GET', body = '') => {
       'phone_fabricator': 'Motorola',
     }),
     body: body,
-  }
+
+  })
+}
+
+export const post = (url, body) => {
+  
+  let info = requestInfo('POST', body);
 
   const promise = new Promise((resolve, eject) => {
-    fetch(url, requestInfo)
+    fetch(url, info)
+    .then(response => resolve(response.json()))
+    .catch(response => reject(response.json()));
+  })
+
+  return promise;
+}
+
+export const get = (url) => {
+
+  const promise = new Promise((resolve, eject) => {
+    fetch(url, requestInfo())
     .then(response => resolve(response.json()))
     .catch(response => reject(response.json()));
   })

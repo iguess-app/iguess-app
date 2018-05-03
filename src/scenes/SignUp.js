@@ -7,7 +7,7 @@ import ServerError from '@components/ServerError';
 import Input from '@components/Input';
 import { Actions } from 'react-native-router-flux';
 import { WIDTH_REL, HEIGHT_REL, SIGN_UP_TERMS_COLOR } from '@theme';
-import { request } from '../helpers';
+import { get, post } from '../helpers';
 
 var errors = Object.freeze({
   usernameAlreadyUsed: 20003,
@@ -42,7 +42,7 @@ class SignUp extends Component {
   _verifyUsername() {
     
     let correct = false;
-    const avaiable = () => request(`https://iguess-666666.appspot.com/availability/userName?userName=${this.state.username}`, 'GET')
+    const available = () => get(`https://iguess-666666.appspot.com/availability/userName?userName=${this.state.username}`)
     .then(response => {
       if(response.available === false){
         this.usernameInput.error(response.alertMessage);
@@ -53,8 +53,7 @@ class SignUp extends Component {
       this.usernameInput.success();
       correct = true;
 
-      avaiable();
-
+      available();
     } else if(this.state.username.length === 0) {
       this.usernameInput.error('Can\'t be empty');
     }  else {
@@ -68,7 +67,7 @@ class SignUp extends Component {
     
     let correct = false;
 
-    const avaiable = () => request(`https://iguess-666666.appspot.com/availability/email?email=${this.state.email}`, 'GET')
+    const available = () => get(`https://iguess-666666.appspot.com/availability/email?email=${this.state.email}`)
     .then(response => {
       console.log(response)
       if(response.available === false){
@@ -81,10 +80,8 @@ class SignUp extends Component {
     if (regex.test(this.state.email)) {
       this.emailInput.success();
       correct = true;
-      
-      avaiable();
-    } else if(!avaiable) {
-      this.emailInput.error('E-mail already in use');
+
+      available();
     } else if(this.state.email.length === 0) {
       this.emailInput.error('Can\'t be empty');
     } else {
@@ -137,7 +134,7 @@ class SignUp extends Component {
         "email" : this.state.email,
       });
 
-    request('https://iguess-666666.appspot.com/login/signUp', 'POST', body)
+    post('https://iguess-666666.appspot.com/login/signUp', body)
     .then(response => {
 
       console.log(response);
