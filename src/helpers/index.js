@@ -49,10 +49,10 @@ export const setStatusBarStyle = style => {
   }
 };
 
-export const request = (url, body = '') => {
+export const request = (url, method = 'GET', body = '') => {
   
   const requestInfo = {
-    method: 'POST',
+    method: method,
     headers: new Headers({
       'Content-type': 'application/json',
       'request_id': 'postmanRequest',
