@@ -4,12 +4,32 @@ import { NavBar } from '@components/Scene';
 import { MainButton } from '@components/Button';
 import Input from '@components/Input';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { login } from '@redux/authentication/actions';
 import { Actions } from 'react-native-router-flux';
+import { post } from '@helpers';
 import { INPUT_BORDER_COLOR, WIDTH_REL, HEIGHT_REL } from '@theme';
 
-class SignUp extends Component {
+class SignIn extends Component {
   constructor(props) {
     super(props);
+  }
+
+  _login() {
+    const body = JSON.stringify({
+      "login": "luhalves",
+      "password": "luhalves"
+    });
+
+    post('https://iguess-666666.appspot.com/login/signIn', body)
+    .then(response => {
+      // log in user
+      this.props.dispatch(login(response.token));
+
+      // redirect to core scene
+      Actions.core();
+    });
+
   }
 
   render() {
@@ -26,7 +46,7 @@ class SignUp extends Component {
             onChangeText={text => this.setState({ text })}
           />
           <ButtonView>
-            <MainButton text="Sign in" onPress={() => Actions.core()} />
+            <MainButton text="Sign in" onPress={() => this._login()} />
           </ButtonView>
         </Wrapper>
       </InputSceneWrapper>
@@ -48,4 +68,4 @@ const ButtonView = styled.View`
   align-self: center;
 `;
 
-export default SignUp;
+export default connect()(SignIn);
