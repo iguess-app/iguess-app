@@ -1,4 +1,5 @@
 import { StatusBar } from 'react-native';
+import { store } from '../index';
 
 // Will be deleted
 // The data should be retrieved from the API
@@ -54,6 +55,7 @@ const requestInfo = (method = 'GET', body = '') => {
     headers: new Headers({
       'Content-type': 'application/json',
       'request_id': 'postmanRequest',
+      'token': store.getState().authentication.token,
       'hardware_fingerprint': 'postmanRequest',
       'platform': 'Android',
       'os_version': '7.0.1',
@@ -67,27 +69,27 @@ const requestInfo = (method = 'GET', body = '') => {
 }
 
 export const post = (url, body) => {
-  
   let info = requestInfo('POST', body);
+  return request(url, info);
+}
+
+export const get = (url) => {
+  return request(url, requestInfo());
+}
+
+export const apiDelete = (url) => {
+  let info = requestInfo('DELETE');
+  return request(url, info);
+}
+
+
+const request = (url, info) => {
 
   const promise = new Promise((resolve, reject) => {
     fetch(url, info)
     .then(response => resolve(response.json()))
     .catch(response => reject());
-  })
+  });
 
   return promise;
 }
-
-export const get = (url) => {
-
-  const promise = new Promise((resolve, reject) => {
-    fetch(url, requestInfo())
-    .then(response => resolve(response.json()))
-    .catch(response => reject());
-  })
-
-  return promise;
-}
-
-export default getTimeFromDate;
