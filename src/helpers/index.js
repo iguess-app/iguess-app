@@ -70,10 +70,10 @@ export const post = (url, body) => {
   
   let info = requestInfo('POST', body);
 
-  const promise = new Promise((resolve, eject) => {
+  const promise = new Promise((resolve, reject) => {
     fetch(url, info)
     .then(response => resolve(response.json()))
-    .catch(response => reject(response.json()));
+    .catch(response => reject());
   })
 
   return promise;
@@ -81,10 +81,10 @@ export const post = (url, body) => {
 
 export const get = (url) => {
 
-  const promise = new Promise((resolve, eject) => {
+  const promise = new Promise((resolve, reject) => {
     fetch(url, requestInfo())
     .then(response => resolve(response.json()))
-    .catch(response => reject(response.json()));
+    .catch(response => reject());
   })
 
   return promise;
