@@ -24,8 +24,7 @@ class ServerError extends Component {
         <ErrorView opacity={this.state.opacity}>
           <Icon />
           <ErrorText>
-            Houve algum problema no servidor. 
-            Tente novamente mais tarde.
+            { this.props.children || 'Houve algum problema no servidor. Tente novamente mais tarde.'}
           </ErrorText>
         </ErrorView>
         </KeyboardAvoiding>
@@ -62,7 +61,6 @@ const Icon = styled.Image.attrs({
 
 const ErrorText = styled.Text`
   width: ${272*WIDTH_REL};
-  height: ${40*HEIGHT_REL};
   font-size: 16;
   color: white;
 `
