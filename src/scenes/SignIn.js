@@ -3,6 +3,7 @@ import { InputSceneWrapper } from '@components/Scene';
 import { NavBar } from '@components/Scene';
 import { MainButton } from '@components/Button';
 import Input from '@components/Input';
+import ServerError from '@components/ServerError';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { login } from '@redux/authentication/actions';
@@ -13,10 +14,12 @@ import { INPUT_BORDER_COLOR, WIDTH_REL, HEIGHT_REL } from '@theme';
 class SignIn extends Component {
   constructor(props) {
     super(props);
-    this.state = {login: '', password: ''};
+    this.state = {login: '', password: '', error: false};
   }
 
   _login() {
+    this.setState({error: false});
+
     const body = JSON.stringify({
       "login": this.state.login,
       "password": this.state.password
@@ -29,11 +32,15 @@ class SignIn extends Component {
 
       // redirect to core scene
       Actions.core();
-    });
+    })
+    .catch(response => this.setState({error: true}));
 
   }
 
   render() {
+
+    const errorCard = this.state.error ? <ServerError /> : null;
+
     return (
       <InputSceneWrapper>
         <NavBar title="Sign in" />
@@ -58,6 +65,7 @@ class SignIn extends Component {
             <MainButton text="Sign in" onPress={() => this._login()} />
           </ButtonView>
         </Wrapper>
+        {errorCard}
       </InputSceneWrapper>
     );
   }
