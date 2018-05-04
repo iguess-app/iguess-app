@@ -14,7 +14,7 @@ import { INPUT_BORDER_COLOR, WIDTH_REL, HEIGHT_REL } from '@theme';
 class SignIn extends Component {
   constructor(props) {
     super(props);
-    this.state = {login: '', password: '', error: false};
+    this.state = {login: '', password: '', error: false, errorMsg: null};
   }
 
   _login() {
@@ -25,21 +25,28 @@ class SignIn extends Component {
       "password": this.state.password
     });
 
-    post('https://iguess-666666.appspot.com/login/signIn', body)
+    post('https://iguess-666666.adppspot.com/login/signIn', body)
     .then(response => {
-      // log in user
-      this.props.dispatch(login(response.token));
 
-      // redirect to core scene
-      Actions.core();
+      if(response.statusCode === 401) {
+        if(response.errorCode === 20005) {
+          this.setState({error: true, errorMsg: response.message})
+        }
+      } else {
+        // log in user
+        this.props.dispatch(login(response.token));
+
+        // redirect to core scene
+        Actions.core();
+      }
     })
-    .catch(response => this.setState({error: true}));
+    .catch(response => this.setState({error: true, errorMsg: null}));
 
   }
 
   render() {
 
-    const errorCard = this.state.error ? <ServerError /> : null;
+    const errorCard = this.state.error ? <ServerError>{this.state.errorMsg}</ServerError> : null;
 
     return (
       <InputSceneWrapper>
