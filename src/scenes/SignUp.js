@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Keyboard, Text } from 'react-native';
+import { Keyboard } from 'react-native';
 import styled from 'styled-components';
 import { InputSceneWrapper, NavBar } from '@components/Scene';
 import { MainButton } from '@components/Button';
@@ -159,7 +159,7 @@ class SignUp extends Component {
       } 
 
     })
-    .catch(response => this.setState({error: true}));
+    .catch(() => this.setState({error: true}));
   }
 
   render() {
@@ -213,7 +213,6 @@ class SignUp extends Component {
             Eu concordo com os{' '}
             <TextLink onPress={() => Actions.terms()}>termos de uso</TextLink>.
           </Terms>
-          <Text>Token: {this.props.authenticationToken}</Text>
         </Wrapper>
         {errorCard}
       </InputSceneWrapper>
