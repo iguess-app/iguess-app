@@ -3,7 +3,7 @@ import * as types from './actionTypes';
 
 // Token empty means that user is logged out
 const initialState = Immutable({
-  token: 'initial',
+  token: '',
 });
 
 export default function reduce(state = initialState, action) {

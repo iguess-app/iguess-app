@@ -36,7 +36,7 @@ const BackgroundContainer = styled.View`
   flex: 1;
 `;
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return {
     activeSwiperScreen: state.flags.activeSwiperScreen,
     authenticationToken: state.authentication.token,

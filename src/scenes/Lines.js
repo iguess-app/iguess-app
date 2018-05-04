@@ -112,7 +112,7 @@ const Chevron = styled.Image.attrs({
   margin-top: 4;
 `;
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return {
     games: gamesSelectors.getGames(state),
   };
