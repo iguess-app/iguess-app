@@ -7,7 +7,6 @@ import ServerError from '@components/ServerError';
 import Input from '@components/Input';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import { getToken } from '@redux/authentication/reducer';
 import { login } from '@redux/authentication/actions';
 import { WIDTH_REL, HEIGHT_REL, SIGN_UP_TERMS_COLOR } from '@theme';
 import { get, post } from '../helpers';
@@ -122,8 +121,7 @@ class SignUp extends Component {
     const status = this._verifyName() && this._verifyUsername() && this._verifyMail() && this._verifyPassword();
 
     if(status) {
-      // this._register();
-      this.props.dispatch(login('TOKEN'));
+      this._register();
     }
   }
 
@@ -141,10 +139,13 @@ class SignUp extends Component {
     post('https://iguess-666666.appspot.com/login/signUp', body)
     .then(response => {
 
-      console.log(response);
+      if(typeof response.token !== undefined) {
+        // log in created user
+        this.props.dispatch(login(response.token));
 
-      if(response.token !== undefined) {
+        // redirect to core scene
         Actions.core();
+
       } else if(response.statusCode === 406){
         if(response.errorCode === errors.usernameAlreadyUsed) {
           this.usernameInput.error(response.message);
@@ -245,10 +246,4 @@ const TextLink = Terms.extend`
   text-decoration-line: underline;
 `;
 
-function mapStateToProps(state) {
-  return {
-    authenticationToken: getToken(state),
-  };
-}
-
-export default connect(mapStateToProps)(SignUp);
+export default connect()(SignUp);

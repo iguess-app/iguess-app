@@ -9,6 +9,8 @@ import styled from 'styled-components';
 
 class Core extends Component<void, void, void> {
   render() {
+    console.log('Auth token:', this.props.authenticationToken);
+
     const { dispatch, activeSwiperScreen } = this.props;
 
     setStatusBarStyle(activeSwiperScreen == 0 ? 'black' : 'white');
@@ -37,6 +39,7 @@ const BackgroundContainer = styled.View`
 function mapStateToProps(state) {
   return {
     activeSwiperScreen: state.flags.activeSwiperScreen,
+    authenticationToken: state.authentication.token,
   };
 }
 
