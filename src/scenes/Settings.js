@@ -3,6 +3,7 @@ import { TouchableOpacity, Alert } from 'react-native';
 import styled from 'styled-components';
 import { SceneWrapper } from '@components/Scene';
 import { Actions } from 'react-native-router-flux';
+import { apiDelete } from '@helpers';
 import { connect } from 'react-redux';
 import { logout } from '@redux/authentication/actions';
 import { conversation, closeSettings, blog, store, exit } from '@assets/images';
@@ -12,6 +13,7 @@ class Settings extends Component {
 
   _logout = () => {
     const confirm = () => {
+      apiDelete('https://iguess-666666.appspot.com/login/logout').then(response => console.log(response));
       this.props.dispatch(logout());
       Actions.home();
     }
