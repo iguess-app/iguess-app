@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Lines from '@scenes/Lines';
 import Settings from '@scenes/Settings';
-import { setStatusBarStyle } from '../helpers';
+import { setStatusBarStyle } from '@helpers';
 import Swiper from 'react-native-swiper';
 import { connect } from 'react-redux';
 import { swipe } from '@redux/flags/actions';

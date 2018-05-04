@@ -9,7 +9,7 @@ import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { login } from '@redux/authentication/actions';
 import { WIDTH_REL, HEIGHT_REL, SIGN_UP_TERMS_COLOR } from '@theme';
-import { get, post } from '../helpers';
+import { get, post } from '@helpers';
 
 var errors = Object.freeze({
   usernameAlreadyUsed: 20003,

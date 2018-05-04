@@ -3,7 +3,7 @@ import { SceneWrapper } from '@components/Scene';
 import { MainButton, TransparentButton } from '@components/Button';
 import { HOME_BACKGROUND } from '@theme';
 import styled from 'styled-components';
-import { setStatusBarStyle } from '../helpers';
+import { setStatusBarStyle } from '@helpers';
 import { HOME_TEXT_COLOR, PRIMARY_BUTTON_TEXT_COLOR } from '@theme';
 import { TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';

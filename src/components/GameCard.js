@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Team from '@components/Team';
 import Guess from '@components/Guess';
 import { arsenal, liverpool, vs } from '@assets/images';
-import { getTimeFromDate, compareDateWithToday } from '../helpers/index';
+import { getTimeFromDate, compareDateWithToday } from '@helpers/index';
 import {
   CARD_BACKGROUND_COLOR,
   CARD_BORDER_COLOR,

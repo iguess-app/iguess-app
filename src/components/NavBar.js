@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Actions } from 'react-native-router-flux';
 import { chevronLeft } from '@assets/images';
-import { setStatusBarStyle } from '../helpers';
+import { setStatusBarStyle } from '@helpers';
 import { HEADER_TEXT_COLOR, DEFAULT_BACKGROUND } from '@theme';
 
 const NavBar = props => {
