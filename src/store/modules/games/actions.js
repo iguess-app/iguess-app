@@ -14,7 +14,6 @@ export function fetchGames() {
 export function makeGuess(key) {
   return (dispatch, getState) => {
     const game = getState().games.gamesByKey.find(game => game.key === key);
-    console.log(game.AwayGuess);
     dispatch({ type: types.MAKE_GUESS });
   };
 }
