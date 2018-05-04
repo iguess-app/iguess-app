@@ -1,36 +1,57 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { TouchableOpacity, Alert } from 'react-native';
 import styled from 'styled-components';
 import { SceneWrapper } from '@components/Scene';
 import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
+import { logout } from '@redux/authentication/actions';
 import { conversation, closeSettings, blog, store, exit } from '@assets/images';
 import { SETTINGS_TEXT_COLOR, SETTINGS_BORDER_COLOR, WIDTH_REL, HEIGHT_REL } from '@theme';
 
-const Settings = props => {
-  const { swipe } = props;
+class Settings extends Component {
 
-  return (
-    <SceneWrapper>
-      <Close onPress={swipe} />
-      <Title>SETTINGS</Title>
-      <TouchableRow
-        icon={conversation}
-        text="Support"
-        onPress={() => Actions.support()}
-      />
-      <TouchableRow
-        icon={blog}
-        text="Terms and Conditions"
-        onPress={() => Actions.terms()}
-      />
-      <TouchableRow
-        icon={store}
-        text="About us"
-        onPress={() => Actions.about()}
-      />
-      <Logout />
-    </SceneWrapper>
-  );
+  _logout = () => {
+    const confirm = () => {
+      this.props.dispatch(logout());
+      Actions.home();
+    }
+  
+    Alert.alert(
+      'LOG OUT',
+      'Are you sure you want to log out?',
+      [{ text: 'YES', 
+      onPress: () => confirm()},
+      { text: 'Cancel' }],
+      { cancelable: false },
+    );
+  };
+
+  render() {
+    const { swipe } = this.props;
+
+    return (
+      <SceneWrapper>
+        <Close onPress={swipe} />
+        <Title>SETTINGS</Title>
+        <TouchableRow
+          icon={conversation}
+          text="Support"
+          onPress={() => Actions.support()}
+        />
+        <TouchableRow
+          icon={blog}
+          text="Terms and Conditions"
+          onPress={() => Actions.terms()}
+        />
+        <TouchableRow
+          icon={store}
+          text="About us"
+          onPress={() => Actions.about()}
+        />
+        <Logout onPress={() => this._logout()}/>
+      </SceneWrapper>
+    );
+  }
 };
 
 const TouchableRow = props => {
@@ -44,18 +65,11 @@ const TouchableRow = props => {
   );
 };
 
-const _logoutAlert = () => {
-  Alert.alert(
-    'LOG OUT',
-    'Are you sure you want to log out?',
-    [{ text: 'YES', onPress: () => Actions.home()}, { text: 'Cancel' }],
-    { cancelable: false },
-  );
-};
+const Logout = (props) => {
+  const { onPress } = props;
 
-const Logout = () => {
   return (
-    <LogoutTouchable onPress={() => _logoutAlert()}>
+    <LogoutTouchable onPress={() => onPress()}>
       <Icon source={exit} />
       <CustomText>Log out</CustomText>
     </LogoutTouchable>
@@ -120,4 +134,4 @@ const LogoutTouchable = styled.TouchableOpacity`
   margin-top: ${216*HEIGHT_REL};
 `;
 
-export default Settings;
+export default connect()(Settings);
