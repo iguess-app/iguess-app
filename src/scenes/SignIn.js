@@ -13,12 +13,13 @@ import { INPUT_BORDER_COLOR, WIDTH_REL, HEIGHT_REL } from '@theme';
 class SignIn extends Component {
   constructor(props) {
     super(props);
+    this.state = {login: '', password: ''};
   }
 
   _login() {
     const body = JSON.stringify({
-      "login": "luhalves",
-      "password": "luhalves"
+      "login": this.state.login,
+      "password": this.state.password
     });
 
     post('https://iguess-666666.appspot.com/login/signIn', body)
@@ -38,12 +39,20 @@ class SignIn extends Component {
         <NavBar title="Sign in" />
         <Wrapper>
           <TextInput
-            placeholder="Username or e-mail"
-            onChangeText={text => this.setState({ text })}
+            placeholder="@username or e-mail"
+            value = {this.state.login}
+            onChangeText= {value => this.setState({login: value.replace(/[^a-z0-9._]/g, '') })}
+            autoCapitalize="none"
+            maxLength={25}
+            innerRef = {ref => this.loginInput = ref}
           />
           <TextInput
-            placeholder="My password"
-            onChangeText={text => this.setState({ text })}
+            placeholder="Password"
+            onChangeText={value => this.setState({password: value })}
+            password={true}
+            autoCapitalize="none"
+            maxLength={30}
+            innerRef = {ref => this.passwordInput = ref}
           />
           <ButtonView>
             <MainButton text="Sign in" onPress={() => this._login()} />
