@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { TouchableOpacity, Alert } from 'react-native';
 import styled from 'styled-components';
 import { SceneWrapper } from '@components/Scene';
+import ServerError from '@components/ServerError';
 import { Actions } from 'react-native-router-flux';
 import { apiDelete } from '@helpers';
 import { connect } from 'react-redux';
@@ -10,12 +11,25 @@ import { conversation, closeSettings, blog, store, exit } from '@assets/images';
 import { SETTINGS_TEXT_COLOR, SETTINGS_BORDER_COLOR, WIDTH_REL, HEIGHT_REL } from '@theme';
 
 class Settings extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {error: false};
+  }
 
   _logout = () => {
+
+    this.setState({error: false});
+
     const confirm = () => {
-      apiDelete('https://iguess-666666.appspot.com/login/logout').then(response => console.log(response));
-      this.props.dispatch(logout());
-      Actions.home();
+      apiDelete('https://iguess-666666.appspot.com/login/logout')
+      .then(response => {
+        if (response.logout) {
+          this.props.dispatch(logout());
+          Actions.home();
+        } else {
+          this.setState({error: true});
+        }
+      }).catch(this.setState({error: true}))
     }
   
     Alert.alert(
@@ -30,6 +44,8 @@ class Settings extends Component {
 
   render() {
     const { swipe } = this.props;
+
+    const errorCard = this.state.error ? <ServerError /> : null;
 
     return (
       <SceneWrapper>
@@ -51,6 +67,7 @@ class Settings extends Component {
           onPress={() => Actions.about()}
         />
         <Logout onPress={() => this._logout()}/>
+        {errorCard}
       </SceneWrapper>
     );
   }
