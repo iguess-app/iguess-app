@@ -28,8 +28,10 @@ const Routes = () => {
   );
 };
 
+export const store = createStore();
+
 export default () => (
-  <Provider store={createStore()}>
+  <Provider store={store}>
     <Routes />
   </Provider>
 );
