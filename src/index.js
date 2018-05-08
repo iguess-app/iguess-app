@@ -11,6 +11,7 @@ import {
 } from '@scenes';
 import { Provider } from 'react-redux';
 import createStore from '@store/create';
+import { loginWithStoredToken } from '@helpers';
 
 const Routes = () => {
   return (
@@ -29,6 +30,7 @@ const Routes = () => {
 };
 
 export const store = createStore();
+loginWithStoredToken();
 
 export default () => (
   <Provider store={store}>

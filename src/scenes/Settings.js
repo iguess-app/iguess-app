@@ -23,13 +23,14 @@ class Settings extends Component {
     const confirm = () => {
       apiDelete('https://iguess-666666.appspot.com/login/logout')
       .then(response => {
-        if (response.logout) {
+        console.log(response);
+        if(response.logout === true) {
           this.props.dispatch(logout());
           Actions.home();
-        } else {
+        } else if(response.logout === false) {
           this.setState({error: true});
         }
-      }).catch(this.setState({error: true}))
+      }).catch(() => this.setState({error: true}));
     }
   
     Alert.alert(
