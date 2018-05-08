@@ -10,6 +10,8 @@ export default function reduce(state = initialState, action) {
   switch(action.type) {
     case types.LOGIN:
       return state.set('token', action.token);
+    case types.STORED_LOGIN:
+      return state.set('token', action.token);
     case types.LOGOUT:
       return state.set('token', action.token);
     default:
