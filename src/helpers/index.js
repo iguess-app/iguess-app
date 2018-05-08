@@ -51,12 +51,12 @@ export const setStatusBarStyle = style => {
   }
 };
 
-const requestInfo = (method = 'GET', body = '') => {
+const requestInfo = (method = 'GET', body = '', token = store.getState().authentication.token) => {
   return({method: method,
     headers: new Headers({
       'Content-type': 'application/json',
       'request_id': 'postmanRequest',
-      'token': store.getState().authentication.token,
+      'token': token,
       'hardware_fingerprint': 'postmanRequest',
       'platform': 'Android',
       'os_version': '7.0.1',
@@ -100,13 +100,14 @@ export async function loginWithStoredToken() {
     const value = await AsyncStorage.getItem('@iGuess:authentication');
     if (value !== null){
       // Token exists
-      this.get('https://iguess-666666.appspot.com/token/verify').then((response) => {
-        if(response.valid === true) {
-          store.dispatch(storedLogin(value));
-        }
-      }).catch(
-        // API Error
-      )
+      let info = requestInfo(undefined, undefined, value);
+      const response = await request('https://iguess-666666.appspot.com/token/verify', info);
+
+      console.log('RESPONSE::', response);
+
+      if (response.valid === true) {
+        store.dispatch(storedLogin(value));
+      }
     } 
   } catch (error) {
     // Error retrieving data
