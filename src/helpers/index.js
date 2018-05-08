@@ -1,4 +1,5 @@
-import { StatusBar } from 'react-native';
+import { StatusBar, AsyncStorage } from 'react-native';
+import { storedLogin } from '@redux/authentication/actions'
 import { store } from '../index';
 
 // Will be deleted
@@ -92,4 +93,30 @@ const request = (url, info) => {
   });
 
   return promise;
+}
+
+export async function loginWithStoredToken() {
+  try {
+    const value = await AsyncStorage.getItem('@iGuess:authentication');
+    if (value !== null){
+      // Token exists
+      this.get('https://iguess-666666.appspot.com/token/verify').then((response) => {
+        if(response.valid === true) {
+          store.dispatch(storedLogin(value));
+        }
+      }).catch(
+        // API Error
+      )
+    } 
+  } catch (error) {
+    // Error retrieving data
+  }
+}
+
+export async function setStoredToken(token) {
+  try {
+    await AsyncStorage.setItem('@iGuess:authentication', token);
+  } catch (error) {
+    console.log('Error saving data', error);
+  }
 }
