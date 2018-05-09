@@ -25,6 +25,8 @@ export const INPUT_FLOAT_LABEL_COLOR = '#4D6980'; // darker-gray
 export const INPUT_SUCCESS_COLOR = '#19D88C'; // green
 export const INPUT_ERROR_COLOR = '#EE4042'; // red
 export const SIGN_UP_TERMS_COLOR = '#4D6980'; // darker-gray
+export const LOADING_TITLE_COLOR = SETTINGS_TEXT_COLOR; //purple
+export const LOADING_SUBTITLE_COLOR = GUESS_DEFAULT_TEXT_COLOR; // darker-gray
 
 // BACKGROUND
 

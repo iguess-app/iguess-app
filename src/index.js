@@ -9,6 +9,7 @@ import {
   About,
   SignUp,
   SignIn,
+  Loading
 } from '@scenes';
 import { Provider } from 'react-redux';
 import createStore from '@store/create';
@@ -47,7 +48,7 @@ export default class Kernel extends Component {
         </Provider>
       );
     } else {
-      return <Text>Loading</Text>
+      return <Loading />
     }
 
   }
