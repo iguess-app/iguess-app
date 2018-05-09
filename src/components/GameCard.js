@@ -34,7 +34,6 @@ class GameCard extends Component {
         />
         <GameInfo scheduled={mockedISODate} />
         <Guess
-          value={AwayGuess}
           onPress={operation =>
             console.log(operation, 'on', AwayGuess, '–– Card id:', id)
           }
@@ -87,7 +86,6 @@ const ScheduledTime = styled.Text`
 `;
 
 const MidWrapper = styled.View`
-  margin-horizontal: ${10*WIDTH_REL};
   flex-direction: column;
   justify-content: center;
   align-items: center;

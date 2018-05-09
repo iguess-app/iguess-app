@@ -14,7 +14,7 @@ const Team = props => {
 };
 
 const TeamView = styled.View`
-  margin-horizontal: ${16*WIDTH_REL};
+  margin-horizontal: ${8*WIDTH_REL};
   margin-top: ${40*HEIGHT_REL};
   align-items: center;
 `;
