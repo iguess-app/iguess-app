@@ -93,7 +93,4 @@ build/
 local.properties
 *.iml
 
-android/
-ios/
-
 .vscode/
