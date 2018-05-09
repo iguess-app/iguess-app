@@ -28,6 +28,7 @@ export const SIGN_UP_TERMS_COLOR = '#4D6980'; // darker-gray
 export const LOADING_TITLE_COLOR = SETTINGS_TEXT_COLOR; //purple
 export const LOADING_SUBTITLE_COLOR = GUESS_DEFAULT_TEXT_COLOR; // darker-gray
 export const CARD_LIST_TITLE_COLOR = '#5435D4'; // purple
+export const CARD_LIST_SUBTITLE_COLOR = '#4D6980'; // light gray
 
 // BACKGROUND
 

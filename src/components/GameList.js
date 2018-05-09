@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import * as gamesActions from '@redux/games/actions';
 import * as gamesSelectors from '@redux/games/reducer';
-import { SCENE_BACKGROUND_COLOR, CARD_LIST_TITLE_COLOR, WIDTH_REL, HEIGHT_REL } from '@theme';
+import { SCENE_BACKGROUND_COLOR, CARD_LIST_TITLE_COLOR, CARD_LIST_SUBTITLE_COLOR, WIDTH_REL, HEIGHT_REL } from '@theme';
 
 class GameList extends Component {
 
@@ -19,7 +19,7 @@ class GameList extends Component {
   render() {
     return (
       <Wrapper>
-        <Title first>HOJE</Title>
+        <Header title="hoje" subtitle="Segunda - Feira, 20 de Abril" first />
         <List
           data={this.props.games}
           renderItem={({ item }) => (
@@ -30,7 +30,7 @@ class GameList extends Component {
             />
           )}
         />
-        <Title>AMANHÃ</Title>
+        <Header title="Amanhã" subtitle="Terça - Feira, 21 de Abril" />
         <List
           data={this.props.games}
           renderItem={({ item }) => (
@@ -62,12 +62,35 @@ const mapStateToProps = state => {
   };
 }
 
-const Title = styled.Text`
+const Header = (props) => {
+  const {title, subtitle, first} = props;
+
+  return (
+    <HeaderWrapper first={first}>
+      <Title>{title.toUpperCase()}</Title>
+      <SubTitle>{subtitle.toUpperCase()}</SubTitle>
+    </HeaderWrapper>
+  )
+
+}
+
+const HeaderWrapper = styled.View`
   margin-top: ${props => props.first ? 20*HEIGHT_REL : 0};
+  margin-bottom: ${32*HEIGHT_REL};
+  margin-left: ${32*WIDTH_REL};
+`
+
+const Title = styled.Text`
   font-size: 28;
   font-weight: bold;
   color: ${CARD_LIST_TITLE_COLOR};
-  margin-left: ${32*WIDTH_REL};
+`
+
+const SubTitle = styled.Text`
+  font-size: 12;
+  font-weight: bold;
+  margin-top: ${7*HEIGHT_REL};
+  color: ${CARD_LIST_SUBTITLE_COLOR};
 `
 
 export default connect(mapStateToProps)(GameList);
