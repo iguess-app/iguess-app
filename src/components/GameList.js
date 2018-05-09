@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
 import GameCard from './GameCard';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import * as gamesActions from '@redux/games/actions';
+import * as gamesSelectors from '@redux/games/reducer';
 import { SCENE_BACKGROUND_COLOR } from '../theme';
 
-export default class GameList extends Component {
+class GameList extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.dispatch(gamesActions.fetchGames());
+  }
+
   render() {
     return (
       <Wrapper>
@@ -31,3 +43,11 @@ export const Wrapper = styled.ScrollView`
   flex: 1;
   background-color: ${SCENE_BACKGROUND_COLOR};
 `;
+
+const mapStateToProps = state => {
+  return {
+    games: gamesSelectors.getGames(state),
+  };
+}
+
+export default connect(mapStateToProps)(GameList);

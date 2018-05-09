@@ -4,9 +4,6 @@ import GameList from '@components/GameList';
 import SelectedLine from '@components/SelectedLine';
 import { SceneWrapper } from '@components/Scene';
 import SettingsButton from '@components/SettingsButton';
-import { connect } from 'react-redux';
-import * as gamesActions from '@redux/games/actions';
-import * as gamesSelectors from '@redux/games/reducer';
 import { chevronDown } from '@assets/images';
 import { SELECT_LINE_PRIMARY_TEXT, DEFAULT_BACKGROUND, WIDTH_REL, HEIGHT_REL } from '@theme';
 
@@ -14,11 +11,6 @@ class Lines extends Component {
   constructor(props) {
     super(props);
     this.state = { selectedOpacity: 1 };
-  }
-
-  componentDidMount() {
-    this.props.dispatch(gamesActions.fetchGames());
-    this.props.dispatch(gamesActions.makeGuess('Italy'));
   }
 
   _changeSelectedLineOpacity(event) {
@@ -112,10 +104,4 @@ const Chevron = styled.Image.attrs({
   margin-top: 4;
 `;
 
-const mapStateToProps = state => {
-  return {
-    games: gamesSelectors.getGames(state),
-  };
-}
-
-export default connect(mapStateToProps)(Lines);
+export default Lines;
