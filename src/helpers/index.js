@@ -96,22 +96,29 @@ const request = (url, info) => {
 }
 
 export async function loginWithStoredToken() {
+  let loggedIn = false;
+
   try {
     const value = await AsyncStorage.getItem('@iGuess:authentication');
     if (value !== null){
-      // Token exists
+      // Token exists in device local storage
       let info = requestInfo(undefined, undefined, value);
       const response = await request('https://iguess-666666.appspot.com/token/verify', info);
 
-      console.log('RESPONSE::', response);
-
+      // If token still valid
       if (response.valid === true) {
         store.dispatch(storedLogin(value));
+        loggedIn = true;
+      } else {
+        // Reset token in local storage
+        setStoredToken('');
       }
     } 
   } catch (error) {
     // Error retrieving data
   }
+
+  return loggedIn;
 }
 
 export async function setStoredToken(token) {
