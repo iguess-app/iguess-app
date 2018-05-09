@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { View, TouchableOpacity } from 'react-native';
 import GameCard from './GameCard';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import * as gamesActions from '@redux/games/actions';
 import * as gamesSelectors from '@redux/games/reducer';
 import { SCENE_BACKGROUND_COLOR, CARD_LIST_TITLE_COLOR, CARD_LIST_SUBTITLE_COLOR, WIDTH_REL, HEIGHT_REL } from '@theme';
+import { clockwise } from '@assets/images';
 
 class GameList extends Component {
 
@@ -67,17 +69,23 @@ const Header = (props) => {
 
   return (
     <HeaderWrapper first={first}>
-      <Title>{title.toUpperCase()}</Title>
-      <SubTitle>{subtitle.toUpperCase()}</SubTitle>
+      <View>
+        <Title>{title.toUpperCase()}</Title>
+        <SubTitle>{subtitle.toUpperCase()}</SubTitle>
+      </View>
+      <Refresh />
     </HeaderWrapper>
   )
 
 }
 
 const HeaderWrapper = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   margin-top: ${props => props.first ? 20*HEIGHT_REL : 0};
   margin-bottom: ${32*HEIGHT_REL};
-  margin-left: ${32*WIDTH_REL};
+  margin-horizontal: ${32*WIDTH_REL};
 `
 
 const Title = styled.Text`
@@ -91,6 +99,20 @@ const SubTitle = styled.Text`
   font-weight: bold;
   margin-top: ${7*HEIGHT_REL};
   color: ${CARD_LIST_SUBTITLE_COLOR};
+`
+
+const Refresh = ({onPress}) => (
+  <TouchableOpacity onPress={() => onPress}>
+    <Clockwise />
+  </TouchableOpacity>
+)
+
+const Clockwise = styled.Image.attrs({
+  source: clockwise,
+})`
+  width: ${24*WIDTH_REL};
+  height: ${20.6*HEIGHT_REL};
+  resize-mode: contain;
 `
 
 export default connect(mapStateToProps)(GameList);

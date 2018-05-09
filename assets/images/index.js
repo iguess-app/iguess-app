@@ -21,3 +21,4 @@ export vs from './vs.png';
 export instagramIcom from './instagramIcon.png';
 export info from './info.png';
 export thumbsDown from './thumbsDown.png';
+export clockwise from './clockwise.png';
