@@ -45,6 +45,7 @@ const GameInfo = props => {
 
   return (
     <MidWrapper>
+      <Stadium>Old Trafford</Stadium>
       <ScheduledTime>{scheduled.toUpperCase()}</ScheduledTime>
       <VS />
     </MidWrapper>
@@ -65,6 +66,12 @@ const VS = styled.Image.attrs({
   resize-mode: contain;
   margin-top: 8;
 `;
+
+const Stadium = styled.Text`
+  font-size: 8;
+  opacity: 0.6;
+  margin-bottom: 2;
+`
 
 const ScheduledTime = styled.Text`
   font-size: 10;
