@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Team from '@components/Team';
 import Guess from '@components/Guess';
 import { arsenal, liverpool, vs } from '@assets/images';
-import { getTimeFromDate, compareDateWithToday } from '@helpers/index';
 import {
   CARD_BACKGROUND_COLOR,
   CARD_BORDER_COLOR,
@@ -12,8 +11,6 @@ import {
   WIDTH_REL,
 } from '@theme';
 
-
-let mockedISODate = new Date().toISOString();
 
 export const gameStatus = {
   ALLOW_PREDICT: 'ALLOW_PREDICT',
@@ -35,7 +32,7 @@ class GameCard extends Component {
       <Card style={cardStyle}>
         <HomeTeam name="Arsenal" image={arsenal} />
         <Guess value={HomeGuess} />
-        <GameInfo scheduled={mockedISODate} />
+        <GameInfo scheduled="16h 45m" />
         <Guess value={AwayGuess}/>
         <AwayTeam name="Liverpool" image={liverpool} />
       </Card>
@@ -46,19 +43,9 @@ class GameCard extends Component {
 const GameInfo = props => {
   const { scheduled } = props;
 
-  let time = getTimeFromDate(scheduled);
-
-  let comparison = compareDateWithToday(scheduled);
-
-  if (comparison == 1) {
-    time = 'TOMORROW';
-  } else if (comparison == -1) {
-    time = 'YESTERDAY';
-  }
-
   return (
     <MidWrapper>
-      <ScheduledTime>{time}</ScheduledTime>
+      <ScheduledTime>{scheduled.toUpperCase()}</ScheduledTime>
       <VS />
     </MidWrapper>
   );
