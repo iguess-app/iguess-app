@@ -20,14 +20,14 @@ class ServerError extends Component {
 
     if(this.state.opacity > 0){
       return (
-        <KeyboardAvoiding behavior="position" enabled>
+        <Wrapper behavior="position" enabled>
         <ErrorView opacity={this.state.opacity}>
           <Icon />
           <ErrorText>
             { this.props.children || 'Houve algum problema no servidor. Tente novamente mais tarde.'}
           </ErrorText>
         </ErrorView>
-        </KeyboardAvoiding>
+        </Wrapper>
       );
     } else {
       clearInterval(this.timer)
@@ -36,7 +36,7 @@ class ServerError extends Component {
   }
 }
 
-const KeyboardAvoiding = styled.KeyboardAvoidingView`
+const Wrapper = styled.KeyboardAvoidingView`
   width: 100%;
   position: absolute;
   margin-top: ${587*HEIGHT_REL};
