@@ -5,6 +5,7 @@ import { plus, plusDisabled, minus, minusDisabled } from '@assets/images';
 import { GUESS_GUESSED_TEXT_COLOR, GUESS_DEFAULT_TEXT_COLOR, HEIGHT_REL, WIDTH_REL } from '@theme';
 
 const DEFAULT_VALUE = '- - - -';
+const MAX_GUESS = 99;
 
 class Guess extends Component {
   constructor(props) {
@@ -20,9 +21,8 @@ class Guess extends Component {
       if(propValue < 0) {
         // Do nothing
         // Value remains -1
-      } else if (propValue > 99) {
-        // Max guess is 99
-        value = 99;
+      } else if (propValue > MAX_GUESS) {
+        value = MAX_GUESS;
       } else {
         value = propValue;
       }
@@ -37,27 +37,27 @@ class Guess extends Component {
 
     const value = this.state.value;
 
-    let plus = value < 99 ? <EnabledButton type="plus" /> : <DisabledButton type="plus" />;
-    let minus = value > 0 ? <EnabledButton type="minus" /> : <DisabledButton type="minus" />;
+    let plus = value < MAX_GUESS ? <EnabledButton type="plus" value={value}  onPress={(value) => this.setState({value})}/> : <DisabledButton type="plus" />;
+    let minus = value >= 0 ? <EnabledButton type="minus" value={value}  onPress={(value) => this.setState({value})}/> : <DisabledButton type="minus" />;
 
     return (
       <Wrapper>
         {plus}
-        <Value>{value > 0 ? value : DEFAULT_VALUE}</Value>
+        <Value>{value >= 0 ? value : DEFAULT_VALUE}</Value>
         {minus}
       </Wrapper>
     );
   }
 }
 
-const EnabledButton = ({ type, onPress }) => {
+const EnabledButton = ({ type, value, onPress }) => {
 
   const isPlus = type === 'plus';
   const source = isPlus ? plus : minus;
-  const operation = isPlus ? 'ADD 1' : 'SUBTRACT 1';
+  const result = isPlus ? value + 1 : value - 1;
 
   return (
-    <TouchableOpacity onPress={() => console.log(operation)}>
+    <TouchableOpacity onPress={() => onPress(result)}>
       <ButtonImage source={source} />
     </TouchableOpacity>
   );
