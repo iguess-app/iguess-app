@@ -33,18 +33,27 @@ class Guess extends Component {
     return value;
   }
 
+  _selectPlus(value) {
+    return value < MAX_GUESS ? 
+      <EnabledButton type="plus" value={value}  onPress={(result) => this.setState({value: result})}/> 
+      : <DisabledButton type="plus" />;
+  }
+
+  _selectMinus(value) {
+    return value >= 0 ? 
+    <EnabledButton type="minus" value={value}  onPress={(result) => this.setState({value: result})}/> 
+    : <DisabledButton type="minus" />;
+  }
+
   render() {
 
     const value = this.state.value;
-
-    let plus = value < MAX_GUESS ? <EnabledButton type="plus" value={value}  onPress={(value) => this.setState({value})}/> : <DisabledButton type="plus" />;
-    let minus = value >= 0 ? <EnabledButton type="minus" value={value}  onPress={(value) => this.setState({value})}/> : <DisabledButton type="minus" />;
-
+    
     return (
       <Wrapper>
-        {plus}
+        {this._selectPlus(value)}
         <Value>{value >= 0 ? value : DEFAULT_VALUE}</Value>
-        {minus}
+        {this._selectMinus(value)}
       </Wrapper>
     );
   }
