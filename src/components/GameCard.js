@@ -26,18 +26,9 @@ class GameCard extends Component {
     return (
       <Card style={cardStyle}>
         <HomeTeam name="Arsenal" image={arsenal} />
-        <Guess
-          value={HomeGuess}
-          onPress={operation =>
-            console.log(operation, 'on', HomeGuess, '–– Card id:', id)
-          }
-        />
+        <Guess value={HomeGuess} />
         <GameInfo scheduled={mockedISODate} />
-        <Guess
-          onPress={operation =>
-            console.log(operation, 'on', AwayGuess, '–– Card id:', id)
-          }
-        />
+        <Guess value={AwayGuess}/>
         <AwayTeam name="Liverpool" image={liverpool} />
       </Card>
     );

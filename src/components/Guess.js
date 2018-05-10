@@ -1,43 +1,63 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { TouchableOpacity } from 'react-native';
 import { plus, plusDisabled, minus, minusDisabled } from '@assets/images';
 import { GUESS_GUESSED_TEXT_COLOR, GUESS_DEFAULT_TEXT_COLOR, HEIGHT_REL, WIDTH_REL } from '@theme';
 
-const defaultValue = '- - - -';
+const DEFAULT_VALUE = '- - - -';
 
-const Guess = props => {
-  let { value, onPress } = props;
+class Guess extends Component {
+  constructor(props) {
+    super(props);
 
-  let plus = <EnabledButton type="plus" onPress={onPress} />;
-  let minus = <EnabledButton type="minus" onPress={onPress} />;
-
-  if (value < 0 || value === undefined || value === '') {
-    value = defaultValue;
-    minus = <DisabledButton type="minus" />;
-  } else if (parseInt(value) >= 99) {
-    value = '99';
-    plus = <DisabledButton type="plus" />;
+    this.state = ({value: this._treatValue(props.value)});
   }
 
-  return (
-    <Wrapper>
-      {plus}
-      <Value>{value}</Value>
-      {minus}
-    </Wrapper>
-  );
-};
+  _treatValue(propValue) {
+    let value = -1;
 
-const EnabledButton = props => {
-  const { type, onPress } = props;
+    if(propValue !== undefined) {
+      if(propValue < 0) {
+        // Do nothing
+        // Value remains -1
+      } else if (propValue > 99) {
+        // Max guess is 99
+        value = 99;
+      } else {
+        value = propValue;
+      }
+    } else {
+      // Do nothing
+    }
+
+    return value;
+  }
+
+  render() {
+
+    const value = this.state.value;
+
+    let plus = value < 99 ? <EnabledButton type="plus" /> : <DisabledButton type="plus" />;
+    let minus = value > 0 ? <EnabledButton type="minus" /> : <DisabledButton type="minus" />;
+
+    return (
+      <Wrapper>
+        {plus}
+        <Value>{value > 0 ? value : DEFAULT_VALUE}</Value>
+        {minus}
+      </Wrapper>
+    );
+  }
+}
+
+const EnabledButton = ({ type, onPress }) => {
 
   const isPlus = type === 'plus';
   const source = isPlus ? plus : minus;
   const operation = isPlus ? 'ADD 1' : 'SUBTRACT 1';
 
   return (
-    <TouchableOpacity onPress={() => onPress(operation)}>
+    <TouchableOpacity onPress={() => console.log(operation)}>
       <ButtonImage source={source} />
     </TouchableOpacity>
   );
@@ -66,7 +86,7 @@ const ButtonImage = styled.Image`
 `;
 
 const Value = styled.Text.attrs({
-  guessed: props => (props.children !== defaultValue ? true : false),
+  guessed: props => (props.children !== DEFAULT_VALUE ? true : false),
 })`
   font-size: ${props => (props.guessed ? 20 : 8)};
   margin-vertical: ${props => (props.guessed ? 8 : 15)};
