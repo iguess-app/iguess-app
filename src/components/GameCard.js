@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { View } from 'react-native';
 import styled from 'styled-components';
 import Team from '@components/Team';
 import Guess from '@components/Guess';
 import { arsenal, liverpool, vs } from '@assets/images';
-import {
+import { 
   CARD_BACKGROUND_COLOR,
   CARD_BORDER_COLOR,
   SCHEDULED_TIME_COLOR,
@@ -19,9 +20,11 @@ export const gameStatus = {
   FINISHED: 'FINISHED',
 }
 
+// By default GameCard allow predictions
 class GameCard extends Component {
   constructor(props) {
     super(props);
+
     this.state = {status: props.status ? props.status : gameStatus.ALLOW_PREDICT};
   }
 
@@ -32,7 +35,7 @@ class GameCard extends Component {
       <Card style={cardStyle}>
         <HomeTeam name="Arsenal" image={arsenal} />
         <Guess value={HomeGuess} />
-        <GameInfo scheduled="16h 45m" />
+        <GameInfo scheduled="16h 45m" status={this.state.status}/>
         <Guess value={AwayGuess}/>
         <AwayTeam name="Liverpool" image={liverpool} />
       </Card>
@@ -41,16 +44,24 @@ class GameCard extends Component {
 }
 
 const GameInfo = props => {
-  const { scheduled } = props;
+  const { scheduled, status } = props;
+
+  const AllowPredict = status === gameStatus.ALLOW_PREDICT ? <StadiumAndTime scheduled={scheduled}/>: null;
 
   return (
     <MidWrapper>
-      <Stadium>Old Trafford</Stadium>
-      <ScheduledTime>{scheduled.toUpperCase()}</ScheduledTime>
+      {AllowPredict}
       <VS />
     </MidWrapper>
   );
 };
+
+const StadiumAndTime = ({scheduled}) => (
+  <View>
+    <Stadium>Old Trafford</Stadium>
+    <ScheduledTime>{scheduled.toUpperCase()}</ScheduledTime>
+  </View>
+);
 
 const HomeTeam = styled(Team)`
   align-self: flex-start;
