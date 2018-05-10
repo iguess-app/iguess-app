@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, TouchableOpacity } from 'react-native';
-import GameCard from './GameCard';
+import GameCard, { gameStatus } from './GameCard';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import * as gamesActions from '@redux/games/actions';

@@ -15,9 +15,17 @@ import {
 
 let mockedISODate = new Date().toISOString();
 
+export const gameStatus = {
+  ALLOW_PREDICT: 'ALLOW_PREDICT',
+  NOT_ALLOW_PREDICT: 'NOT_ALLOW_PREDICT',
+  LIVE: 'LIVE',
+  FINISHED: 'FINISHED',
+}
+
 class GameCard extends Component {
   constructor(props) {
     super(props);
+    this.state = {status: props.status ? props.status : gameStatus.ALLOW_PREDICT};
   }
 
   render() {
