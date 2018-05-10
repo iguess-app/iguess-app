@@ -21,7 +21,7 @@ class GameList extends Component {
   render() {
     return (
       <Wrapper>
-        <Header title="hoje" subtitle="Segunda - Feira, 20 de Abril" first />
+        <Header title="hoje" subtitle="Segunda - Feira, 20 de Abril" first refresh/>
         <List
           data={this.props.games}
           renderItem={({ item }) => (
@@ -65,7 +65,7 @@ const mapStateToProps = state => {
 }
 
 const Header = (props) => {
-  const {title, subtitle, first} = props;
+  const {title, subtitle, first, refresh} = props;
 
   return (
     <HeaderWrapper first={first}>
@@ -73,7 +73,7 @@ const Header = (props) => {
         <Title>{title.toUpperCase()}</Title>
         <SubTitle>{subtitle.toUpperCase()}</SubTitle>
       </View>
-      <Refresh />
+      {refresh ? <Refresh /> : null}
     </HeaderWrapper>
   )
 
