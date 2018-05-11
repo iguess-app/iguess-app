@@ -31,37 +31,39 @@ class GameCard extends Component {
   render() {
     const { HomeGuess, AwayGuess, id } = this.props;
 
+    const mid = this.state.status === gameStatus.ALLOW_PREDICT ? 
+      <AllowPredict HomeGuess={HomeGuess} AwayGuess={AwayGuess} scheduled="16h 45m"/> : null;
+
     return (
       <Card style={cardStyle}>
         <HomeTeam name="Arsenal" image={arsenal} />
-        <Guess value={HomeGuess} />
-        <GameInfo scheduled="16h 45m" status={this.state.status}/>
-        <Guess value={AwayGuess}/>
+        {mid}
         <AwayTeam name="Liverpool" image={liverpool} />
       </Card>
     );
   }
 }
 
-const GameInfo = props => {
-  const { scheduled, status } = props;
-
-  const AllowPredict = status === gameStatus.ALLOW_PREDICT ? <StadiumAndTime scheduled={scheduled}/>: null;
+const AllowPredict = props => {
+  const { scheduled, status, HomeGuess, AwayGuess } = props;
 
   return (
-    <MidWrapper>
-      {AllowPredict}
-      <VS />
-    </MidWrapper>
+    <AllowPredictWrapper>
+      <Guess value={HomeGuess} />
+        <MidWrapper>
+          <Stadium>Old Trafford</Stadium>
+          <ScheduledTime>{scheduled.toUpperCase()}</ScheduledTime>
+          <VS />
+        </MidWrapper>
+      <Guess value={AwayGuess}/>
+    </AllowPredictWrapper>
   );
+
 };
 
-const StadiumAndTime = ({scheduled}) => (
-  <View>
-    <Stadium>Old Trafford</Stadium>
-    <ScheduledTime>{scheduled.toUpperCase()}</ScheduledTime>
-  </View>
-);
+const AllowPredictWrapper = styled.View`
+  flex-direction: row;
+`
 
 const HomeTeam = styled(Team)`
   align-self: flex-start;
