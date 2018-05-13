@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Team from '@components/Team';
 import Guess from '@components/Guess';
+import Result from '@components/Result';
 import { arsenal, liverpool, vs } from '@assets/images';
 import {
   CARD_BACKGROUND_COLOR,
@@ -29,7 +30,7 @@ class GameCard extends Component {
   }
 
   _defineMid = () => {
-    const { homeGuess, awayGuess } = this.props;
+    const { homeGuess, awayGuess, homeScore, awayScore, time } = this.props;
 
     switch (this.state.status) {
       case gameStatus.ALLOW_PREDICT:
@@ -46,6 +47,16 @@ class GameCard extends Component {
             homeGuess={homeGuess}
             awayGuess={awayGuess}
             scheduled="16h 45m"
+          />
+        );
+      case gameStatus.LIVE:
+        return (
+          <Live
+            homeGuess={homeGuess}
+            awayGuess={awayGuess}
+            homeScore={homeScore}
+            awayScore={awayScore}
+            time={time}
           />
         );
       default:
@@ -89,7 +100,6 @@ const NotAllowPredict = props => {
     <AllowPredictWrapper>
       <Guess value={homeGuess} blocked />
       <MidWrapper>
-        <Stadium>Old Trafford</Stadium>
         <ScheduledTime>{scheduled.toUpperCase()}</ScheduledTime>
         <VS />
       </MidWrapper>
@@ -97,6 +107,44 @@ const NotAllowPredict = props => {
     </AllowPredictWrapper>
   );
 };
+
+const Live = props => {
+  const { homeGuess, awayGuess, homeScore, awayScore, time } = props;
+
+  return (
+    <AllowPredictWrapper>
+      <Result guess={homeGuess} score={homeScore} />
+      <MidWrapper>
+        <TimeBox>{time}</TimeBox>
+        <VS />
+      </MidWrapper>
+      <Result guess={awayGuess} score={awayScore} />
+    </AllowPredictWrapper>
+  );
+};
+
+const TimeBox = ({ children }) => {
+  return (
+    <Box>
+      <Time>{children}</Time>
+    </Box>
+  );
+};
+
+// Temporary
+const Box = styled.View`
+  width: 26;
+  height: 26;
+  border-width: 2;
+  border-color: #694cfe;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Time = styled.Text`
+  font-size: 12;
+  color: #4d6980;
+`;
 
 const AllowPredictWrapper = styled.View`
   flex-direction: row;

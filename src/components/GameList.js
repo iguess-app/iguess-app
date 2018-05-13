@@ -39,7 +39,10 @@ class GameList extends Component {
               id={item.key}
               homeGuess={item.homeGuess}
               awayGuess={item.awayGuess}
-              status={gameStatus.NOT_ALLOW_PREDICT}
+              status={gameStatus.LIVE}
+              homeScore={0}
+              awayScore={0}
+              time={"45'"}
             />
           )}
         />
