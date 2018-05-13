@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
 import styled from 'styled-components';
 import Team from '@components/Team';
 import Guess from '@components/Guess';
@@ -30,22 +29,22 @@ class GameCard extends Component {
   }
 
   _defineMid = () => {
-    const { HomeGuess, AwayGuess } = this.props;
+    const { homeGuess, awayGuess } = this.props;
 
     switch (this.state.status) {
       case gameStatus.ALLOW_PREDICT:
         return (
           <AllowPredict
-            HomeGuess={HomeGuess}
-            AwayGuess={AwayGuess}
+            homeGuess={homeGuess}
+            awayGuess={awayGuess}
             scheduled="16h 45m"
           />
         );
       case gameStatus.NOT_ALLOW_PREDICT:
         return (
           <NotAllowPredict
-            HomeGuess={HomeGuess}
-            AwayGuess={AwayGuess}
+            homeGuess={homeGuess}
+            awayGuess={awayGuess}
             scheduled="16h 45m"
           />
         );
@@ -68,33 +67,33 @@ class GameCard extends Component {
 }
 
 const AllowPredict = props => {
-  const { scheduled, HomeGuess, AwayGuess } = props;
+  const { scheduled, homeGuess, awayGuess } = props;
 
   return (
     <AllowPredictWrapper>
-      <Guess value={HomeGuess} />
+      <Guess value={homeGuess} />
       <MidWrapper>
         <Stadium>Old Trafford</Stadium>
         <ScheduledTime>{scheduled.toUpperCase()}</ScheduledTime>
         <VS />
       </MidWrapper>
-      <Guess value={AwayGuess} />
+      <Guess value={awayGuess} />
     </AllowPredictWrapper>
   );
 };
 
 const NotAllowPredict = props => {
-  const { scheduled, HomeGuess, AwayGuess } = props;
+  const { scheduled, homeGuess, awayGuess } = props;
 
   return (
     <AllowPredictWrapper>
-      <Guess value={HomeGuess} blocked />
+      <Guess value={homeGuess} blocked />
       <MidWrapper>
         <Stadium>Old Trafford</Stadium>
         <ScheduledTime>{scheduled.toUpperCase()}</ScheduledTime>
         <VS />
       </MidWrapper>
-      <Guess value={AwayGuess} blocked />
+      <Guess value={awayGuess} blocked />
     </AllowPredictWrapper>
   );
 };

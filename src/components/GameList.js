@@ -37,8 +37,8 @@ class GameList extends Component {
           renderItem={({ item }) => (
             <GameCard
               id={item.key}
-              HomeGuess={item.HomeGuess}
-              AwayGuess={item.AwayGuess}
+              homeGuess={item.homeGuess}
+              awayGuess={item.awayGuess}
               status={gameStatus.NOT_ALLOW_PREDICT}
             />
           )}
@@ -49,8 +49,8 @@ class GameList extends Component {
           renderItem={({ item }) => (
             <GameCard
               id={item.key}
-              HomeGuess={item.HomeGuess}
-              AwayGuess={item.AwayGuess}
+              homeGuess={item.homeGuess}
+              awayGuess={item.awayGuess}
             />
           )}
         />
