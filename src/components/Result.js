@@ -16,11 +16,12 @@ class Result extends Component {
   }
 
   render() {
-    const guessValue = this.props.guess ? (
-      <Guessed>{this.props.guess}</Guessed>
-    ) : (
-      <NotGuessed>{DEFAULT_GUESS_VALUE}</NotGuessed>
-    );
+    const guessValue =
+      this.props.guess !== undefined ? (
+        <Guessed>{this.props.guess}</Guessed>
+      ) : (
+        <NotGuessed>{DEFAULT_GUESS_VALUE}</NotGuessed>
+      );
 
     return (
       <Wrapper>
@@ -47,7 +48,7 @@ const Score = styled.Text`
 `;
 
 const Guessed = styled.Text`
-  font-size: 40;
+  font-size: 32;
   font-weight: 500;
   color: ${GUESS_GUESSED_TEXT_COLOR};
   opacity: 0.62;
@@ -59,7 +60,7 @@ const NotGuessed = styled.Text`
   text-align: center;
   font-weight: 800;
   opacity: 0.62;
-  margin-vertical: 16;
+  margin-vertical: ${10 * HEIGHT_REL};
   color: ${GUESS_DEFAULT_TEXT_COLOR};
 `;
 
