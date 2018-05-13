@@ -51,21 +51,25 @@ export const setStatusBarStyle = style => {
   }
 };
 
-const requestInfo = (method = 'GET', body = '', token = store.getState().authentication.token) => {
-  return({method: method,
-    headers: new Headers({
-      'Content-type': 'application/json',
-      'request_id': 'postmanRequest',
-      'token': token,
-      'hardware_fingerprint': 'postmanRequest',
-      'platform': 'Android',
-      'os_version': '7.0.1',
-      'app_version': '1.0.0',
-      'phone_model': 'XT-1792',
-      'phone_fabricator': 'Motorola',
-    }),
-    body: body,
+const _buildDefaultHeaders = token => {
+  return new Headers({
+    'Content-type': 'application/json',
+    token,
+    request_id: 'postmanRequest',
+    hardware_fingerprint: 'postmanRequest',
+    platform: 'Android',
+    os_version: '7.0.1',
+    app_version: '1.0.0',
+    phone_model: 'XT-1792',
+    phone_fabricator: 'Motorola',
+  });
+};
 
+const requestInfo = (method = 'GET', body = '', token = store.getState().authentication.token) => {
+  return({
+    method,
+    body,
+    headers: _buildDefaultHeaders(token),
   })
 }
 
