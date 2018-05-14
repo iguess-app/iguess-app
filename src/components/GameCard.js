@@ -30,7 +30,7 @@ class GameCard extends Component {
     };
   }
 
-  _defineMid = () => {
+  _defineCore = () => {
     const { homeGuess, awayGuess, homeScore, awayScore, time } = this.props;
 
     switch (this.state.status) {
@@ -75,14 +75,14 @@ class GameCard extends Component {
   };
 
   render() {
-    const mid = this._defineMid();
+    const core = this._defineCore();
 
     return (
       <Wrapper>
         {this.state.status === gameStatus.FINISHED ? <ScoreBoard /> : null}
         <Card style={cardStyle}>
           <HomeTeam name="Arsenal" image={arsenal} />
-          {mid}
+          {core}
           <AwayTeam name="Liverpool" image={liverpool} />
         </Card>
       </Wrapper>
@@ -94,7 +94,7 @@ const AllowPredict = props => {
   const { scheduled, homeGuess, awayGuess } = props;
 
   return (
-    <AllowPredictWrapper>
+    <CardCore>
       <Guess value={homeGuess} />
       <MidWrapper>
         <Stadium>Old Trafford</Stadium>
@@ -102,7 +102,7 @@ const AllowPredict = props => {
         <VS />
       </MidWrapper>
       <Guess value={awayGuess} />
-    </AllowPredictWrapper>
+    </CardCore>
   );
 };
 
@@ -110,14 +110,14 @@ const NotAllowPredict = props => {
   const { scheduled, homeGuess, awayGuess } = props;
 
   return (
-    <AllowPredictWrapper>
+    <CardCore>
       <Guess value={homeGuess} blocked />
       <MidWrapper>
         <ScheduledTime>{scheduled.toUpperCase()}</ScheduledTime>
         <VS />
       </MidWrapper>
       <Guess value={awayGuess} blocked />
-    </AllowPredictWrapper>
+    </CardCore>
   );
 };
 
@@ -125,14 +125,14 @@ const Live = props => {
   const { homeGuess, awayGuess, homeScore, awayScore, time } = props;
 
   return (
-    <AllowPredictWrapper>
+    <CardCore>
       <Result guess={homeGuess} score={homeScore} />
       <MidWrapper>
         <TimeBox>{time}</TimeBox>
         <VS />
       </MidWrapper>
       <Result guess={awayGuess} score={awayScore} />
-    </AllowPredictWrapper>
+    </CardCore>
   );
 };
 
@@ -140,14 +140,14 @@ const Finished = props => {
   const { homeGuess, awayGuess, homeScore, awayScore } = props;
 
   return (
-    <AllowPredictWrapper>
+    <CardCore>
       <Result guess={homeGuess} score={homeScore} />
       <MidWrapper>
         <Whistle />
         <VS />
       </MidWrapper>
       <Result guess={awayGuess} score={awayScore} />
-    </AllowPredictWrapper>
+    </CardCore>
   );
 };
 
@@ -196,7 +196,7 @@ const Time = styled.Text`
   color: #4d6980;
 `;
 
-const AllowPredictWrapper = styled.View`
+const CardCore = styled.View`
   flex-direction: row;
 `;
 
