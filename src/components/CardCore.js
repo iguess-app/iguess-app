@@ -104,8 +104,8 @@ const ProgressContainer = styled.View`
   left: 0;
   width: 26;
   height: 26;
-  alignitems: center;
-  justifycontent: center;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Time = styled.Text`
