@@ -1,9 +1,17 @@
 import React from 'react';
+import { View } from 'react-native';
 import styled from 'styled-components';
 import Guess from '@components/Guess';
 import Result from '@components/Result';
+import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { vs, whistle } from '@assets/images';
-import { SCHEDULED_TIME_COLOR, HEIGHT_REL, WIDTH_REL } from '@theme';
+import {
+  SCHEDULED_TIME_COLOR,
+  PROGRESS_TINT_COLOR,
+  PROGRESS_BACKGROUND_COLOR,
+  HEIGHT_REL,
+  WIDTH_REL,
+} from '@theme';
 
 export const AllowPredict = props => {
   const { scheduled, homeGuess, awayGuess } = props;
@@ -43,7 +51,7 @@ export const Live = props => {
     <CardCore>
       <Result guess={homeGuess} score={homeScore} />
       <MidWrapper>
-        <TimeBox>{time}</TimeBox>
+        <TimeCircular>{time}</TimeCircular>
         <VS />
       </MidWrapper>
       <Result guess={awayGuess} score={awayScore} />
@@ -74,23 +82,30 @@ const Whistle = styled.Image.attrs({
   resize-mode: contain;
 `;
 
-const TimeBox = ({ children }) => {
-  return (
-    <Box>
+const TimeCircular = ({ children }) => (
+  <View>
+    <AnimatedCircularProgress
+      size={26}
+      width={2}
+      fill={50}
+      rotation={0}
+      tintColor={PROGRESS_TINT_COLOR}
+      backgroundColor={PROGRESS_BACKGROUND_COLOR}
+    />
+    <ProgressContainer>
       <Time>{children}</Time>
-    </Box>
-  );
-};
+    </ProgressContainer>
+  </View>
+);
 
-// Temporary
-const Box = styled.View`
-  width: 30;
-  height: 30;
-  border-width: 2;
-  border-color: #694cfe;
-  border-radius: 15;
-  justify-content: center;
-  align-items: center;
+const ProgressContainer = styled.View`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 26;
+  height: 26;
+  alignitems: center;
+  justifycontent: center;
 `;
 
 const Time = styled.Text`

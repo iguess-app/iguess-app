@@ -32,6 +32,8 @@ export const CARD_LIST_SUBTITLE_COLOR = '#4D6980'; // light gray
 export const CARD_SCORE_COLOR = SETTINGS_TEXT_COLOR; // purple
 export const SCORE_BOARD_COLOR = CARD_SCORE_COLOR; // purple
 export const SCORE_FONT_COLOR = '#FFF';
+export const PROGRESS_TINT_COLOR = '#694CFE'; // purple
+export const PROGRESS_BACKGROUND_COLOR = '#E1DBFF'; // gray-purple
 
 // BACKGROUND
 
