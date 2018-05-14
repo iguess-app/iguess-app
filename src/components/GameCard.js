@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import Team from '@components/Team';
 import Guess from '@components/Guess';
 import Result from '@components/Result';
-import { arsenal, liverpool, vs } from '@assets/images';
+import { arsenal, liverpool, vs, whistle } from '@assets/images';
 import {
   CARD_BACKGROUND_COLOR,
   CARD_BORDER_COLOR,
   SCHEDULED_TIME_COLOR,
+  SCORE_BOARD_COLOR,
   HEIGHT_REL,
   WIDTH_REL,
 } from '@theme';
@@ -59,6 +60,15 @@ class GameCard extends Component {
             time={time}
           />
         );
+      case gameStatus.FINISHED:
+        return (
+          <Finished
+            homeGuess={homeGuess}
+            awayGuess={awayGuess}
+            homeScore={homeScore}
+            awayScore={awayScore}
+          />
+        );
       default:
         return null;
     }
@@ -68,11 +78,14 @@ class GameCard extends Component {
     const mid = this._defineMid();
 
     return (
-      <Card style={cardStyle}>
-        <HomeTeam name="Arsenal" image={arsenal} />
-        {mid}
-        <AwayTeam name="Liverpool" image={liverpool} />
-      </Card>
+      <Wrapper>
+        {this.state.status === gameStatus.FINISHED ? <ScoreBoard /> : null}
+        <Card style={cardStyle}>
+          <HomeTeam name="Arsenal" image={arsenal} />
+          {mid}
+          <AwayTeam name="Liverpool" image={liverpool} />
+        </Card>
+      </Wrapper>
     );
   }
 }
@@ -123,6 +136,42 @@ const Live = props => {
   );
 };
 
+const Finished = props => {
+  const { homeGuess, awayGuess, homeScore, awayScore } = props;
+
+  return (
+    <AllowPredictWrapper>
+      <Result guess={homeGuess} score={homeScore} />
+      <MidWrapper>
+        <Whistle />
+        <VS />
+      </MidWrapper>
+      <Result guess={awayGuess} score={awayScore} />
+    </AllowPredictWrapper>
+  );
+};
+
+const Wrapper = styled.View`
+  align-items: center;
+`;
+
+const ScoreBoard = styled.View`
+  width: ${92 * WIDTH_REL};
+  height: ${26 * HEIGHT_REL};
+  border-radius: ${26 * HEIGHT_REL};
+  background-color: ${SCORE_BOARD_COLOR};
+  top: ${13 * HEIGHT_REL};
+  z-index: 1;
+`;
+
+const Whistle = styled.Image.attrs({
+  source: whistle,
+})`
+  width: 30;
+  height: 30;
+  resize-mode: contain;
+`;
+
 const TimeBox = ({ children }) => {
   return (
     <Box>
@@ -133,10 +182,11 @@ const TimeBox = ({ children }) => {
 
 // Temporary
 const Box = styled.View`
-  width: 26;
-  height: 26;
+  width: 30;
+  height: 30;
   border-width: 2;
   border-color: #694cfe;
+  border-radius: 15;
   justify-content: center;
   align-items: center;
 `;

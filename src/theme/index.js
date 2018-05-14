@@ -30,6 +30,7 @@ export const LOADING_SUBTITLE_COLOR = GUESS_DEFAULT_TEXT_COLOR; // darker-gray
 export const CARD_LIST_TITLE_COLOR = '#5435D4'; // purple
 export const CARD_LIST_SUBTITLE_COLOR = '#4D6980'; // light gray
 export const CARD_SCORE_COLOR = SETTINGS_TEXT_COLOR; // purple
+export const SCORE_BOARD_COLOR = CARD_SCORE_COLOR; // purple
 
 // BACKGROUND
 
