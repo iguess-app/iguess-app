@@ -26,12 +26,34 @@ class GameList extends Component {
   render() {
     return (
       <Wrapper>
+        <Header first title="ALLOW PREDICT" subtitle="Domingo, 19 de Abril" />
+        <List
+          data={this.props.games}
+          renderItem={({ item }) => (
+            <GameCard
+              id={item.key}
+              homeGuess={item.homeGuess}
+              awayGuess={item.awayGuess}
+            />
+          )}
+        />
         <Header
-          title="hoje"
+          title="NOT ALLOW PREDICT"
           subtitle="Segunda - Feira, 20 de Abril"
-          first
           refresh
         />
+        <List
+          data={this.props.games}
+          renderItem={({ item }) => (
+            <GameCard
+              id={item.key}
+              homeGuess={item.homeGuess}
+              awayGuess={item.awayGuess}
+              status={gameStatus.NOT_ALLOW_PREDICT}
+            />
+          )}
+        />
+        <Header title="LIVE" subtitle="Segunda - Feira, 20 de Abril" refresh />
         <List
           data={this.props.games}
           renderItem={({ item }) => (
@@ -46,7 +68,7 @@ class GameList extends Component {
             />
           )}
         />
-        <Header title="Amanhã" subtitle="Terça - Feira, 21 de Abril" />
+        <Header title="FINISHED" subtitle="Terça - Feira, 21 de Abril" />
         <List
           data={this.props.games}
           renderItem={({ item }) => (
@@ -54,6 +76,10 @@ class GameList extends Component {
               id={item.key}
               homeGuess={item.homeGuess}
               awayGuess={item.awayGuess}
+              status={gameStatus.FINISHED}
+              homeScore={0}
+              awayScore={0}
+              score={8}
             />
           )}
         />
