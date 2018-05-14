@@ -9,6 +9,7 @@ import {
   CARD_BORDER_COLOR,
   SCHEDULED_TIME_COLOR,
   SCORE_BOARD_COLOR,
+  SCORE_FONT_COLOR,
   HEIGHT_REL,
   WIDTH_REL,
 } from '@theme';
@@ -79,7 +80,9 @@ class GameCard extends Component {
 
     return (
       <Wrapper>
-        {this.state.status === gameStatus.FINISHED ? <ScoreBoard /> : null}
+        {this.state.status === gameStatus.FINISHED ? (
+          <ScoreBoard score={this.props.score} />
+        ) : null}
         <Card style={cardStyle}>
           <HomeTeam name="Arsenal" image={arsenal} />
           {core}
@@ -151,17 +154,40 @@ const Finished = props => {
   );
 };
 
+const ScoreBoard = ({ score }) => (
+  <ScoreBoardWrapper>
+    <Score>{score}</Score>
+    <PointsText>POINTS</PointsText>
+  </ScoreBoardWrapper>
+);
+
 const Wrapper = styled.View`
   align-items: center;
 `;
 
-const ScoreBoard = styled.View`
+const ScoreBoardWrapper = styled.View`
+  flex-direction: row;
+  align-items: center;
   width: ${92 * WIDTH_REL};
   height: ${26 * HEIGHT_REL};
   border-radius: ${26 * HEIGHT_REL};
   background-color: ${SCORE_BOARD_COLOR};
   top: ${13 * HEIGHT_REL};
+  padding-horizontal: ${16 * WIDTH_REL};
   z-index: 1;
+`;
+
+const Score = styled.Text`
+  font-size: ${16.8 * HEIGHT_REL};
+  font-weight: bold;
+  color: ${SCORE_FONT_COLOR};
+  margin-right: 4;
+`;
+
+const PointsText = styled.Text`
+  font-size: 12;
+  font-weight: bold;
+  color: ${SCORE_FONT_COLOR};
 `;
 
 const Whistle = styled.Image.attrs({
