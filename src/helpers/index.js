@@ -1,5 +1,5 @@
 import { StatusBar, AsyncStorage } from 'react-native';
-import { storedLogin } from '@redux/authentication/actions'
+import { storedLogin } from '@redux/authentication/actions';
 import { store } from '../index';
 
 export const setStatusBarStyle = style => {
@@ -26,49 +26,54 @@ const _buildDefaultHeaders = token => {
   });
 };
 
-const requestInfo = (method = 'GET', body = '', token = store.getState().authentication.token) => {
-  return({
+const requestInfo = (
+  method = 'GET',
+  body = '',
+  token = store.getState().authentication.token,
+) => {
+  return {
     method,
     body,
     headers: _buildDefaultHeaders(token),
-  })
-}
+  };
+};
 
 export const post = (url, body) => {
   let info = requestInfo('POST', body);
   return request(url, info);
-}
+};
 
-export const get = (url) => {
+export const get = url => {
   return request(url, requestInfo());
-}
+};
 
-export const apiDelete = (url) => {
+export const apiDelete = url => {
   let info = requestInfo('DELETE');
   return request(url, info);
-}
-
+};
 
 const request = (url, info) => {
-
   const promise = new Promise((resolve, reject) => {
     fetch(url, info)
-    .then(response => resolve(response.json()))
-    .catch(response => reject());
+      .then(response => resolve(response.json()))
+      .catch(() => reject());
   });
 
   return promise;
-}
+};
 
 export async function loginWithStoredToken() {
   let loggedIn = false;
 
   try {
     const value = await AsyncStorage.getItem('@iGuess:authentication');
-    if (value !== null){
+    if (value !== null) {
       // Token exists in device local storage
       let info = requestInfo(undefined, undefined, value);
-      const response = await request('https://iguess-666666.appspot.com/token/verify', info);
+      const response = await request(
+        'https://iguess-666666.appspot.com/token/verify',
+        info,
+      );
 
       // If token still valid
       if (response.valid === true) {
@@ -78,7 +83,7 @@ export async function loginWithStoredToken() {
         // Reset token in local storage
         setStoredToken('');
       }
-    } 
+    }
   } catch (error) {
     // Error retrieving data
   }
@@ -90,6 +95,6 @@ export async function setStoredToken(token) {
   try {
     await AsyncStorage.setItem('@iGuess:authentication', token);
   } catch (error) {
-    console.log('Error saving data', error);
+    throw new Error('Error saving stored token locally.');
   }
 }

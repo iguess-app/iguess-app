@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { KeyboardAvoidingView, View } from 'react-native';
 import styled from 'styled-components';
 import { thumbsDown } from '@assets/images';
 import { INPUT_ERROR_COLOR, HEIGHT_REL, WIDTH_REL } from '@theme';
@@ -7,30 +6,30 @@ import { INPUT_ERROR_COLOR, HEIGHT_REL, WIDTH_REL } from '@theme';
 class ServerError extends Component {
   constructor(props) {
     super(props);
-    this.state = {opacity: 1}
+    this.state = { opacity: 1 };
   }
 
   componentDidMount() {
     this.timer = setInterval(() => {
-      this.setState({opacity: this.state.opacity - 0.01})
+      this.setState({ opacity: this.state.opacity - 0.01 });
     }, 25);
   }
 
   render() {
-
-    if(this.state.opacity > 0){
+    if (this.state.opacity > 0) {
       return (
         <Wrapper behavior="position" enabled>
-        <ErrorView opacity={this.state.opacity}>
-          <Icon />
-          <ErrorText>
-            { this.props.children || 'Houve algum problema no servidor. Tente novamente mais tarde.'}
-          </ErrorText>
-        </ErrorView>
+          <ErrorView opacity={this.state.opacity}>
+            <Icon />
+            <ErrorText>
+              {this.props.children ||
+                'Houve algum problema no servidor. Tente novamente mais tarde.'}
+            </ErrorText>
+          </ErrorView>
         </Wrapper>
       );
     } else {
-      clearInterval(this.timer)
+      clearInterval(this.timer);
       return null;
     }
   }
@@ -39,30 +38,30 @@ class ServerError extends Component {
 const Wrapper = styled.KeyboardAvoidingView`
   width: 100%;
   position: absolute;
-  margin-top: ${587*HEIGHT_REL};
-`
+  margin-top: ${587 * HEIGHT_REL};
+`;
 
 const ErrorView = styled.View`
   flex-direction: row;
   width: 100%;
-  height: ${80*HEIGHT_REL};
+  height: ${80 * HEIGHT_REL};
   background-color: ${INPUT_ERROR_COLOR};
   align-items: center;
-`
+`;
 
 const Icon = styled.Image.attrs({
   source: thumbsDown,
 })`
-  width: ${24*WIDTH_REL};
-  height: ${24*HEIGHT_REL};
-  margin-left: ${32*WIDTH_REL};
-  margin-right: ${16*WIDTH_REL};
-`
+  width: ${24 * WIDTH_REL};
+  height: ${24 * HEIGHT_REL};
+  margin-left: ${32 * WIDTH_REL};
+  margin-right: ${16 * WIDTH_REL};
+`;
 
 const ErrorText = styled.Text`
-  width: ${272*WIDTH_REL};
+  width: ${272 * WIDTH_REL};
   font-size: 16;
   color: white;
-`
+`;
 
 export default ServerError;
