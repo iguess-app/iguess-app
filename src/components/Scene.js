@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TouchableWithoutFeedback, Keyboard, View} from 'react-native';
+import { TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native';
 import {
   TEXT_SECONDARY_SCENE,
   SETTINGS_TEXT_COLOR,
@@ -9,15 +9,10 @@ import {
   HEIGHT_REL,
 } from '@theme';
 
-
 export const SceneWrapper = props => {
   const { background, children } = props;
 
-  return (
-    <SceneBackground source={background}>
-      {children}
-    </SceneBackground>
-  );
+  return <SceneBackground source={background}>{children}</SceneBackground>;
 };
 
 export const InputSceneWrapper = props => {
@@ -25,11 +20,9 @@ export const InputSceneWrapper = props => {
 
   return (
     <SceneBackground source={background}>
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View>
-        {children}
-      </View>
-    </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <ScrollView>{children}</ScrollView>
+      </TouchableWithoutFeedback>
     </SceneBackground>
   );
 };
@@ -45,8 +38,8 @@ export const SceneBackground = styled.ImageBackground`
 export const Content = styled.Text`
   font-size: 14;
   color: ${TEXT_SECONDARY_SCENE};
-  margin-top: ${16*HEIGHT_REL};
-  padding-horizontal: ${32*WIDTH_REL};
+  margin-top: ${16 * HEIGHT_REL};
+  padding-horizontal: ${32 * WIDTH_REL};
 `;
 
 export const SceneDescription = styled.Text`
@@ -54,6 +47,6 @@ export const SceneDescription = styled.Text`
   font-weight: bold;
   text-align: left;
   color: ${SETTINGS_TEXT_COLOR};
-  padding-horizontal: ${32*WIDTH_REL};
-  margin-top: ${24*HEIGHT_REL};
+  padding-horizontal: ${32 * WIDTH_REL};
+  margin-top: ${24 * HEIGHT_REL};
 `;

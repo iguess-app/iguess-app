@@ -177,7 +177,10 @@ class SignUp extends Component {
     return (
       <InputSceneWrapper>
         <NavBar title="Sign up" />
-        <WrapperKeyboardAware resetScrollToCoords={{ x: 0, y: 0 }}>
+        <WrapperKeyboardAware
+          resetScrollToCoords={{ x: 0, y: 0 }}
+          enableOnAndroid
+        >
           <TextInput
             placeholder="Name"
             value={this.state.name}
@@ -237,7 +240,7 @@ class SignUp extends Component {
 }
 
 const TextInput = styled(Input)`
-  margin-top: ${38 * HEIGHT_REL};
+  margin-top: ${30 * HEIGHT_REL};
 `;
 
 const ButtonView = styled.View`
@@ -254,6 +257,7 @@ const Terms = styled.Text`
   font-size: 14;
   color: ${SIGN_UP_TERMS_COLOR};
   align-self: center;
+  margin-bottom: ${20 * HEIGHT_REL};
 `;
 
 const TextLink = Terms.extend`
