@@ -28,7 +28,7 @@ const _buildDefaultHeaders = token => {
 
 const requestInfo = (
   method = 'GET',
-  body = '',
+  body,
   token = store.getState().authentication.token,
 ) => {
   return {

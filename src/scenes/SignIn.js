@@ -18,28 +18,35 @@ class SignIn extends Component {
   }
 
   _login() {
-    this.setState({ error: false });
+    this.setState({ error: false, errorMsg: '' });
 
-    const body = JSON.stringify({
-      login: this.state.login,
-      password: this.state.password,
-    });
+    if (this.state.login && this.state.password) {
+      const body = JSON.stringify({
+        login: this.state.login,
+        password: this.state.password,
+      });
 
-    post('https://iguess-666666.appspot.com/login/signIn', body)
-      .then(response => {
-        if (response.statusCode === 401) {
-          if (response.errorCode === 20005) {
-            this.setState({ error: true, errorMsg: response.message });
+      post('https://iguess-666666.appspot.com/login/signIn', body)
+        .then(response => {
+          if (response.statusCode === 401) {
+            if (response.errorCode === 20005) {
+              this.setState({ error: true, errorMsg: response.message });
+            }
+          } else {
+            // log in user
+            this.props.dispatch(login(response.token));
+
+            // redirect to core scene
+            Actions.core();
           }
-        } else {
-          // log in user
-          this.props.dispatch(login(response.token));
-
-          // redirect to core scene
-          Actions.core();
-        }
-      })
-      .catch(() => this.setState({ error: true, errorMsg: null }));
+        })
+        .catch(() => this.setState({ error: true }));
+    } else {
+      this.setState({
+        error: true,
+        errorMsg: 'Login e senha devem ser preenchidos.',
+      });
+    }
   }
 
   render() {
