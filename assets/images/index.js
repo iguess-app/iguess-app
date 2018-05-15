@@ -22,4 +22,8 @@ export instagramIcom from './instagramIcon.png';
 export info from './info.png';
 export thumbsDown from './thumbsDown.png';
 export clockwise from './clockwise.png';
+// Require used to test image definition on Android
+// TODO: verify on Android
+export const whistle = require('./whistle.png');
 export ballGif from './ball.gif';
+

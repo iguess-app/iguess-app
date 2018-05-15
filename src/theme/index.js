@@ -29,6 +29,11 @@ export const LOADING_TITLE_COLOR = SETTINGS_TEXT_COLOR; //purple
 export const LOADING_SUBTITLE_COLOR = GUESS_DEFAULT_TEXT_COLOR; // darker-gray
 export const CARD_LIST_TITLE_COLOR = '#5435D4'; // purple
 export const CARD_LIST_SUBTITLE_COLOR = '#4D6980'; // light gray
+export const CARD_SCORE_COLOR = SETTINGS_TEXT_COLOR; // purple
+export const SCORE_BOARD_COLOR = CARD_SCORE_COLOR; // purple
+export const SCORE_FONT_COLOR = '#FFF';
+export const PROGRESS_TINT_COLOR = '#694CFE'; // purple
+export const PROGRESS_BACKGROUND_COLOR = '#E1DBFF'; // gray-purple
 
 // BACKGROUND
 
@@ -37,11 +42,8 @@ export HOME_BACKGROUND from '@assets/images/homeBackground.png';
 
 // SIZES
 
-const {
-  width,
-  height
-} = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 // Constants that relate actual dimensions to Zeplin prototype dimensions
-export const WIDTH_REL = width/375;
-export const HEIGHT_REL = height/667;
+export const WIDTH_REL = width / 375;
+export const HEIGHT_REL = height / 667;

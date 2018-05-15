@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Keyboard } from 'react-native';
+import { Keyboard, KeyboardAvoidingView } from 'react-native';
 import styled from 'styled-components';
 import { InputSceneWrapper, NavBar } from '@components/Scene';
 import { MainButton } from '@components/Button';
@@ -169,7 +169,7 @@ class SignUp extends Component {
     return (
       <InputSceneWrapper>
         <NavBar title="Sign up" />
-        <Wrapper>
+        <Wrapper behavior="position" enabled>
           <TextInput placeholder="Name" 
             value = {this.state.name}
             onChangeText={value => this.setState({name: value})}
@@ -230,7 +230,7 @@ const ButtonView = styled.View`
   align-self: center;
 `;
 
-const Wrapper = styled.View`
+const Wrapper = styled.KeyboardAvoidingView`
   margin-horizontal: ${32*WIDTH_REL};
 `;
 

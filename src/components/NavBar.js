@@ -33,6 +33,7 @@ const NavWrapper = styled.ImageBackground`
   align-items: center;
   padding-top: 20;
   height: 80;
+  z-index: 1;
 `;
 
 const BackImage = styled.Image.attrs({

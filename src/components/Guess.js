@@ -1,43 +1,89 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { TouchableOpacity } from 'react-native';
 import { plus, plusDisabled, minus, minusDisabled } from '@assets/images';
-import { GUESS_GUESSED_TEXT_COLOR, GUESS_DEFAULT_TEXT_COLOR, HEIGHT_REL, WIDTH_REL } from '@theme';
+import {
+  GUESS_GUESSED_TEXT_COLOR,
+  GUESS_DEFAULT_TEXT_COLOR,
+  HEIGHT_REL,
+  WIDTH_REL,
+} from '@theme';
 
-const defaultValue = '- - - -';
+const DEFAULT_VALUE = '- - - -';
+const MAX_GUESS = 99;
 
-const Guess = props => {
-  let { value, onPress } = props;
+class Guess extends Component {
+  constructor(props) {
+    super(props);
 
-  let plus = <EnabledButton type="plus" onPress={onPress} />;
-  let minus = <EnabledButton type="minus" onPress={onPress} />;
+    const isBlocked = props.blocked !== undefined ? props.blocked : false;
 
-  if (value < 0 || value === undefined || value === '') {
-    value = defaultValue;
-    minus = <DisabledButton type="minus" />;
-  } else if (parseInt(value) >= 99) {
-    value = '99';
-    plus = <DisabledButton type="plus" />;
+    this.state = { value: this._treatValue(props.value), blocked: isBlocked };
   }
 
-  return (
-    <Wrapper>
-      {plus}
-      <Value>{value}</Value>
-      {minus}
-    </Wrapper>
-  );
-};
+  _treatValue(propValue) {
+    let value = -1;
 
-const EnabledButton = props => {
-  const { type, onPress } = props;
+    if (propValue !== undefined) {
+      if (propValue < 0) {
+        // Do nothing
+        // Value remains -1
+      } else if (propValue > MAX_GUESS) {
+        value = MAX_GUESS;
+      } else {
+        value = propValue;
+      }
+    } else {
+      // Do nothing
+    }
 
+    return value;
+  }
+
+  _selectPlus(value) {
+    return value < MAX_GUESS && !this.state.blocked ? (
+      <EnabledButton
+        type="plus"
+        value={value}
+        onPress={result => this.setState({ value: result })}
+      />
+    ) : (
+      <DisabledButton type="plus" />
+    );
+  }
+
+  _selectMinus(value) {
+    return value >= 0 && !this.state.blocked ? (
+      <EnabledButton
+        type="minus"
+        value={value}
+        onPress={result => this.setState({ value: result })}
+      />
+    ) : (
+      <DisabledButton type="minus" />
+    );
+  }
+
+  render() {
+    const value = this.state.value;
+
+    return (
+      <Wrapper>
+        {this._selectPlus(value)}
+        <Value>{value >= 0 ? value : DEFAULT_VALUE}</Value>
+        {this._selectMinus(value)}
+      </Wrapper>
+    );
+  }
+}
+
+const EnabledButton = ({ type, value, onPress }) => {
   const isPlus = type === 'plus';
   const source = isPlus ? plus : minus;
-  const operation = isPlus ? 'ADD 1' : 'SUBTRACT 1';
+  const result = isPlus ? value + 1 : value - 1;
 
   return (
-    <TouchableOpacity onPress={() => onPress(operation)}>
+    <TouchableOpacity onPress={() => onPress(result)}>
       <ButtonImage source={source} />
     </TouchableOpacity>
   );
@@ -54,19 +100,19 @@ const DisabledButton = props => {
 const Wrapper = styled.View`
   align-self: center;
   align-items: center;
-  margin-horizontal: ${8*WIDTH_REL};
+  margin-horizontal: ${8 * WIDTH_REL};
   flex-direction: column;
 `;
 
 const ButtonImage = styled.Image`
-  width: ${24*WIDTH_REL};
-  height: ${24*HEIGHT_REL};
-  margin-horizontal: ${10*WIDTH_REL};
-  margin-vertical: ${16*HEIGHT_REL};
+  width: ${24 * WIDTH_REL};
+  height: ${24 * HEIGHT_REL};
+  margin-horizontal: ${10 * WIDTH_REL};
+  margin-vertical: ${16 * HEIGHT_REL};
 `;
 
 const Value = styled.Text.attrs({
-  guessed: props => (props.children !== defaultValue ? true : false),
+  guessed: props => (props.children !== DEFAULT_VALUE ? true : false),
 })`
   font-size: ${props => (props.guessed ? 20 : 8)};
   margin-vertical: ${props => (props.guessed ? 8 : 15)};
