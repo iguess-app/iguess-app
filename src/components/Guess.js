@@ -53,7 +53,7 @@ class Guess extends Component {
   }
 
   _selectMinus(value) {
-    return value >= 0 && !this.state.blocked ? (
+    return value > 0 && !this.state.blocked ? (
       <EnabledButton
         type="minus"
         value={value}
@@ -79,12 +79,14 @@ class Guess extends Component {
 
 const EnabledButton = ({ type, value, onPress }) => {
   const isPlus = type === 'plus';
-  const source = isPlus ? plus : minus;
+  const image = isPlus ? plus : minus;
   const result = isPlus ? value + 1 : value - 1;
 
+  const treatedResult = result < 0 ? 0 : result;
+
   return (
-    <TouchableOpacity onPress={() => onPress(result)}>
-      <ButtonImage source={source} />
+    <TouchableOpacity onPress={() => onPress(treatedResult)}>
+      <ButtonImage source={image} />
     </TouchableOpacity>
   );
 };
