@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View } from 'react-native';
 import styled from 'styled-components';
 import Guess from '@components/Guess';
 import Result from '@components/Result';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
-import { vs, whistle } from '@assets/images';
+import { vs, whistle, spinner } from '@assets/images';
 import {
   SCHEDULED_TIME_COLOR,
   PROGRESS_TINT_COLOR,
@@ -13,20 +13,49 @@ import {
   WIDTH_REL,
 } from '@theme';
 
-export const AllowPredict = props => {
-  const { scheduled, homeGuess, awayGuess } = props;
-
-  return (
-    <CardCore>
-      <Guess value={homeGuess} />
-      <MidWrapper>
-        <ScheduledTime>{scheduled.toUpperCase()}</ScheduledTime>
-        <VS />
-      </MidWrapper>
-      <Guess value={awayGuess} />
-    </CardCore>
-  );
+const predictStatus = {
+  DEFAULT: 'DEFAULT',
+  LOADING: 'LOADING',
+  LOADED: 'LOADED',
 };
+
+export class AllowPredict extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { status: predictStatus.LOADING };
+  }
+
+  _mid() {
+    switch (this.state.status) {
+      case predictStatus.LOADING:
+        return (
+          <MidWrapper>
+            <Spinner />
+          </MidWrapper>
+        );
+      default:
+        return (
+          <MidWrapper>
+            <ScheduledTime>{this.props.scheduled.toUpperCase()}</ScheduledTime>
+            <VS />
+          </MidWrapper>
+        );
+    }
+  }
+
+  render() {
+    const { homeGuess, awayGuess } = this.props;
+
+    return (
+      <CardCore>
+        <Guess value={homeGuess} />
+        {this._mid()}
+        <Guess value={awayGuess} />
+      </CardCore>
+    );
+  }
+}
 
 export const NotAllowPredict = props => {
   const { scheduled, homeGuess, awayGuess } = props;
@@ -96,6 +125,14 @@ const TimeCircular = ({ children }) => (
     </ProgressContainer>
   </View>
 );
+
+const Spinner = styled.Image.attrs({
+  source: spinner,
+})`
+  width: ${40 * WIDTH_REL};
+  height: ${40 * HEIGHT_REL};
+  resize-mode: contain;
+`;
 
 const ProgressContainer = styled.View`
   position: absolute;
