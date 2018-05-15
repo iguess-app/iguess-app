@@ -20,7 +20,6 @@ export const AllowPredict = props => {
     <CardCore>
       <Guess value={homeGuess} />
       <MidWrapper>
-        <Stadium>Old Trafford</Stadium>
         <ScheduledTime>{scheduled.toUpperCase()}</ScheduledTime>
         <VS />
       </MidWrapper>
@@ -124,12 +123,6 @@ const VS = styled.Image.attrs({
   height: ${52 * HEIGHT_REL};
   resize-mode: contain;
   margin-top: 8;
-`;
-
-const Stadium = styled.Text`
-  font-size: 8;
-  opacity: 0.6;
-  margin-bottom: 2;
 `;
 
 const ScheduledTime = styled.Text`
