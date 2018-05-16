@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Guess from '@components/Guess';
 import Result from '@components/Result';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
-import { vs, whistle, spinner } from '@assets/images';
+import { vs, whistle, spinner, check } from '@assets/images';
 import {
   SCHEDULED_TIME_COLOR,
   PROGRESS_TINT_COLOR,
@@ -68,11 +68,19 @@ export class AllowPredict extends Component {
   }
 
   _mid() {
+    const { LOADING, LOADED } = predictStatus;
+
     switch (this.state.status) {
-      case predictStatus.LOADING:
+      case LOADING:
         return (
           <MidWrapper>
             <Spinner />
+          </MidWrapper>
+        );
+      case LOADED:
+        return (
+          <MidWrapper>
+            <Checked />
           </MidWrapper>
         );
       default:
@@ -178,6 +186,15 @@ const Spinner = styled.Image.attrs({
 })`
   width: ${42 * WIDTH_REL};
   height: ${42 * HEIGHT_REL};
+  resize-mode: contain;
+`;
+
+const Checked = styled.Image.attrs({
+  source: check,
+})`
+  width: ${32 * WIDTH_REL};
+  height: ${24 * HEIGHT_REL};
+  margin-horizontal: 5;
   resize-mode: contain;
 `;
 
