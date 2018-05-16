@@ -13,7 +13,7 @@ import {
   WIDTH_REL,
 } from '@theme';
 
-const predictStatus = {
+export const predictStatus = {
   DEFAULT: 'DEFAULT',
   LOADING: 'LOADING',
   LOADED: 'LOADED',
@@ -23,7 +23,20 @@ export class AllowPredict extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { status: predictStatus.LOADING };
+    this.state = { status: predictStatus.DEFAULT };
+  }
+
+  setStatus(status) {
+    if (status === predictStatus.LOADING) {
+      this.setState({ status: predictStatus.LOADING });
+
+      // TODO: Contact API and set Status as loaded
+    } else if (status === predictStatus.LOADED) {
+      // Set status as DEFAULT after 1 second
+      setTimeout(() => this.setStatus(), 1000);
+    } else {
+      this.setState({ status: predictStatus.DEFAULT });
+    }
   }
 
   _mid() {
@@ -49,9 +62,15 @@ export class AllowPredict extends Component {
 
     return (
       <CardCore>
-        <Guess value={homeGuess} />
+        <Guess
+          value={homeGuess}
+          setCoreStatus={status => this.setStatus(status)}
+        />
         {this._mid()}
-        <Guess value={awayGuess} />
+        <Guess
+          value={awayGuess}
+          setCoreStatus={status => this.setStatus(status)}
+        />
       </CardCore>
     );
   }
@@ -129,8 +148,8 @@ const TimeCircular = ({ children }) => (
 const Spinner = styled.Image.attrs({
   source: spinner,
 })`
-  width: ${40 * WIDTH_REL};
-  height: ${40 * HEIGHT_REL};
+  width: ${42 * WIDTH_REL};
+  height: ${42 * HEIGHT_REL};
   resize-mode: contain;
 `;
 
