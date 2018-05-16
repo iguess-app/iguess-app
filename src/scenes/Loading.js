@@ -8,6 +8,7 @@ import {
   HEIGHT_REL,
 } from '@theme';
 import { ballGif } from '@assets/images/index';
+import { TextBase } from '../components/wrapper';
 
 const Loading = () => (
   <SceneWrapper>
@@ -17,7 +18,7 @@ const Loading = () => (
   </SceneWrapper>
 );
 
-const Title = styled.Text`
+const Title = styled(TextBase)`
   text-align: center;
   align-self: center;
   color: ${LOADING_TITLE_COLOR};
@@ -26,7 +27,7 @@ const Title = styled.Text`
   font-weight: bold;
 `;
 
-const Subtitle = styled.Text`
+const Subtitle = styled(TextBase)`
   text-align: center;
   align-self: center;
   color: ${LOADING_SUBTITLE_COLOR};

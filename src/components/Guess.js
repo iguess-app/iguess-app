@@ -8,6 +8,7 @@ import {
   HEIGHT_REL,
   WIDTH_REL,
 } from '@theme';
+import { TextBase } from './wrapper';
 
 const DEFAULT_VALUE = '- - - -';
 const MAX_GUESS = 99;
@@ -111,7 +112,7 @@ const ButtonImage = styled.Image`
   margin-vertical: ${16 * HEIGHT_REL};
 `;
 
-const Value = styled.Text.attrs({
+const Value = styled(TextBase).attrs({
   guessed: props => (props.children !== DEFAULT_VALUE ? true : false),
 })`
   font-size: ${props => (props.guessed ? 20 : 8)};

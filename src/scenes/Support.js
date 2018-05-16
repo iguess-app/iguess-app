@@ -3,8 +3,15 @@ import { Linking } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import { NavBar, Content, SceneDescription } from '@components/Scene';
 import styled from 'styled-components';
-import { chevronRight, mail, facebookIcon, twitterIcon, instagramIcom } from '@assets/images';
+import {
+  chevronRight,
+  mail,
+  facebookIcon,
+  twitterIcon,
+  instagramIcom,
+} from '@assets/images';
 import { TEXT_SECONDARY_SCENE, HEIGHT_REL, WIDTH_REL } from '@theme';
+import { TextBase } from '../components/wrapper';
 
 const Support = () => {
   return (
@@ -57,25 +64,25 @@ const Option = props => {
 };
 
 const OptionsWrapper = styled.View`
-  margin-top: ${32*HEIGHT_REL};
+  margin-top: ${32 * HEIGHT_REL};
 `;
 
 const TouchableWrapper = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
-  margin-horizontal: ${32*WIDTH_REL};
-  margin-bottom: ${32*HEIGHT_REL};
+  margin-horizontal: ${32 * WIDTH_REL};
+  margin-bottom: ${32 * HEIGHT_REL};
 `;
 
 const OptionIcon = styled.Image`
-  width: ${32*WIDTH_REL};
-  margin-right: ${20*WIDTH_REL};
+  width: ${32 * WIDTH_REL};
+  margin-right: ${20 * WIDTH_REL};
   resize-mode: contain;
 `;
 
-const OptionText = styled.Text`
+const OptionText = styled(TextBase)`
   font-size: 16;
-  width: ${240*WIDTH_REL};
+  width: ${240 * WIDTH_REL};
   color: ${TEXT_SECONDARY_SCENE};
 `;
 

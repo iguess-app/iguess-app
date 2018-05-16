@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Team from '@components/Team';
+import { TextBase } from './wrapper';
 import {
   AllowPredict,
   NotAllowPredict,
@@ -119,14 +120,14 @@ const ScoreBoardWrapper = styled.View`
   z-index: 1;
 `;
 
-const Score = styled.Text`
+const Score = styled(TextBase)`
   font-size: ${16.8 * HEIGHT_REL};
   font-weight: bold;
   color: ${SCORE_FONT_COLOR};
   margin-right: 4;
 `;
 
-const PointsText = styled.Text`
+const PointsText = styled(TextBase)`
   font-size: 12;
   font-weight: bold;
   color: ${SCORE_FONT_COLOR};

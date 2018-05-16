@@ -4,6 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import { chevronLeft } from '@assets/images';
 import { setStatusBarStyle } from '@helpers';
 import { HEADER_TEXT_COLOR, DEFAULT_BACKGROUND } from '@theme';
+import { TextBase } from './wrapper';
 
 const NavBar = props => {
   const { title } = props;
@@ -47,9 +48,9 @@ const BackImage = styled.Image.attrs({
 const BackTouchable = styled.TouchableOpacity`
   padding-horizontal: 8%;
   padding-vertical: 10;
-`
+`;
 
-const Title = styled.Text`
+const Title = styled(TextBase)`
   flex-direction: row;
   flex: 1;
   text-align: center;

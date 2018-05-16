@@ -1,6 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PRIMARY_BUTTON_COLOR, PRIMARY_BUTTON_TEXT_COLOR, HEIGHT_REL, WIDTH_REL } from '@theme';
+import {
+  PRIMARY_BUTTON_COLOR,
+  PRIMARY_BUTTON_TEXT_COLOR,
+  HEIGHT_REL,
+  WIDTH_REL,
+} from '@theme';
+import { TextBase } from './wrapper';
 
 export const MainButton = props => {
   const { text, onPress } = props;
@@ -29,12 +35,12 @@ export const InativeButton = props => {
     <Inative>
       <ButtonText>{text.toUpperCase()}</ButtonText>
     </Inative>
-  )
-}
+  );
+};
 
 const MainTouchable = styled.TouchableOpacity`
-  width: ${311*WIDTH_REL};
-  height: ${56*HEIGHT_REL};
+  width: ${311 * WIDTH_REL};
+  height: ${56 * HEIGHT_REL};
   border-radius: 38;
   background-color: ${PRIMARY_BUTTON_COLOR};
   align-items: center;
@@ -42,8 +48,8 @@ const MainTouchable = styled.TouchableOpacity`
 `;
 
 const TransparentTouchable = styled.TouchableOpacity`
-  width: ${311*WIDTH_REL};
-  height: ${56*HEIGHT_REL};
+  width: ${311 * WIDTH_REL};
+  height: ${56 * HEIGHT_REL};
   border-radius: 38;
   border-style: solid;
   border-width: 2;
@@ -55,16 +61,16 @@ const TransparentTouchable = styled.TouchableOpacity`
 `;
 
 const Inative = styled.View`
-  width: ${311*WIDTH_REL};
-  height: ${56*HEIGHT_REL};
+  width: ${311 * WIDTH_REL};
+  height: ${56 * HEIGHT_REL};
   border-radius: 38;
   background-color: ${PRIMARY_BUTTON_COLOR};
   opacity: 0.32;
   align-items: center;
   justify-content: center;
-`
+`;
 
-const ButtonText = styled.Text`
+const ButtonText = styled(TextBase)`
   font-size: 15;
   font-weight: bold;
   text-align: center;
