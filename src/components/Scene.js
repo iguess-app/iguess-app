@@ -1,10 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-<<<<<<< HEAD
 import { TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native';
-=======
-import { TouchableWithoutFeedback, Keyboard, View } from 'react-native';
->>>>>>> adicionando nova fonte
 import {
   TEXT_SECONDARY_SCENE,
   SETTINGS_TEXT_COLOR,
@@ -12,10 +8,7 @@ import {
   WIDTH_REL,
   HEIGHT_REL,
 } from '@theme';
-<<<<<<< HEAD
-=======
 import { TextBase } from './wrapper';
->>>>>>> adicionando nova fonte
 
 export const SceneWrapper = props => {
   const { background, children } = props;

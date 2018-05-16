@@ -83,10 +83,6 @@ class SignUp extends Component {
           this.state.email
         }`,
       ).then(response => {
-<<<<<<< HEAD
-=======
-        console.log(response);
->>>>>>> adicionando nova fonte
         if (response.available === false) {
           this.emailInput.error(response.alertMessage);
         }
@@ -244,11 +240,7 @@ class SignUp extends Component {
 }
 
 const TextInput = styled(Input)`
-<<<<<<< HEAD
   margin-top: ${30 * HEIGHT_REL};
-=======
-  margin-top: ${38 * HEIGHT_REL};
->>>>>>> adicionando nova fonte
 `;
 
 const ButtonView = styled.View`
@@ -257,13 +249,8 @@ const ButtonView = styled.View`
   align-self: center;
 `;
 
-<<<<<<< HEAD
 const WrapperKeyboardAware = styled(KeyboardAwareScrollView)`
   padding-horizontal: ${32 * WIDTH_REL};
-=======
-const Wrapper = styled.KeyboardAvoidingView`
-  margin-horizontal: ${32 * WIDTH_REL};
->>>>>>> adicionando nova fonte
 `;
 
 const Terms = styled(TextBase)`

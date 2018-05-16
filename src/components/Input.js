@@ -117,10 +117,7 @@ const InfoIcon = styled.Image.attrs({
 
 const TextField = MKTextField.textfieldWithFloatingLabel()
   .withFloatingLabelFont({
-<<<<<<< HEAD
-=======
     fontFamily: 'KievitOffc',
->>>>>>> adicionando nova fonte
     fontSize: 12,
     fontWeight: 'bold',
     color: INPUT_FLOAT_LABEL_COLOR,
