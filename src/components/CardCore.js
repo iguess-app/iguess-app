@@ -23,10 +23,32 @@ export class AllowPredict extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { status: predictStatus.DEFAULT };
+    const { homeGuess, awayGuess } = props;
+
+    this.state = { status: predictStatus.DEFAULT, homeGuess, awayGuess };
   }
 
-  setStatus(status) {
+  update() {
+    // Will clear a current updateStatus timeout if exists
+    clearTimeout(this.timeout);
+
+    // Guarantee that guess will not be blank
+    const updatedValue = value => (value >= 0 ? value : 0);
+
+    // Update guesses
+    this.setState({
+      homeGuess: updatedValue(this.home.getValue()),
+      awayGuess: updatedValue(this.away.getValue()),
+    });
+
+    // Call and "updatedStatus" (contact API)
+    // after 3 seconds
+    this.timeout = setTimeout(() => {
+      this._updateStatus(predictStatus.LOADING);
+    }, 3000);
+  }
+
+  _updateStatus(status) {
     const { DEFAULT, LOADING, LOADED } = predictStatus;
 
     if (status === LOADING) {
@@ -34,10 +56,12 @@ export class AllowPredict extends Component {
 
       // TODO: Contact API and set Status as loaded
       // Using setTimeout for now
-      setTimeout(() => this.setStatus(LOADED), 2000);
+      setTimeout(() => this._updateStatus(LOADED), 2000);
     } else if (status === LOADED) {
+      this.setState({ status: LOADED });
+
       // Set status as DEFAULT after 1 second
-      setTimeout(() => this.setStatus(), 1000);
+      setTimeout(() => this._updateStatus(DEFAULT), 1000);
     } else {
       this.setState({ status: DEFAULT });
     }
@@ -62,18 +86,18 @@ export class AllowPredict extends Component {
   }
 
   render() {
-    const { homeGuess, awayGuess } = this.props;
-
     return (
       <CardCore>
         <Guess
-          value={homeGuess}
-          setCoreStatus={status => this.setStatus(status)}
+          value={this.state.homeGuess}
+          updateCore={() => this.update()}
+          ref={ref => (this.home = ref)}
         />
         {this._mid()}
         <Guess
-          value={awayGuess}
-          setCoreStatus={status => this.setStatus(status)}
+          value={this.state.awayGuess}
+          updateCore={() => this.update()}
+          ref={ref => (this.away = ref)}
         />
       </CardCore>
     );
