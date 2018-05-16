@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Orientation from 'react-native-orientation';
-import { Text } from 'react-native';
 import { Router, Stack, Scene } from 'react-native-router-flux';
 import {
   Home,
