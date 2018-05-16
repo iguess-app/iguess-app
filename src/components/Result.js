@@ -7,6 +7,7 @@ import {
   HEIGHT_REL,
   WIDTH_REL,
 } from '@theme';
+import { TextBase } from './wrapper';
 
 const DEFAULT_GUESS_VALUE = '- - - -';
 
@@ -39,7 +40,7 @@ const Wrapper = styled.View`
   flex-direction: column;
 `;
 
-const Score = styled.Text`
+const Score = styled(TextBase)`
   font-size: 40;
   font-weight: 500;
   color: ${CARD_SCORE_COLOR};
@@ -47,7 +48,7 @@ const Score = styled.Text`
   text-align: center;
 `;
 
-const Guessed = styled.Text`
+const Guessed = styled(TextBase)`
   font-size: 32;
   font-weight: 500;
   color: ${GUESS_GUESSED_TEXT_COLOR};
@@ -55,7 +56,7 @@ const Guessed = styled.Text`
   text-align: center;
 `;
 
-const NotGuessed = styled.Text`
+const NotGuessed = styled(TextBase)`
   font-size: 14;
   text-align: center;
   font-weight: 800;

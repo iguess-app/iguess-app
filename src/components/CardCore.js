@@ -5,6 +5,7 @@ import Guess from '@components/Guess';
 import Result from '@components/Result';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { vs, whistle } from '@assets/images';
+import { TextBase } from './wrapper';
 import {
   SCHEDULED_TIME_COLOR,
   PROGRESS_TINT_COLOR,
@@ -108,7 +109,7 @@ const ProgressContainer = styled.View`
   justify-content: center;
 `;
 
-const Time = styled.Text`
+const Time = styled(TextBase)`
   font-size: 12;
   color: #4d6980;
 `;
@@ -126,13 +127,13 @@ const VS = styled.Image.attrs({
   margin-top: 8;
 `;
 
-const Stadium = styled.Text`
+const Stadium = styled(TextBase)`
   font-size: 8;
   opacity: 0.6;
   margin-bottom: 2;
 `;
 
-const ScheduledTime = styled.Text`
+const ScheduledTime = styled(TextBase)`
   font-size: 10;
   color: ${SCHEDULED_TIME_COLOR};
 `;

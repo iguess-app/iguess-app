@@ -6,6 +6,7 @@ import { MainButton } from '@components/Button';
 import { aboutImage, facebookIcon, twitterIcon } from '@assets/images';
 import styled from 'styled-components';
 import { FOLLOW_US_COLOR, WIDTH_REL } from '@theme';
+import { TextBase } from '../components/wrapper';
 
 const About = () => {
   return (
@@ -89,7 +90,7 @@ const HeaderImage = styled.Image`
   width: 100%;
 `;
 
-const FollowText = styled.Text`
+const FollowText = styled(TextBase)`
   align-self: center;
   font-size: 16;
   font-weight: bold;
@@ -101,7 +102,7 @@ const FollowRow = styled.View`
   flex-direction: row;
   justify-content: space-between;
   margin-top: 8;
-  margin-horizontal: ${110*WIDTH_REL};
+  margin-horizontal: ${110 * WIDTH_REL};
 `;
 
 const Icon = styled.Image`
