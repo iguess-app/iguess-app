@@ -44,7 +44,9 @@ const About = () => {
         <RateView>
           <MainButton
             text="Rate this app"
-            onPress={() => console.log('Rate app')}
+            onPress={() => {
+              throw new Error('Not implemented. TODO: Rate app');
+            }}
           />
         </RateView>
         <FollowText>Follow us</FollowText>
@@ -101,7 +103,7 @@ const FollowRow = styled.View`
   flex-direction: row;
   justify-content: space-between;
   margin-top: 8;
-  margin-horizontal: ${110*WIDTH_REL};
+  margin-horizontal: ${110 * WIDTH_REL};
 `;
 
 const Icon = styled.Image`
