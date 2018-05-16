@@ -8,37 +8,46 @@ import { apiDelete } from '@helpers';
 import { connect } from 'react-redux';
 import { logout } from '@redux/authentication/actions';
 import { conversation, closeSettings, blog, store, exit } from '@assets/images';
-import { SETTINGS_TEXT_COLOR, SETTINGS_BORDER_COLOR, WIDTH_REL, HEIGHT_REL } from '@theme';
+import {
+  SETTINGS_TEXT_COLOR,
+  SETTINGS_BORDER_COLOR,
+  WIDTH_REL,
+  HEIGHT_REL,
+} from '@theme';
 
 class Settings extends Component {
   constructor(props) {
     super(props);
-    this.state = {error: false};
+    this.state = { error: false };
   }
 
   _logout = () => {
-
-    this.setState({error: false});
+    this.setState({ error: false });
 
     const confirm = () => {
       apiDelete('https://iguess-666666.appspot.com/login/logout')
-      .then(response => {
-        console.log(response);
-        if(response.logout === true) {
-          this.props.dispatch(logout());
-          Actions.home();
-        } else if(response.logout === false) {
-          this.setState({error: true});
-        }
-      }).catch(() => this.setState({error: true}));
-    }
-  
+        .then(response => {
+          console.log(response);
+          if (response.logout === true) {
+            this.props.dispatch(logout());
+            Actions.home();
+          } else if (response.logout === false) {
+            this.setState({ error: true });
+          }
+        })
+        .catch(() => this.setState({ error: true }));
+    };
+
     Alert.alert(
       'LOG OUT',
       'Are you sure you want to log out?',
-      [{ text: 'YES', 
-      onPress: () => confirm()},
-      { text: 'Cancel' }],
+      [
+        {
+          text: 'YES',
+          onPress: () => confirm(),
+        },
+        { text: 'Cancel' },
+      ],
       { cancelable: false },
     );
   };
@@ -67,12 +76,12 @@ class Settings extends Component {
           text="About us"
           onPress={() => Actions.about()}
         />
-        <Logout onPress={() => this._logout()}/>
+        <Logout onPress={() => this._logout()} />
         {errorCard}
       </SceneWrapper>
     );
   }
-};
+}
 
 const TouchableRow = props => {
   const { icon, text, onPress } = props;
@@ -85,7 +94,7 @@ const TouchableRow = props => {
   );
 };
 
-const Logout = (props) => {
+const Logout = props => {
   const { onPress } = props;
 
   return (
@@ -109,24 +118,24 @@ const Close = props => {
 const CloseImage = styled.Image.attrs({
   source: closeSettings,
 })`
-  width: ${16*WIDTH_REL};
-  height: ${16*HEIGHT_REL};
-  margin-left: ${32*WIDTH_REL};
-  margin-top: ${52*HEIGHT_REL};
+  width: ${16 * WIDTH_REL};
+  height: ${16 * HEIGHT_REL};
+  margin-left: ${32 * WIDTH_REL};
+  margin-top: ${52 * HEIGHT_REL};
 `;
 
 const Title = styled.Text`
   font-size: 24;
   font-weight: bold;
   color: ${SETTINGS_TEXT_COLOR};
-  margin-top: ${40*HEIGHT_REL};
-  margin-left: ${32*WIDTH_REL};
-  margin-bottom: ${24*HEIGHT_REL};
+  margin-top: ${40 * HEIGHT_REL};
+  margin-left: ${32 * WIDTH_REL};
+  margin-bottom: ${24 * HEIGHT_REL};
 `;
 
 const TouchableView = styled.TouchableOpacity`
   flex-direction: row;
-  height: ${72*HEIGHT_REL};
+  height: ${72 * HEIGHT_REL};
   border-top = solid;
   border-color: ${SETTINGS_BORDER_COLOR};
   border-top-width: 1;
@@ -135,23 +144,23 @@ const TouchableView = styled.TouchableOpacity`
 `;
 
 const Icon = styled.Image`
-  height: ${24*HEIGHT_REL};
-  width: ${30*WIDTH_REL};
+  height: ${24 * HEIGHT_REL};
+  width: ${30 * WIDTH_REL};
   resize-mode: contain;
-  margin-left: ${32*WIDTH_REL};
+  margin-left: ${32 * WIDTH_REL};
 `;
 
 const CustomText = styled.Text`
   font-size: 14;
   font-weight: bold;
   color: ${SETTINGS_TEXT_COLOR};
-  margin-left: ${20*WIDTH_REL};
+  margin-left: ${20 * WIDTH_REL};
 `;
 
 const LogoutTouchable = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
-  margin-top: ${216*HEIGHT_REL};
+  margin-top: ${216 * HEIGHT_REL};
 `;
 
 export default connect()(Settings);

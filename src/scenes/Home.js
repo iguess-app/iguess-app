@@ -12,7 +12,7 @@ const Home = () => {
   setStatusBarStyle('white');
 
   return (
-    <SceneWrapper background={HOME_BACKGROUND} style={{borderColor: 'red', borderWidth: 1}}>
+    <SceneWrapper background={HOME_BACKGROUND}>
       <HomeText>Lorem ipsum dolor sit amet, consectetur.</HomeText>
       <ButtonsView>
         <MainButton text="create my account" onPress={() => Actions.signup()} />

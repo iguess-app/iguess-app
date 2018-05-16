@@ -1,5 +1,4 @@
 import React from 'react';
-import { Image } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
 import {
