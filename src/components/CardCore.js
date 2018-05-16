@@ -27,15 +27,19 @@ export class AllowPredict extends Component {
   }
 
   setStatus(status) {
-    if (status === predictStatus.LOADING) {
-      this.setState({ status: predictStatus.LOADING });
+    const { DEFAULT, LOADING, LOADED } = predictStatus;
+
+    if (status === LOADING) {
+      this.setState({ status: LOADING });
 
       // TODO: Contact API and set Status as loaded
-    } else if (status === predictStatus.LOADED) {
+      // Using setTimeout for now
+      setTimeout(() => this.setStatus(LOADED), 2000);
+    } else if (status === LOADED) {
       // Set status as DEFAULT after 1 second
       setTimeout(() => this.setStatus(), 1000);
     } else {
-      this.setState({ status: predictStatus.DEFAULT });
+      this.setState({ status: DEFAULT });
     }
   }
 
