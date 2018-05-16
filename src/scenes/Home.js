@@ -16,8 +16,14 @@ const Home = () => {
     <SceneWrapper background={HOME_BACKGROUND}>
       <HomeText>{I18n.t('homeGreeting')}</HomeText>
       <ButtonsView>
-        <MainButton text="create my account" onPress={() => Actions.signup()} />
-        <TransparentButton text="sign in" onPress={() => Actions.signin()} />
+        <MainButton
+          text={I18n.t('homeSignUp')}
+          onPress={() => Actions.signup()}
+        />
+        <TransparentButton
+          text={I18n.t('homeSignIn')}
+          onPress={() => Actions.signin()}
+        />
       </ButtonsView>
       <TermsButton />
     </SceneWrapper>
@@ -37,7 +43,7 @@ const HomeText = styled.Text`
 const TermsButton = () => {
   return (
     <TouchableOpacity onPress={() => Actions.terms()}>
-      <TermsText>Terms and conditions</TermsText>
+      <TermsText>{I18n.t('homeTerms')}</TermsText>
     </TouchableOpacity>
   );
 };
