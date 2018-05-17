@@ -24,4 +24,14 @@ export default {
   signInPassword: 'Minha senha',
   signInButton: 'Acessar minha conta',
   signInError: 'Login e senha devem ser preenchidos',
+
+  settingsTitle: 'CONFIGURAÇÕES',
+  settingsSupport: 'Suporte',
+  settingsTerms: 'Termos de uso',
+  settingsAbout: 'Sobre nós',
+  settingsLogoutButton: 'Sair da minha conta',
+  settingsLogoutTitle: 'SAIR',
+  settingsLogoutText: 'Tem certeza que quer sair da sua conta?',
+  settingsLogoutConfirm: 'Sim',
+  settingsLogoutCancel: 'Cancelar',
 };

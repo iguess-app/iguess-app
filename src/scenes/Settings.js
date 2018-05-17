@@ -14,6 +14,7 @@ import {
   WIDTH_REL,
   HEIGHT_REL,
 } from '@theme';
+import I18n from '../i18n';
 
 class Settings extends Component {
   constructor(props) {
@@ -38,14 +39,14 @@ class Settings extends Component {
     };
 
     Alert.alert(
-      'LOG OUT',
-      'Are you sure you want to log out?',
+      I18n.t('settingsLogoutTitle'),
+      I18n.t('settingsLogoutText'),
       [
         {
-          text: 'YES',
+          text: I18n.t('settingsLogoutConfirm'),
           onPress: () => confirm(),
         },
-        { text: 'Cancel' },
+        { text: I18n.t('settingsLogoutCancel') },
       ],
       { cancelable: false },
     );
@@ -59,23 +60,25 @@ class Settings extends Component {
     return (
       <SceneWrapper>
         <Close onPress={swipe} />
-        <Title>SETTINGS</Title>
+        <Title>{I18n.t('settingsTitle')}</Title>
         <TouchableRow
           icon={conversation}
-          text="Support"
+          text={I18n.t('settingsSupport')}
           onPress={() => Actions.support()}
         />
         <TouchableRow
           icon={blog}
-          text="Terms and Conditions"
+          text={I18n.t('settingsTerms')}
           onPress={() => Actions.terms()}
         />
         <TouchableRow
           icon={store}
-          text="About us"
+          text={I18n.t('settingsAbout')}
           onPress={() => Actions.about()}
         />
-        <Logout onPress={() => this._logout()} />
+        <Logout onPress={() => this._logout()}>
+          {I18n.t('settingsLogoutButton')}
+        </Logout>
         {errorCard}
       </SceneWrapper>
     );
@@ -94,12 +97,12 @@ const TouchableRow = props => {
 };
 
 const Logout = props => {
-  const { onPress } = props;
+  const { onPress, children } = props;
 
   return (
     <LogoutTouchable onPress={() => onPress()}>
       <Icon source={exit} />
-      <CustomText>Log out</CustomText>
+      <CustomText>{children}</CustomText>
     </LogoutTouchable>
   );
 };

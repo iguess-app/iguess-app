@@ -24,4 +24,14 @@ export default {
   signInPassword: 'My password',
   signInButton: 'Sign in',
   signInError: "Login and input can't be blank",
+
+  settingsTitle: 'SETTINGS',
+  settingsSupport: 'Support',
+  settingsTerms: 'Terms and Conditions',
+  settingsAbout: 'About us',
+  settingsLogoutButton: 'Log out',
+  settingsLogoutTitle: 'Log out',
+  settingsLogoutText: 'Are you sure you want to log out?',
+  settingsLogoutConfirm: 'YES',
+  settingsLogoutCancel: 'Cancel',
 };
