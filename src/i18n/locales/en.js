@@ -34,4 +34,7 @@ export default {
   settingsLogoutText: 'Are you sure you want to log out?',
   settingsLogoutConfirm: 'YES',
   settingsLogoutCancel: 'Cancel',
+
+  point: 'point',
+  points: 'points',
 };

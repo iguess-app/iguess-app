@@ -34,4 +34,7 @@ export default {
   settingsLogoutText: 'Tem certeza que quer sair da sua conta?',
   settingsLogoutConfirm: 'Sim',
   settingsLogoutCancel: 'Cancelar',
+
+  point: 'ponto',
+  points: 'pontos',
 };
