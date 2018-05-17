@@ -35,6 +35,13 @@ export default {
   settingsLogoutConfirm: 'Sim',
   settingsLogoutCancel: 'Cancelar',
 
+  supportTitle: 'Suporte',
+  supportDescription:
+    'Fale com alguém do nosso time ou contate-nos nas redes sociais.',
+  supportFacebook: 'Fale com a gente no facebook',
+  supportTwitter: 'Fale com a gente no twitter',
+  supportInstagram: 'Fale com a gente no instragram',
+
   point: 'ponto',
   points: 'pontos',
 };

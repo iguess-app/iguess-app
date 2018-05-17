@@ -35,6 +35,13 @@ export default {
   settingsLogoutConfirm: 'YES',
   settingsLogoutCancel: 'Cancel',
 
+  supportTitle: 'Support',
+  supportDescription:
+    'Talk with someone of our team or contact in social media.',
+  supportFacebook: 'Talk with us on facebook',
+  supportTwitter: 'Talk with us on twitter',
+  supportInstagram: 'Talk with us on instragram',
+
   point: 'point',
   points: 'points',
 };

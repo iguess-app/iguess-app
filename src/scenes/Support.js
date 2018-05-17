@@ -3,21 +3,21 @@ import { Linking } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import { NavBar, Content, SceneDescription } from '@components/Scene';
 import styled from 'styled-components';
-import { chevronRight, mail, facebookIcon, twitterIcon, instagramIcom } from '@assets/images';
+import {
+  chevronRight,
+  mail,
+  facebookIcon,
+  twitterIcon,
+  instagramIcom,
+} from '@assets/images';
 import { TEXT_SECONDARY_SCENE, HEIGHT_REL, WIDTH_REL } from '@theme';
+import I18n from 'react-native-i18n';
 
 const Support = () => {
   return (
     <SceneWrapper>
-      <NavBar title="Support" />
-      <SceneDescription>
-        Fale com alguém do nosso time ou contate-nos nas redes sociais.
-      </SceneDescription>
-      <Content>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eleifend
-        vitae ipsum vehicula malesuada. Ut scelerisque nunc non consequat
-        ultricies.
-      </Content>
+      <NavBar title={I18n.t('supportTitle')} />
+      <SceneDescription>{I18n.t('supportDescription')}</SceneDescription>
       <OptionsWrapper>
         <Option
           icon={mail}
@@ -26,17 +26,17 @@ const Support = () => {
         />
         <Option
           icon={facebookIcon}
-          text="Talk with us on facebook"
+          text={I18n.t('supportFacebook')}
           url="https://www.facebook.com"
         />
         <Option
           icon={twitterIcon}
-          text="Talk with us on twitter"
+          text={I18n.t('supportTwitter')}
           url="https://www.twitter.com"
         />
         <Option
           icon={instagramIcom}
-          text="Follow us on instagram"
+          text={I18n.t('supportInstagram')}
           url="https://www.instagram.com"
         />
       </OptionsWrapper>
@@ -57,25 +57,25 @@ const Option = props => {
 };
 
 const OptionsWrapper = styled.View`
-  margin-top: ${32*HEIGHT_REL};
+  margin-top: ${32 * HEIGHT_REL};
 `;
 
 const TouchableWrapper = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
-  margin-horizontal: ${32*WIDTH_REL};
-  margin-bottom: ${32*HEIGHT_REL};
+  margin-horizontal: ${32 * WIDTH_REL};
+  margin-bottom: ${32 * HEIGHT_REL};
 `;
 
 const OptionIcon = styled.Image`
-  width: ${32*WIDTH_REL};
-  margin-right: ${20*WIDTH_REL};
+  width: ${32 * WIDTH_REL};
+  margin-right: ${20 * WIDTH_REL};
   resize-mode: contain;
 `;
 
 const OptionText = styled.Text`
   font-size: 16;
-  width: ${240*WIDTH_REL};
+  width: ${240 * WIDTH_REL};
   color: ${TEXT_SECONDARY_SCENE};
 `;
 
