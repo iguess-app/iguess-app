@@ -1,7 +1,7 @@
 export default {
   homeGreeting: 'Vai ser substituído pela logo',
   homeSignUp: 'Criar minha conta',
-  homeSignIn: 'Entrar',
+  homeSignIn: 'Acessar minha conta',
   homeTerms: 'Termos de uso',
 
   signUpTitle: 'Cadastre-se',
@@ -18,4 +18,10 @@ export default {
   signUpInputErrorEMail: 'Não parece um e-mail válido...',
   signUpInputErrorPassword:
     'A senha tem que conter pelo menos 8 caracteres, 1 letra e 1 número',
+
+  signInTitle: 'Acessar minha conta',
+  signInLogin: 'Meu nome de usuário ou e-mail',
+  signInPassword: 'Minha senha',
+  signInButton: 'Acessar minha conta',
+  signInError: 'Login e senha devem ser preenchidos',
 };

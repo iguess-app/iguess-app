@@ -18,4 +18,10 @@ export default {
   signUpInputErrorEMail: "Doesn't look like an e-mail...",
   signUpInputErrorPassword:
     'Password should contain at least 8 characters, 1 letter and 1 number',
+
+  signInTitle: 'Sign in',
+  signInLogin: 'My username or e-mail',
+  signInPassword: 'My password',
+  signInButton: 'Sign in',
+  signInError: "Login and input can't be blank",
 };

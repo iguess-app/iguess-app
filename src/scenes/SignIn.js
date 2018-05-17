@@ -10,6 +10,7 @@ import { login } from '@redux/authentication/actions';
 import { Actions } from 'react-native-router-flux';
 import { post } from '@helpers';
 import { WIDTH_REL, HEIGHT_REL } from '@theme';
+import I18n from '../i18n';
 
 class SignIn extends Component {
   constructor(props) {
@@ -44,7 +45,7 @@ class SignIn extends Component {
     } else {
       this.setState({
         error: true,
-        errorMsg: 'Login e senha devem ser preenchidos.',
+        errorMsg: I18n.t('signInError'),
       });
     }
   }
@@ -56,10 +57,10 @@ class SignIn extends Component {
 
     return (
       <InputSceneWrapper>
-        <NavBar title="Sign in" />
+        <NavBar title={I18n.t('signInTitle')} />
         <Wrapper>
           <TextInput
-            placeholder="@username or e-mail"
+            placeholder={I18n.t('signInLogin')}
             value={this.state.login}
             onChangeText={value =>
               this.setState({ login: value.replace(/[^a-z0-9._]/g, '') })
@@ -69,7 +70,7 @@ class SignIn extends Component {
             innerRef={ref => (this.loginInput = ref)}
           />
           <TextInput
-            placeholder="Password"
+            placeholder={I18n.t('signInPassword')}
             onChangeText={value => this.setState({ password: value })}
             password={true}
             autoCapitalize="none"
@@ -77,7 +78,10 @@ class SignIn extends Component {
             innerRef={ref => (this.passwordInput = ref)}
           />
           <ButtonView>
-            <MainButton text="Sign in" onPress={() => this._login()} />
+            <MainButton
+              text={I18n.t('signInButton')}
+              onPress={() => this._login()}
+            />
           </ButtonView>
         </Wrapper>
         {errorCard}
