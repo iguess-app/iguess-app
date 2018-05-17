@@ -42,6 +42,8 @@ export default {
   supportTwitter: 'Fale com a gente no twitter',
   supportInstagram: 'Fale com a gente no instragram',
 
+  termsTitle: 'Termos de uso',
+
   point: 'ponto',
   points: 'pontos',
 };

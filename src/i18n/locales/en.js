@@ -42,6 +42,8 @@ export default {
   supportTwitter: 'Talk with us on twitter',
   supportInstagram: 'Talk with us on instragram',
 
+  termsTitle: 'Terms and conditions',
+
   point: 'point',
   points: 'points',
 };
