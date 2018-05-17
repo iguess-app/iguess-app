@@ -46,4 +46,7 @@ export default {
 
   point: 'point',
   points: 'points',
+
+  loadingTitle: 'Wait just a little bit...',
+  loadingSubtitle: 'we are processing some information',
 };

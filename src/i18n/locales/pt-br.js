@@ -46,4 +46,7 @@ export default {
 
   point: 'ponto',
   points: 'pontos',
+
+  loadingTitle: 'Dá uma segurada aí, boleiro…',
+  loadingSubtitle: 'Aguarde enquanto processamos algumas informações.',
 };
