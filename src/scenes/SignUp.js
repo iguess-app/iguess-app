@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { login } from '@redux/authentication/actions';
 import { WIDTH_REL, HEIGHT_REL, SIGN_UP_TERMS_COLOR } from '@theme';
 import { get, post } from '@helpers';
+import I18n from '../i18n';
 
 var errors = Object.freeze({
   usernameAlreadyUsed: 20003,
@@ -38,9 +39,9 @@ class SignUp extends Component {
       this.nameInput.success();
       correct = true;
     } else if (this.state.name.length === 0) {
-      this.nameInput.error("Can't be empty");
+      this.nameInput.error(I18n.t('signUpInputErrorEmpty'));
     } else {
-      this.nameInput.error('Name should have 3 or more characters');
+      this.nameInput.error(I18n.t('signUpInputErrorName'));
     }
 
     return correct;
@@ -65,9 +66,9 @@ class SignUp extends Component {
 
       available();
     } else if (this.state.username.length === 0) {
-      this.usernameInput.error("Can't be empty");
+      this.usernameInput.error(I18n.t('signUpInputErrorEmpty'));
     } else {
-      this.usernameInput.error('Username should have 4 or more characters');
+      this.usernameInput.error(I18n.t('signUpInputErrorUsername'));
     }
 
     return correct;
@@ -95,9 +96,9 @@ class SignUp extends Component {
 
       available();
     } else if (this.state.email.length === 0) {
-      this.emailInput.error("Can't be empty");
+      this.emailInput.error(I18n.t('signUpInputErrorEmpty'));
     } else {
-      this.emailInput.error("Doesn't look like an email...");
+      this.emailInput.error(I18n.t('signUpInputErrorEMail'));
     }
 
     return correct;
@@ -112,11 +113,9 @@ class SignUp extends Component {
       this.passwordInput.success();
       correct = true;
     } else if (this.state.password.length === 0) {
-      this.passwordInput.error("Can't be empty");
+      this.passwordInput.error(I18n.t('signUpInputErrorEmpty'));
     } else {
-      this.passwordInput.error(
-        'Password should contain at least 8 characters, 1 letter and 1 number',
-      );
+      this.passwordInput.error(I18n.t('signUpInputErrorPassword'));
     }
 
     return correct;
@@ -175,13 +174,13 @@ class SignUp extends Component {
 
     return (
       <InputSceneWrapper>
-        <NavBar title="Sign up" />
+        <NavBar title={I18n.t('signUpTitle')} />
         <WrapperKeyboardAware
           resetScrollToCoords={{ x: 0, y: 0 }}
           enableOnAndroid
         >
           <TextInput
-            placeholder="Name"
+            placeholder={I18n.t('signUpName')}
             value={this.state.name}
             onChangeText={value => this.setState({ name: value })}
             autoCapitalize="words"
@@ -190,7 +189,7 @@ class SignUp extends Component {
             innerRef={ref => (this.nameInput = ref)}
           />
           <TextInput
-            placeholder="@username"
+            placeholder={I18n.t('signUpUsername')}
             value={this.state.username}
             onChangeText={value =>
               this.setState({ username: value.replace(/[^a-z0-9._]/g, '') })
@@ -201,7 +200,7 @@ class SignUp extends Component {
             innerRef={ref => (this.usernameInput = ref)}
           />
           <TextInput
-            placeholder="E-mail"
+            placeholder={I18n.t('signUpEMail')}
             value={this.state.email}
             onChangeText={value =>
               this.setState({ email: value.replace(/\s/g, '') })
@@ -213,7 +212,7 @@ class SignUp extends Component {
             innerRef={ref => (this.emailInput = ref)}
           />
           <TextInput
-            placeholder="Password"
+            placeholder={I18n.t('signUpPassword')}
             onChangeText={value => this.setState({ password: value })}
             password={true}
             autoCapitalize="none"
@@ -223,13 +222,15 @@ class SignUp extends Component {
           />
           <ButtonView>
             <MainButton
-              text="Create my account"
+              text={I18n.t('signUpButton')}
               onPress={() => this._submit()}
             />
           </ButtonView>
           <Terms>
-            Eu concordo com os{' '}
-            <TextLink onPress={() => Actions.terms()}>termos de uso</TextLink>.
+            {I18n.t('signUpTermsText')}{' '}
+            <TextLink onPress={() => Actions.terms()}>
+              {I18n.t('signUpTermsLink')}
+            </TextLink>.
           </Terms>
         </WrapperKeyboardAware>
         {errorCard}
