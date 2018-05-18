@@ -1,34 +1,31 @@
-export aboutImage from './aboutImage.png';
-export arsenal from './arsenal.png';
-export blog from './blog.png';
-export chevronDown from './chevronDown.png';
-export chevronLeft from './chevronLeft.png';
-export chevronRight from './chevronRight.png';
-export closeSettings from './closeSettings.png';
-export conversation from './conversation.png';
-export exit from './exit.png';
-export facebookIcon from './facebookIcon.png';
-export gear from './gear.png';
-export liverpool from './liverpool.png';
-export mail from './mail.png';
-export minus from './minus.png';
-export minusDisabled from './minusDisabled.png';
-export plus from './plus.png';
-export plusDisabled from './plusDisabled.png';
-export store from './store.png';
-export twitterIcon from './twitterIcon.png';
-export vs from './vs.png';
-export instagramIcon from './instagramIcon.png';
-export info from './info.png';
-export thumbsDown from './thumbsDown.png';
-export clockwise from './clockwise.png';
-export check from './check.png';
-
-// Require used to test image definition on Android
-// TODO: verify on Android
+export const aboutImage = require('./aboutImage.png');
+export const arsenal = require('./arsenal.png');
+export const blog = require('./blog.png');
+export const chevronDown = require('./chevronDown.png');
+export const chevronLeft = require('./chevronLeft.png');
+export const chevronRight = require('./chevronRight.png');
+export const closeSettings = require('./closeSettings.png');
+export const conversation = require('./conversation.png');
+export const exit = require('./exit.png');
+export const facebookIcon = require('./facebookIcon.png');
+export const gear = require('./gear.png');
+export const liverpool = require('./liverpool.png');
+export const mail = require('./mail.png');
+export const minus = require('./minus.png');
+export const minusDisabled = require('./minusDisabled.png');
+export const plus = require('./plus.png');
+export const plusDisabled = require('./plusDisabled.png');
+export const store = require('./store.png');
+export const twitterIcon = require('./twitterIcon.png');
+export const vs = require('./vs.png');
+export const instagramIcon = require('./instagramIcon.png');
+export const info = require('./info.png');
+export const thumbsDown = require('./thumbsDown.png');
+export const clockwise = require('./clockwise.png');
+export const check = require('./check.png');
 export const whistle = require('./whistle.png');
 
 // GIF
-export ballGif from './ball.gif';
-export spinner from './spinner.gif';
+export const ballGif = require('./ball.gif');
+export const spinner = require('./spinner.gif');
 
