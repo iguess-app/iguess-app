@@ -49,4 +49,20 @@ export default {
 
   loadingTitle: 'Dá uma segurada aí, boleiro…',
   loadingSubtitle: 'Aguarde enquanto processamos algumas informações.',
+
+  aboutTitle: 'Sobre nós',
+  aboutDescription: 'O aplicativo de palpites que você respeita!',
+  aboutVersion: 'Versão',
+  aboutSectionATitle: 'Nossa Vibe',
+  aboutSectionAContent:
+    'A iguess chegou focada em você, louco por esportes. Nossa vibe é trazer uma parada para você palpitar a vontade em todos as modalidades, agora principalmente nas partidas da copa do mundo, e competir com a sua galera do trabalho, escola e faculdade, vendo quem se saiu melhor em cada rodada.',
+  aboutSectionBTitle: 'Nossa Brisa',
+  aboutSectionBContent:
+    'A gente quer ver todo mundo que gosta muito de esporte usando nosso aplicativo, palpitando e curtindo com a galera. Imagina só, apostar com seu brother quem vai vencer a Fórmula 1 no domingo valendo uma caixa de breja e nosso aplicativo avisar aos dois quem foi o vencedor do palpite! Nossa brisa é chegar nesse nível. A caminhada é longa, começa com um único campeonato, a copa do mundo, e a gente conta com você para chegar onde queremos. Afinal, essa é a forma mais fácil de ter seus palpites reunidos num só lugar.',
+  aboutSectionCTitle: 'Nosso Rolê',
+  aboutSectionCContent:
+    'Viemos do mundo da tecnologia e sempre curtimos muito fazer aquele bolão maroto e a ideia surgiu de uma necessidade de organizar esses bolões. Somos 100% foçados em você e nas suas necessidades, queremos sempre ouvir a sua voz e criar soluções que atendam essas necessidades para que você use cada vez mais nosso app. Temos um núcleo de tecnologia e design que está sempre aberto a ouvir sugestões, tem alguma? Então manda pra gente por aqui:',
+  aboutFeedback: 'Enviar uma sugestão',
+  aboutRate: 'AVALIAR APLICATIVO',
+  aboutFollow: 'Siga-nos nas redes sociais',
 };

@@ -49,4 +49,20 @@ export default {
 
   loadingTitle: 'Wait just a little bit...',
   loadingSubtitle: 'we are processing some information',
+
+  aboutTitle: 'About us',
+  aboutDescription: 'Your favorite guess app!',
+  aboutVersion: 'Version',
+  aboutSectionATitle: 'Our vibe',
+  aboutSectionAContent:
+    'O cuidado em identificar pontos críticos na mobilidade dos capitais internacionais pode nos levar a considerar a reestruturação dos paradigmas corporativos.',
+  aboutSectionBTitle: 'Our breeze',
+  aboutSectionBContent:
+    'Por conseguinte, a expansão dos mercados mundiais estende o alcance e a importância dos paradigmas corporativos.',
+  aboutSectionCTitle: 'Our roll',
+  aboutSectionCContent:
+    'Evidentemente, o fenômeno da Internet estimula a padronização do retorno esperado a longo prazo.',
+  aboutFeedback: 'Send feedback',
+  aboutRate: 'Rate app',
+  aboutFollow: 'Follow us on social media',
 };
