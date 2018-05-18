@@ -132,14 +132,14 @@ const ScoreBoardWrapper = styled.View`
 
 const Score = styled.Text`
   font-size: ${16.8 * HEIGHT_REL};
-  font-weight: bold;
+  font-weight: 800;
   color: ${SCORE_FONT_COLOR};
   margin-right: 4;
 `;
 
 const PointsText = styled.Text`
   font-size: 12;
-  font-weight: bold;
+  font-weight: 800;
   color: ${SCORE_FONT_COLOR};
 `;
 
