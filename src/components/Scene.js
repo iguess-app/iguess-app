@@ -36,18 +36,19 @@ export const SceneBackground = styled.ImageBackground`
 `;
 
 export const Content = styled.Text`
-  font-size: 14;
-  line-height: ${1.5 * 14};
+  font-size: 16;
+  line-height: ${1.5 * 16};
   color: ${TEXT_SECONDARY_SCENE};
   margin-top: ${16 * HEIGHT_REL};
   padding-horizontal: ${32 * WIDTH_REL};
 `;
 
 export const SceneDescription = styled.Text`
-  font-size: 32;
+  font-size: 26;
+  line-height: ${1.29 * 26};
   font-weight: bold;
   text-align: left;
   color: ${SETTINGS_TEXT_COLOR};
-  padding-horizontal: ${32 * WIDTH_REL};
+  margin-horizontal: ${32 * WIDTH_REL};
   margin-top: ${24 * HEIGHT_REL};
 `;

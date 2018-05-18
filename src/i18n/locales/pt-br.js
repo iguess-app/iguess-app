@@ -37,7 +37,7 @@ export default {
 
   supportTitle: 'Suporte',
   supportDescription:
-    'Fale com alguém do nosso time ou contate-nos nas redes sociais.',
+    'Troque ideia com alguem do nosso time ou siga-nos nas redes sociais.',
   supportFacebook: 'Fale com a gente no facebook',
   supportTwitter: 'Fale com a gente no twitter',
   supportInstagram: 'Fale com a gente no instragram',

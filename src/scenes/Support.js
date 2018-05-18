@@ -20,6 +20,7 @@ const Support = () => {
       <SceneDescription>{I18n.t('supportDescription')}</SceneDescription>
       <OptionsWrapper>
         <Option
+          chevron={false}
           icon={mail}
           text="support@iguess.com"
           url="mailto:support@iguess.com"
@@ -27,31 +28,29 @@ const Support = () => {
         <Option
           icon={facebookIcon}
           text={I18n.t('supportFacebook')}
-          url="https://www.facebook.com"
+          url="https://www.facebook.com/iguessCompany"
         />
         <Option
           icon={twitterIcon}
           text={I18n.t('supportTwitter')}
-          url="https://www.twitter.com"
+          url="https://twitter.com/iguessoficial"
         />
         <Option
           icon={instagramIcon}
           text={I18n.t('supportInstagram')}
-          url="https://www.instagram.com"
+          url="https://www.instagram.com/iguessoficial/"
         />
       </OptionsWrapper>
     </SceneWrapper>
   );
 };
 
-const Option = props => {
-  const { icon, text, url } = props;
-
+const Option = ({ icon, text, url, chevron, type }) => {
   return (
     <TouchableWrapper onPress={() => Linking.openURL(url)}>
       <OptionIcon source={icon} />
       <OptionText>{text}</OptionText>
-      <Chevron />
+      {chevron === false ? null : <Chevron />}
     </TouchableWrapper>
   );
 };
@@ -75,16 +74,15 @@ const OptionIcon = styled.Image`
 
 const OptionText = styled.Text`
   font-size: 16;
-  width: ${240 * WIDTH_REL};
+  width: ${250 * WIDTH_REL};
   color: ${TEXT_SECONDARY_SCENE};
 `;
 
 const Chevron = styled.Image.attrs({
   source: chevronRight,
 })`
-  align-content: flex-end;
   height: 16;
-  width: 10;
+  width: 9;
 `;
 
 export default Support;
