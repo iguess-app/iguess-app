@@ -78,12 +78,23 @@ class GameCard extends Component {
     }
   };
 
+  _liveOrFinished = () => {
+    if (
+      this.state.status === gameStatus.FINISHED ||
+      this.state.status === gameStatus.LIVE
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   render() {
     const core = this._defineCore();
 
     return (
       <Wrapper>
-        {this.state.status === gameStatus.FINISHED ? (
+        {this._liveOrFinished() ? (
           <ScoreBoard score={this.props.score} />
         ) : null}
         <Card style={cardStyle}>

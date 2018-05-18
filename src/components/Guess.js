@@ -18,14 +18,18 @@ class Guess extends Component {
 
     const isBlocked = props.blocked !== undefined ? props.blocked : false;
 
-    this.state = { value: this._treatValue(props.value), blocked: isBlocked };
+    this.state = { blocked: isBlocked };
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({ value: this._treatValue(props.value) });
   }
 
   _treatValue(propValue) {
     let value = -1;
 
     if (propValue !== undefined) {
-      if (propValue < 0) {
+      if (propValue < 0 || undefined) {
         // Do nothing
         // Value remains -1
       } else if (propValue > MAX_GUESS) {
@@ -35,6 +39,7 @@ class Guess extends Component {
       }
     } else {
       // Do nothing
+      // Value remains -1
     }
 
     return value;
@@ -45,7 +50,9 @@ class Guess extends Component {
       <EnabledButton
         type="plus"
         value={value}
-        onPress={result => this.setState({ value: result })}
+        onPress={result => {
+          this.setState({ value: result }, () => this.props.updateCore());
+        }}
       />
     ) : (
       <DisabledButton type="plus" />
@@ -53,15 +60,21 @@ class Guess extends Component {
   }
 
   _selectMinus(value) {
-    return value >= 0 && !this.state.blocked ? (
+    return value > 0 && !this.state.blocked ? (
       <EnabledButton
         type="minus"
         value={value}
-        onPress={result => this.setState({ value: result })}
+        onPress={result =>
+          this.setState({ value: result }, () => this.props.updateCore())
+        }
       />
     ) : (
       <DisabledButton type="minus" />
     );
+  }
+
+  getValue() {
+    return this.state.value;
   }
 
   render() {
@@ -79,12 +92,14 @@ class Guess extends Component {
 
 const EnabledButton = ({ type, value, onPress }) => {
   const isPlus = type === 'plus';
-  const source = isPlus ? plus : minus;
+  const image = isPlus ? plus : minus;
   const result = isPlus ? value + 1 : value - 1;
 
+  const treatedResult = result < 0 ? 0 : result;
+
   return (
-    <TouchableOpacity onPress={() => onPress(result)}>
-      <ButtonImage source={source} />
+    <TouchableOpacity onPress={() => onPress(treatedResult)}>
+      <ButtonImage source={image} />
     </TouchableOpacity>
   );
 };

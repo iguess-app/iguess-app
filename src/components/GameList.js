@@ -65,6 +65,7 @@ class GameList extends Component {
               homeScore={0}
               awayScore={0}
               time={"45'"}
+              score={2}
             />
           )}
         />

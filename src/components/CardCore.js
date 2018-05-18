@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View } from 'react-native';
 import styled from 'styled-components';
 import Guess from '@components/Guess';
 import Result from '@components/Result';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
-import { vs, whistle } from '@assets/images';
+import { vs, whistle, spinner, check } from '@assets/images';
 import {
   SCHEDULED_TIME_COLOR,
   PROGRESS_TINT_COLOR,
@@ -13,21 +13,104 @@ import {
   WIDTH_REL,
 } from '@theme';
 
-export const AllowPredict = props => {
-  const { scheduled, homeGuess, awayGuess } = props;
-
-  return (
-    <CardCore>
-      <Guess value={homeGuess} />
-      <MidWrapper>
-        <Stadium>Old Trafford</Stadium>
-        <ScheduledTime>{scheduled.toUpperCase()}</ScheduledTime>
-        <VS />
-      </MidWrapper>
-      <Guess value={awayGuess} />
-    </CardCore>
-  );
+export const predictStatus = {
+  DEFAULT: 'DEFAULT',
+  LOADING: 'LOADING',
+  LOADED: 'LOADED',
 };
+
+export class AllowPredict extends Component {
+  constructor(props) {
+    super(props);
+
+    const { homeGuess, awayGuess } = props;
+
+    this.state = { status: predictStatus.DEFAULT, homeGuess, awayGuess };
+  }
+
+  update() {
+    // Will clear a current updateStatus timeout if exists
+    clearTimeout(this.timeout);
+
+    // Guarantee that guess will not be blank
+    const updatedValue = value => (value >= 0 ? value : 0);
+
+    // Update guesses
+    this.setState({
+      homeGuess: updatedValue(this.home.getValue()),
+      awayGuess: updatedValue(this.away.getValue()),
+    });
+
+    // Call and "updatedStatus" (contact API)
+    // after 3 seconds
+    this.timeout = setTimeout(() => {
+      this._updateStatus(predictStatus.LOADING);
+    }, 3000);
+  }
+
+  _updateStatus(status) {
+    const { DEFAULT, LOADING, LOADED } = predictStatus;
+
+    if (status === LOADING) {
+      this.setState({ status: LOADING });
+
+      // TODO: Contact API and set Status as loaded
+      // Using setTimeout for now
+      setTimeout(() => this._updateStatus(LOADED), 2000);
+    } else if (status === LOADED) {
+      this.setState({ status: LOADED });
+
+      // Set status as DEFAULT after 1 second
+      setTimeout(() => this._updateStatus(DEFAULT), 1000);
+    } else {
+      this.setState({ status: DEFAULT });
+    }
+  }
+
+  _mid() {
+    const { LOADING, LOADED } = predictStatus;
+
+    switch (this.state.status) {
+      case LOADING:
+        return (
+          <MidWrapper>
+            <Spinner />
+          </MidWrapper>
+        );
+      case LOADED:
+        return (
+          <MidWrapper>
+            <Checked />
+          </MidWrapper>
+        );
+      default:
+        return (
+          <MidWrapper>
+            <ScheduledTime>{this.props.scheduled.toUpperCase()}</ScheduledTime>
+            <VS />
+          </MidWrapper>
+        );
+    }
+  }
+
+  render() {
+    return (
+      <CardCore>
+        <Guess
+          value={this.state.homeGuess}
+          updateCore={() => this.update()}
+          ref={ref => (this.home = ref)}
+        />
+        {this._mid()}
+        <Guess
+          value={this.state.awayGuess}
+          updateCore={() => this.update()}
+          ref={ref => (this.away = ref)}
+        />
+      </CardCore>
+    );
+  }
+}
 
 export const NotAllowPredict = props => {
   const { scheduled, homeGuess, awayGuess } = props;
@@ -98,6 +181,23 @@ const TimeCircular = ({ children }) => (
   </View>
 );
 
+const Spinner = styled.Image.attrs({
+  source: spinner,
+})`
+  width: ${42 * WIDTH_REL};
+  height: ${42 * HEIGHT_REL};
+  resize-mode: contain;
+`;
+
+const Checked = styled.Image.attrs({
+  source: check,
+})`
+  width: ${32 * WIDTH_REL};
+  height: ${24 * HEIGHT_REL};
+  margin-horizontal: 5;
+  resize-mode: contain;
+`;
+
 const ProgressContainer = styled.View`
   position: absolute;
   top: 0;
@@ -124,12 +224,6 @@ const VS = styled.Image.attrs({
   height: ${52 * HEIGHT_REL};
   resize-mode: contain;
   margin-top: 8;
-`;
-
-const Stadium = styled.Text`
-  font-size: 8;
-  opacity: 0.6;
-  margin-bottom: 2;
 `;
 
 const ScheduledTime = styled.Text`
