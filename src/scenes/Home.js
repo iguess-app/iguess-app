@@ -1,6 +1,6 @@
 import React from 'react';
 import { SceneWrapper } from '@components/Scene';
-import { MainButton, TransparentButton } from '@components/Button';
+import { MainButton, WhiteBorderButton } from '@components/Button';
 import { HOME_BACKGROUND } from '@theme';
 import styled from 'styled-components';
 import { setStatusBarStyle } from '@helpers';
@@ -20,7 +20,7 @@ const Home = () => {
           text={I18n.t('homeSignUp')}
           onPress={() => Actions.signup()}
         />
-        <TransparentButton
+        <WhiteBorderButton
           text={I18n.t('homeSignIn')}
           onPress={() => Actions.signin()}
         />
