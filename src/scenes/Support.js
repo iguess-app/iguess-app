@@ -1,14 +1,14 @@
 import React from 'react';
 import { Linking } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
-import { NavBar, Content, SceneDescription } from '@components/Scene';
+import { NavBar, SceneDescription } from '@components/Scene';
 import styled from 'styled-components';
 import {
   chevronRight,
   mail,
   facebookIcon,
   twitterIcon,
-  instagramIcom,
+  instagramIcon,
 } from '@assets/images';
 import { TEXT_SECONDARY_SCENE, HEIGHT_REL, WIDTH_REL } from '@theme';
 import I18n from 'react-native-i18n';
@@ -35,7 +35,7 @@ const Support = () => {
           url="https://www.twitter.com"
         />
         <Option
-          icon={instagramIcom}
+          icon={instagramIcon}
           text={I18n.t('supportInstagram')}
           url="https://www.instagram.com"
         />
