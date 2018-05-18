@@ -45,7 +45,7 @@ const Support = () => {
   );
 };
 
-const Option = ({ icon, text, url, chevron, type }) => {
+const Option = ({ icon, text, url, chevron }) => {
   return (
     <TouchableWrapper onPress={() => Linking.openURL(url)}>
       <OptionIcon source={icon} />

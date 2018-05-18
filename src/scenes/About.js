@@ -43,9 +43,18 @@ const About = () => {
         </RateView>
         <FollowText>{I18n.t('aboutFollow')}</FollowText>
         <FollowRow>
-          <TouchableIcon icon={facebookIcon} url="https://www.facebook.com" />
-          <TouchableIcon icon={twitterIcon} url="https://www.twitter.com" />
-          <TouchableIcon icon={instagramIcon} url="https://www.instagram.com" />
+          <TouchableIcon
+            icon={facebookIcon}
+            url="https://www.facebook.com/iguessCompany"
+          />
+          <TouchableIcon
+            icon={twitterIcon}
+            url="https://twitter.com/iguessoficial"
+          />
+          <TouchableIcon
+            icon={instagramIcon}
+            url="https://www.instagram.com/iguessoficial/"
+          />
         </FollowRow>
       </Scroll>
     </SceneWrapper>
