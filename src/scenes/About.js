@@ -2,10 +2,15 @@ import React from 'react';
 import { TouchableOpacity, Linking } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import { NavBar, SceneDescription, Content } from '@components/Scene';
-import { MainButton } from '@components/Button';
-import { aboutImage, facebookIcon, twitterIcon } from '@assets/images';
+import { DarkBorderButton, MainButton } from '@components/Button';
+import {
+  aboutImage,
+  facebookIcon,
+  twitterIcon,
+  instagramIcon,
+} from '@assets/images';
 import styled from 'styled-components';
-import { FOLLOW_US_COLOR, WIDTH_REL } from '@theme';
+import { WIDTH_REL } from '@theme';
 
 const About = () => {
   return (
@@ -43,16 +48,23 @@ const About = () => {
         </Content>
         <RateView>
           <MainButton
+            text="Send feedback"
+            onPress={() => {
+              throw new Error('Not implemented. TODO: Feedback');
+            }}
+          />
+          <DarkBorderButton
             text="Rate this app"
             onPress={() => {
               throw new Error('Not implemented. TODO: Rate app');
             }}
           />
         </RateView>
-        <FollowText>Follow us</FollowText>
+        <FollowText>Follow us on social media</FollowText>
         <FollowRow>
           <TouchableIcon icon={facebookIcon} url="https://www.facebook.com" />
           <TouchableIcon icon={twitterIcon} url="https://www.twitter.com" />
+          <TouchableIcon icon={instagramIcon} url="https://www.instagram.com" />
         </FollowRow>
       </Scroll>
     </SceneWrapper>
@@ -95,7 +107,7 @@ const FollowText = styled.Text`
   align-self: center;
   font-size: 16;
   font-weight: bold;
-  color: ${FOLLOW_US_COLOR}
+  color: black;
   margin-bottom: 16;
 `;
 
@@ -103,7 +115,7 @@ const FollowRow = styled.View`
   flex-direction: row;
   justify-content: space-between;
   margin-top: 8;
-  margin-horizontal: ${110 * WIDTH_REL};
+  margin-horizontal: ${80 * WIDTH_REL};
 `;
 
 const Icon = styled.Image`

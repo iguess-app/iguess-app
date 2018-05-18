@@ -18,7 +18,7 @@ export plusDisabled from './plusDisabled.png';
 export store from './store.png';
 export twitterIcon from './twitterIcon.png';
 export vs from './vs.png';
-export instagramIcom from './instagramIcon.png';
+export instagramIcon from './instagramIcon.png';
 export info from './info.png';
 export thumbsDown from './thumbsDown.png';
 export clockwise from './clockwise.png';
