@@ -1,22 +1,29 @@
 import React from 'react';
 import { SceneWrapper } from '@components/Scene';
-import { MainButton, TransparentButton } from '@components/Button';
+import { MainButton, WhiteBorderButton } from '@components/Button';
 import { HOME_BACKGROUND } from '@theme';
 import styled from 'styled-components';
 import { setStatusBarStyle } from '@helpers';
 import { HOME_TEXT_COLOR, PRIMARY_BUTTON_TEXT_COLOR } from '@theme';
 import { TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import I18n from '../i18n';
 
 const Home = () => {
   setStatusBarStyle('white');
 
   return (
     <SceneWrapper background={HOME_BACKGROUND}>
-      <HomeText>Lorem ipsum dolor sit amet, consectetur.</HomeText>
+      <HomeText>{I18n.t('homeGreeting')}</HomeText>
       <ButtonsView>
-        <MainButton text="create my account" onPress={() => Actions.signup()} />
-        <TransparentButton text="sign in" onPress={() => Actions.signin()} />
+        <MainButton
+          text={I18n.t('homeSignUp')}
+          onPress={() => Actions.signup()}
+        />
+        <WhiteBorderButton
+          text={I18n.t('homeSignIn')}
+          onPress={() => Actions.signin()}
+        />
       </ButtonsView>
       <TermsButton />
     </SceneWrapper>
@@ -36,7 +43,7 @@ const HomeText = styled.Text`
 const TermsButton = () => {
   return (
     <TouchableOpacity onPress={() => Actions.terms()}>
-      <TermsText>Terms and conditions</TermsText>
+      <TermsText>{I18n.t('homeTerms')}</TermsText>
     </TouchableOpacity>
   );
 };

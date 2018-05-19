@@ -1,90 +1,88 @@
 import React from 'react';
 import { Linking } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
-import { NavBar, Content, SceneDescription } from '@components/Scene';
+import { NavBar, SceneDescription } from '@components/Scene';
 import styled from 'styled-components';
-import { chevronRight, mail, facebookIcon, twitterIcon, instagramIcom } from '@assets/images';
+import {
+  chevronRight,
+  mail,
+  facebookIcon,
+  twitterIcon,
+  instagramIcon,
+} from '@assets/images';
 import { TEXT_SECONDARY_SCENE, HEIGHT_REL, WIDTH_REL } from '@theme';
+import I18n from 'react-native-i18n';
 
 const Support = () => {
   return (
     <SceneWrapper>
-      <NavBar title="Support" />
-      <SceneDescription>
-        Fale com alguém do nosso time ou contate-nos nas redes sociais.
-      </SceneDescription>
-      <Content>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eleifend
-        vitae ipsum vehicula malesuada. Ut scelerisque nunc non consequat
-        ultricies.
-      </Content>
+      <NavBar title={I18n.t('supportTitle')} />
+      <SceneDescription>{I18n.t('supportDescription')}</SceneDescription>
       <OptionsWrapper>
         <Option
+          chevron={false}
           icon={mail}
           text="support@iguess.com"
           url="mailto:support@iguess.com"
         />
         <Option
           icon={facebookIcon}
-          text="Talk with us on facebook"
-          url="https://www.facebook.com"
+          text={I18n.t('supportFacebook')}
+          url="https://www.facebook.com/iguessCompany"
         />
         <Option
           icon={twitterIcon}
-          text="Talk with us on twitter"
-          url="https://www.twitter.com"
+          text={I18n.t('supportTwitter')}
+          url="https://twitter.com/iguessoficial"
         />
         <Option
-          icon={instagramIcom}
-          text="Follow us on instagram"
-          url="https://www.instagram.com"
+          icon={instagramIcon}
+          text={I18n.t('supportInstagram')}
+          url="https://www.instagram.com/iguessoficial/"
         />
       </OptionsWrapper>
     </SceneWrapper>
   );
 };
 
-const Option = props => {
-  const { icon, text, url } = props;
-
+const Option = ({ icon, text, url, chevron }) => {
   return (
     <TouchableWrapper onPress={() => Linking.openURL(url)}>
       <OptionIcon source={icon} />
       <OptionText>{text}</OptionText>
-      <Chevron />
+      {chevron === false ? null : <Chevron />}
     </TouchableWrapper>
   );
 };
 
 const OptionsWrapper = styled.View`
-  margin-top: ${32*HEIGHT_REL};
+  margin-top: ${32 * HEIGHT_REL};
 `;
 
 const TouchableWrapper = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
-  margin-horizontal: ${32*WIDTH_REL};
-  margin-bottom: ${32*HEIGHT_REL};
+  margin-horizontal: ${32 * WIDTH_REL};
+  margin-bottom: ${32 * HEIGHT_REL};
 `;
 
 const OptionIcon = styled.Image`
-  width: ${32*WIDTH_REL};
-  margin-right: ${20*WIDTH_REL};
+  width: ${32 * WIDTH_REL};
+  margin-right: ${20 * WIDTH_REL};
   resize-mode: contain;
 `;
 
 const OptionText = styled.Text`
   font-size: 16;
-  width: ${240*WIDTH_REL};
+  width: ${250 * WIDTH_REL};
   color: ${TEXT_SECONDARY_SCENE};
 `;
 
 const Chevron = styled.Image.attrs({
   source: chevronRight,
 })`
-  align-content: flex-end;
   height: 16;
-  width: 10;
+  width: 9;
 `;
 
 export default Support;

@@ -8,11 +8,12 @@ import {
   HEIGHT_REL,
 } from '@theme';
 import { ballGif } from '@assets/images/index';
+import I18n from 'react-native-i18n';
 
 const Loading = () => (
   <SceneWrapper>
-    <Title>Dá uma segurada aí boleiro…</Title>
-    <Subtitle>Aguarde enquanto processamos algumas informações.</Subtitle>
+    <Title>{I18n.t('loadingTitle')}</Title>
+    <Subtitle>{I18n.t('loadingSubtitle')}</Subtitle>
     <AnimatedBall />
   </SceneWrapper>
 );
@@ -22,6 +23,7 @@ const Title = styled.Text`
   align-self: center;
   color: ${LOADING_TITLE_COLOR};
   margin-top: ${180 * HEIGHT_REL};
+  margin-horizontal: ${32 * WIDTH_REL};
   font-size: 32;
   font-weight: bold;
 `;
@@ -31,6 +33,7 @@ const Subtitle = styled.Text`
   align-self: center;
   color: ${LOADING_SUBTITLE_COLOR};
   margin-top: ${8 * HEIGHT_REL};
+  margin-horizontal: ${32 * WIDTH_REL};
   font-size: 16;
 `;
 

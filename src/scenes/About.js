@@ -2,57 +2,59 @@ import React from 'react';
 import { TouchableOpacity, Linking } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import { NavBar, SceneDescription, Content } from '@components/Scene';
-import { MainButton } from '@components/Button';
-import { aboutImage, facebookIcon, twitterIcon } from '@assets/images';
+import { DarkBorderButton, MainButton } from '@components/Button';
+import {
+  aboutImage,
+  facebookIcon,
+  twitterIcon,
+  instagramIcon,
+} from '@assets/images';
 import styled from 'styled-components';
-import { FOLLOW_US_COLOR, WIDTH_REL } from '@theme';
+import { WIDTH_REL, HEIGHT_REL, TEXT_SECONDARY_SCENE } from '@theme';
+import I18n from 'react-native-i18n';
 
 const About = () => {
   return (
     <SceneWrapper>
-      <NavBar title="About us" />
+      <NavBar title={I18n.t('aboutTitle')} />
       <Scroll>
         <HeaderImage source={aboutImage} />
-        <SceneDescription>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </SceneDescription>
-        <BoldContent>Version: 1.0.1</BoldContent>
-        <Content>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-          eleifend vitae ipsum vehicula malesuada. Ut scelerisque nunc non
-          consequat ultricies. Etiam volutpat arcu velit, sed luctus enim
-          tincidunt sed. Sed tortor ante, dictum vitae ullamcorper sed,
-          facilisis sodales est. Cras id facilisis metus. Ut sed dapibus ante.
-          Nullam euismod sapien luctus metus feugiat commodo. Aenean sit amet
-          bibendum mi, et tristique nisi. Proin aliquet tellus non magna
-          feugiat, ut ultricies magna convallis. Fusce nec sagittis nunc.
-        </Content>
-        <BoldContent>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-          eleifend vitae
-        </BoldContent>
-        <Content>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-          eleifend vitae ipsum vehicula malesuada. Ut scelerisque nunc non
-          consequat ultricies. Etiam volutpat arcu velit, sed luctus enim
-          tincidunt sed. Sed tortor ante, dictum vitae ullamcorper sed,
-          facilisis sodales est. Cras id facilisis metus. Ut sed dapibus ante.
-          Nullam euismod sapien luctus metus feugiat commodo. Aenean sit amet
-          bibendum mi, et tristique nisi. Proin aliquet tellus non magna
-          feugiat, ut ultricies magna convallis. Fusce nec sagittis nunc.
-        </Content>
+        <SceneDescription>{I18n.t('aboutDescription')}</SceneDescription>
+        <BoldContent>{I18n.t('aboutVersion')}: 1.0.1</BoldContent>
+        <SectionTitle>{I18n.t('aboutSectionATitle')}</SectionTitle>
+        <Content>{I18n.t('aboutSectionAContent')}</Content>
+        <SectionTitle>{I18n.t('aboutSectionBTitle')}</SectionTitle>
+        <Content>{I18n.t('aboutSectionBContent')}</Content>
+        <SectionTitle>{I18n.t('aboutSectionCTitle')}</SectionTitle>
+        <Content>{I18n.t('aboutSectionCContent')}</Content>
         <RateView>
           <MainButton
-            text="Rate this app"
+            text={I18n.t('aboutFeedback')}
+            onPress={() => {
+              throw new Error('Not implemented. TODO: Feedback');
+            }}
+          />
+          <DarkBorderButton
+            text={I18n.t('aboutRate')}
             onPress={() => {
               throw new Error('Not implemented. TODO: Rate app');
             }}
           />
         </RateView>
-        <FollowText>Follow us</FollowText>
+        <FollowText>{I18n.t('aboutFollow')}</FollowText>
         <FollowRow>
-          <TouchableIcon icon={facebookIcon} url="https://www.facebook.com" />
-          <TouchableIcon icon={twitterIcon} url="https://www.twitter.com" />
+          <TouchableIcon
+            icon={facebookIcon}
+            url="https://www.facebook.com/iguessCompany"
+          />
+          <TouchableIcon
+            icon={twitterIcon}
+            url="https://twitter.com/iguessoficial"
+          />
+          <TouchableIcon
+            icon={instagramIcon}
+            url="https://www.instagram.com/iguessoficial/"
+          />
         </FollowRow>
       </Scroll>
     </SceneWrapper>
@@ -69,20 +71,28 @@ const TouchableIcon = props => {
   );
 };
 
+const SectionTitle = styled.Text`
+  font-size: 28;
+  font-weight: bold;
+  margin-horizontal: ${32 * WIDTH_REL};
+  margin-top: ${24 * HEIGHT_REL};
+  color: ${TEXT_SECONDARY_SCENE};
+`;
+
 const RateView = styled.View`
   align-self: center;
-  margin-vertical: 32;
-  margin-horizontal: 5%;
+  margin-vertical: ${32 * WIDTH_REL};
+  margin-horizontal: ${30 * HEIGHT_REL};
 `;
 
 const BoldContent = styled(Content)`
   font-weight: bold;
-  margin-top: 16;
-  margin-bottom: 8;
+  margin-top: ${16 * HEIGHT_REL};
+  margin-bottom: ${8 * HEIGHT_REL};
 `;
 
 const Scroll = styled.ScrollView`
-  margin-bottom: 24;
+  margin-bottom: ${24 * HEIGHT_REL};
 `;
 
 const HeaderImage = styled.Image`
@@ -95,15 +105,15 @@ const FollowText = styled.Text`
   align-self: center;
   font-size: 16;
   font-weight: bold;
-  color: ${FOLLOW_US_COLOR}
-  margin-bottom: 16;
+  color: black;
+  margin-bottom: ${16 * HEIGHT_REL};
 `;
 
 const FollowRow = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 8;
-  margin-horizontal: ${110 * WIDTH_REL};
+  margin-top: ${8 * HEIGHT_REL};
+  margin-horizontal: ${80 * WIDTH_REL};
 `;
 
 const Icon = styled.Image`

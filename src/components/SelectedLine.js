@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { SELECT_LINE_PRIMARY_TEXT, SELECT_LINE_POINTS_TEXT } from '@theme';
+import I18n from '../i18n';
 
 export default class TouchableSelectLine extends Component {
   render() {
     const { season, name, points, opacity } = this.props;
 
-    const pointsLabel = points > 1 ? 'POINTS' : 'POINT';
+    const pointsLabel = I18n.t(points > 1 ? 'points' : 'point');
 
     return (
       <Wrapper>
@@ -14,7 +15,7 @@ export default class TouchableSelectLine extends Component {
         <LineName opacity={opacity}>{name}</LineName>
         <PointsView opacity={opacity}>
           <Points>{points}</Points>
-          <PointsText>{pointsLabel}</PointsText>
+          <PointsText>{pointsLabel.toUpperCase()}</PointsText>
         </PointsView>
       </Wrapper>
     );

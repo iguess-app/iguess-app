@@ -16,7 +16,6 @@ export const SETTINGS_BORDER_COLOR = '#E4EBF2'; // light gray
 export const TEXT_SECONDARY_SCENE = CARD_TEAM_NAME_COLOR; // gray
 export const PRIMARY_BUTTON_COLOR = '#19D88C'; // green
 export const PRIMARY_BUTTON_TEXT_COLOR = '#FFF'; // white
-export const FOLLOW_US_COLOR = SETTINGS_TEXT_COLOR; // purple
 export const HEADER_TEXT_COLOR = '#FFF'; // white
 export const HOME_TEXT_COLOR = '#FFF'; // white
 export const INPUT_TINT_COLOR = '#CAD2D9'; //gray

@@ -1,49 +1,48 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PRIMARY_BUTTON_COLOR, PRIMARY_BUTTON_TEXT_COLOR, HEIGHT_REL, WIDTH_REL } from '@theme';
+import {
+  PRIMARY_BUTTON_COLOR,
+  PRIMARY_BUTTON_TEXT_COLOR,
+  HEIGHT_REL,
+  WIDTH_REL,
+} from '@theme';
 
-export const MainButton = props => {
-  const { text, onPress } = props;
+export const MainButton = ({ text, onPress }) => (
+  <MainTouchable onPress={() => onPress()}>
+    <WhiteText>{text.toUpperCase()}</WhiteText>
+  </MainTouchable>
+);
 
-  return (
-    <MainTouchable onPress={() => onPress()}>
-      <ButtonText>{text.toUpperCase()}</ButtonText>
-    </MainTouchable>
-  );
-};
+export const WhiteBorderButton = ({ text, onPress }) => (
+  <WhiteBorderTouchable onPress={() => onPress()}>
+    <WhiteText>{text.toUpperCase()}</WhiteText>
+  </WhiteBorderTouchable>
+);
 
-export const TransparentButton = props => {
-  const { text, onPress } = props;
+export const DarkBorderButton = ({ text, onPress }) => (
+  <DarkBorderTouchable onPress={() => onPress()}>
+    <DarkText>{text.toUpperCase()}</DarkText>
+  </DarkBorderTouchable>
+);
 
-  return (
-    <TransparentTouchable onPress={() => onPress()}>
-      <ButtonText>{text.toUpperCase()}</ButtonText>
-    </TransparentTouchable>
-  );
-};
-
-export const InativeButton = props => {
-  const { text } = props;
-
-  return (
-    <Inative>
-      <ButtonText>{text.toUpperCase()}</ButtonText>
-    </Inative>
-  )
-}
+export const InativeButton = ({ text }) => (
+  <Inative>
+    <WhiteText>{text.toUpperCase()}</WhiteText>
+  </Inative>
+);
 
 const MainTouchable = styled.TouchableOpacity`
-  width: ${311*WIDTH_REL};
-  height: ${56*HEIGHT_REL};
+  width: ${311 * WIDTH_REL};
+  height: ${56 * HEIGHT_REL};
   border-radius: 38;
   background-color: ${PRIMARY_BUTTON_COLOR};
   align-items: center;
   justify-content: center;
 `;
 
-const TransparentTouchable = styled.TouchableOpacity`
-  width: ${311*WIDTH_REL};
-  height: ${56*HEIGHT_REL};
+const WhiteBorderTouchable = styled.TouchableOpacity`
+  width: ${311 * WIDTH_REL};
+  height: ${56 * HEIGHT_REL};
   border-radius: 38;
   border-style: solid;
   border-width: 2;
@@ -54,19 +53,28 @@ const TransparentTouchable = styled.TouchableOpacity`
   justify-content: center;
 `;
 
+const DarkBorderTouchable = styled(WhiteBorderTouchable)`
+  background-color: white;
+  border-color: #333333;
+`;
+
 const Inative = styled.View`
-  width: ${311*WIDTH_REL};
-  height: ${56*HEIGHT_REL};
+  width: ${311 * WIDTH_REL};
+  height: ${56 * HEIGHT_REL};
   border-radius: 38;
   background-color: ${PRIMARY_BUTTON_COLOR};
   opacity: 0.32;
   align-items: center;
   justify-content: center;
-`
+`;
 
-const ButtonText = styled.Text`
+const WhiteText = styled.Text`
   font-size: 15;
   font-weight: bold;
   text-align: center;
   color: ${PRIMARY_BUTTON_TEXT_COLOR};
+`;
+
+const DarkText = styled(WhiteText)`
+  color: #333333;
 `;
