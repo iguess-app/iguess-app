@@ -124,7 +124,7 @@ const HeaderWrapper = styled.View`
   justify-content: space-between;
   align-items: center;
   margin-top: ${props => (props.first ? 20 * HEIGHT_REL : 0)};
-  margin-bottom: ${32 * HEIGHT_REL};
+  margin-bottom: ${6 * HEIGHT_REL};
   margin-horizontal: ${32 * WIDTH_REL};
 `;
 

@@ -97,7 +97,7 @@ class GameCard extends Component {
         {this._liveOrFinished() ? (
           <ScoreBoard score={this.props.score} />
         ) : null}
-        <Card style={cardStyle}>
+        <Card style={cardShadow}>
           <HomeTeam name="Arsenal" image={arsenal} />
           {core}
           <AwayTeam name="Liverpool" image={liverpool} />
@@ -132,14 +132,14 @@ const ScoreBoardWrapper = styled.View`
 
 const Score = styled.Text`
   font-size: ${16.8 * HEIGHT_REL};
-  font-weight: bold;
+  font-weight: 800;
   color: ${SCORE_FONT_COLOR};
   margin-right: 4;
 `;
 
 const PointsText = styled.Text`
   font-size: 12;
-  font-weight: bold;
+  font-weight: 800;
   color: ${SCORE_FONT_COLOR};
 `;
 
@@ -151,7 +151,7 @@ const AwayTeam = styled(Team)``;
 
 // Having problems with styled components + box-shadow in this version
 // Didn't work on Android devices
-const cardStyle = {
+const cardShadow = {
   shadowOpacity: 0.16,
   shadowColor: '#4D6980',
   shadowOffset: {
@@ -163,15 +163,17 @@ const cardStyle = {
 
 const Card = styled.View`
   flex-direction: row;
-  width: ${312 * WIDTH_REL};
-  height: ${144 * HEIGHT_REL};
+  width: ${327 * WIDTH_REL};
+  height: ${156 * HEIGHT_REL};
   margin-bottom: ${40 * HEIGHT_REL};
   border-color: ${CARD_BORDER_COLOR};
-  background-color: ${CARD_BACKGROUND_COLOR}
+  background-color: ${CARD_BACKGROUND_COLOR};
+  padding-vertical: 20;
+  padding-horizontal: 20;
   border-radius: 4;
   border-width: 1;
   align-self: center;
-  justify-content: center;
+  align-items: center;
 `;
 
 export default GameCard;

@@ -51,7 +51,6 @@ const Guessed = styled.Text`
   font-size: 32;
   font-weight: 500;
   color: ${GUESS_GUESSED_TEXT_COLOR};
-  opacity: 0.62;
   text-align: center;
 `;
 

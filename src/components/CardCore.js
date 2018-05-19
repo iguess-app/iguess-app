@@ -184,7 +184,7 @@ const TimeCircular = ({ children }) => (
 const Spinner = styled.Image.attrs({
   source: spinner,
 })`
-  width: ${42 * WIDTH_REL};
+  width: ${44 * WIDTH_REL};
   height: ${42 * HEIGHT_REL};
   resize-mode: contain;
 `;
@@ -192,7 +192,7 @@ const Spinner = styled.Image.attrs({
 const Checked = styled.Image.attrs({
   source: check,
 })`
-  width: ${32 * WIDTH_REL};
+  width: ${34 * WIDTH_REL};
   height: ${24 * HEIGHT_REL};
   margin-horizontal: 5;
   resize-mode: contain;
