@@ -5,7 +5,6 @@ import SelectedLine from '@components/SelectedLine';
 import { SceneWrapper } from '@components/Scene';
 import SettingsButton from '@components/SettingsButton';
 import { chevronDown } from '@assets/images';
-import { TextBase } from '@components/Scene';
 import {
   SELECT_LINE_PRIMARY_TEXT,
   DEFAULT_BACKGROUND,
@@ -94,9 +93,9 @@ const NavTouchable = styled.TouchableOpacity`
   margin-top: 2;
 `;
 
-const NavText = styled(TextBase)`
+const NavText = styled.Text`
   font-size: 16;
-  font-weight: bold;
+  font-family: 'KievitOffc-Bold';
   color: ${SELECT_LINE_PRIMARY_TEXT};
   opacity: ${props => props.opacity};
   margin-right: 16;

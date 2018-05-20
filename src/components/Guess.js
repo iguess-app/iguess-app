@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { TouchableOpacity } from 'react-native';
 import { plus, plusDisabled, minus, minusDisabled } from '@assets/images';
-import { TextBase } from '@components/Scene';
 import {
   GUESS_GUESSED_TEXT_COLOR,
   GUESS_DEFAULT_TEXT_COLOR,
@@ -127,12 +126,12 @@ const ButtonImage = styled.Image`
   margin-vertical: ${16 * HEIGHT_REL};
 `;
 
-const Value = styled(TextBase).attrs({
+const Value = styled.Text.attrs({
   guessed: props => (props.children !== DEFAULT_VALUE ? true : false),
 })`
+  font-family: 'KievitOffc-Bold';
   font-size: ${props => (props.guessed ? 20 : 8)};
   margin-vertical: ${props => (props.guessed ? 8 : 15)};
-  font-weight: bold;
   text-align: center;
   opacity: ${props => (props.guessed ? 0.9 : 0.6)};
   color: ${props =>

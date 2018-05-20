@@ -35,11 +35,8 @@ export const SceneBackground = styled.ImageBackground`
   background-color: ${SCENE_BACKGROUND_COLOR};
 `;
 
-export const TextBase = styled.Text`
+export const Content = styled.Text`
   font-family: 'KievitOffc';
-`;
-
-export const Content = styled(TextBase)`
   font-size: 16;
   line-height: ${1.5 * 16};
   color: ${TEXT_SECONDARY_SCENE};
@@ -47,10 +44,10 @@ export const Content = styled(TextBase)`
   padding-horizontal: ${32 * WIDTH_REL};
 `;
 
-export const SceneDescription = styled(TextBase)`
+export const SceneDescription = styled.Text`
   font-size: 26;
   line-height: ${1.29 * 26};
-  font-weight: bold;
+  font-family: 'KievitOffc-Bold';
   text-align: left;
   color: ${SETTINGS_TEXT_COLOR};
   margin-horizontal: ${32 * WIDTH_REL};

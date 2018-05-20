@@ -1,7 +1,6 @@
 import React from 'react';
 import { SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
-import { TextBase } from '@components/Scene';
 import {
   LOADING_TITLE_COLOR,
   LOADING_SUBTITLE_COLOR,
@@ -19,17 +18,18 @@ const Loading = () => (
   </SceneWrapper>
 );
 
-const Title = styled(TextBase)`
+const Title = styled.Text`
   text-align: center;
   align-self: center;
   color: ${LOADING_TITLE_COLOR};
   margin-top: ${180 * HEIGHT_REL};
   margin-horizontal: ${32 * WIDTH_REL};
   font-size: 32;
-  font-weight: bold;
+  font-family: 'KievitOffc-Bold';
 `;
 
-const Subtitle = styled(TextBase)`
+const Subtitle = styled.Text`
+  font-family: 'KievitOffc';
   text-align: center;
   align-self: center;
   color: ${LOADING_SUBTITLE_COLOR};

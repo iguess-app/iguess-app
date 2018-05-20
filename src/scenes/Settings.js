@@ -8,7 +8,6 @@ import { apiDelete } from '@helpers';
 import { connect } from 'react-redux';
 import { logout } from '@redux/authentication/actions';
 import { conversation, closeSettings, blog, store, exit } from '@assets/images';
-import { TextBase } from '@components/Scene';
 import {
   SETTINGS_TEXT_COLOR,
   SETTINGS_BORDER_COLOR,
@@ -127,9 +126,9 @@ const CloseImage = styled.Image.attrs({
   margin-top: ${52 * HEIGHT_REL};
 `;
 
-const Title = styled(TextBase)`
+const Title = styled.Text`
   font-size: 24;
-  font-weight: bold;
+  font-family: 'KievitOffc-Bold';
   color: ${SETTINGS_TEXT_COLOR};
   margin-top: ${40 * HEIGHT_REL};
   margin-left: ${32 * WIDTH_REL};
@@ -153,9 +152,9 @@ const Icon = styled.Image`
   margin-left: ${32 * WIDTH_REL};
 `;
 
-const CustomText = styled(TextBase)`
+const CustomText = styled.Text`
   font-size: 14;
-  font-weight: bold;
+  font-family: 'KievitOffc-Bold';
   color: ${SETTINGS_TEXT_COLOR};
   margin-left: ${20 * WIDTH_REL};
 `;

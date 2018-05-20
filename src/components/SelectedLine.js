@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { TextBase } from '@components/Scene';
 import { SELECT_LINE_PRIMARY_TEXT, SELECT_LINE_POINTS_TEXT } from '@theme';
 import I18n from '../i18n';
 
@@ -30,19 +29,19 @@ const Wrapper = styled.View`
   padding-right: 8%;
 `;
 
-const Season = styled(TextBase)`
+const Season = styled.Text`
   height: 17px;
   font-size: 14;
-  font-weight: bold;
+  font-family: 'KievitOffc-Bold';
   text-align: left;
   color: ${SELECT_LINE_PRIMARY_TEXT};
   opacity: ${props => props.opacity};
 `;
 
-const LineName = styled(TextBase)`
+const LineName = styled.Text`
   width: 289;
   font-size: 24;
-  font-weight: bold;
+  font-family: 'KievitOffc-Bold';
   text-align: left;
   color: ${SELECT_LINE_PRIMARY_TEXT};
   margin-top: 12;
@@ -59,17 +58,17 @@ const PointsView = styled.View`
   margin-top: 24;
 `;
 
-const Points = styled(TextBase)`
+const Points = styled.Text`
   font-size: 22.4;
-  font-weight: bold;
+  font-family: 'KievitOffc-Bold';
   color: ${SELECT_LINE_POINTS_TEXT};
   margin: auto;
   margin-right: 4;
 `;
 
-const PointsText = styled(TextBase)`
+const PointsText = styled.Text`
   font-size: 14;
-  font-weight: bold;
+  font-family: 'KievitOffc-Bold';
   color: ${SELECT_LINE_POINTS_TEXT};
   margin: auto;
   margin-left: 0;

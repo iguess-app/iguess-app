@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import * as gamesActions from '@redux/games/actions';
 import * as gamesSelectors from '@redux/games/reducer';
-import { TextBase } from '@components/Scene';
 import {
   SCENE_BACKGROUND_COLOR,
   CARD_LIST_TITLE_COLOR,
@@ -129,15 +128,15 @@ const HeaderWrapper = styled.View`
   margin-horizontal: ${32 * WIDTH_REL};
 `;
 
-const Title = styled(TextBase)`
+const Title = styled.Text`
+  font-family: 'KievitOffc-Bold';
   font-size: 28;
-  font-weight: bold;
   color: ${CARD_LIST_TITLE_COLOR};
 `;
 
-const SubTitle = styled(TextBase)`
+const SubTitle = styled.Text`
+  font-family: 'KievitOffc-Bold';
   font-size: 12;
-  font-weight: bold;
   margin-top: ${7 * HEIGHT_REL};
   color: ${CARD_LIST_SUBTITLE_COLOR};
 `;

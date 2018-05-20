@@ -3,7 +3,6 @@ import { Linking } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import { NavBar, SceneDescription } from '@components/Scene';
 import styled from 'styled-components';
-import { TextBase } from '@components/Scene';
 import {
   chevronRight,
   mail,
@@ -73,7 +72,8 @@ const OptionIcon = styled.Image`
   resize-mode: contain;
 `;
 
-const OptionText = styled(TextBase)`
+const OptionText = styled.Text`
+  font-family: 'KievitOffc';
   font-size: 16;
   width: ${250 * WIDTH_REL};
   color: ${TEXT_SECONDARY_SCENE};

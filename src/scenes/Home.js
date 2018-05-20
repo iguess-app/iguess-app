@@ -4,7 +4,6 @@ import { MainButton, WhiteBorderButton } from '@components/Button';
 import { HOME_BACKGROUND } from '@theme';
 import styled from 'styled-components';
 import { setStatusBarStyle } from '@helpers';
-import { TextBase } from '@components/Scene';
 import { HOME_TEXT_COLOR, PRIMARY_BUTTON_TEXT_COLOR } from '@theme';
 import { TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
@@ -31,7 +30,8 @@ const Home = () => {
   );
 };
 
-const HomeText = styled(TextBase)`
+const HomeText = styled.Text`
+  font-family: 'KievitOffc';
   font-size: 26;
   text-align: center;
   color: ${HOME_TEXT_COLOR};
@@ -49,9 +49,9 @@ const TermsButton = () => {
   );
 };
 
-const TermsText = styled(TextBase)`
+const TermsText = styled.Text`
   font-size: 14;
-  font-weight: bold;
+  font-family: 'KievitOffc-Bold';
   color: ${PRIMARY_BUTTON_TEXT_COLOR};
   text-decoration-line: underline;
   align-self: center;

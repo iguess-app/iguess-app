@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { TextBase } from '@components/Scene';
 import {
   CARD_SCORE_COLOR,
   GUESS_GUESSED_TEXT_COLOR,
@@ -40,7 +39,8 @@ const Wrapper = styled.View`
   flex-direction: column;
 `;
 
-const Score = styled(TextBase)`
+const Score = styled.Text`
+  font-family: 'KievitOffc';
   font-size: 40;
   font-weight: 500;
   color: ${CARD_SCORE_COLOR};
@@ -48,14 +48,16 @@ const Score = styled(TextBase)`
   text-align: center;
 `;
 
-const Guessed = styled(TextBase)`
+const Guessed = styled.Text`
+  font-family: 'KievitOffc';
   font-size: 32;
   font-weight: 500;
   color: ${GUESS_GUESSED_TEXT_COLOR};
   text-align: center;
 `;
 
-const NotGuessed = styled(TextBase)`
+const NotGuessed = styled.Text`
+  font-family: 'KievitOffc';
   font-size: 14;
   text-align: center;
   font-weight: 800;

@@ -50,12 +50,11 @@ const BackTouchable = styled.TouchableOpacity`
 `;
 
 const Title = styled.Text`
-  font-family: 'KievitOffc';
+  font-family: 'KievitOffc-Bold';
   flex-direction: row;
   flex: 1;
   text-align: center;
   font-size: 14;
-  font-weight: bold;
   color: ${HEADER_TEXT_COLOR};
   margin-right: 64;
 `;

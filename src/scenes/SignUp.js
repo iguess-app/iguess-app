@@ -9,7 +9,6 @@ import Input from '@components/Input';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { login } from '@redux/authentication/actions';
-import { TextBase } from '@components/Scene';
 import { WIDTH_REL, HEIGHT_REL, SIGN_UP_TERMS_COLOR } from '@theme';
 import { get, post } from '@helpers';
 import I18n from '../i18n';
@@ -254,7 +253,8 @@ const WrapperKeyboardAware = styled(KeyboardAwareScrollView)`
   padding-horizontal: ${32 * WIDTH_REL};
 `;
 
-const Terms = styled(TextBase)`
+const Terms = styled.Text`
+  font-family: 'KievitOffc';
   font-size: 14;
   color: ${SIGN_UP_TERMS_COLOR};
   align-self: center;
@@ -262,7 +262,7 @@ const Terms = styled(TextBase)`
 `;
 
 const TextLink = Terms.extend`
-  font-weight: bold;
+  font-family: 'KievitOffc-Bold';
   text-decoration-line: underline;
 `;
 
