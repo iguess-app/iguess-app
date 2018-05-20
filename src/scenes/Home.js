@@ -4,6 +4,7 @@ import { MainButton, WhiteBorderButton } from '@components/Button';
 import { HOME_BACKGROUND } from '@theme';
 import styled from 'styled-components';
 import { setStatusBarStyle } from '@helpers';
+import { TextBase } from '@components/Scene';
 import { HOME_TEXT_COLOR, PRIMARY_BUTTON_TEXT_COLOR } from '@theme';
 import { TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
@@ -30,7 +31,7 @@ const Home = () => {
   );
 };
 
-const HomeText = styled.Text`
+const HomeText = styled(TextBase)`
   font-size: 26;
   text-align: center;
   color: ${HOME_TEXT_COLOR};
@@ -48,7 +49,7 @@ const TermsButton = () => {
   );
 };
 
-const TermsText = styled.Text`
+const TermsText = styled(TextBase)`
   font-size: 14;
   font-weight: bold;
   color: ${PRIMARY_BUTTON_TEXT_COLOR};

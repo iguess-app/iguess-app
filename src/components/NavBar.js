@@ -47,9 +47,10 @@ const BackImage = styled.Image.attrs({
 const BackTouchable = styled.TouchableOpacity`
   padding-horizontal: 8%;
   padding-vertical: 10;
-`
+`;
 
 const Title = styled.Text`
+  font-family: 'KievitOffc';
   flex-direction: row;
   flex: 1;
   text-align: center;

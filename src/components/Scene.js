@@ -35,7 +35,11 @@ export const SceneBackground = styled.ImageBackground`
   background-color: ${SCENE_BACKGROUND_COLOR};
 `;
 
-export const Content = styled.Text`
+export const TextBase = styled.Text`
+  font-family: 'KievitOffc';
+`;
+
+export const Content = styled(TextBase)`
   font-size: 16;
   line-height: ${1.5 * 16};
   color: ${TEXT_SECONDARY_SCENE};
@@ -43,7 +47,7 @@ export const Content = styled.Text`
   padding-horizontal: ${32 * WIDTH_REL};
 `;
 
-export const SceneDescription = styled.Text`
+export const SceneDescription = styled(TextBase)`
   font-size: 26;
   line-height: ${1.29 * 26};
   font-weight: bold;

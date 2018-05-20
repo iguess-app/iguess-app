@@ -3,6 +3,7 @@ import { Platform, View } from 'react-native';
 import { MKTextField } from 'react-native-material-kit';
 import styled from 'styled-components';
 import { info } from '@assets/images';
+//import { TextBase } from '@components/Scene'
 import {
   INPUT_DEFAULT_COLOR,
   INPUT_FLOAT_LABEL_COLOR,
@@ -116,6 +117,7 @@ const InfoIcon = styled.Image.attrs({
 
 const TextField = MKTextField.textfieldWithFloatingLabel()
   .withFloatingLabelFont({
+    fontFamily: 'KievitOffc',
     fontSize: 12,
     fontWeight: 'bold',
     color: INPUT_FLOAT_LABEL_COLOR,

@@ -1,6 +1,7 @@
 import React from 'react';
 import { SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
+import { TextBase } from '@components/Scene';
 import {
   LOADING_TITLE_COLOR,
   LOADING_SUBTITLE_COLOR,
@@ -18,7 +19,7 @@ const Loading = () => (
   </SceneWrapper>
 );
 
-const Title = styled.Text`
+const Title = styled(TextBase)`
   text-align: center;
   align-self: center;
   color: ${LOADING_TITLE_COLOR};
@@ -28,7 +29,7 @@ const Title = styled.Text`
   font-weight: bold;
 `;
 
-const Subtitle = styled.Text`
+const Subtitle = styled(TextBase)`
   text-align: center;
   align-self: center;
   color: ${LOADING_SUBTITLE_COLOR};

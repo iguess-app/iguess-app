@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { TextBase } from '@components/Scene';
 import {
   PRIMARY_BUTTON_COLOR,
   PRIMARY_BUTTON_TEXT_COLOR,
@@ -68,7 +69,7 @@ const Inative = styled.View`
   justify-content: center;
 `;
 
-const WhiteText = styled.Text`
+const WhiteText = styled(TextBase)`
   font-size: 15;
   font-weight: bold;
   text-align: center;

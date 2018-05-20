@@ -8,6 +8,7 @@ import {
   Finished,
 } from '@components/CardCore';
 import { arsenal, liverpool } from '@assets/images';
+import { TextBase } from '@components/Scene';
 import {
   CARD_BACKGROUND_COLOR,
   CARD_BORDER_COLOR,
@@ -130,14 +131,14 @@ const ScoreBoardWrapper = styled.View`
   z-index: 1;
 `;
 
-const Score = styled.Text`
+const Score = styled(TextBase)`
   font-size: ${16.8 * HEIGHT_REL};
   font-weight: 800;
   color: ${SCORE_FONT_COLOR};
   margin-right: 4;
 `;
 
-const PointsText = styled.Text`
+const PointsText = styled(TextBase)`
   font-size: 12;
   font-weight: 800;
   color: ${SCORE_FONT_COLOR};

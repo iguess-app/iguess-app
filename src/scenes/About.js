@@ -10,6 +10,7 @@ import {
   instagramIcon,
 } from '@assets/images';
 import styled from 'styled-components';
+import { TextBase } from '@components/Scene';
 import { WIDTH_REL, HEIGHT_REL, TEXT_SECONDARY_SCENE } from '@theme';
 import I18n from 'react-native-i18n';
 
@@ -71,7 +72,7 @@ const TouchableIcon = props => {
   );
 };
 
-const SectionTitle = styled.Text`
+const SectionTitle = styled(TextBase)`
   font-size: 28;
   font-weight: bold;
   margin-horizontal: ${32 * WIDTH_REL};
@@ -101,7 +102,7 @@ const HeaderImage = styled.Image`
   width: 100%;
 `;
 
-const FollowText = styled.Text`
+const FollowText = styled(TextBase)`
   align-self: center;
   font-size: 16;
   font-weight: bold;
