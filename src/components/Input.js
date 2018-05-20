@@ -3,7 +3,7 @@ import { Platform, View } from 'react-native';
 import { MKTextField } from 'react-native-material-kit';
 import styled from 'styled-components';
 import { info } from '@assets/images';
-//import { TextBase } from '@components/Scene'
+import { TextBase } from '@components/Scene';
 import {
   INPUT_DEFAULT_COLOR,
   INPUT_FLOAT_LABEL_COLOR,
@@ -96,7 +96,7 @@ const ErrorMessage = props => {
   );
 };
 
-const ErrorText = styled.Text`
+const ErrorText = styled(TextBase)`
   font-size: 14;
   margin-left: ${8 * WIDTH_REL};
   color: ${INPUT_ERROR_COLOR};
