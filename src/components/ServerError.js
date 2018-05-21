@@ -15,6 +15,10 @@ class ServerError extends Component {
     }, 25);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
   render() {
     if (this.state.opacity > 0) {
       return (
@@ -29,7 +33,6 @@ class ServerError extends Component {
         </Wrapper>
       );
     } else {
-      clearInterval(this.timer);
       return null;
     }
   }
