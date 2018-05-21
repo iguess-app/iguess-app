@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Keyboard } from 'react-native';
 import { InputSceneWrapper } from '@components/Scene';
 import { NavBar } from '@components/Scene';
 import { MainButton } from '@components/Button';
@@ -11,17 +12,26 @@ import { Actions } from 'react-native-router-flux';
 import { post } from '@helpers';
 import { WIDTH_REL, HEIGHT_REL } from '@theme';
 import I18n from '../i18n';
+import { spinner } from '@assets/images';
 
 class SignIn extends Component {
   constructor(props) {
     super(props);
-    this.state = { login: '', password: '', error: false, errorMsg: null };
+    this.state = {
+      login: '',
+      password: '',
+      error: false,
+      errorMsg: null,
+      loading: false,
+    };
   }
 
   _login() {
     this.setState({ error: false, errorMsg: '' });
 
     if (this.state.login && this.state.password) {
+      Keyboard.dismiss();
+      this.setState({ loading: true });
       const body = JSON.stringify({
         login: this.state.login,
         password: this.state.password,
@@ -55,6 +65,11 @@ class SignIn extends Component {
       <ServerError>{this.state.errorMsg}</ServerError>
     ) : null;
 
+    let loader = null;
+    if (this.state.loading === true) {
+      loader = <Spinner />;
+    }
+
     return (
       <InputSceneWrapper>
         <NavBar title={I18n.t('signInTitle')} />
@@ -81,6 +96,7 @@ class SignIn extends Component {
               onPress={() => this._login()}
             />
           </ButtonView>
+          {loader}
         </Wrapper>
         {errorCard}
       </InputSceneWrapper>
@@ -100,6 +116,16 @@ const ButtonView = styled.View`
   margin-top: ${32 * HEIGHT_REL};
   margin-bottom: ${16 * HEIGHT_REL};
   align-self: center;
+`;
+
+const Spinner = styled.Image.attrs({
+  source: spinner,
+})`
+  width: ${44 * WIDTH_REL};
+  height: ${42 * HEIGHT_REL};
+  resize-mode: contain;
+  align-self: center;
+  margin-top: ${50 * WIDTH_REL};
 `;
 
 export default connect()(SignIn);
