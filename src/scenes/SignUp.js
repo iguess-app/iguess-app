@@ -28,7 +28,7 @@ class SignUp extends Component {
       username: '',
       email: '',
       password: '',
-      error: false,
+      errorMsg: null,
     };
   }
 
@@ -137,8 +137,6 @@ class SignUp extends Component {
   }
 
   _register() {
-    this.setState({ error: false });
-
     const body = JSON.stringify({
       userName: this.state.username,
       name: this.state.name,
@@ -146,31 +144,36 @@ class SignUp extends Component {
       email: this.state.email,
     });
 
-    post('https://iguess-666666.appspot.com/login/signUp', body)
-      .then(response => {
-        if (typeof response.token !== undefined) {
-          // log in created user
-          this.props.dispatch(login(response.token));
+    this.setState({ errorMsg: null }, () => {
+      post('https://iguess-666666.appsdsdspot.com/login/signUp', body)
+        .then(response => {
+          if (typeof response.token !== undefined) {
+            // log in created user
+            this.props.dispatch(login(response.token));
 
-          // redirect to core scene
-          Actions.core();
-        } else if (response.statusCode === 406) {
-          if (response.errorCode === errors.usernameAlreadyUsed) {
-            this.usernameInput.error(response.message);
-          } else if (response.errorCode === errors.notAEmail) {
-            this.emailInput.error(response.message);
-          } else if (response.errorCode === errors.emailAlreadyUsed) {
-            this.emailInput.error(response.message);
-          } else if (response.errorCode === response.passwordAlert) {
-            this.passwordInput.error(response.message);
+            // redirect to core scene
+            Actions.core();
+          } else if (response.statusCode === 406) {
+            if (response.errorCode === errors.usernameAlreadyUsed) {
+              this.usernameInput.error(response.message);
+            } else if (response.errorCode === errors.notAEmail) {
+              this.emailInput.error(response.message);
+            } else if (response.errorCode === errors.emailAlreadyUsed) {
+              this.emailInput.error(response.message);
+            } else if (response.errorCode === response.passwordAlert) {
+              this.passwordInput.error(response.message);
+            }
           }
-        }
-      })
-      .catch(() => this.setState({ error: true }));
+        })
+        .catch(() => this.setState({ errorMsg: I18n.t('serverErrorDefault') }));
+    });
   }
 
   render() {
-    const errorCard = this.state.error ? <ServerError /> : null;
+    const errorCard =
+      this.state.errorMsg !== null ? (
+        <ServerError>{this.state.errorMsg}</ServerError>
+      ) : null;
 
     return (
       <InputSceneWrapper>

@@ -20,55 +20,57 @@ class SignIn extends Component {
     this.state = {
       login: '',
       password: '',
-      error: false,
       errorMsg: null,
       loading: false,
     };
   }
 
   _login() {
-    this.setState({ error: false, errorMsg: '' });
+    this.setState({ errorMsg: null }, () => {
+      if (this.state.login && this.state.password) {
+        Keyboard.dismiss();
+        this.setState({ loading: true });
 
-    if (this.state.login && this.state.password) {
-      Keyboard.dismiss();
-      this.setState({ loading: true });
+        const body = JSON.stringify({
+          login: this.state.login,
+          password: this.state.password,
+        });
 
-      const body = JSON.stringify({
-        login: this.state.login,
-        password: this.state.password,
-      });
+        post('https://iguess-666666.appspot.com/login/signIn', body)
+          .then(response => {
+            if (response.statusCode === 401) {
+              if (response.errorCode === 20005) {
+                this.setState({
+                  errorMsg: response.message,
+                  loading: false,
+                });
+              }
+            } else {
+              // log in user
+              this.props.dispatch(login(response.token));
 
-      post('https://iguess-666666.appspot.com/login/signIn', body)
-        .then(response => {
-          if (response.statusCode === 401) {
-            if (response.errorCode === 20005) {
-              this.setState({
-                error: true,
-                errorMsg: response.message,
-                loading: false,
-              });
+              // redirect to core scene
+              Actions.core();
             }
-          } else {
-            // log in user
-            this.props.dispatch(login(response.token));
-
-            // redirect to core scene
-            Actions.core();
-          }
-        })
-        .catch(() => this.setState({ error: true, loading: false }));
-    } else {
-      this.setState({
-        error: true,
-        errorMsg: I18n.t('signInError'),
-        loading: false,
-      });
-    }
+          })
+          .catch(() =>
+            this.setState({
+              errorMsg: I18n.t('serverErrorDefault'),
+              loading: false,
+            }),
+          );
+      } else {
+        this.setState({
+          errorMsg: I18n.t('signInError'),
+          loading: false,
+        });
+      }
+    });
   }
 
   render() {
     let errorCard =
-      this.state.error === true ? (
+      this.state.errorMsg !== null ? (
         <ServerError>{this.state.errorMsg}</ServerError>
       ) : null;
 

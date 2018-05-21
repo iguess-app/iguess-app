@@ -19,23 +19,25 @@ import I18n from '../i18n';
 class Settings extends Component {
   constructor(props) {
     super(props);
-    this.state = { error: false };
+    this.state = { errorMsg: null };
   }
 
   _logout = () => {
-    this.setState({ error: false });
-
     const confirm = () => {
-      apiDelete('https://iguess-666666.appspot.com/login/logout')
-        .then(response => {
-          if (response.logout === true) {
-            this.props.dispatch(logout());
-            Actions.home();
-          } else if (response.logout === false) {
-            this.setState({ error: true });
-          }
-        })
-        .catch(() => this.setState({ error: true }));
+      this.setState({ errorMsg: null }, () => {
+        apiDelete('https://iguess-666666.appspot.com/login/logout')
+          .then(response => {
+            if (response.logout === true) {
+              this.props.dispatch(logout());
+              Actions.home();
+            } else if (response.logout === false) {
+              this.setState({ errorMsg: I18n.t('serverErrorDefault') });
+            }
+          })
+          .catch(() =>
+            this.setState({ errorMsg: I18n.t('serverErrorDefault') }),
+          );
+      });
     };
 
     Alert.alert(
@@ -55,7 +57,10 @@ class Settings extends Component {
   render() {
     const { swipe } = this.props;
 
-    const errorCard = this.state.error ? <ServerError /> : null;
+    const errorCard =
+      this.state.errorMsg !== null ? (
+        <ServerError>{this.state.errorMsg}</ServerError>
+      ) : null;
 
     return (
       <SceneWrapper>

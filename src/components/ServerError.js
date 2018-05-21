@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { thumbsDown } from '@assets/images';
 import { INPUT_ERROR_COLOR, HEIGHT_REL, WIDTH_REL } from '@theme';
-import I18n from '../i18n';
 
 class ServerError extends Component {
   constructor(props) {
@@ -26,9 +25,7 @@ class ServerError extends Component {
         <Wrapper behavior="position" enabled>
           <ErrorView opacity={this.state.opacity}>
             <Icon />
-            <ErrorText>
-              {this.props.children || I18n.t('serverErrorDefault')}
-            </ErrorText>
+            <ErrorText>{this.props.children}</ErrorText>
           </ErrorView>
         </Wrapper>
       );
