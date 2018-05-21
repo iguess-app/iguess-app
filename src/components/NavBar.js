@@ -31,7 +31,8 @@ const Back = () => (
 const NavWrapper = styled.ImageBackground`
   flex-direction: row;
   align-items: center;
-  padding-top: 20;
+  padding-top: 20
+  text-align: center;
   height: 80;
   z-index: 1;
 `;
@@ -50,7 +51,7 @@ const BackTouchable = styled.TouchableOpacity`
 `;
 
 const Title = styled.Text`
-  font-family: 'KievitOffc';
+  font-family: 'KievitOffc-Bold';
   flex-direction: row;
   flex: 1;
   text-align: center;

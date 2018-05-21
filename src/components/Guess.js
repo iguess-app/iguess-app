@@ -130,12 +130,10 @@ const ButtonImage = styled.Image`
 const Value = styled(TextBaseBold).attrs({
   guessed: props => (props.children !== DEFAULT_VALUE ? true : false),
 })`
-  font-size: ${props => (props.guessed ? 20 : 8)};
-  margin-vertical: ${props => (props.guessed ? 8 : 15)};
+  font-size: ${props => (props.guessed ? 32 : 8)};
+  margin-vertical: ${props => (props.guessed ? 0 : 14)};
   text-align: center;
-  opacity: ${props => (props.guessed ? 0.9 : 0.6)};
-  color: ${props =>
-    props.guessed ? GUESS_GUESSED_TEXT_COLOR : GUESS_DEFAULT_TEXT_COLOR};
+  color: ${GUESS_GUESSED_TEXT_COLOR};
 `;
 
 export default Guess;
