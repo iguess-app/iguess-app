@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Keyboard } from 'react-native';
 import { InputSceneWrapper } from '@components/Scene';
-import { NavBar } from '@components/Scene';
 import { MainButton } from '@components/Button';
 import Input from '@components/Input';
 import ServerError from '@components/ServerError';
@@ -77,8 +76,7 @@ class SignIn extends Component {
     const loader = this.state.loading === true ? <Spinner /> : null;
 
     return (
-      <InputSceneWrapper>
-        <NavBar title={I18n.t('signInTitle')} />
+      <InputSceneWrapper title={I18n.t('signInTitle')}>
         <Wrapper>
           <TextInput
             placeholder={I18n.t('signInLogin')}

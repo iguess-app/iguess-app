@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Keyboard } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styled from 'styled-components';
-import { InputSceneWrapper, NavBar } from '@components/Scene';
+import { InputSceneWrapper } from '@components/Scene';
 import { MainButton } from '@components/Button';
 import ServerError from '@components/ServerError';
 import Input from '@components/Input';
@@ -145,7 +145,7 @@ class SignUp extends Component {
     });
 
     this.setState({ errorMsg: null }, () => {
-      post('https://iguess-666666.appsdsdspot.com/login/signUp', body)
+      post('https://iguess-6d66666.appsdsdspot.com/login/signUp', body)
         .then(response => {
           if (typeof response.token !== undefined) {
             // log in created user
@@ -176,8 +176,7 @@ class SignUp extends Component {
       ) : null;
 
     return (
-      <InputSceneWrapper>
-        <NavBar title={I18n.t('signUpTitle')} />
+      <InputSceneWrapper title={I18n.t('signUpTitle')}>
         <WrapperKeyboardAware
           resetScrollToCoords={{ x: 0, y: 0 }}
           enableOnAndroid

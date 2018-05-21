@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native';
+import { TouchableWithoutFeedback, Keyboard, View } from 'react-native';
+import NavBar from '@components/NavBar';
 import {
   TEXT_SECONDARY_SCENE,
   SETTINGS_TEXT_COLOR,
@@ -16,12 +17,17 @@ export const SceneWrapper = props => {
 };
 
 export const InputSceneWrapper = props => {
-  const { background, children } = props;
+  const { background, children, title = 'UNTITLED', hideNavBar } = props;
+
+  const nav = hideNavBar !== false ? <NavBar title={title} /> : null;
 
   return (
     <SceneBackground source={background}>
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-        <ScrollView>{children}</ScrollView>
+        <View>
+          {nav}
+          <Scroll>{children}</Scroll>
+        </View>
       </TouchableWithoutFeedback>
     </SceneBackground>
   );
@@ -51,4 +57,8 @@ export const SceneDescription = styled.Text`
   color: ${SETTINGS_TEXT_COLOR};
   margin-horizontal: ${32 * WIDTH_REL};
   margin-top: ${24 * HEIGHT_REL};
+`;
+
+export const Scroll = styled.ScrollView`
+  height: 100%;
 `;
