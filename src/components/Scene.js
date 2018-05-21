@@ -60,5 +60,5 @@ export const SceneDescription = styled.Text`
 `;
 
 export const Scroll = styled.ScrollView`
-  height: 100%;
+  height: ${587 * HEIGHT_REL};
 `;

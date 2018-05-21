@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { TouchableOpacity, Alert } from 'react-native';
 import styled from 'styled-components';
 import { SceneWrapper } from '@components/Scene';
-import ServerError from '@components/ServerError';
+import Error from '@components/Error';
 import { Actions } from 'react-native-router-flux';
 import { apiDelete } from '@helpers';
 import { connect } from 'react-redux';
@@ -59,7 +59,7 @@ class Settings extends Component {
 
     const errorCard =
       this.state.errorMsg !== null ? (
-        <ServerError>{this.state.errorMsg}</ServerError>
+        <Error>{this.state.errorMsg}</Error>
       ) : null;
 
     return (

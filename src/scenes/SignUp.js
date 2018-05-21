@@ -4,7 +4,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import styled from 'styled-components';
 import { InputSceneWrapper } from '@components/Scene';
 import { MainButton } from '@components/Button';
-import ServerError from '@components/ServerError';
+import Error from '@components/Error';
 import Input from '@components/Input';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
@@ -145,7 +145,7 @@ class SignUp extends Component {
     });
 
     this.setState({ errorMsg: null }, () => {
-      post('https://iguess-6d66666.appsdsdspot.com/login/signUp', body)
+      post('https://iguess-666666.appspot.com/login/signUp', body)
         .then(response => {
           if (typeof response.token !== undefined) {
             // log in created user
@@ -172,7 +172,7 @@ class SignUp extends Component {
   render() {
     const errorCard =
       this.state.errorMsg !== null ? (
-        <ServerError>{this.state.errorMsg}</ServerError>
+        <Error input>{this.state.errorMsg}</Error>
       ) : null;
 
     return (
@@ -253,6 +253,7 @@ const ButtonView = styled.View`
 
 const WrapperKeyboardAware = styled(KeyboardAwareScrollView)`
   padding-horizontal: ${32 * WIDTH_REL};
+  margin-bottom: ${30 * HEIGHT_REL};
 `;
 
 const Terms = styled.Text`

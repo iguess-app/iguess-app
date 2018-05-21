@@ -3,7 +3,7 @@ import { Keyboard } from 'react-native';
 import { InputSceneWrapper } from '@components/Scene';
 import { MainButton } from '@components/Button';
 import Input from '@components/Input';
-import ServerError from '@components/ServerError';
+import Error from '@components/Error';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { login } from '@redux/authentication/actions';
@@ -70,7 +70,7 @@ class SignIn extends Component {
   render() {
     let errorCard =
       this.state.errorMsg !== null ? (
-        <ServerError>{this.state.errorMsg}</ServerError>
+        <Error input>{this.state.errorMsg}</Error>
       ) : null;
 
     const loader = this.state.loading === true ? <Spinner /> : null;

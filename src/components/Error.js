@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { thumbsDown } from '@assets/images';
 import { INPUT_ERROR_COLOR, HEIGHT_REL, WIDTH_REL } from '@theme';
 
-class ServerError extends Component {
+export default class Error extends Component {
   constructor(props) {
     super(props);
     this.state = { opacity: 1 };
@@ -20,9 +20,11 @@ class ServerError extends Component {
   }
 
   render() {
+    const offset = this.props.input === true ? 508 : 587;
+
     if (this.state.opacity > 0) {
       return (
-        <Wrapper behavior="position" enabled>
+        <Wrapper behavior="position" offset={offset} input>
           <ErrorView opacity={this.state.opacity}>
             <Icon />
             <ErrorText>{this.props.children}</ErrorText>
@@ -38,7 +40,7 @@ class ServerError extends Component {
 const Wrapper = styled.KeyboardAvoidingView`
   width: 100%;
   position: absolute;
-  margin-top: ${587 * HEIGHT_REL};
+  margin-top: ${props => props.offset * HEIGHT_REL};
 `;
 
 const ErrorView = styled.View`
@@ -63,5 +65,3 @@ const ErrorText = styled.Text`
   font-size: 16;
   color: white;
 `;
-
-export default ServerError;
