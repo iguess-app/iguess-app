@@ -32,6 +32,7 @@ class SignIn extends Component {
     if (this.state.login && this.state.password) {
       Keyboard.dismiss();
       this.setState({ loading: true });
+
       const body = JSON.stringify({
         login: this.state.login,
         password: this.state.password,
@@ -41,7 +42,11 @@ class SignIn extends Component {
         .then(response => {
           if (response.statusCode === 401) {
             if (response.errorCode === 20005) {
-              this.setState({ error: true, errorMsg: response.message });
+              this.setState({
+                error: true,
+                errorMsg: response.message,
+                loading: false,
+              });
             }
           } else {
             // log in user
@@ -51,24 +56,23 @@ class SignIn extends Component {
             Actions.core();
           }
         })
-        .catch(() => this.setState({ error: true }));
+        .catch(() => this.setState({ error: true, loading: false }));
     } else {
       this.setState({
         error: true,
         errorMsg: I18n.t('signInError'),
+        loading: false,
       });
     }
   }
 
   render() {
-    const errorCard = this.state.error ? (
-      <ServerError>{this.state.errorMsg}</ServerError>
-    ) : null;
+    let errorCard =
+      this.state.error === true ? (
+        <ServerError>{this.state.errorMsg}</ServerError>
+      ) : null;
 
-    let loader = null;
-    if (this.state.loading === true) {
-      loader = <Spinner />;
-    }
+    const loader = this.state.loading === true ? <Spinner /> : null;
 
     return (
       <InputSceneWrapper>
