@@ -12,6 +12,7 @@ import {
 } from '@assets/images';
 import { TEXT_SECONDARY_SCENE, HEIGHT_REL, WIDTH_REL } from '@theme';
 import I18n from 'react-native-i18n';
+import { TextBase } from '@components/Scene';
 
 const Support = () => {
   return (
@@ -72,8 +73,7 @@ const OptionIcon = styled.Image`
   resize-mode: contain;
 `;
 
-const OptionText = styled.Text`
-  font-family: 'KievitOffc';
+const OptionText = styled(TextBase)`
   font-size: 16;
   width: ${250 * WIDTH_REL};
   color: ${TEXT_SECONDARY_SCENE};

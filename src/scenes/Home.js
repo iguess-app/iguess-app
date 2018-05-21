@@ -8,6 +8,7 @@ import { HOME_TEXT_COLOR, PRIMARY_BUTTON_TEXT_COLOR } from '@theme';
 import { TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import I18n from '../i18n';
+import { TextBaseBold, TextBase } from '@components/Scene';
 
 const Home = () => {
   setStatusBarStyle('white');
@@ -30,8 +31,7 @@ const Home = () => {
   );
 };
 
-const HomeText = styled.Text`
-  font-family: 'KievitOffc';
+const HomeText = styled(TextBase)`
   font-size: 26;
   text-align: center;
   color: ${HOME_TEXT_COLOR};
@@ -49,9 +49,8 @@ const TermsButton = () => {
   );
 };
 
-const TermsText = styled.Text`
+const TermsText = styled(TextBaseBold)`
   font-size: 14;
-  font-family: 'KievitOffc-Bold';
   color: ${PRIMARY_BUTTON_TEXT_COLOR};
   text-decoration-line: underline;
   align-self: center;

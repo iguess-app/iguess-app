@@ -11,6 +11,7 @@ import {
   WIDTH_REL,
   HEIGHT_REL,
 } from '@theme';
+import { TextBaseBold } from '@components/Scene';
 
 class Lines extends Component {
   constructor(props) {
@@ -93,9 +94,8 @@ const NavTouchable = styled.TouchableOpacity`
   margin-top: 2;
 `;
 
-const NavText = styled.Text`
+const NavText = styled(TextBaseBold)`
   font-size: 16;
-  font-family: 'KievitOffc-Bold';
   color: ${SELECT_LINE_PRIMARY_TEXT};
   opacity: ${props => props.opacity};
   margin-right: 16;

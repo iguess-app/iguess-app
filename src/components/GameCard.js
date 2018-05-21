@@ -16,6 +16,7 @@ import {
   HEIGHT_REL,
   WIDTH_REL,
 } from '@theme';
+import { TextBaseBold } from '@components/Scene';
 
 export const gameStatus = {
   ALLOW_PREDICT: 'ALLOW_PREDICT',
@@ -130,18 +131,14 @@ const ScoreBoardWrapper = styled.View`
   z-index: 1;
 `;
 
-const Score = styled.Text`
-  font-family: 'KievitOffc';
+const Score = styled(TextBaseBold)`
   font-size: ${16.8 * HEIGHT_REL};
-  font-weight: 800;
   color: ${SCORE_FONT_COLOR};
   margin-right: 4;
 `;
 
-const PointsText = styled.Text`
-  font-family: 'KievitOffc';
+const PointsText = styled(TextBaseBold)`
   font-size: 12;
-  font-weight: 800;
   color: ${SCORE_FONT_COLOR};
 `;
 

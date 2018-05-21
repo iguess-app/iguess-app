@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { SELECT_LINE_PRIMARY_TEXT, SELECT_LINE_POINTS_TEXT } from '@theme';
 import I18n from '../i18n';
+import { TextBaseBold } from '@components/Scene';
 
 export default class TouchableSelectLine extends Component {
   render() {
@@ -29,19 +30,17 @@ const Wrapper = styled.View`
   padding-right: 8%;
 `;
 
-const Season = styled.Text`
+const Season = styled(TextBaseBold)`
   height: 17px;
   font-size: 14;
-  font-family: 'KievitOffc-Bold';
   text-align: left;
   color: ${SELECT_LINE_PRIMARY_TEXT};
   opacity: ${props => props.opacity};
 `;
 
-const LineName = styled.Text`
+const LineName = styled(TextBaseBold)`
   width: 289;
   font-size: 24;
-  font-family: 'KievitOffc-Bold';
   text-align: left;
   color: ${SELECT_LINE_PRIMARY_TEXT};
   margin-top: 12;
@@ -58,17 +57,15 @@ const PointsView = styled.View`
   margin-top: 24;
 `;
 
-const Points = styled.Text`
+const Points = styled(TextBaseBold)`
   font-size: 22.4;
-  font-family: 'KievitOffc-Bold';
   color: ${SELECT_LINE_POINTS_TEXT};
   margin: auto;
   margin-right: 4;
 `;
 
-const PointsText = styled.Text`
+const PointsText = styled(TextBaseBold)`
   font-size: 14;
-  font-family: 'KievitOffc-Bold';
   color: ${SELECT_LINE_POINTS_TEXT};
   margin: auto;
   margin-left: 0;

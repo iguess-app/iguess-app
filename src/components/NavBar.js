@@ -50,7 +50,7 @@ const BackTouchable = styled.TouchableOpacity`
 `;
 
 const Title = styled.Text`
-  font-family: 'KievitOffc-Bold';
+  font-family: 'KievitOffc';
   flex-direction: row;
   flex: 1;
   text-align: center;

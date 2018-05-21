@@ -8,6 +8,7 @@ import {
   HEIGHT_REL,
   WIDTH_REL,
 } from '@theme';
+import { TextBaseBold } from '@components/Scene';
 
 const DEFAULT_VALUE = '- - - -';
 const MAX_GUESS = 99;
@@ -126,10 +127,9 @@ const ButtonImage = styled.Image`
   margin-vertical: ${16 * HEIGHT_REL};
 `;
 
-const Value = styled.Text.attrs({
+const Value = styled(TextBaseBold).attrs({
   guessed: props => (props.children !== DEFAULT_VALUE ? true : false),
 })`
-  font-family: 'KievitOffc-Bold';
   font-size: ${props => (props.guessed ? 20 : 8)};
   margin-vertical: ${props => (props.guessed ? 8 : 15)};
   text-align: center;

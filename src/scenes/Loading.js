@@ -9,6 +9,7 @@ import {
 } from '@theme';
 import { ballGif } from '@assets/images/index';
 import I18n from 'react-native-i18n';
+import { TextBaseBold, TextBase } from '@components/Scene';
 
 const Loading = () => (
   <SceneWrapper>
@@ -18,18 +19,16 @@ const Loading = () => (
   </SceneWrapper>
 );
 
-const Title = styled.Text`
+const Title = styled(TextBaseBold)`
   text-align: center;
   align-self: center;
   color: ${LOADING_TITLE_COLOR};
   margin-top: ${180 * HEIGHT_REL};
   margin-horizontal: ${32 * WIDTH_REL};
   font-size: 32;
-  font-family: 'KievitOffc-Bold';
 `;
 
-const Subtitle = styled.Text`
-  font-family: 'KievitOffc';
+const Subtitle = styled(TextBase)`
   text-align: center;
   align-self: center;
   color: ${LOADING_SUBTITLE_COLOR};

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { thumbsDown } from '@assets/images';
 import { INPUT_ERROR_COLOR, HEIGHT_REL, WIDTH_REL } from '@theme';
+import { TextBase } from '@components/Scene';
 
 class ServerError extends Component {
   constructor(props) {
@@ -58,8 +59,7 @@ const Icon = styled.Image.attrs({
   margin-right: ${16 * WIDTH_REL};
 `;
 
-const ErrorText = styled.Text`
-  font-family: 'KievitOffc';
+const ErrorText = styled(TextBase)`
   width: ${272 * WIDTH_REL};
   font-size: 16;
   color: white;
