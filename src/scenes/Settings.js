@@ -29,7 +29,7 @@ class Settings extends Component {
           .then(response => {
             if (response.logout === true) {
               this.props.dispatch(logout());
-              Actions.home();
+              Actions.reset('home');
             } else if (response.logout === false) {
               this.setState({ errorMsg: I18n.t('serverErrorDefault') });
             }
