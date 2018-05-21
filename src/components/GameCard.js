@@ -112,7 +112,7 @@ const ScoreBoard = ({ score }) => (
   <ScoreBoardWrapper>
     <Score>{score}</Score>
     <PointsText>
-      {I18n.t(score === 1 ? 'points' : 'point').toUpperCase()}
+      {I18n.t(score === 1 ? 'point' : 'points').toUpperCase()}
     </PointsText>
   </ScoreBoardWrapper>
 );
