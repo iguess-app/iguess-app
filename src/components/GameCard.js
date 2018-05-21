@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import I18n from '../i18n';
 import Team from '@components/Team';
 import {
   AllowPredict,
@@ -110,7 +111,7 @@ class GameCard extends Component {
 const ScoreBoard = ({ score }) => (
   <ScoreBoardWrapper>
     <Score>{score}</Score>
-    <PointsText>POINTS</PointsText>
+    <PointsText>{I18n.t('points').toUpperCase()}</PointsText>
   </ScoreBoardWrapper>
 );
 
