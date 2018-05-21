@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { thumbsDown } from '@assets/images';
 import { INPUT_ERROR_COLOR, HEIGHT_REL, WIDTH_REL } from '@theme';
+import I18n from '../i18n';
 
 class ServerError extends Component {
   constructor(props) {
@@ -22,8 +23,7 @@ class ServerError extends Component {
           <ErrorView opacity={this.state.opacity}>
             <Icon />
             <ErrorText>
-              {this.props.children ||
-                'Houve algum problema no servidor. Tente novamente mais tarde.'}
+              {this.props.children || I18n.t('serverErrorDefault')}
             </ErrorText>
           </ErrorView>
         </Wrapper>

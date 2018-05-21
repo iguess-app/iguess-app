@@ -47,6 +47,9 @@ export default {
   point: 'ponto',
   points: 'pontos',
 
+  serverErrorDefault:
+    'Houve algum problema no servidor. Tente novamente mais tarde.',
+
   loadingTitle: 'Dá uma segurada aí, boleiro…',
   loadingSubtitle: 'Aguarde enquanto processamos algumas informações.',
 
