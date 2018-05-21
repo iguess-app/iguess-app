@@ -62,9 +62,7 @@ class SignIn extends Component {
           <TextInput
             placeholder={I18n.t('signInLogin')}
             value={this.state.login}
-            onChangeText={value =>
-              this.setState({ login: value.replace(/[^a-z0-9._]/g, '') })
-            }
+            onChangeText={value => this.setState({ login: value })}
             autoCapitalize="none"
             maxLength={25}
             innerRef={ref => (this.loginInput = ref)}
