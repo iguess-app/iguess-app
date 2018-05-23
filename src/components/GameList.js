@@ -20,7 +20,7 @@ class GameList extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(linesActions.fetchLines());
+    this.props.dispatch(linesActions.fetchLine());
   }
 
   render() {
