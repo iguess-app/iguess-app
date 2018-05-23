@@ -100,12 +100,6 @@ export const Wrapper = styled.ScrollView`
   background-color: ${SCENE_BACKGROUND_COLOR};
 `;
 
-const mapStateToProps = state => {
-  return {
-    games: gamesSelectors.getGames(state),
-  };
-};
-
 const Header = props => {
   const { title, subtitle, first, refresh } = props;
 
@@ -153,5 +147,11 @@ const Clockwise = styled.Image.attrs({
   height: ${20.6 * HEIGHT_REL};
   resize-mode: contain;
 `;
+
+const mapStateToProps = state => {
+  return {
+    games: gamesSelectors.getGames(state),
+  };
+};
 
 export default connect(mapStateToProps)(GameList);

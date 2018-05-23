@@ -9,8 +9,6 @@ export default function reduce(state = initialState, action) {
   switch (action.type) {
     case types.GAMES_FETCHED:
       return state.merge({ gamesByKey: action.gamesByKey });
-    case types.MAKE_GUESS:
-      return state;
     default:
       return state;
   }
