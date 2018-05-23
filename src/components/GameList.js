@@ -24,15 +24,7 @@ class GameList extends Component {
   }
 
   render() {
-    const { games, loading, error } = this.props;
-
-    if (loading === true) {
-      return (
-        <Wrapper>
-          <Spinner />
-        </Wrapper>
-      );
-    }
+    const { games, error } = this.props;
 
     if (error) {
       return (
@@ -46,7 +38,7 @@ class GameList extends Component {
       <Wrapper>
         <Header first title="ALLOW PREDICT" subtitle="Domingo, 19 de Abril" />
         <List
-          data={this.props.games}
+          data={games}
           renderItem={({ item }) => (
             <GameCard
               id={item.key}
@@ -61,7 +53,7 @@ class GameList extends Component {
           refresh
         />
         <List
-          data={this.props.games}
+          data={games}
           renderItem={({ item }) => (
             <GameCard
               id={item.key}
@@ -73,7 +65,7 @@ class GameList extends Component {
         />
         <Header title="LIVE" subtitle="Segunda - Feira, 20 de Abril" refresh />
         <List
-          data={this.props.games}
+          data={games}
           renderItem={({ item }) => (
             <GameCard
               id={item.key}
@@ -89,7 +81,7 @@ class GameList extends Component {
         />
         <Header title="FINISHED" subtitle="Terça - Feira, 21 de Abril" />
         <List
-          data={this.props.games}
+          data={games}
           renderItem={({ item }) => (
             <GameCard
               id={item.key}
@@ -184,7 +176,6 @@ const ErrorText = styled(TextBaseBold)`
 const mapStateToProps = state => {
   return {
     games: state.lines.activeLine,
-    loading: state.lines.loading,
     error: state.lines.error,
   };
 };
