@@ -36,8 +36,21 @@ class GameCard extends Component {
     };
   }
 
+  _treatValue = value => {
+    if (value > 99) {
+      return 99;
+    } else if (value < -1) {
+      return -1;
+    } else {
+      return value;
+    }
+  };
+
   _defineCore = () => {
-    const { homeGuess, awayGuess, homeScore, awayScore, time } = this.props;
+    const homeGuess = this._treatValue(this.props.homeGuess);
+    const awayGuess = this._treatValue(this.props.awayGuess);
+    const homeScore = this._treatValue(this.props.homeScore);
+    const awayScore = this._treatValue(this.props.awayScore);
 
     switch (this.state.status) {
       case gameStatus.ALLOW_PREDICT:
@@ -63,7 +76,7 @@ class GameCard extends Component {
             awayGuess={awayGuess}
             homeScore={homeScore}
             awayScore={awayScore}
-            time={time}
+            time={this.props.time}
           />
         );
       case gameStatus.FINISHED:
