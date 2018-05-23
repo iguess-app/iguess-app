@@ -60,13 +60,13 @@ const PointsView = styled.View`
 const Points = styled(TextBaseBold)`
   font-size: 22.4;
   color: ${SELECT_LINE_POINTS_TEXT};
-  margin: auto;
   margin-right: 4;
+  align-self: center;
 `;
 
 const PointsText = styled(TextBaseBold)`
   font-size: 14;
   color: ${SELECT_LINE_POINTS_TEXT};
-  margin: auto;
-  margin-left: 0;
+  align-self: center;
+  margin-top: 4;
 `;

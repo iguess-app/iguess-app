@@ -34,9 +34,9 @@ class Lines extends Component {
   }
 
   render() {
-    const { games, swipe, loading, championship } = this.props;
+    const { games, swipe, loading, championship, pontuation } = this.props;
 
-    if (loading || championship === undefined) {
+    if (loading || championship === undefined || pontuation === undefined) {
       return <Loading />;
     }
 
@@ -61,7 +61,7 @@ class Lines extends Component {
           <SelectedLine
             season={season}
             name={championshipName}
-            points="57"
+            points={pontuation}
             opacity={this.state.selectedOpacity}
           />
           <GameList games={games} />
@@ -128,6 +128,7 @@ const mapStateToProps = state => {
     loading: state.lines.loading,
     games: state.lines.activeLine,
     championship: state.lines.activeLine.championship,
+    pontuation: state.lines.activeLine.guessLinePontuation,
   };
 };
 
