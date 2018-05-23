@@ -3,8 +3,7 @@ import { View, TouchableOpacity } from 'react-native';
 import GameCard, { gameStatus } from './GameCard';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import * as gamesActions from '@redux/games/actions';
-import * as gamesSelectors from '@redux/games/reducer';
+import * as linesActions from '@redux/lines/actions';
 import {
   SCENE_BACKGROUND_COLOR,
   CARD_LIST_TITLE_COLOR,
@@ -21,7 +20,7 @@ class GameList extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(gamesActions.fetchGames());
+    this.props.dispatch(linesActions.fetchLines());
   }
 
   render() {
@@ -150,7 +149,7 @@ const Clockwise = styled.Image.attrs({
 
 const mapStateToProps = state => {
   return {
-    games: gamesSelectors.getGames(state),
+    games: state.lines.activeLine,
   };
 };
 
