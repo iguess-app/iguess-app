@@ -26,10 +26,18 @@ class GameList extends Component {
   render() {
     const { games, loading, error } = this.props;
 
-    if (loading) {
+    if (loading === true) {
       return (
         <Wrapper>
           <Spinner />
+        </Wrapper>
+      );
+    }
+
+    if (error) {
+      return (
+        <Wrapper>
+          <ErrorText>{error}</ErrorText>
         </Wrapper>
       );
     }
@@ -166,6 +174,11 @@ const Spinner = styled.Image.attrs({
   resize-mode: contain;
   align-self: center;
   margin-top: ${80 * HEIGHT_REL};
+`;
+
+const ErrorText = styled(TextBaseBold)`
+  margin-horizontal: ${32 * WIDTH_REL};
+  align-self: center;
 `;
 
 const mapStateToProps = state => {

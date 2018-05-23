@@ -12,7 +12,11 @@ export default function reduce(state = initialState, action) {
     case types.FETCH_LINE_BEGIN:
       return state.merge({ loading: true });
     case types.FETCH_LINE_SUCCESS:
-      return state.merge({ loading: false, activeLine: action.payload.line });
+      return state.merge({
+        activeLine: action.payload.line,
+        loading: false,
+        error: null,
+      });
     case types.FETCH_LINE_FAILURE:
       return state.merge({
         loading: false,
