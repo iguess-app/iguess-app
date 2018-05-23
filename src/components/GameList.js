@@ -11,7 +11,7 @@ import {
   WIDTH_REL,
   HEIGHT_REL,
 } from '@theme';
-import { clockwise } from '@assets/images';
+import { clockwise, spinner } from '@assets/images';
 import { TextBaseBold } from '@components/Scene';
 
 class GameList extends Component {
@@ -24,6 +24,16 @@ class GameList extends Component {
   }
 
   render() {
+    const { games, loading, error } = this.props;
+
+    if (loading) {
+      return (
+        <Wrapper>
+          <Spinner />
+        </Wrapper>
+      );
+    }
+
     return (
       <Wrapper>
         <Header first title="ALLOW PREDICT" subtitle="Domingo, 19 de Abril" />
@@ -94,9 +104,10 @@ const List = styled.FlatList`
 `;
 
 export const Wrapper = styled.ScrollView`
-  margin-top: ${60 * HEIGHT_REL};
   flex: 1;
   background-color: ${SCENE_BACKGROUND_COLOR};
+  min-height: ${800 * HEIGHT_REL};
+  margin-top: ${60 * HEIGHT_REL};
 `;
 
 const Header = props => {
@@ -147,9 +158,21 @@ const Clockwise = styled.Image.attrs({
   resize-mode: contain;
 `;
 
+const Spinner = styled.Image.attrs({
+  source: spinner,
+})`
+  width: ${44 * WIDTH_REL};
+  height: ${42 * HEIGHT_REL};
+  resize-mode: contain;
+  align-self: center;
+  margin-top: ${80 * HEIGHT_REL};
+`;
+
 const mapStateToProps = state => {
   return {
     games: state.lines.activeLine,
+    loading: state.lines.loading,
+    error: state.lines.error,
   };
 };
 
