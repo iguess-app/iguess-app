@@ -77,6 +77,7 @@ class SignIn extends Component {
 
     return (
       <InputSceneWrapper title={I18n.t('signInTitle')}>
+        {errorCard}
         <Wrapper>
           <TextInput
             placeholder={I18n.t('signInLogin')}
@@ -102,7 +103,6 @@ class SignIn extends Component {
           </ButtonView>
           {loader}
         </Wrapper>
-        {errorCard}
       </InputSceneWrapper>
     );
   }

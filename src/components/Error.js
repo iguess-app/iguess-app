@@ -20,11 +20,9 @@ export default class Error extends Component {
   }
 
   render() {
-    const offset = this.props.input === true ? 508 : 587;
-
     if (this.state.opacity > 0) {
       return (
-        <Wrapper behavior="position" offset={offset} input>
+        <Wrapper behavior="position" input>
           <ErrorView opacity={this.state.opacity}>
             <Icon />
             <ErrorText>{this.props.children}</ErrorText>
@@ -40,7 +38,6 @@ export default class Error extends Component {
 const Wrapper = styled.KeyboardAvoidingView`
   width: 100%;
   position: absolute;
-  margin-top: ${props => props.offset * HEIGHT_REL};
 `;
 
 const ErrorView = styled.View`

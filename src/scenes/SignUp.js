@@ -177,6 +177,7 @@ class SignUp extends Component {
 
     return (
       <InputSceneWrapper title={I18n.t('signUpTitle')}>
+        {errorCard}
         <WrapperKeyboardAware
           resetScrollToCoords={{ x: 0, y: 0 }}
           enableOnAndroid
@@ -235,7 +236,6 @@ class SignUp extends Component {
             </TextLink>.
           </Terms>
         </WrapperKeyboardAware>
-        {errorCard}
       </InputSceneWrapper>
     );
   }
