@@ -40,6 +40,9 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		984E1701810A47FC8B82EE0C /* libRNI18n.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2C9E1910A2475C8A31A794 /* libRNI18n.a */; };
+		71CF65B2699E48AF8A12C75E /* KievitOffc-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF85AF63130C44459770DEA9 /* KievitOffc-Bold.ttf */; };
+		D078BC60346F451780C60B9A /* KievitOffc-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3C8E68CB3F04380ADCD01EC /* KievitOffc-Light.ttf */; };
+		A98F190DFBE44772A481DF31 /* KievitOffc.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9104323BF264F41A06C2D84 /* KievitOffc.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -380,6 +383,9 @@
 		FE600D359F354880A2C11258 /* libRCTMaterialKit.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTMaterialKit.a; sourceTree = "<group>"; };
 		9A1C8D72E1E340A6902587FB /* RNI18n.xcodeproj */ = {isa = PBXFileReference; name = "RNI18n.xcodeproj"; path = "../node_modules/react-native-i18n/ios/RNI18n.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		CF2C9E1910A2475C8A31A794 /* libRNI18n.a */ = {isa = PBXFileReference; name = "libRNI18n.a"; path = "libRNI18n.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		FF85AF63130C44459770DEA9 /* KievitOffc-Bold.ttf */ = {isa = PBXFileReference; name = "KievitOffc-Bold.ttf"; path = "../assets/fonts/KievitOffc-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C3C8E68CB3F04380ADCD01EC /* KievitOffc-Light.ttf */ = {isa = PBXFileReference; name = "KievitOffc-Light.ttf"; path = "../assets/fonts/KievitOffc-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C9104323BF264F41A06C2D84 /* KievitOffc.ttf */ = {isa = PBXFileReference; name = "KievitOffc.ttf"; path = "../assets/fonts/KievitOffc.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -657,6 +663,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				0902319020A9E14C008F0DAD /* Recovered References */,
+				706899ED06A948B2AD2D800C /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -682,6 +689,17 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		706899ED06A948B2AD2D800C /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				FF85AF63130C44459770DEA9 /* KievitOffc-Bold.ttf */,
+				C3C8E68CB3F04380ADCD01EC /* KievitOffc-Light.ttf */,
+				C9104323BF264F41A06C2D84 /* KievitOffc.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -1169,6 +1187,9 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				71CF65B2699E48AF8A12C75E /* KievitOffc-Bold.ttf in Resources */,
+				D078BC60346F451780C60B9A /* KievitOffc-Light.ttf in Resources */,
+				A98F190DFBE44772A481DF31 /* KievitOffc.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

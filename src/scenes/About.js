@@ -12,6 +12,7 @@ import {
 import styled from 'styled-components';
 import { WIDTH_REL, HEIGHT_REL, TEXT_SECONDARY_SCENE } from '@theme';
 import I18n from 'react-native-i18n';
+import { TextBaseBold } from '@components/Scene';
 
 const About = () => {
   return (
@@ -71,9 +72,8 @@ const TouchableIcon = props => {
   );
 };
 
-const SectionTitle = styled.Text`
+const SectionTitle = styled(TextBaseBold)`
   font-size: 28;
-  font-weight: bold;
   margin-horizontal: ${32 * WIDTH_REL};
   margin-top: ${24 * HEIGHT_REL};
   color: ${TEXT_SECONDARY_SCENE};
@@ -86,7 +86,7 @@ const RateView = styled.View`
 `;
 
 const BoldContent = styled(Content)`
-  font-weight: bold;
+  font-family: 'KievitOffc-Bold';
   margin-top: ${16 * HEIGHT_REL};
   margin-bottom: ${8 * HEIGHT_REL};
 `;
@@ -101,10 +101,9 @@ const HeaderImage = styled.Image`
   width: 100%;
 `;
 
-const FollowText = styled.Text`
+const FollowText = styled(TextBaseBold)`
   align-self: center;
   font-size: 16;
-  font-weight: bold;
   color: black;
   margin-bottom: ${16 * HEIGHT_REL};
 `;

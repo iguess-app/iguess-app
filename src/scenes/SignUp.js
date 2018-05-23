@@ -12,6 +12,7 @@ import { login } from '@redux/authentication/actions';
 import { WIDTH_REL, HEIGHT_REL, SIGN_UP_TERMS_COLOR } from '@theme';
 import { get, post } from '@helpers';
 import I18n from '../i18n';
+import { TextBase } from '@components/Scene';
 
 var errors = Object.freeze({
   usernameAlreadyUsed: 20003,
@@ -253,7 +254,7 @@ const WrapperKeyboardAware = styled(KeyboardAwareScrollView)`
   padding-horizontal: ${32 * WIDTH_REL};
 `;
 
-const Terms = styled.Text`
+const Terms = styled(TextBase)`
   font-size: 14;
   color: ${SIGN_UP_TERMS_COLOR};
   align-self: center;
@@ -261,7 +262,7 @@ const Terms = styled.Text`
 `;
 
 const TextLink = Terms.extend`
-  font-weight: bold;
+  font-family: 'KievitOffc-Bold';
   text-decoration-line: underline;
 `;
 

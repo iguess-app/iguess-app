@@ -5,7 +5,13 @@ import SelectedLine from '@components/SelectedLine';
 import { SceneWrapper } from '@components/Scene';
 import SettingsButton from '@components/SettingsButton';
 import { chevronDown } from '@assets/images';
-import { SELECT_LINE_PRIMARY_TEXT, DEFAULT_BACKGROUND, WIDTH_REL, HEIGHT_REL } from '@theme';
+import {
+  SELECT_LINE_PRIMARY_TEXT,
+  DEFAULT_BACKGROUND,
+  WIDTH_REL,
+  HEIGHT_REL,
+} from '@theme';
+import { TextBaseBold } from '@components/Scene';
 
 class Lines extends Component {
   constructor(props) {
@@ -77,7 +83,7 @@ const Scroll = styled.ScrollView`
 const Navigation = styled.View`
   flex: 0.08;
   flex-direction: row;
-  margin-top: ${46*HEIGHT_REL};
+  margin-top: ${46 * HEIGHT_REL};
   margin-horizontal: 8%;
 `;
 
@@ -88,9 +94,8 @@ const NavTouchable = styled.TouchableOpacity`
   margin-top: 2;
 `;
 
-const NavText = styled.Text`
+const NavText = styled(TextBaseBold)`
   font-size: 16;
-  font-weight: bold;
   color: ${SELECT_LINE_PRIMARY_TEXT};
   opacity: ${props => props.opacity};
   margin-right: 16;
@@ -99,7 +104,7 @@ const NavText = styled.Text`
 const Chevron = styled.Image.attrs({
   source: chevronDown,
 })`
-  width: ${14*WIDTH_REL};
+  width: ${14 * WIDTH_REL};
   resize-mode: contain;
   margin-top: 4;
 `;

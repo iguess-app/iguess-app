@@ -15,6 +15,7 @@ import {
   HEIGHT_REL,
 } from '@theme';
 import I18n from '../i18n';
+import { TextBaseBold } from '@components/Scene';
 
 class Settings extends Component {
   constructor(props) {
@@ -126,9 +127,8 @@ const CloseImage = styled.Image.attrs({
   margin-top: ${52 * HEIGHT_REL};
 `;
 
-const Title = styled.Text`
+const Title = styled(TextBaseBold)`
   font-size: 24;
-  font-weight: bold;
   color: ${SETTINGS_TEXT_COLOR};
   margin-top: ${40 * HEIGHT_REL};
   margin-left: ${32 * WIDTH_REL};
@@ -152,9 +152,8 @@ const Icon = styled.Image`
   margin-left: ${32 * WIDTH_REL};
 `;
 
-const CustomText = styled.Text`
+const CustomText = styled(TextBaseBold)`
   font-size: 14;
-  font-weight: bold;
   color: ${SETTINGS_TEXT_COLOR};
   margin-left: ${20 * WIDTH_REL};
 `;

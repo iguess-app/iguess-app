@@ -6,6 +6,7 @@ import {
   HEIGHT_REL,
   WIDTH_REL,
 } from '@theme';
+import { TextBaseBold } from '@components/Scene';
 
 export const MainButton = ({ text, onPress }) => (
   <MainTouchable onPress={() => onPress()}>
@@ -68,9 +69,8 @@ const Inative = styled.View`
   justify-content: center;
 `;
 
-const WhiteText = styled.Text`
+const WhiteText = styled(TextBaseBold)`
   font-size: 15;
-  font-weight: bold;
   text-align: center;
   color: ${PRIMARY_BUTTON_TEXT_COLOR};
 `;

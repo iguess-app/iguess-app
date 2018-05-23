@@ -31,7 +31,8 @@ const Back = () => (
 const NavWrapper = styled.ImageBackground`
   flex-direction: row;
   align-items: center;
-  padding-top: 20;
+  padding-top: 20
+  text-align: center;
   height: 80;
   z-index: 1;
 `;
@@ -47,14 +48,14 @@ const BackImage = styled.Image.attrs({
 const BackTouchable = styled.TouchableOpacity`
   padding-horizontal: 8%;
   padding-vertical: 10;
-`
+`;
 
 const Title = styled.Text`
+  font-family: 'KievitOffc-Bold';
   flex-direction: row;
   flex: 1;
   text-align: center;
   font-size: 14;
-  font-weight: bold;
   color: ${HEADER_TEXT_COLOR};
   margin-right: 64;
 `;
