@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import GameCard, { gameStatus } from './GameCard';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
-import * as linesActions from '@redux/lines/actions';
 import {
   SCENE_BACKGROUND_COLOR,
   CARD_LIST_TITLE_COLOR,
@@ -11,16 +9,12 @@ import {
   WIDTH_REL,
   HEIGHT_REL,
 } from '@theme';
-import { clockwise, spinner } from '@assets/images';
+import { clockwise } from '@assets/images';
 import { TextBaseBold } from '@components/Scene';
 
 class GameList extends Component {
   constructor(props) {
     super(props);
-  }
-
-  componentDidMount() {
-    this.props.dispatch(linesActions.fetchLine());
   }
 
   render() {
@@ -158,26 +152,9 @@ const Clockwise = styled.Image.attrs({
   resize-mode: contain;
 `;
 
-const Spinner = styled.Image.attrs({
-  source: spinner,
-})`
-  width: ${44 * WIDTH_REL};
-  height: ${42 * HEIGHT_REL};
-  resize-mode: contain;
-  align-self: center;
-  margin-top: ${80 * HEIGHT_REL};
-`;
-
 const ErrorText = styled(TextBaseBold)`
   margin-horizontal: ${32 * WIDTH_REL};
   align-self: center;
 `;
 
-const mapStateToProps = state => {
-  return {
-    games: state.lines.activeLine,
-    error: state.lines.error,
-  };
-};
-
-export default connect(mapStateToProps)(GameList);
+export default GameList;
