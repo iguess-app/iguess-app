@@ -4,7 +4,7 @@ import { SELECT_LINE_PRIMARY_TEXT, SELECT_LINE_POINTS_TEXT } from '@theme';
 import I18n from '../i18n';
 import { TextBaseBold } from '@components/Scene';
 
-export default class TouchableSelectLine extends Component {
+export default class SelectedLine extends Component {
   render() {
     const { season, name, points, opacity } = this.props;
 
