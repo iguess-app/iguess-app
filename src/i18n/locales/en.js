@@ -47,6 +47,8 @@ export default {
   point: 'point',
   points: 'points',
 
+  serverErrorDefault: 'Something wrong ocurred. Try again later.',
+
   loadingTitle: 'Wait just a little bit...',
   loadingSubtitle: 'we are processing some information',
 

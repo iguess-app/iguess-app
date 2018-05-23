@@ -17,6 +17,7 @@ import {
   WIDTH_REL,
 } from '@theme';
 import { TextBaseBold } from '@components/Scene';
+import I18n from '../i18n';
 
 export const gameStatus = {
   ALLOW_PREDICT: 'ALLOW_PREDICT',
@@ -111,7 +112,9 @@ class GameCard extends Component {
 const ScoreBoard = ({ score }) => (
   <ScoreBoardWrapper>
     <Score>{score}</Score>
-    <PointsText>POINTS</PointsText>
+    <PointsText>
+      {I18n.t(score === 1 ? 'point' : 'points').toUpperCase()}
+    </PointsText>
   </ScoreBoardWrapper>
 );
 

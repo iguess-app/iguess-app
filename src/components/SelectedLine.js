@@ -8,7 +8,7 @@ export default class TouchableSelectLine extends Component {
   render() {
     const { season, name, points, opacity } = this.props;
 
-    const pointsLabel = I18n.t(points > 1 ? 'points' : 'point');
+    const pointsLabel = I18n.t(points === 1 ? 'point' : 'points');
 
     return (
       <Wrapper>
