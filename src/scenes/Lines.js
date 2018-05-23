@@ -4,6 +4,7 @@ import GameList from '@components/GameList';
 import SelectedLine from '@components/SelectedLine';
 import { SceneWrapper } from '@components/Scene';
 import SettingsButton from '@components/SettingsButton';
+import Loading from '@scenes/Loading';
 import { chevronDown } from '@assets/images';
 import {
   SELECT_LINE_PRIMARY_TEXT,
@@ -12,11 +13,17 @@ import {
   HEIGHT_REL,
 } from '@theme';
 import { TextBaseBold } from '@components/Scene';
+import { connect } from 'react-redux';
+import * as linesActions from '@redux/lines/actions';
 
 class Lines extends Component {
   constructor(props) {
     super(props);
     this.state = { selectedOpacity: 1 };
+  }
+
+  componentWillMount() {
+    this.props.dispatch(linesActions.fetchLine());
   }
 
   _changeSelectedLineOpacity(event) {
@@ -27,14 +34,21 @@ class Lines extends Component {
   }
 
   render() {
-    const { games, swipe } = this.props;
+    const { games, swipe, loading, championship } = this.props;
+
+    if (loading || championship === undefined) {
+      return <Loading />;
+    }
+
+    const championshipName = championship.championship;
+    const season = championship.season;
 
     return (
       <SceneWrapper background={DEFAULT_BACKGROUND}>
         <Navigation>
           <SettingsButton onPress={swipe} />
           <SecondarySelectedLine
-            name="Russian World Cup"
+            name={championshipName}
             scroll={this.scroll}
             principalOpacity={this.state.selectedOpacity}
           />
@@ -45,8 +59,8 @@ class Lines extends Component {
           innerRef={ref => (this.scroll = ref)}
         >
           <SelectedLine
-            season="2018"
-            name="Russian World Cup"
+            season={season}
+            name={championshipName}
             points="57"
             opacity={this.state.selectedOpacity}
           />
@@ -109,4 +123,12 @@ const Chevron = styled.Image.attrs({
   margin-top: 4;
 `;
 
-export default Lines;
+const mapStateToProps = state => {
+  return {
+    loading: state.lines.loading,
+    games: state.lines.activeLine,
+    championship: state.lines.activeLine.championship,
+  };
+};
+
+export default connect(mapStateToProps)(Lines);
