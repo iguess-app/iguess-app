@@ -13,9 +13,8 @@ export function fetchLine() {
     dispatch(fetchLineBegin());
 
     get('https://iguess-666666.appspot.com/guessline/getGuessLine')
-      .then(() => {
-        // Using mocked games just for testing purposes
-        dispatch(fetchLineSuccess(mockedGames));
+      .then(line => {
+        dispatch(fetchLineSuccess(line));
       })
       .catch(() => fetchLineError('Error fetching data'));
   };
