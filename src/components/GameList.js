@@ -15,10 +15,15 @@ import { TextBaseBold } from '@components/Scene';
 class GameList extends Component {
   constructor(props) {
     super(props);
+    this.state = { today: [] };
+  }
+
+  componentDidMount() {
+    console.log('Request result', this.props.base);
   }
 
   render() {
-    const { games, error } = this.props;
+    const { games, base, error } = this.props;
 
     if (error) {
       return (
@@ -30,7 +35,10 @@ class GameList extends Component {
 
     return (
       <Wrapper>
-        <Header title="HOJE" subtitle="Domingo, 19 de Abril" />
+        <Header
+          title={base.matchDayHumanified.mainInfoDate}
+          subtitle={base.matchDayHumanified.subInfoDate}
+        />
         <List
           data={games}
           renderItem={({ item }) => (

@@ -34,7 +34,7 @@ class Lines extends Component {
   }
 
   render() {
-    const { games, swipe, loading, championship, pontuation } = this.props;
+    const { activeLine, swipe, loading, championship, pontuation } = this.props;
 
     if (loading || championship === undefined || pontuation === undefined) {
       return <Loading />;
@@ -64,7 +64,7 @@ class Lines extends Component {
             points={pontuation}
             opacity={this.state.selectedOpacity}
           />
-          <GameList games={games} />
+          <GameList base={activeLine} />
         </Scroll>
       </SceneWrapper>
     );
@@ -126,7 +126,7 @@ const Chevron = styled.Image.attrs({
 const mapStateToProps = state => {
   return {
     loading: state.lines.loading,
-    games: state.lines.activeLine,
+    activeLine: state.lines.activeLine,
     championship: state.lines.activeLine.championship,
     pontuation: state.lines.activeLine.guessLinePontuation,
   };
