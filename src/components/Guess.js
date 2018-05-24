@@ -2,12 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { TouchableOpacity } from 'react-native';
 import { plus, plusDisabled, minus, minusDisabled } from '@assets/images';
-import {
-  GUESS_GUESSED_TEXT_COLOR,
-  GUESS_DEFAULT_TEXT_COLOR,
-  HEIGHT_REL,
-  WIDTH_REL,
-} from '@theme';
+import { GUESS_GUESSED_TEXT_COLOR, HEIGHT_REL, WIDTH_REL } from '@theme';
 import { TextBaseBold } from '@components/Scene';
 
 const DEFAULT_VALUE = '- - - -';
@@ -19,7 +14,7 @@ class Guess extends Component {
 
     const isBlocked = props.blocked !== undefined ? props.blocked : false;
 
-    this.state = { blocked: isBlocked };
+    this.state = { blocked: isBlocked, value: this._treatValue(props.value) };
   }
 
   componentWillReceiveProps(props) {
