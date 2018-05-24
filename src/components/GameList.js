@@ -13,6 +13,7 @@ import {
   HEIGHT_REL,
 } from '@theme';
 import { clockwise } from '@assets/images';
+import { TextBaseBold } from '@components/Scene';
 
 class GameList extends Component {
   constructor(props) {
@@ -128,15 +129,13 @@ const HeaderWrapper = styled.View`
   margin-horizontal: ${32 * WIDTH_REL};
 `;
 
-const Title = styled.Text`
+const Title = styled(TextBaseBold)`
   font-size: 28;
-  font-weight: bold;
   color: ${CARD_LIST_TITLE_COLOR};
 `;
 
-const SubTitle = styled.Text`
+const SubTitle = styled(TextBaseBold)`
   font-size: 12;
-  font-weight: bold;
   margin-top: ${7 * HEIGHT_REL};
   color: ${CARD_LIST_SUBTITLE_COLOR};
 `;

@@ -12,6 +12,7 @@ import {
   HEIGHT_REL,
   WIDTH_REL,
 } from '@theme';
+import { TextBase } from '@components/Scene';
 
 export const predictStatus = {
   DEFAULT: 'DEFAULT',
@@ -208,7 +209,7 @@ const ProgressContainer = styled.View`
   justify-content: center;
 `;
 
-const Time = styled.Text`
+const Time = styled(TextBase)`
   font-size: 12;
   color: #4d6980;
 `;
@@ -226,7 +227,7 @@ const VS = styled.Image.attrs({
   margin-top: 8;
 `;
 
-const ScheduledTime = styled.Text`
+const ScheduledTime = styled(TextBase)`
   font-size: 10;
   color: ${SCHEDULED_TIME_COLOR};
 `;

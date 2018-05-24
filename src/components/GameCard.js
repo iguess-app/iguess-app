@@ -16,6 +16,7 @@ import {
   HEIGHT_REL,
   WIDTH_REL,
 } from '@theme';
+import { TextBaseBold } from '@components/Scene';
 import I18n from '../i18n';
 
 export const gameStatus = {
@@ -133,16 +134,14 @@ const ScoreBoardWrapper = styled.View`
   z-index: 1;
 `;
 
-const Score = styled.Text`
+const Score = styled(TextBaseBold)`
   font-size: ${16.8 * HEIGHT_REL};
-  font-weight: 800;
   color: ${SCORE_FONT_COLOR};
   margin-right: 4;
 `;
 
-const PointsText = styled.Text`
+const PointsText = styled(TextBaseBold)`
   font-size: 12;
-  font-weight: 800;
   color: ${SCORE_FONT_COLOR};
 `;
 
