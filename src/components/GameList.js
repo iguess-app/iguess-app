@@ -22,6 +22,8 @@ class GameList extends Component {
     console.log('Request result', this.props.base);
   }
 
+  _keyExtractor = item => item.matchRef;
+
   render() {
     const { base } = this.props;
 
@@ -33,6 +35,7 @@ class GameList extends Component {
         />
         <List
           data={base.games}
+          keyExtractor={this._keyExtractor}
           renderItem={({ item }) => (
             <GameCard
               homeGuess={item.homeTeamScoreGuess}
