@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { TouchableOpacity, Alert } from 'react-native';
 import styled from 'styled-components';
 import { SceneWrapper } from '@components/Scene';
-import ServerError from '@components/ServerError';
+import Error from '@components/Error';
 import { Actions } from 'react-native-router-flux';
 import { apiDelete } from '@helpers';
 import { connect } from 'react-redux';
@@ -20,23 +20,25 @@ import { TextBaseBold } from '@components/Scene';
 class Settings extends Component {
   constructor(props) {
     super(props);
-    this.state = { error: false };
+    this.state = { errorMsg: null };
   }
 
   _logout = () => {
-    this.setState({ error: false });
-
     const confirm = () => {
-      apiDelete('https://iguess-666666.appspot.com/login/logout')
-        .then(response => {
-          if (response.logout === true) {
-            this.props.dispatch(logout());
-            Actions.home();
-          } else if (response.logout === false) {
-            this.setState({ error: true });
-          }
-        })
-        .catch(() => this.setState({ error: true }));
+      this.setState({ errorMsg: null }, () => {
+        apiDelete('https://iguess-666666.appspot.com/login/logout')
+          .then(response => {
+            if (response.logout === true) {
+              this.props.dispatch(logout());
+              Actions.reset('home');
+            } else if (response.logout === false) {
+              this.setState({ errorMsg: I18n.t('serverErrorDefault') });
+            }
+          })
+          .catch(() =>
+            this.setState({ errorMsg: I18n.t('serverErrorDefault') }),
+          );
+      });
     };
 
     Alert.alert(
@@ -56,7 +58,10 @@ class Settings extends Component {
   render() {
     const { swipe } = this.props;
 
-    const errorCard = this.state.error ? <ServerError /> : null;
+    const errorCard =
+      this.state.errorMsg !== null ? (
+        <Error>{this.state.errorMsg}</Error>
+      ) : null;
 
     return (
       <SceneWrapper>
