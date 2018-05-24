@@ -23,15 +23,7 @@ class GameList extends Component {
   }
 
   render() {
-    const { games, base, error } = this.props;
-
-    if (error) {
-      return (
-        <Wrapper>
-          <ErrorText>{error}</ErrorText>
-        </Wrapper>
-      );
-    }
+    const { base } = this.props;
 
     return (
       <Wrapper>
@@ -40,12 +32,11 @@ class GameList extends Component {
           subtitle={base.matchDayHumanified.subInfoDate}
         />
         <List
-          data={games}
+          data={base.games}
           renderItem={({ item }) => (
             <GameCard
-              id={item.key}
-              homeGuess={item.homeGuess}
-              awayGuess={item.awayGuess}
+              homeGuess={item.homeTeamScoreGuess}
+              awayGuess={item.awayTeamScoreGuess}
             />
           )}
         />
