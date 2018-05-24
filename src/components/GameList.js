@@ -30,7 +30,7 @@ class GameList extends Component {
 
     return (
       <Wrapper>
-        <Header first title="ALLOW PREDICT" subtitle="Domingo, 19 de Abril" />
+        <Header title="HOJE" subtitle="Domingo, 19 de Abril" />
         <List
           data={games}
           renderItem={({ item }) => (
@@ -38,53 +38,6 @@ class GameList extends Component {
               id={item.key}
               homeGuess={item.homeGuess}
               awayGuess={item.awayGuess}
-            />
-          )}
-        />
-        <Header
-          title="NOT ALLOW PREDICT"
-          subtitle="Segunda - Feira, 20 de Abril"
-          refresh
-        />
-        <List
-          data={games}
-          renderItem={({ item }) => (
-            <GameCard
-              id={item.key}
-              homeGuess={item.homeGuess}
-              awayGuess={item.awayGuess}
-              status={gameStatus.NOT_ALLOW_PREDICT}
-            />
-          )}
-        />
-        <Header title="LIVE" subtitle="Segunda - Feira, 20 de Abril" refresh />
-        <List
-          data={games}
-          renderItem={({ item }) => (
-            <GameCard
-              id={item.key}
-              homeGuess={item.homeGuess}
-              awayGuess={item.awayGuess}
-              status={gameStatus.LIVE}
-              homeScore={0}
-              awayScore={0}
-              time={"45'"}
-              score={2}
-            />
-          )}
-        />
-        <Header title="FINISHED" subtitle="Terça - Feira, 21 de Abril" />
-        <List
-          data={games}
-          renderItem={({ item }) => (
-            <GameCard
-              id={item.key}
-              homeGuess={item.homeGuess}
-              awayGuess={item.awayGuess}
-              status={gameStatus.FINISHED}
-              homeScore={0}
-              awayScore={0}
-              score={8}
             />
           )}
         />
@@ -100,15 +53,16 @@ const List = styled.FlatList`
 export const Wrapper = styled.ScrollView`
   flex: 1;
   background-color: ${SCENE_BACKGROUND_COLOR};
-  min-height: ${800 * HEIGHT_REL};
+  min-height: ${420 * HEIGHT_REL};
   margin-top: ${60 * HEIGHT_REL};
+  padding-top: ${20 * HEIGHT_REL};
 `;
 
 const Header = props => {
-  const { title, subtitle, first, refresh } = props;
+  const { title, subtitle, refresh } = props;
 
   return (
-    <HeaderWrapper first={first}>
+    <HeaderWrapper>
       <View>
         <Title>{title.toUpperCase()}</Title>
         <SubTitle>{subtitle.toUpperCase()}</SubTitle>
@@ -122,7 +76,7 @@ const HeaderWrapper = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: ${props => (props.first ? 20 * HEIGHT_REL : 0)};
+  margin-top: 0;
   margin-bottom: ${6 * HEIGHT_REL};
   margin-horizontal: ${32 * WIDTH_REL};
 `;
