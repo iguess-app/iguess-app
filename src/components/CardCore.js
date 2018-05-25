@@ -31,8 +31,8 @@ export class AllowPredict extends Component {
   }
 
   update() {
-    // Will clear a current updateStatus timeout if exists
-    clearTimeout(this.timeout);
+    // Will clear a current updateStatus inactivityTime if exists
+    clearTimeout(this.inactivityTime);
 
     // Guarantee that guess will not be blank
     const updatedValue = value => (value >= 0 ? value : 0);
@@ -44,10 +44,9 @@ export class AllowPredict extends Component {
     });
 
     // Call and "updatedStatus" (contact API)
-    // after 3 seconds
-    this.timeout = setTimeout(() => {
+    this.inactivityTime = setTimeout(() => {
       this._updateStatus(predictStatus.LOADING);
-    }, 3000);
+    }, 1500);
   }
 
   _updateStatus(status) {
