@@ -29,12 +29,6 @@ export class AllowPredict extends Component {
     this.state = { status: predictStatus.DEFAULT, homeGuess, awayGuess };
   }
 
-  componentWillReceiveProps() {
-    const { homeGuess, awayGuess } = this.props;
-
-    this.setState({ homeGuess, awayGuess });
-  }
-
   update() {
     // Will clear a current updateStatus timeout if exists
     clearTimeout(this.timeout);
