@@ -36,6 +36,12 @@ class GameList extends Component {
 
     if (allowToPredict && !started && !ended) {
       // ALLOW TO PREDICT
+
+      const gameRef = {
+        matchRef: item.matchRef,
+        championshipRef: this.props.base.championship.championshipRef,
+      };
+
       return (
         <GameCard
           homeTeam={homeTeam}
@@ -43,6 +49,7 @@ class GameList extends Component {
           homeGuess={homeTeamScoreGuess}
           awayGuess={awayTeamScoreGuess}
           initTime={item.initTimeHumanified}
+          gameRef={gameRef}
         />
       );
     } else if (!allowToPredict && !started && !ended) {

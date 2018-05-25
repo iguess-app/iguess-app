@@ -58,6 +58,7 @@ class GameCard extends Component {
             homeGuess={homeGuess}
             awayGuess={awayGuess}
             scheduled={this.props.initTime}
+            gameRef={this.props.gameRef}
           />
         );
       case gameStatus.NOT_ALLOW_PREDICT:

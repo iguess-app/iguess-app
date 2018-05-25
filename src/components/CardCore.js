@@ -55,6 +55,10 @@ export class AllowPredict extends Component {
     if (status === LOADING) {
       this.setState({ status: LOADING });
 
+      console.log(
+        `Set ${this.state.homeGuess} and ${this.state.awayGuess} on`,
+        this.props.gameRef,
+      );
       // TODO: Contact API and set Status as loaded
       // Using setTimeout for now
       setTimeout(() => this._updateStatus(LOADED), 2000);
