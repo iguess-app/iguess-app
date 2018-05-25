@@ -26,6 +26,7 @@ const TeamName = styled(TextBaseBold)`
   font-size: 12;
   margin-top: ${4 * HEIGHT_REL};
   color: ${CARD_TEAM_NAME_COLOR};
+  text-align: center;
 `;
 
 const TeamImage = styled.Image`
