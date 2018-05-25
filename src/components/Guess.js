@@ -12,9 +12,10 @@ class Guess extends Component {
   constructor(props) {
     super(props);
 
-    const isBlocked = props.blocked !== undefined ? props.blocked : false;
-
-    this.state = { blocked: isBlocked, value: this._treatValue(props.value) };
+    this.state = {
+      blocked: props.blocked,
+      value: this._treatValue(props.value),
+    };
   }
 
   componentWillReceiveProps(props) {
