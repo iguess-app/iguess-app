@@ -115,9 +115,15 @@ class GameCard extends Component {
           <ScoreBoard score={this.props.score} />
         ) : null}
         <Card style={cardShadow}>
-          <HomeTeam name={homeTeam.shortName} image={arsenal} />
+          <HomeTeam
+            name={homeTeam.shortName}
+            image={{ uri: homeTeam.logo.mini }}
+          />
           {core}
-          <AwayTeam name={awayTeam.shortName} image={liverpool} />
+          <AwayTeam
+            name={awayTeam.shortName}
+            image={{ uri: awayTeam.logo.mini }}
+          />
         </Card>
       </Wrapper>
     );

@@ -16,6 +16,7 @@ const Team = props => {
 
 const TeamView = styled.View`
   align-items: center;
+  justify-content: center;
   width: ${80 * WIDTH_REL};
   height: ${80 * HEIGHT_REL};
 `;
