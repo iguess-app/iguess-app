@@ -39,7 +39,7 @@ const requestInfo = (
 };
 
 export const post = (url, body) => {
-  let info = requestInfo('POST', body);
+  let info = requestInfo('POST', JSON.stringify(body));
   return request(url, info);
 };
 

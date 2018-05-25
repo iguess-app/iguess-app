@@ -22,10 +22,10 @@ class SignIn extends Component {
     this.setState({ error: false, errorMsg: '' });
 
     if (this.state.login && this.state.password) {
-      const body = JSON.stringify({
+      const body = {
         login: this.state.login,
         password: this.state.password,
-      });
+      };
 
       post('https://iguess-666666.appspot.com/login/signIn', body)
         .then(response => {
