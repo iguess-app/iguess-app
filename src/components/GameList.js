@@ -66,6 +66,8 @@ class GameList extends Component {
           homeScore={item.homeTeamScore}
           awayScore={item.awayTeamScore}
           pontuation={item.matchPontuation}
+          time={item.minutes}
+          percentageCompleted={item.percentageCompleted}
           status={gameStatus.LIVE}
         />
       );

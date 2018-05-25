@@ -129,13 +129,22 @@ export const NotAllowPredict = props => {
 };
 
 export const Live = props => {
-  const { homeGuess, awayGuess, homeScore, awayScore, time } = props;
+  const {
+    homeGuess,
+    awayGuess,
+    homeScore,
+    awayScore,
+    time,
+    percentageCompleted,
+  } = props;
 
   return (
     <CardCore>
       <Result guess={homeGuess} score={homeScore} />
       <MidWrapper>
-        <TimeCircular>{time}</TimeCircular>
+        <TimeCircular percentageCompleted={percentageCompleted}>
+          {time.concat("'")}
+        </TimeCircular>
         <VS />
       </MidWrapper>
       <Result guess={awayGuess} score={awayScore} />
@@ -166,12 +175,12 @@ const Whistle = styled.Image.attrs({
   resize-mode: contain;
 `;
 
-const TimeCircular = ({ children }) => (
+const TimeCircular = ({ children, percentageCompleted = 0 }) => (
   <View>
     <AnimatedCircularProgress
       size={26}
       width={2}
-      fill={50}
+      fill={parseInt(percentageCompleted)}
       rotation={0}
       tintColor={PROGRESS_TINT_COLOR}
       backgroundColor={PROGRESS_BACKGROUND_COLOR}

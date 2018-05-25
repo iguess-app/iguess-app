@@ -76,6 +76,7 @@ class GameCard extends Component {
             homeScore={homeScore}
             awayScore={awayScore}
             time={this.props.time}
+            percentageCompleted={this.props.percentageCompleted}
           />
         );
       case gameStatus.FINISHED:
