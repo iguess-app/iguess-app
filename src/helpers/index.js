@@ -38,6 +38,10 @@ const requestInfo = (
   };
 };
 
+export const handleIsoDate = date => {
+  return date.replace('+', '%2b');
+};
+
 export const post = (url, body) => {
   let info = requestInfo('POST', JSON.stringify(body));
   return request(url, info);
@@ -59,7 +63,7 @@ export const put = (url, body) => {
 
 const request = (url, info) => {
   const promise = new Promise((resolve, reject) => {
-    fetch(url, info)
+    fetch(handleIsoDate(url), info)
       .then(response => resolve(response.json()))
       .catch(() => reject());
   });
