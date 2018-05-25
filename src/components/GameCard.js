@@ -105,6 +105,8 @@ class GameCard extends Component {
   };
 
   render() {
+    const { homeTeam, awayTeam } = this.props;
+
     const core = this._defineCore();
 
     return (
@@ -113,9 +115,9 @@ class GameCard extends Component {
           <ScoreBoard score={this.props.score} />
         ) : null}
         <Card style={cardShadow}>
-          <HomeTeam name="Arsenal" image={arsenal} />
+          <HomeTeam name={homeTeam.shortName} image={arsenal} />
           {core}
-          <AwayTeam name="Liverpool" image={liverpool} />
+          <AwayTeam name={awayTeam.shortName} image={liverpool} />
         </Card>
       </Wrapper>
     );

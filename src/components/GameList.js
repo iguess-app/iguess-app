@@ -37,6 +37,8 @@ class GameList extends Component {
           keyExtractor={this._keyExtractor}
           renderItem={({ item }) => (
             <GameCard
+              homeTeam={item.homeTeam}
+              awayTeam={item.awayTeam}
               homeGuess={item.homeTeamScoreGuess}
               awayGuess={item.awayTeamScoreGuess}
             />

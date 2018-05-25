@@ -101,7 +101,6 @@ export class AllowPredict extends Component {
   }
 
   render() {
-    console.log('Rendering with', this.state.homeGuess, this.state.awayGuess);
     return (
       <CardCore>
         <Guess
