@@ -15,7 +15,6 @@ import { TextBaseBold } from '@components/Scene';
 class GameList extends Component {
   constructor(props) {
     super(props);
-    this.state = { today: [] };
   }
 
   componentDidMount() {
