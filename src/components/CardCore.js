@@ -259,6 +259,7 @@ const ScheduledTime = styled(TextBase)`
 `;
 
 const MidWrapper = styled.View`
+  width: ${45 * WIDTH_REL};
   flex-direction: column;
   justify-content: center;
   align-items: center;
