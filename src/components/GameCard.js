@@ -7,7 +7,6 @@ import {
   Live,
   Finished,
 } from '@components/CardCore';
-import { arsenal, liverpool } from '@assets/images';
 import {
   CARD_BACKGROUND_COLOR,
   CARD_BORDER_COLOR,
@@ -112,7 +111,7 @@ class GameCard extends Component {
     return (
       <Wrapper>
         {this._liveOrFinished() ? (
-          <ScoreBoard score={this.props.score} />
+          <ScoreBoard score={this.props.pontuation} />
         ) : null}
         <Card style={cardShadow}>
           <HomeTeam

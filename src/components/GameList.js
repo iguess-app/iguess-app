@@ -23,6 +23,72 @@ class GameList extends Component {
 
   _keyExtractor = item => item.matchRef;
 
+  _renderCard(item) {
+    const {
+      allowToPredict,
+      started,
+      ended,
+      homeTeam,
+      awayTeam,
+      homeTeamScoreGuess,
+      awayTeamScoreGuess,
+    } = item;
+
+    if (allowToPredict && !started && !ended) {
+      // ALLOW TO PREDICT
+      return (
+        <GameCard
+          homeTeam={homeTeam}
+          awayTeam={awayTeam}
+          homeGuess={homeTeamScoreGuess}
+          awayGuess={awayTeamScoreGuess}
+        />
+      );
+    } else if (!allowToPredict && !started && !ended) {
+      // NOT ALLOW TO PREDICT
+      return (
+        <GameCard
+          homeTeam={homeTeam}
+          awayTeam={awayTeam}
+          homeGuess={homeTeamScoreGuess}
+          awayGuess={awayTeamScoreGuess}
+          status={gameStatus.NOT_ALLOW_PREDICT}
+        />
+      );
+    } else if (!allowToPredict && started && !ended) {
+      // LIVE
+      return (
+        <GameCard
+          homeTeam={homeTeam}
+          awayTeam={awayTeam}
+          homeGuess={homeTeamScoreGuess}
+          awayGuess={awayTeamScoreGuess}
+          homeScore={item.homeTeamScore}
+          awayScore={item.awayTeamScore}
+          pontuation={item.matchPontuation}
+          status={gameStatus.LIVE}
+        />
+      );
+    } else if (!allowToPredict && started && ended) {
+      // FINISHED
+      return (
+        <GameCard
+          homeTeam={homeTeam}
+          awayTeam={awayTeam}
+          homeGuess={homeTeamScoreGuess}
+          awayGuess={awayTeamScoreGuess}
+          homeScore={item.homeTeamScore}
+          awayScore={item.awayTeamScore}
+          pontuation={item.matchPontuation}
+          status={gameStatus.FINISHED}
+        />
+      );
+    }
+
+    // Don't render card
+    return;
+  }
+
   render() {
     const { base } = this.props;
 
@@ -35,14 +101,7 @@ class GameList extends Component {
         <List
           data={base.games}
           keyExtractor={this._keyExtractor}
-          renderItem={({ item }) => (
-            <GameCard
-              homeTeam={item.homeTeam}
-              awayTeam={item.awayTeam}
-              homeGuess={item.homeTeamScoreGuess}
-              awayGuess={item.awayTeamScoreGuess}
-            />
-          )}
+          renderItem={({ item }) => this._renderCard(item)}
         />
       </Wrapper>
     );
