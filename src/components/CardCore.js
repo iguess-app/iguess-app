@@ -13,6 +13,7 @@ import {
   WIDTH_REL,
 } from '@theme';
 import { TextBase } from '@components/Scene';
+import { put } from '@helpers';
 
 export const predictStatus = {
   DEFAULT: 'DEFAULT',
@@ -52,16 +53,28 @@ export class AllowPredict extends Component {
   _updateStatus(status) {
     const { DEFAULT, LOADING, LOADED } = predictStatus;
 
+    const predictionBody = {
+      championshipRef: this.props.gameRef.championshipRef,
+      guesses: [
+        {
+          matchRef: this.props.gameRef.matchRef,
+          homeTeamScoreGuess: this.state.homeGuess,
+          awayTeamScoreGuess: this.state.awayGuess,
+        },
+      ],
+    };
+
     if (status === LOADING) {
       this.setState({ status: LOADING });
 
-      console.log(
-        `Set ${this.state.homeGuess} and ${this.state.awayGuess} on`,
-        this.props.gameRef,
-      );
-      // TODO: Contact API and set Status as loaded
-      // Using setTimeout for now
-      setTimeout(() => this._updateStatus(LOADED), 2000);
+      put(
+        'https://iguess-666666.appspot.com/guessline/setPredictions',
+        predictionBody,
+      )
+        .then(() => this._updateStatus(LOADED))
+        .catch(() => {
+          throw new Error('Error setting prediction');
+        });
     } else if (status === LOADED) {
       this.setState({ status: LOADED });
 
@@ -184,7 +197,7 @@ const TimeCircular = ({ children, percentageCompleted = 0 }) => (
     <AnimatedCircularProgress
       size={26}
       width={2}
-      fill={parseInt(percentageCompleted)}
+      fill={percentageCompleted}
       rotation={0}
       tintColor={PROGRESS_TINT_COLOR}
       backgroundColor={PROGRESS_BACKGROUND_COLOR}
