@@ -146,19 +146,20 @@ const Wrapper = styled.View`
 const ScoreBoardWrapper = styled.View`
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   width: ${92 * WIDTH_REL};
   height: ${26 * HEIGHT_REL};
   border-radius: ${26 * HEIGHT_REL};
   background-color: ${SCORE_BOARD_COLOR};
   top: ${13 * HEIGHT_REL};
-  padding-horizontal: ${16 * WIDTH_REL};
   z-index: 1;
 `;
 
 const Score = styled(TextBaseBold)`
   font-size: ${16.8 * HEIGHT_REL};
   color: ${SCORE_FONT_COLOR};
-  margin-right: 4;
+  margin-right: ${4 * WIDTH_REL};
+  margin-bottom: ${4 * HEIGHT_REL};
 `;
 
 const PointsText = styled(TextBaseBold)`
