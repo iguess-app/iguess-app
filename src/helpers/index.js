@@ -52,6 +52,11 @@ export const apiDelete = url => {
   return request(url, info);
 };
 
+export const put = (url, body) => {
+  let info = requestInfo('PUT', JSON.stringify(body));
+  return request(url, info);
+};
+
 const request = (url, info) => {
   const promise = new Promise((resolve, reject) => {
     fetch(url, info)
