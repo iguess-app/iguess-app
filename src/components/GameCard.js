@@ -160,9 +160,7 @@ const PointsText = styled(TextBaseBold)`
   color: ${SCORE_FONT_COLOR};
 `;
 
-const HomeTeam = styled(Team)`
-  align-self: flex-start;
-`;
+const HomeTeam = styled(Team)``;
 
 const AwayTeam = styled(Team)``;
 
@@ -186,11 +184,11 @@ const Card = styled.View`
   border-color: ${CARD_BORDER_COLOR};
   background-color: ${CARD_BACKGROUND_COLOR};
   padding-vertical: 20;
-  padding-horizontal: 20;
   border-radius: 4;
   border-width: 1;
   align-self: center;
   align-items: center;
+  justify-content: center;
 `;
 
 export default GameCard;

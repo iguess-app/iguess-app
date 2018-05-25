@@ -15,14 +15,15 @@ const Team = props => {
 };
 
 const TeamView = styled.View`
-  margin-horizontal: ${8 * WIDTH_REL};
   align-items: center;
+  width: ${80 * WIDTH_REL};
+  height: ${80 * HEIGHT_REL};
 `;
 
 const TeamName = styled(TextBaseBold)`
   opacity: 0.8;
   font-size: 12;
-  margin-top: 4;
+  margin-top: ${4 * HEIGHT_REL};
   color: ${CARD_TEAM_NAME_COLOR};
 `;
 
