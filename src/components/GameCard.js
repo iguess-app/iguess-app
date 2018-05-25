@@ -57,7 +57,7 @@ class GameCard extends Component {
           <AllowPredict
             homeGuess={homeGuess}
             awayGuess={awayGuess}
-            scheduled="16h 45m"
+            scheduled={this.props.initTime}
           />
         );
       case gameStatus.NOT_ALLOW_PREDICT:
@@ -65,7 +65,7 @@ class GameCard extends Component {
           <NotAllowPredict
             homeGuess={homeGuess}
             awayGuess={awayGuess}
-            scheduled="16h 45m"
+            scheduled={this.props.initTime}
           />
         );
       case gameStatus.LIVE:

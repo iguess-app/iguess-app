@@ -42,6 +42,7 @@ class GameList extends Component {
           awayTeam={awayTeam}
           homeGuess={homeTeamScoreGuess}
           awayGuess={awayTeamScoreGuess}
+          initTime={item.initTimeHumanified}
         />
       );
     } else if (!allowToPredict && !started && !ended) {
@@ -52,6 +53,7 @@ class GameList extends Component {
           awayTeam={awayTeam}
           homeGuess={homeTeamScoreGuess}
           awayGuess={awayTeamScoreGuess}
+          initTime={item.initTimeHumanified}
           status={gameStatus.NOT_ALLOW_PREDICT}
         />
       );
