@@ -6,7 +6,9 @@ export function fetchLine() {
     // Inform to reducer that fetch beginned
     dispatch(fetchLineBegin());
 
-    get('https://iguess-666666.appspot.com/guessline/getGuessLine')
+    get(
+      'https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=America/Sao_Paulo',
+    )
       .then(line => {
         dispatch(fetchLineSuccess(line));
       })
