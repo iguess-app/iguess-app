@@ -16,6 +16,7 @@ import {
 } from '@theme';
 import I18n from '../i18n';
 import { TextBaseBold } from '@components/Scene';
+import { resetLine } from '@redux/lines/actions';
 
 class Settings extends Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class Settings extends Component {
         apiDelete('https://iguess-666666.appspot.com/login/logout')
           .then(response => {
             if (response.logout === true) {
+              this.props.dispatch(resetLine());
               this.props.dispatch(logout());
               Actions.reset('home');
             } else if (response.logout === false) {
