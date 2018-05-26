@@ -11,14 +11,17 @@ import {
 } from '@theme';
 import { clockwise } from '@assets/images';
 import { TextBaseBold } from '@components/Scene';
+import { get } from '@helpers';
 
 class GameList extends Component {
   constructor(props) {
     super(props);
+    this.state = { previous: [], next: [] };
   }
 
   componentDidMount() {
     console.log('Request result', this.props.base);
+    this.loadNext();
   }
 
   _keyExtractor = item => item.matchRef;
@@ -100,6 +103,17 @@ class GameList extends Component {
     return;
   }
 
+  loadNext() {
+    get(
+      `https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=America/Sao_Paulo&page=next&dateReference=${
+        this.props.base.matchDayIsoDate
+      }`,
+    ).then(response => {
+      const next = [response].concat(this.state.next);
+      this.setState({ next }, () => console.log(this.state.next));
+    });
+  }
+
   render() {
     const { base } = this.props;
 
@@ -114,6 +128,23 @@ class GameList extends Component {
           keyExtractor={this._keyExtractor}
           renderItem={({ item }) => this._renderCard(item)}
         />
+        {this.state.next.map(nextMatchDay => {
+          return (
+            <View key={`${nextMatchDay.matchRef}View`}>
+              <Header
+                key={`${nextMatchDay.matchRef}Header`}
+                title={nextMatchDay.matchDayHumanified.mainInfoDate}
+                subtitle={nextMatchDay.matchDayHumanified.subInfoDate}
+              />
+              <List
+                key={`${nextMatchDay.matchRef}List`}
+                data={nextMatchDay.games}
+                keyExtractor={this._keyExtractor}
+                renderItem={({ item }) => this._renderCard(item)}
+              />
+            </View>
+          );
+        })}
       </Wrapper>
     );
   }
