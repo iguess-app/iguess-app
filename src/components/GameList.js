@@ -139,6 +139,24 @@ class GameList extends Component {
     });
   }
 
+  _renderMatchDay(matchDay) {
+    return (
+      <View key={`${matchDay.matchRef}View`}>
+        <Header
+          key={`${matchDay.matchRef}Header`}
+          title={matchDay.matchDayHumanified.mainInfoDate}
+          subtitle={matchDay.matchDayHumanified.subInfoDate}
+        />
+        <List
+          key={`${matchDay.matchRef}List`}
+          data={matchDay.games}
+          keyExtractor={this._keyExtractor}
+          renderItem={({ item }) => this._renderCard(item)}
+        />
+      </View>
+    );
+  }
+
   render() {
     const { base, loading } = this.props;
 
@@ -152,50 +170,13 @@ class GameList extends Component {
 
     return (
       <Wrapper>
-        {this.state.previous.map(previousMatchDay => {
-          return (
-            <View key={`${previousMatchDay.matchRef}View`}>
-              <Header
-                key={`${previousMatchDay.matchRef}Header`}
-                title={previousMatchDay.matchDayHumanified.mainInfoDate}
-                subtitle={previousMatchDay.matchDayHumanified.subInfoDate}
-              />
-              <List
-                key={`${previousMatchDay.matchRef}List`}
-                data={previousMatchDay.games}
-                keyExtractor={this._keyExtractor}
-                renderItem={({ item }) => this._renderCard(item)}
-              />
-            </View>
-          );
-        })}
-        <Header
-          title={base.matchDayHumanified.mainInfoDate}
-          subtitle={base.matchDayHumanified.subInfoDate}
-          onPressRefresh={() => this.props.dispatch(fetchLine())}
-        />
-        <List
-          data={base.games}
-          keyExtractor={this._keyExtractor}
-          renderItem={({ item }) => this._renderCard(item)}
-        />
-        {this.state.next.map(nextMatchDay => {
-          return (
-            <View key={`${nextMatchDay.matchRef}View`}>
-              <Header
-                key={`${nextMatchDay.matchRef}Header`}
-                title={nextMatchDay.matchDayHumanified.mainInfoDate}
-                subtitle={nextMatchDay.matchDayHumanified.subInfoDate}
-              />
-              <List
-                key={`${nextMatchDay.matchRef}List`}
-                data={nextMatchDay.games}
-                keyExtractor={this._keyExtractor}
-                renderItem={({ item }) => this._renderCard(item)}
-              />
-            </View>
-          );
-        })}
+        {this.state.previous.map(previousMatchDay =>
+          this._renderMatchDay(previousMatchDay),
+        )}
+        {this._renderMatchDay(base)}
+        {this.state.next.map(nextMatchDay =>
+          this._renderMatchDay(nextMatchDay),
+        )}
       </Wrapper>
     );
   }
