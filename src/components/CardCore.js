@@ -27,7 +27,12 @@ export class AllowPredict extends Component {
 
     const { homeGuess, awayGuess } = props;
 
-    this.state = { status: predictStatus.DEFAULT, homeGuess, awayGuess };
+    this.state = {
+      status: predictStatus.DEFAULT,
+      homeGuess,
+      awayGuess,
+      blocked: false,
+    };
   }
 
   update() {
@@ -64,7 +69,7 @@ export class AllowPredict extends Component {
     };
 
     if (status === LOADING) {
-      this.setState({ status: LOADING });
+      this.setState({ status: LOADING, blocked: true });
 
       put(
         'https://iguess-666666.appspot.com/guessline/setPredictions',
@@ -80,7 +85,9 @@ export class AllowPredict extends Component {
       // Set status as DEFAULT after 1 second
       setTimeout(() => this._updateStatus(DEFAULT), 1000);
     } else {
-      this.setState({ status: DEFAULT });
+      this.setState({ status: DEFAULT }, () =>
+        this.setState({ blocked: false }),
+      );
     }
   }
 
@@ -117,12 +124,14 @@ export class AllowPredict extends Component {
           value={this.state.homeGuess}
           updateCore={() => this.update()}
           ref={ref => (this.home = ref)}
+          blocked={this.state.blocked}
         />
         {this._mid()}
         <Guess
           value={this.state.awayGuess}
           updateCore={() => this.update()}
           ref={ref => (this.away = ref)}
+          blocked={this.state.blocked}
         />
       </CardCore>
     );

@@ -19,7 +19,10 @@ class Guess extends Component {
   }
 
   componentWillReceiveProps(props) {
-    this.setState({ value: this._treatValue(props.value) });
+    this.setState({
+      value: this._treatValue(props.value),
+      blocked: props.blocked,
+    });
   }
 
   _treatValue(propValue) {

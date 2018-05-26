@@ -33,10 +33,22 @@ class Lines extends Component {
     this.setState({ selectedOpacity: opacity });
   }
 
-  render() {
-    const { activeLine, swipe, loading, championship, pontuation } = this.props;
+  _renderGames() {
+    const { loading, activeLine } = this.props;
 
-    if (loading || championship === undefined || pontuation === undefined) {
+    const wait = loading || activeLine === undefined ? true : false;
+
+    return <GameList base={activeLine} loading={wait} />;
+  }
+
+  render() {
+    const { activeLine, swipe, championship, pontuation } = this.props;
+
+    if (
+      championship === undefined ||
+      pontuation === undefined ||
+      activeLine === undefined
+    ) {
       return <Loading />;
     }
 
@@ -64,7 +76,7 @@ class Lines extends Component {
             points={pontuation}
             opacity={this.state.selectedOpacity}
           />
-          <GameList base={activeLine} />
+          {this._renderGames()}
         </Scroll>
       </SceneWrapper>
     );

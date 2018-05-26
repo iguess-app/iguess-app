@@ -9,9 +9,11 @@ import {
   WIDTH_REL,
   HEIGHT_REL,
 } from '@theme';
-import { clockwise } from '@assets/images';
+import { clockwise, spinner } from '@assets/images';
 import { TextBaseBold } from '@components/Scene';
 import { get } from '@helpers';
+import { connect } from 'react-redux';
+import { fetchLine } from '@redux/lines/actions';
 
 class GameList extends Component {
   constructor(props) {
@@ -115,13 +117,22 @@ class GameList extends Component {
   }
 
   render() {
-    const { base } = this.props;
+    const { base, loading } = this.props;
+
+    if (loading) {
+      return (
+        <Wrapper>
+          <Spinner />
+        </Wrapper>
+      );
+    }
 
     return (
       <Wrapper>
         <Header
           title={base.matchDayHumanified.mainInfoDate}
           subtitle={base.matchDayHumanified.subInfoDate}
+          onPressRefresh={() => this.props.dispatch(fetchLine())}
         />
         <List
           data={base.games}
@@ -163,7 +174,7 @@ export const Wrapper = styled.ScrollView`
 `;
 
 const Header = props => {
-  const { title, subtitle, refresh } = props;
+  const { title, subtitle, onPressRefresh } = props;
 
   return (
     <HeaderWrapper>
@@ -171,7 +182,7 @@ const Header = props => {
         <Title>{title.toUpperCase()}</Title>
         <SubTitle>{subtitle.toUpperCase()}</SubTitle>
       </View>
-      {refresh ? <Refresh /> : null}
+      {onPressRefresh ? <Refresh onPress={() => onPressRefresh()} /> : null}
     </HeaderWrapper>
   );
 };
@@ -197,7 +208,7 @@ const SubTitle = styled(TextBaseBold)`
 `;
 
 const Refresh = ({ onPress }) => (
-  <TouchableOpacity onPress={() => onPress}>
+  <TouchableOpacity onPress={() => onPress()}>
     <Clockwise />
   </TouchableOpacity>
 );
@@ -210,9 +221,14 @@ const Clockwise = styled.Image.attrs({
   resize-mode: contain;
 `;
 
-const ErrorText = styled(TextBaseBold)`
-  margin-horizontal: ${32 * WIDTH_REL};
+const Spinner = styled.Image.attrs({
+  source: spinner,
+})`
+  width: ${44 * WIDTH_REL};
+  height: ${42 * HEIGHT_REL};
   align-self: center;
+  margin-top: ${120 * HEIGHT_REL}
+  resize-mode: contain;
 `;
 
-export default GameList;
+export default connect()(GameList);
