@@ -25,6 +25,7 @@ class GameList extends Component {
   componentDidMount() {
     console.log('Request result', this.props.base);
     this.loadNext();
+    this.loadPrevious();
   }
 
   _keyExtractor = item => item.matchRef;
@@ -106,6 +107,23 @@ class GameList extends Component {
     return;
   }
 
+  loadPrevious() {
+    get(
+      `https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=${DeviceInfo.getTimezone()}&page=previous&dateReference=${
+        this.props.base.matchDayIsoDate
+      }`,
+    ).then(response => {
+      if (response.statusCode !== 404) {
+        const previous = [response].concat(this.state.previous);
+        this.setState({ previous }, () =>
+          console.log('Previous', this.state.previous),
+        );
+      } else {
+        console.log('No previous games');
+      }
+    });
+  }
+
   loadNext() {
     get(
       `https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=${DeviceInfo.getTimezone()}&page=next&dateReference=${
@@ -134,6 +152,23 @@ class GameList extends Component {
 
     return (
       <Wrapper>
+        {this.state.previous.map(previousMatchDay => {
+          return (
+            <View key={`${previousMatchDay.matchRef}View`}>
+              <Header
+                key={`${previousMatchDay.matchRef}Header`}
+                title={previousMatchDay.matchDayHumanified.mainInfoDate}
+                subtitle={previousMatchDay.matchDayHumanified.subInfoDate}
+              />
+              <List
+                key={`${previousMatchDay.matchRef}List`}
+                data={previousMatchDay.games}
+                keyExtractor={this._keyExtractor}
+                renderItem={({ item }) => this._renderCard(item)}
+              />
+            </View>
+          );
+        })}
         <Header
           title={base.matchDayHumanified.mainInfoDate}
           subtitle={base.matchDayHumanified.subInfoDate}
