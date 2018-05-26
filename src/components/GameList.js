@@ -112,8 +112,12 @@ class GameList extends Component {
         this.props.base.matchDayIsoDate
       }`,
     ).then(response => {
-      const next = [response].concat(this.state.next);
-      this.setState({ next }, () => console.log(this.state.next));
+      if (response.statusCode !== 404) {
+        const next = [response].concat(this.state.next);
+        this.setState({ next }, () => console.log('Next', this.state.next));
+      } else {
+        console.log('No games next');
+      }
     });
   }
 
