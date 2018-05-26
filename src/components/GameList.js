@@ -14,6 +14,7 @@ import { TextBaseBold } from '@components/Scene';
 import { get } from '@helpers';
 import { connect } from 'react-redux';
 import { fetchLine } from '@redux/lines/actions';
+import DeviceInfo from 'react-native-device-info';
 
 class GameList extends Component {
   constructor(props) {
@@ -107,7 +108,7 @@ class GameList extends Component {
 
   loadNext() {
     get(
-      `https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=America/Sao_Paulo&page=next&dateReference=${
+      `https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=${DeviceInfo.getTimezone()}&page=next&dateReference=${
         this.props.base.matchDayIsoDate
       }`,
     ).then(response => {
