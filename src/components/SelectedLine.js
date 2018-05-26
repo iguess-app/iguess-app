@@ -4,7 +4,7 @@ import { SELECT_LINE_PRIMARY_TEXT, SELECT_LINE_POINTS_TEXT } from '@theme';
 import I18n from '../i18n';
 import { TextBaseBold } from '@components/Scene';
 
-export default class TouchableSelectLine extends Component {
+export default class SelectedLine extends Component {
   render() {
     const { season, name, points, opacity } = this.props;
 
@@ -60,13 +60,13 @@ const PointsView = styled.View`
 const Points = styled(TextBaseBold)`
   font-size: 22.4;
   color: ${SELECT_LINE_POINTS_TEXT};
-  margin: auto;
   margin-right: 4;
+  align-self: center;
 `;
 
 const PointsText = styled(TextBaseBold)`
   font-size: 14;
   color: ${SELECT_LINE_POINTS_TEXT};
-  margin: auto;
-  margin-left: 0;
+  align-self: center;
+  margin-top: 4;
 `;

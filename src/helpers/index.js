@@ -38,8 +38,12 @@ const requestInfo = (
   };
 };
 
+export const handleIsoDate = date => {
+  return date.replace('+', '%2b');
+};
+
 export const post = (url, body) => {
-  let info = requestInfo('POST', body);
+  let info = requestInfo('POST', JSON.stringify(body));
   return request(url, info);
 };
 
@@ -52,9 +56,14 @@ export const apiDelete = url => {
   return request(url, info);
 };
 
+export const put = (url, body) => {
+  let info = requestInfo('PUT', JSON.stringify(body));
+  return request(url, info);
+};
+
 const request = (url, info) => {
   const promise = new Promise((resolve, reject) => {
-    fetch(url, info)
+    fetch(handleIsoDate(url), info)
       .then(response => resolve(response.json()))
       .catch(() => reject());
   });

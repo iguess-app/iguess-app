@@ -13,6 +13,7 @@ import {
   WIDTH_REL,
 } from '@theme';
 import { TextBase } from '@components/Scene';
+import { put } from '@helpers';
 
 export const predictStatus = {
   DEFAULT: 'DEFAULT',
@@ -30,8 +31,8 @@ export class AllowPredict extends Component {
   }
 
   update() {
-    // Will clear a current updateStatus timeout if exists
-    clearTimeout(this.timeout);
+    // Will clear a current updateStatus inactivityTime if exists
+    clearTimeout(this.inactivityTime);
 
     // Guarantee that guess will not be blank
     const updatedValue = value => (value >= 0 ? value : 0);
@@ -43,21 +44,36 @@ export class AllowPredict extends Component {
     });
 
     // Call and "updatedStatus" (contact API)
-    // after 3 seconds
-    this.timeout = setTimeout(() => {
+    this.inactivityTime = setTimeout(() => {
       this._updateStatus(predictStatus.LOADING);
-    }, 3000);
+    }, 1500);
   }
 
   _updateStatus(status) {
     const { DEFAULT, LOADING, LOADED } = predictStatus;
 
+    const predictionBody = {
+      championshipRef: this.props.gameRef.championshipRef,
+      guesses: [
+        {
+          matchRef: this.props.gameRef.matchRef,
+          homeTeamScoreGuess: this.state.homeGuess,
+          awayTeamScoreGuess: this.state.awayGuess,
+        },
+      ],
+    };
+
     if (status === LOADING) {
       this.setState({ status: LOADING });
 
-      // TODO: Contact API and set Status as loaded
-      // Using setTimeout for now
-      setTimeout(() => this._updateStatus(LOADED), 2000);
+      put(
+        'https://iguess-666666.appspot.com/guessline/setPredictions',
+        predictionBody,
+      )
+        .then(() => this._updateStatus(LOADED))
+        .catch(() => {
+          throw new Error('Error setting prediction');
+        });
     } else if (status === LOADED) {
       this.setState({ status: LOADED });
 
@@ -129,13 +145,22 @@ export const NotAllowPredict = props => {
 };
 
 export const Live = props => {
-  const { homeGuess, awayGuess, homeScore, awayScore, time } = props;
+  const {
+    homeGuess,
+    awayGuess,
+    homeScore,
+    awayScore,
+    time,
+    percentageCompleted,
+  } = props;
 
   return (
     <CardCore>
       <Result guess={homeGuess} score={homeScore} />
       <MidWrapper>
-        <TimeCircular>{time}</TimeCircular>
+        <TimeCircular percentageCompleted={percentageCompleted}>
+          {time.concat("'")}
+        </TimeCircular>
         <VS />
       </MidWrapper>
       <Result guess={awayGuess} score={awayScore} />
@@ -166,12 +191,12 @@ const Whistle = styled.Image.attrs({
   resize-mode: contain;
 `;
 
-const TimeCircular = ({ children }) => (
+const TimeCircular = ({ children, percentageCompleted = 0 }) => (
   <View>
     <AnimatedCircularProgress
       size={26}
       width={2}
-      fill={50}
+      fill={percentageCompleted}
       rotation={0}
       tintColor={PROGRESS_TINT_COLOR}
       backgroundColor={PROGRESS_BACKGROUND_COLOR}
@@ -233,6 +258,7 @@ const ScheduledTime = styled(TextBase)`
 `;
 
 const MidWrapper = styled.View`
+  width: ${45 * WIDTH_REL};
   flex-direction: column;
   justify-content: center;
   align-items: center;

@@ -32,7 +32,6 @@ const NavWrapper = styled.ImageBackground`
   flex-direction: row;
   align-items: center;
   padding-top: 20
-  text-align: center;
   height: 80;
   z-index: 1;
 `;

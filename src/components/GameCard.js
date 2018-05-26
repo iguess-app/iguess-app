@@ -7,7 +7,6 @@ import {
   Live,
   Finished,
 } from '@components/CardCore';
-import { arsenal, liverpool } from '@assets/images';
 import {
   CARD_BACKGROUND_COLOR,
   CARD_BORDER_COLOR,
@@ -36,8 +35,21 @@ class GameCard extends Component {
     };
   }
 
+  _treatValue = value => {
+    if (value > 99) {
+      return 99;
+    } else if (value < -1) {
+      return -1;
+    } else {
+      return value;
+    }
+  };
+
   _defineCore = () => {
-    const { homeGuess, awayGuess, homeScore, awayScore, time } = this.props;
+    const homeGuess = this._treatValue(this.props.homeGuess);
+    const awayGuess = this._treatValue(this.props.awayGuess);
+    const homeScore = this._treatValue(this.props.homeScore);
+    const awayScore = this._treatValue(this.props.awayScore);
 
     switch (this.state.status) {
       case gameStatus.ALLOW_PREDICT:
@@ -45,7 +57,8 @@ class GameCard extends Component {
           <AllowPredict
             homeGuess={homeGuess}
             awayGuess={awayGuess}
-            scheduled="16h 45m"
+            scheduled={this.props.initTime}
+            gameRef={this.props.gameRef}
           />
         );
       case gameStatus.NOT_ALLOW_PREDICT:
@@ -53,7 +66,7 @@ class GameCard extends Component {
           <NotAllowPredict
             homeGuess={homeGuess}
             awayGuess={awayGuess}
-            scheduled="16h 45m"
+            scheduled={this.props.initTime}
           />
         );
       case gameStatus.LIVE:
@@ -63,7 +76,8 @@ class GameCard extends Component {
             awayGuess={awayGuess}
             homeScore={homeScore}
             awayScore={awayScore}
-            time={time}
+            time={this.props.time}
+            percentageCompleted={this.props.percentageCompleted}
           />
         );
       case gameStatus.FINISHED:
@@ -92,17 +106,25 @@ class GameCard extends Component {
   };
 
   render() {
+    const { homeTeam, awayTeam } = this.props;
+
     const core = this._defineCore();
 
     return (
       <Wrapper>
         {this._liveOrFinished() ? (
-          <ScoreBoard score={this.props.score} />
+          <ScoreBoard score={this.props.pontuation} />
         ) : null}
         <Card style={cardShadow}>
-          <HomeTeam name="Arsenal" image={arsenal} />
+          <HomeTeam
+            name={homeTeam.shortName}
+            image={{ uri: homeTeam.logo.mini }}
+          />
           {core}
-          <AwayTeam name="Liverpool" image={liverpool} />
+          <AwayTeam
+            name={awayTeam.shortName}
+            image={{ uri: awayTeam.logo.mini }}
+          />
         </Card>
       </Wrapper>
     );
@@ -125,19 +147,20 @@ const Wrapper = styled.View`
 const ScoreBoardWrapper = styled.View`
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   width: ${92 * WIDTH_REL};
   height: ${26 * HEIGHT_REL};
   border-radius: ${26 * HEIGHT_REL};
   background-color: ${SCORE_BOARD_COLOR};
   top: ${13 * HEIGHT_REL};
-  padding-horizontal: ${16 * WIDTH_REL};
   z-index: 1;
 `;
 
 const Score = styled(TextBaseBold)`
   font-size: ${16.8 * HEIGHT_REL};
   color: ${SCORE_FONT_COLOR};
-  margin-right: 4;
+  margin-right: ${4 * WIDTH_REL};
+  margin-bottom: ${4 * HEIGHT_REL};
 `;
 
 const PointsText = styled(TextBaseBold)`
@@ -145,9 +168,7 @@ const PointsText = styled(TextBaseBold)`
   color: ${SCORE_FONT_COLOR};
 `;
 
-const HomeTeam = styled(Team)`
-  align-self: flex-start;
-`;
+const HomeTeam = styled(Team)``;
 
 const AwayTeam = styled(Team)``;
 
@@ -171,11 +192,11 @@ const Card = styled.View`
   border-color: ${CARD_BORDER_COLOR};
   background-color: ${CARD_BACKGROUND_COLOR};
   padding-vertical: 20;
-  padding-horizontal: 20;
   border-radius: 4;
   border-width: 1;
   align-self: center;
   align-items: center;
+  justify-content: center;
 `;
 
 export default GameCard;

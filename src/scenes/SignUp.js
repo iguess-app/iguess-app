@@ -138,12 +138,12 @@ class SignUp extends Component {
   }
 
   _register() {
-    const body = JSON.stringify({
+    const body = {
       userName: this.state.username,
       name: this.state.name,
       password: this.state.password,
       email: this.state.email,
-    });
+    };
 
     this.setState({ errorMsg: null }, () => {
       post('https://iguess-666666.appspot.com/login/signUp', body)

@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import GameCard, { gameStatus } from './GameCard';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
-import * as gamesActions from '@redux/games/actions';
-import * as gamesSelectors from '@redux/games/reducer';
 import {
   SCENE_BACKGROUND_COLOR,
   CARD_LIST_TITLE_COLOR,
@@ -14,77 +11,140 @@ import {
 } from '@theme';
 import { clockwise } from '@assets/images';
 import { TextBaseBold } from '@components/Scene';
+import { get } from '@helpers';
 
 class GameList extends Component {
   constructor(props) {
     super(props);
+    this.state = { previous: [], next: [] };
   }
 
   componentDidMount() {
-    this.props.dispatch(gamesActions.fetchGames());
+    console.log('Request result', this.props.base);
+    this.loadNext();
+  }
+
+  _keyExtractor = item => item.matchRef;
+
+  _renderCard(item) {
+    const {
+      allowToPredict,
+      started,
+      ended,
+      homeTeam,
+      awayTeam,
+      homeTeamScoreGuess,
+      awayTeamScoreGuess,
+    } = item;
+
+    if (allowToPredict && !started && !ended) {
+      // ALLOW TO PREDICT
+
+      const gameRef = {
+        matchRef: item.matchRef,
+        championshipRef: this.props.base.championship.championshipRef,
+      };
+
+      return (
+        <GameCard
+          homeTeam={homeTeam}
+          awayTeam={awayTeam}
+          homeGuess={homeTeamScoreGuess}
+          awayGuess={awayTeamScoreGuess}
+          initTime={item.initTimeHumanified}
+          gameRef={gameRef}
+        />
+      );
+    } else if (!allowToPredict && !started && !ended) {
+      // NOT ALLOW TO PREDICT
+      return (
+        <GameCard
+          homeTeam={homeTeam}
+          awayTeam={awayTeam}
+          homeGuess={homeTeamScoreGuess}
+          awayGuess={awayTeamScoreGuess}
+          initTime={item.initTimeHumanified}
+          status={gameStatus.NOT_ALLOW_PREDICT}
+        />
+      );
+    } else if (!allowToPredict && started && !ended) {
+      // LIVE
+      return (
+        <GameCard
+          homeTeam={homeTeam}
+          awayTeam={awayTeam}
+          homeGuess={homeTeamScoreGuess}
+          awayGuess={awayTeamScoreGuess}
+          homeScore={item.homeTeamScore}
+          awayScore={item.awayTeamScore}
+          pontuation={item.matchPontuation}
+          time={item.minutes}
+          percentageCompleted={item.percentageCompleted}
+          status={gameStatus.LIVE}
+        />
+      );
+    } else if (!allowToPredict && started && ended) {
+      // FINISHED
+      return (
+        <GameCard
+          homeTeam={homeTeam}
+          awayTeam={awayTeam}
+          homeGuess={homeTeamScoreGuess}
+          awayGuess={awayTeamScoreGuess}
+          homeScore={item.homeTeamScore}
+          awayScore={item.awayTeamScore}
+          pontuation={item.matchPontuation}
+          status={gameStatus.FINISHED}
+        />
+      );
+    }
+
+    // Don't render card
+    return;
+  }
+
+  loadNext() {
+    get(
+      `https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=America/Sao_Paulo&page=next&dateReference=${
+        this.props.base.matchDayIsoDate
+      }`,
+    ).then(response => {
+      const next = [response].concat(this.state.next);
+      this.setState({ next }, () => console.log(this.state.next));
+    });
   }
 
   render() {
+    const { base } = this.props;
+
     return (
       <Wrapper>
-        <Header first title="ALLOW PREDICT" subtitle="Domingo, 19 de Abril" />
-        <List
-          data={this.props.games}
-          renderItem={({ item }) => (
-            <GameCard
-              id={item.key}
-              homeGuess={item.homeGuess}
-              awayGuess={item.awayGuess}
-            />
-          )}
-        />
         <Header
-          title="NOT ALLOW PREDICT"
-          subtitle="Segunda - Feira, 20 de Abril"
-          refresh
+          title={base.matchDayHumanified.mainInfoDate}
+          subtitle={base.matchDayHumanified.subInfoDate}
         />
         <List
-          data={this.props.games}
-          renderItem={({ item }) => (
-            <GameCard
-              id={item.key}
-              homeGuess={item.homeGuess}
-              awayGuess={item.awayGuess}
-              status={gameStatus.NOT_ALLOW_PREDICT}
-            />
-          )}
+          data={base.games}
+          keyExtractor={this._keyExtractor}
+          renderItem={({ item }) => this._renderCard(item)}
         />
-        <Header title="LIVE" subtitle="Segunda - Feira, 20 de Abril" refresh />
-        <List
-          data={this.props.games}
-          renderItem={({ item }) => (
-            <GameCard
-              id={item.key}
-              homeGuess={item.homeGuess}
-              awayGuess={item.awayGuess}
-              status={gameStatus.LIVE}
-              homeScore={0}
-              awayScore={0}
-              time={"45'"}
-              score={2}
-            />
-          )}
-        />
-        <Header title="FINISHED" subtitle="Terça - Feira, 21 de Abril" />
-        <List
-          data={this.props.games}
-          renderItem={({ item }) => (
-            <GameCard
-              id={item.key}
-              homeGuess={item.homeGuess}
-              awayGuess={item.awayGuess}
-              status={gameStatus.FINISHED}
-              homeScore={0}
-              awayScore={0}
-              score={8}
-            />
-          )}
-        />
+        {this.state.next.map(nextMatchDay => {
+          return (
+            <View key={`${nextMatchDay.matchRef}View`}>
+              <Header
+                key={`${nextMatchDay.matchRef}Header`}
+                title={nextMatchDay.matchDayHumanified.mainInfoDate}
+                subtitle={nextMatchDay.matchDayHumanified.subInfoDate}
+              />
+              <List
+                key={`${nextMatchDay.matchRef}List`}
+                data={nextMatchDay.games}
+                keyExtractor={this._keyExtractor}
+                renderItem={({ item }) => this._renderCard(item)}
+              />
+            </View>
+          );
+        })}
       </Wrapper>
     );
   }
@@ -95,22 +155,18 @@ const List = styled.FlatList`
 `;
 
 export const Wrapper = styled.ScrollView`
-  margin-top: ${60 * HEIGHT_REL};
   flex: 1;
   background-color: ${SCENE_BACKGROUND_COLOR};
+  min-height: ${420 * HEIGHT_REL};
+  margin-top: ${60 * HEIGHT_REL};
+  padding-top: ${20 * HEIGHT_REL};
 `;
 
-const mapStateToProps = state => {
-  return {
-    games: gamesSelectors.getGames(state),
-  };
-};
-
 const Header = props => {
-  const { title, subtitle, first, refresh } = props;
+  const { title, subtitle, refresh } = props;
 
   return (
-    <HeaderWrapper first={first}>
+    <HeaderWrapper>
       <View>
         <Title>{title.toUpperCase()}</Title>
         <SubTitle>{subtitle.toUpperCase()}</SubTitle>
@@ -124,7 +180,7 @@ const HeaderWrapper = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: ${props => (props.first ? 20 * HEIGHT_REL : 0)};
+  margin-top: 0;
   margin-bottom: ${6 * HEIGHT_REL};
   margin-horizontal: ${32 * WIDTH_REL};
 `;
@@ -154,4 +210,9 @@ const Clockwise = styled.Image.attrs({
   resize-mode: contain;
 `;
 
-export default connect(mapStateToProps)(GameList);
+const ErrorText = styled(TextBaseBold)`
+  margin-horizontal: ${32 * WIDTH_REL};
+  align-self: center;
+`;
+
+export default GameList;

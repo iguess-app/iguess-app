@@ -30,10 +30,10 @@ class SignIn extends Component {
         Keyboard.dismiss();
         this.setState({ loading: true });
 
-        const body = JSON.stringify({
+        const body = {
           login: this.state.login,
           password: this.state.password,
-        });
+        };
 
         post('https://iguess-666666.appspot.com/login/signIn', body)
           .then(response => {
