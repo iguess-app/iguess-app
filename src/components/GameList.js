@@ -122,6 +122,7 @@ class GameList extends Component {
         <Header
           title={base.matchDayHumanified.mainInfoDate}
           subtitle={base.matchDayHumanified.subInfoDate}
+          onPressRefresh={() => console.log('Refresh')}
         />
         <List
           data={base.games}
@@ -163,7 +164,7 @@ export const Wrapper = styled.ScrollView`
 `;
 
 const Header = props => {
-  const { title, subtitle, refresh } = props;
+  const { title, subtitle, onPressRefresh } = props;
 
   return (
     <HeaderWrapper>
@@ -171,7 +172,7 @@ const Header = props => {
         <Title>{title.toUpperCase()}</Title>
         <SubTitle>{subtitle.toUpperCase()}</SubTitle>
       </View>
-      {refresh ? <Refresh /> : null}
+      {onPressRefresh ? <Refresh onPress={() => onPressRefresh()} /> : null}
     </HeaderWrapper>
   );
 };
@@ -197,7 +198,7 @@ const SubTitle = styled(TextBaseBold)`
 `;
 
 const Refresh = ({ onPress }) => (
-  <TouchableOpacity onPress={() => onPress}>
+  <TouchableOpacity onPress={() => onPress()}>
     <Clockwise />
   </TouchableOpacity>
 );
