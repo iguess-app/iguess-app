@@ -12,6 +12,8 @@ import {
 import { clockwise } from '@assets/images';
 import { TextBaseBold } from '@components/Scene';
 import { get } from '@helpers';
+import { connect } from 'react-redux';
+import { fetchLine } from '@redux/lines/actions';
 
 class GameList extends Component {
   constructor(props) {
@@ -122,7 +124,7 @@ class GameList extends Component {
         <Header
           title={base.matchDayHumanified.mainInfoDate}
           subtitle={base.matchDayHumanified.subInfoDate}
-          onPressRefresh={() => console.log('Refresh')}
+          onPressRefresh={() => this.props.dispatch(fetchLine())}
         />
         <List
           data={base.games}
@@ -211,9 +213,4 @@ const Clockwise = styled.Image.attrs({
   resize-mode: contain;
 `;
 
-const ErrorText = styled(TextBaseBold)`
-  margin-horizontal: ${32 * WIDTH_REL};
-  align-self: center;
-`;
-
-export default GameList;
+export default connect()(GameList);
