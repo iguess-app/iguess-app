@@ -17,6 +17,10 @@ export function fetchLine() {
   };
 }
 
+export function resetLine() {
+  return { type: types.RESET_LINE };
+}
+
 export const fetchLineBegin = () => ({ type: types.FETCH_LINE_BEGIN });
 
 export const fetchLineSuccess = line => ({
