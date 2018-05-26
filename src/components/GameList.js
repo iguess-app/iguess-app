@@ -9,7 +9,7 @@ import {
   WIDTH_REL,
   HEIGHT_REL,
 } from '@theme';
-import { clockwise } from '@assets/images';
+import { clockwise, spinner } from '@assets/images';
 import { TextBaseBold } from '@components/Scene';
 import { get } from '@helpers';
 import { connect } from 'react-redux';
@@ -117,7 +117,15 @@ class GameList extends Component {
   }
 
   render() {
-    const { base } = this.props;
+    const { base, loading } = this.props;
+
+    if (loading) {
+      return (
+        <Wrapper>
+          <Spinner />
+        </Wrapper>
+      );
+    }
 
     return (
       <Wrapper>
@@ -210,6 +218,16 @@ const Clockwise = styled.Image.attrs({
 })`
   width: ${24 * WIDTH_REL};
   height: ${20.6 * HEIGHT_REL};
+  resize-mode: contain;
+`;
+
+const Spinner = styled.Image.attrs({
+  source: spinner,
+})`
+  width: ${44 * WIDTH_REL};
+  height: ${42 * HEIGHT_REL};
+  align-self: center;
+  margin-top: ${120 * HEIGHT_REL}
   resize-mode: contain;
 `;
 
