@@ -1,6 +1,7 @@
 import { StatusBar, AsyncStorage } from 'react-native';
 import { storedLogin } from '@redux/authentication/actions';
 import { store } from '../index';
+import DeviceInfo from 'react-native-device-info';
 
 export const setStatusBarStyle = style => {
   if (style === 'dark') {
@@ -18,11 +19,11 @@ const _buildDefaultHeaders = token => {
     token,
     request_id: 'postmanRequest',
     hardware_fingerprint: 'postmanRequest',
-    platform: 'Android',
-    os_version: '7.0.1',
-    app_version: '1.0.0',
-    phone_model: 'XT-1792',
-    phone_fabricator: 'Motorola',
+    platform: DeviceInfo.getSystemName(),
+    os_version: DeviceInfo.getSystemVersion(),
+    app_version: DeviceInfo.getVersion(),
+    phone_model: DeviceInfo.getModel(),
+    phone_fabricator: DeviceInfo.getBrand(),
   });
 };
 
