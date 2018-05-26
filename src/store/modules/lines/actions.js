@@ -7,10 +7,8 @@ export function fetchLine() {
     // Inform to reducer that fetch beginned
     dispatch(fetchLineBegin());
 
-    console.log('Timezone', DeviceInfo.getTimezone());
-
     get(
-      'https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=America/Sao_Paulo',
+      `https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=${DeviceInfo.getTimezone()}`,
     )
       .then(line => {
         dispatch(fetchLineSuccess(line));
