@@ -3,9 +3,8 @@ import styled from 'styled-components';
 import { thumbsDown } from '@assets/images';
 import { INPUT_ERROR_COLOR, HEIGHT_REL, WIDTH_REL } from '@theme';
 import { TextBase } from '@components/Scene';
-import I18n from '../i18n';
 
-class ServerError extends Component {
+export default class Error extends Component {
   constructor(props) {
     super(props);
     this.state = { opacity: 1 };
@@ -17,20 +16,21 @@ class ServerError extends Component {
     }, 25);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
   render() {
     if (this.state.opacity > 0) {
       return (
-        <Wrapper behavior="position" enabled>
+        <Wrapper behavior="position" input>
           <ErrorView opacity={this.state.opacity}>
             <Icon />
-            <ErrorText>
-              {this.props.children || I18n.t('serverErrorDefault')}
-            </ErrorText>
+            <ErrorText>{this.props.children}</ErrorText>
           </ErrorView>
         </Wrapper>
       );
     } else {
-      clearInterval(this.timer);
       return null;
     }
   }
@@ -39,7 +39,6 @@ class ServerError extends Component {
 const Wrapper = styled.KeyboardAvoidingView`
   width: 100%;
   position: absolute;
-  margin-top: ${587 * HEIGHT_REL};
 `;
 
 const ErrorView = styled.View`
@@ -64,5 +63,3 @@ const ErrorText = styled(TextBase)`
   font-size: 16;
   color: white;
 `;
-
-export default ServerError;

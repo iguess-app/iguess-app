@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Keyboard } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styled from 'styled-components';
-import { InputSceneWrapper, NavBar } from '@components/Scene';
+import { InputSceneWrapper } from '@components/Scene';
 import { MainButton } from '@components/Button';
-import ServerError from '@components/ServerError';
+import Error from '@components/Error';
 import Input from '@components/Input';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
@@ -29,7 +29,7 @@ class SignUp extends Component {
       username: '',
       email: '',
       password: '',
-      error: false,
+      errorMsg: null,
     };
   }
 
@@ -138,8 +138,6 @@ class SignUp extends Component {
   }
 
   _register() {
-    this.setState({ error: false });
-
     const body = {
       userName: this.state.username,
       name: this.state.name,
@@ -147,35 +145,40 @@ class SignUp extends Component {
       email: this.state.email,
     };
 
-    post('https://iguess-666666.appspot.com/login/signUp', body)
-      .then(response => {
-        if (typeof response.token !== undefined) {
-          // log in created user
-          this.props.dispatch(login(response.token));
+    this.setState({ errorMsg: null }, () => {
+      post('https://iguess-666666.appspot.com/login/signUp', body)
+        .then(response => {
+          if (typeof response.token !== undefined) {
+            // log in created user
+            this.props.dispatch(login(response.token));
 
-          // redirect to core scene
-          Actions.core();
-        } else if (response.statusCode === 406) {
-          if (response.errorCode === errors.usernameAlreadyUsed) {
-            this.usernameInput.error(response.message);
-          } else if (response.errorCode === errors.notAEmail) {
-            this.emailInput.error(response.message);
-          } else if (response.errorCode === errors.emailAlreadyUsed) {
-            this.emailInput.error(response.message);
-          } else if (response.errorCode === response.passwordAlert) {
-            this.passwordInput.error(response.message);
+            // redirect to core scene
+            Actions.core();
+          } else if (response.statusCode === 406) {
+            if (response.errorCode === errors.usernameAlreadyUsed) {
+              this.usernameInput.error(response.message);
+            } else if (response.errorCode === errors.notAEmail) {
+              this.emailInput.error(response.message);
+            } else if (response.errorCode === errors.emailAlreadyUsed) {
+              this.emailInput.error(response.message);
+            } else if (response.errorCode === response.passwordAlert) {
+              this.passwordInput.error(response.message);
+            }
           }
-        }
-      })
-      .catch(() => this.setState({ error: true }));
+        })
+        .catch(() => this.setState({ errorMsg: I18n.t('serverErrorDefault') }));
+    });
   }
 
   render() {
-    const errorCard = this.state.error ? <ServerError /> : null;
+    const errorCard =
+      this.state.errorMsg !== null ? (
+        <Error input>{this.state.errorMsg}</Error>
+      ) : null;
 
     return (
-      <InputSceneWrapper>
-        <NavBar title={I18n.t('signUpTitle')} />
+      <InputSceneWrapper title={I18n.t('signUpTitle')}>
+        {errorCard}
         <WrapperKeyboardAware
           resetScrollToCoords={{ x: 0, y: 0 }}
           enableOnAndroid
@@ -234,7 +237,6 @@ class SignUp extends Component {
             </TextLink>.
           </Terms>
         </WrapperKeyboardAware>
-        {errorCard}
       </InputSceneWrapper>
     );
   }
@@ -252,6 +254,7 @@ const ButtonView = styled.View`
 
 const WrapperKeyboardAware = styled(KeyboardAwareScrollView)`
   padding-horizontal: ${32 * WIDTH_REL};
+  margin-bottom: ${30 * HEIGHT_REL};
 `;
 
 const Terms = styled(TextBase)`
