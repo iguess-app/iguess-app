@@ -22,8 +22,7 @@ class GameList extends Component {
     this.state = { previous: [], next: [] };
   }
 
-  componentDidMount() {
-    console.log('Request result', this.props.base);
+  componentWillMount() {
     this.loadNext();
     this.loadPrevious();
   }
@@ -169,15 +168,21 @@ class GameList extends Component {
     }
 
     return (
-      <Wrapper>
+      <Wrapper innerRef={ref => (this.scroll = ref)}>
         {this.state.previous.map(previousMatchDay =>
           this._renderMatchDay(previousMatchDay),
         )}
-        <Header
-          title={base.matchDayHumanified.mainInfoDate}
-          subtitle={base.matchDayHumanified.subInfoDate}
-          onPressRefresh={() => this.props.dispatch(fetchLine())}
-        />
+        <View
+          onLayout={({ nativeEvent }) =>
+            this.scroll.scrollTo({ y: nativeEvent.layout.y, animated: true })
+          }
+        >
+          <Header
+            title={base.matchDayHumanified.mainInfoDate}
+            subtitle={base.matchDayHumanified.subInfoDate}
+            onPressRefresh={() => this.props.dispatch(fetchLine())}
+          />
+        </View>
         <List
           data={base.games}
           keyExtractor={this._keyExtractor}
