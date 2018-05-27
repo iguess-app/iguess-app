@@ -173,7 +173,16 @@ class GameList extends Component {
         {this.state.previous.map(previousMatchDay =>
           this._renderMatchDay(previousMatchDay),
         )}
-        {this._renderMatchDay(base)}
+        <Header
+          title={base.matchDayHumanified.mainInfoDate}
+          subtitle={base.matchDayHumanified.subInfoDate}
+          onPressRefresh={() => this.props.dispatch(fetchLine())}
+        />
+        <List
+          data={base.games}
+          keyExtractor={this._keyExtractor}
+          renderItem={({ item }) => this._renderCard(item)}
+        />
         {this.state.next.map(nextMatchDay =>
           this._renderMatchDay(nextMatchDay),
         )}
