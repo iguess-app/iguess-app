@@ -11,6 +11,7 @@ import {
   DEFAULT_BACKGROUND,
   WIDTH_REL,
   HEIGHT_REL,
+  RATIO,
 } from '@theme';
 import { TextBaseBold } from '@components/Scene';
 import { connect } from 'react-redux';
@@ -111,21 +112,21 @@ const Navigation = styled.View`
   flex: 0.08;
   flex-direction: row;
   margin-top: ${46 * HEIGHT_REL};
-  margin-horizontal: 8%;
+  margin-horizontal: ${32 * WIDTH_REL};
 `;
 
 const NavTouchable = styled.TouchableOpacity`
   flex: 1;
   flex-direction: row;
   justify-content: flex-end;
-  margin-top: 2;
+  margin-top: ${2 * HEIGHT_REL};
 `;
 
 const NavText = styled(TextBaseBold)`
-  font-size: 16;
+  font-size: ${16 * RATIO};
   color: ${SELECT_LINE_PRIMARY_TEXT};
   opacity: ${props => props.opacity};
-  margin-right: 16;
+  margin-right: ${16 * WIDTH_REL};
 `;
 
 const Chevron = styled.Image.attrs({
@@ -133,7 +134,7 @@ const Chevron = styled.Image.attrs({
 })`
   width: ${14 * WIDTH_REL};
   resize-mode: contain;
-  margin-top: 4;
+  margin-top: ${4 * HEIGHT_REL};
 `;
 
 const mapStateToProps = state => {

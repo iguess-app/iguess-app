@@ -6,6 +6,7 @@ import {
   LOADING_SUBTITLE_COLOR,
   WIDTH_REL,
   HEIGHT_REL,
+  RATIO,
 } from '@theme';
 import { ballGif } from '@assets/images/index';
 import I18n from 'react-native-i18n';
@@ -25,7 +26,7 @@ const Title = styled(TextBaseBold)`
   color: ${LOADING_TITLE_COLOR};
   margin-top: ${180 * HEIGHT_REL};
   margin-horizontal: ${32 * WIDTH_REL};
-  font-size: 32;
+  font-size: ${32 * WIDTH_REL};
 `;
 
 const Subtitle = styled(TextBase)`
@@ -34,7 +35,7 @@ const Subtitle = styled(TextBase)`
   color: ${LOADING_SUBTITLE_COLOR};
   margin-top: ${8 * HEIGHT_REL};
   margin-horizontal: ${32 * WIDTH_REL};
-  font-size: 16;
+  font-size: ${14 * WIDTH_REL};
 `;
 
 const AnimatedBall = styled.Image.attrs({

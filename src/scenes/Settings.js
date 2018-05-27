@@ -13,6 +13,7 @@ import {
   SETTINGS_BORDER_COLOR,
   WIDTH_REL,
   HEIGHT_REL,
+  RATIO,
 } from '@theme';
 import I18n from '../i18n';
 import { TextBaseBold } from '@components/Scene';
@@ -135,7 +136,7 @@ const CloseImage = styled.Image.attrs({
 `;
 
 const Title = styled(TextBaseBold)`
-  font-size: 24;
+  font-size: ${24 * RATIO};
   color: ${SETTINGS_TEXT_COLOR};
   margin-top: ${40 * HEIGHT_REL};
   margin-left: ${32 * WIDTH_REL};
@@ -147,20 +148,20 @@ const TouchableView = styled.TouchableOpacity`
   height: ${72 * HEIGHT_REL};
   border-top = solid;
   border-color: ${SETTINGS_BORDER_COLOR};
-  border-top-width: 1;
-  border-bottom-width: 1;
+  border-top-width: ${1 * HEIGHT_REL};
+  border-bottom-width: ${1 * HEIGHT_REL};
   align-items: center;
 `;
 
 const Icon = styled.Image`
-  height: ${24 * HEIGHT_REL};
-  width: ${30 * WIDTH_REL};
+  height: ${30 * RATIO};
+  width: ${30 * RATIO};
   resize-mode: contain;
   margin-left: ${32 * WIDTH_REL};
 `;
 
 const CustomText = styled(TextBaseBold)`
-  font-size: 14;
+  font-size: ${14 * RATIO};
   color: ${SETTINGS_TEXT_COLOR};
   margin-left: ${20 * WIDTH_REL};
 `;
