@@ -46,3 +46,6 @@ const { width, height } = Dimensions.get('window');
 // Constants that relate actual dimensions to Zeplin prototype dimensions
 export const WIDTH_REL = width / 375;
 export const HEIGHT_REL = height / 667;
+
+// For fonts and square images
+export const RATIO = WIDTH_REL * HEIGHT_REL;
