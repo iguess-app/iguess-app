@@ -159,7 +159,7 @@ class GameList extends Component {
   render() {
     const { base, loading } = this.props;
 
-    if (loading) {
+    if (loading || !this.state.previous || !this.state.next) {
       return (
         <Wrapper>
           <Spinner />
@@ -201,9 +201,7 @@ const List = styled.FlatList`
 `;
 
 export const Wrapper = styled.ScrollView`
-  flex: 1;
   background-color: ${SCENE_BACKGROUND_COLOR};
-  min-height: ${420 * HEIGHT_REL};
   margin-top: ${60 * HEIGHT_REL};
   padding-top: ${20 * HEIGHT_REL};
 `;
