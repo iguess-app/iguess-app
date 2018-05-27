@@ -11,6 +11,7 @@ import {
   INPUT_TINT_COLOR,
   WIDTH_REL,
   HEIGHT_REL,
+  RATIO,
 } from '@theme';
 import { TextBase } from '@components/Scene';
 
@@ -97,7 +98,7 @@ const ErrorMessage = props => {
 };
 
 const ErrorText = styled(TextBase)`
-  font-size: 14;
+  font-size: ${14 * RATIO};
   margin-left: ${8 * WIDTH_REL};
   color: ${INPUT_ERROR_COLOR};
 `;
@@ -118,7 +119,7 @@ const InfoIcon = styled.Image.attrs({
 const TextField = MKTextField.textfieldWithFloatingLabel()
   .withFloatingLabelFont({
     fontFamily: 'KievitOffc-Bold',
-    fontSize: 12,
+    fontSize: 12 * RATIO,
     color: INPUT_FLOAT_LABEL_COLOR,
   })
   .build();

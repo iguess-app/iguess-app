@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { TouchableOpacity } from 'react-native';
 import { plus, plusDisabled, minus, minusDisabled } from '@assets/images';
-import { GUESS_GUESSED_TEXT_COLOR, HEIGHT_REL, WIDTH_REL } from '@theme';
+import { GUESS_GUESSED_TEXT_COLOR, HEIGHT_REL, WIDTH_REL, RATIO } from '@theme';
 import { TextBaseBold } from '@components/Scene';
 
 const DEFAULT_VALUE = '- - - -';
@@ -120,8 +120,8 @@ const Wrapper = styled.View`
 `;
 
 const ButtonImage = styled.Image`
-  width: ${24 * WIDTH_REL};
-  height: ${24 * HEIGHT_REL};
+  width: ${24 * RATIO};
+  height: ${24 * RATIO};
   margin-horizontal: ${10 * WIDTH_REL};
   margin-vertical: ${16 * HEIGHT_REL};
 `;

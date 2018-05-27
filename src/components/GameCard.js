@@ -14,6 +14,7 @@ import {
   SCORE_FONT_COLOR,
   HEIGHT_REL,
   WIDTH_REL,
+  RATIO,
 } from '@theme';
 import { TextBaseBold } from '@components/Scene';
 import I18n from '../i18n';
@@ -157,7 +158,7 @@ const ScoreBoardWrapper = styled.View`
 `;
 
 const Score = styled(TextBaseBold)`
-  font-size: ${16.8 * HEIGHT_REL};
+  font-size: ${16.8 * RATIO};
   color: ${SCORE_FONT_COLOR};
   margin-right: ${4 * WIDTH_REL};
   margin-bottom: ${4 * HEIGHT_REL};
@@ -186,14 +187,14 @@ const cardShadow = {
 
 const Card = styled.View`
   flex-direction: row;
-  width: ${327 * WIDTH_REL};
+  width: ${330 * WIDTH_REL};
   height: ${156 * HEIGHT_REL};
   margin-bottom: ${40 * HEIGHT_REL};
   border-color: ${CARD_BORDER_COLOR};
   background-color: ${CARD_BACKGROUND_COLOR};
-  padding-vertical: 20;
-  border-radius: 4;
-  border-width: 1;
+  padding-vertical: ${20 * HEIGHT_REL};
+  border-radius: ${4 * RATIO};
+  border-width: ${1 * RATIO};
   align-self: center;
   align-items: center;
   justify-content: center;

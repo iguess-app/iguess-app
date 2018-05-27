@@ -2,6 +2,7 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { gear } from '@assets/images';
 import styled from 'styled-components';
+import { RATIO } from '@theme';
 
 const SettingsButton = props => {
   const { onPress } = props;
@@ -13,8 +14,8 @@ const SettingsButton = props => {
 };
 
 const Gear = styled.Image`
-  width: 24;
-  height: 24;
+  width: ${24 * RATIO};
+  height: ${24 * RATIO};
 `;
 
 export default SettingsButton;

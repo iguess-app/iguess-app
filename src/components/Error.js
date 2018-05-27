@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { thumbsDown } from '@assets/images';
-import { INPUT_ERROR_COLOR, HEIGHT_REL, WIDTH_REL } from '@theme';
+import { INPUT_ERROR_COLOR, HEIGHT_REL, WIDTH_REL, RATIO } from '@theme';
 import { TextBase } from '@components/Scene';
 
 export default class Error extends Component {
@@ -60,6 +60,6 @@ const Icon = styled.Image.attrs({
 
 const ErrorText = styled(TextBase)`
   width: ${272 * WIDTH_REL};
-  font-size: 16;
+  font-size: ${16 * RATIO};
   color: white;
 `;
