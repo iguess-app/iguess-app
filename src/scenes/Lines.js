@@ -26,9 +26,8 @@ class Lines extends Component {
     this.props.dispatch(linesActions.fetchLine());
   }
 
-  _changeSelectedLineOpacity(event) {
-    let offset = event.nativeEvent.contentOffset.y;
-    let opacity = offset <= 0 ? 1 : 1 / (0.3 * offset);
+  _changeSelectedLineOpacity({ contentOffset }) {
+    let opacity = contentOffset.y <= 0 ? 1 : 1 / (0.3 * contentOffset.y);
 
     this.setState({ selectedOpacity: opacity });
   }
@@ -36,7 +35,7 @@ class Lines extends Component {
   _renderGames() {
     const { loading, activeLine } = this.props;
 
-    const wait = loading || activeLine === undefined ? true : false;
+    const wait = loading || !activeLine ? true : false;
 
     return <GameList base={activeLine} loading={wait} />;
   }
@@ -66,7 +65,9 @@ class Lines extends Component {
           />
         </Navigation>
         <Scroll
-          onScroll={this._changeSelectedLineOpacity.bind(this)}
+          onScroll={({ nativeEvent }) =>
+            this._changeSelectedLineOpacity(nativeEvent)
+          }
           scrollEventThrottle={16}
           innerRef={ref => (this.scroll = ref)}
         >
