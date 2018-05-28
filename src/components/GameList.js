@@ -20,6 +20,7 @@ class GameList extends Component {
   constructor(props) {
     super(props);
     this.state = { previous: [], next: [] };
+    this.loading = false;
   }
 
   componentWillMount() {
@@ -107,11 +108,15 @@ class GameList extends Component {
   }
 
   loadPrevious() {
+    this.loading = true;
+
     get(
       `https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=${DeviceInfo.getTimezone()}&page=previous&dateReference=${
         this.props.base.matchDayIsoDate
       }`,
     ).then(response => {
+      this.loading = false;
+
       if (response.statusCode !== 404) {
         const previous = [response].concat(this.state.previous);
         this.setState({ previous }, () =>
@@ -124,11 +129,15 @@ class GameList extends Component {
   }
 
   loadNext() {
+    this.loading = true;
+
     get(
       `https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=${DeviceInfo.getTimezone()}&page=next&dateReference=${
         this.props.base.matchDayIsoDate
       }`,
     ).then(response => {
+      this.loading = false;
+
       if (response.statusCode !== 404) {
         const next = [response].concat(this.state.next);
         this.setState({ next }, () => console.log('Next', this.state.next));
@@ -136,6 +145,20 @@ class GameList extends Component {
         console.log('No games next');
       }
     });
+  }
+
+  _loadMatchdays({ contentOffset, contentSize }) {
+    const LOAD_NEXT_DISTANCE = 1200;
+    const LOAD_PREVIOUS_DISTANCE = 400;
+    const distanceBottom = contentSize.height - contentOffset.y;
+
+    if (!this.loading) {
+      if (distanceBottom < LOAD_NEXT_DISTANCE) {
+        // Will load next matchDay
+      } else if (contentOffset.y < LOAD_PREVIOUS_DISTANCE) {
+        // Will load previous matchDay
+      }
+    }
   }
 
   _renderMatchDay(matchDay) {
@@ -161,14 +184,18 @@ class GameList extends Component {
 
     if (loading || !this.state.previous || !this.state.next) {
       return (
-        <Wrapper>
+        <ScrollWrapper>
           <Spinner />
-        </Wrapper>
+        </ScrollWrapper>
       );
     }
 
     return (
-      <Wrapper innerRef={ref => (this.scroll = ref)}>
+      <ScrollWrapper
+        innerRef={ref => (this.scroll = ref)}
+        onScroll={({ nativeEvent }) => this._loadMatchdays(nativeEvent)}
+        scrollEventThrottle={13}
+      >
         {this.state.previous.map(previousMatchDay =>
           this._renderMatchDay(previousMatchDay),
         )}
@@ -191,7 +218,7 @@ class GameList extends Component {
         {this.state.next.map(nextMatchDay =>
           this._renderMatchDay(nextMatchDay),
         )}
-      </Wrapper>
+      </ScrollWrapper>
     );
   }
 }
@@ -200,7 +227,7 @@ const List = styled.FlatList`
   margin-top: ${8 * HEIGHT_REL};
 `;
 
-export const Wrapper = styled.ScrollView`
+export const ScrollWrapper = styled.ScrollView`
   background-color: ${SCENE_BACKGROUND_COLOR};
   margin-top: ${24 * HEIGHT_REL};
   padding-top: ${20 * HEIGHT_REL};
