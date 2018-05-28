@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { View } from 'react-native';
 import styled from 'styled-components';
 import GameList from '@components/GameList';
 import SelectedLine from '@components/SelectedLine';
@@ -59,27 +60,14 @@ class Lines extends Component {
       <SceneWrapper background={DEFAULT_BACKGROUND}>
         <Navigation>
           <SettingsButton onPress={swipe} />
-          <SecondarySelectedLine
-            name={championshipName}
-            scroll={this.scroll}
-            principalOpacity={this.state.selectedOpacity}
-          />
         </Navigation>
-        <Scroll
-          onScroll={({ nativeEvent }) =>
-            this._changeSelectedLineOpacity(nativeEvent)
-          }
-          scrollEventThrottle={16}
-          innerRef={ref => (this.scroll = ref)}
-        >
-          <SelectedLine
-            season={season}
-            name={championshipName}
-            points={pontuation}
-            opacity={this.state.selectedOpacity}
-          />
-          {this._renderGames()}
-        </Scroll>
+        <SelectedLine
+          season={season}
+          name={championshipName}
+          points={pontuation}
+          opacity={this.state.selectedOpacity}
+        />
+        {this._renderGames()}
       </SceneWrapper>
     );
   }
@@ -104,12 +92,7 @@ const SecondarySelectedLine = props => {
   return null;
 };
 
-const Scroll = styled.ScrollView`
-  flex: 1;
-`;
-
 const Navigation = styled.View`
-  flex: 0.08;
   flex-direction: row;
   margin-top: ${46 * HEIGHT_REL};
   margin-horizontal: ${32 * WIDTH_REL};

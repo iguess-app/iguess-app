@@ -29,8 +29,7 @@ export default class SelectedLine extends Component {
 }
 
 const Wrapper = styled.View`
-  flex: 0.8;
-  height: ${100 * HEIGHT_REL};
+  margin-top: ${24 * HEIGHT_REL};
   padding-left: ${32 * WIDTH_REL};
   padding-right: ${32 * WIDTH_REL};
 `;
