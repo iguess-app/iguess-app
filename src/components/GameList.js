@@ -112,7 +112,7 @@ class GameList extends Component {
         `https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=${DeviceInfo.getTimezone()}&page=previous&dateReference=${isodate}`,
       ).then(response => {
         if (response.statusCode !== 404) {
-          const previous = this.state.previous.concat(response);
+          const previous = [response].concat(this.state.previous);
           this.setState({ previous }, () => {
             console.log('Previous', this.state.previous);
             this.setState({ loading: false });
@@ -146,7 +146,7 @@ class GameList extends Component {
     }
   }
 
-  _loadMatchdays({ contentOffset, contentSize }) {
+  _handleScroll({ contentOffset, contentSize }) {
     const { next, previous } = this.state;
 
     const LOAD_NEXT_DISTANCE = 1200;
@@ -162,7 +162,7 @@ class GameList extends Component {
         }
       } else if (contentOffset.y < LOAD_PREVIOUS_DISTANCE) {
         if (this.state.previous.length > 0) {
-          this.loadPrevious(previous[previous.length - 1].matchDayIsoDate);
+          this.loadPrevious(previous[0].matchDayIsoDate);
         } else {
           this.loadPrevious();
         }
@@ -202,7 +202,7 @@ class GameList extends Component {
     return (
       <ScrollWrapper
         innerRef={ref => (this.scroll = ref)}
-        onScroll={({ nativeEvent }) => this._loadMatchdays(nativeEvent)}
+        onScroll={({ nativeEvent }) => this._handleScroll(nativeEvent)}
         scrollEventThrottle={13}
       >
         {this.state.previous.map(previousMatchDay =>
