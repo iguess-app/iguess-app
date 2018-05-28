@@ -149,6 +149,8 @@ class GameList extends Component {
   _handleScroll({ contentOffset, contentSize }) {
     const { next, previous } = this.state;
 
+    this.posY = contentOffset.y;
+
     const LOAD_NEXT_DISTANCE = 1200;
     const LOAD_PREVIOUS_DISTANCE = 400;
     const distanceBottom = contentSize.height - contentOffset.y;
@@ -188,6 +190,14 @@ class GameList extends Component {
     );
   }
 
+  _handleSize = (width, height) => {
+    if (this.posY) {
+      const position = this.posY + height - this.height;
+      this.scroll.scrollTo({ x: 0, y: position, animated: false });
+    }
+    this.height = height;
+  };
+
   render() {
     const { base, loading } = this.props;
 
@@ -204,6 +214,7 @@ class GameList extends Component {
         innerRef={ref => (this.scroll = ref)}
         onScroll={({ nativeEvent }) => this._handleScroll(nativeEvent)}
         scrollEventThrottle={13}
+        onContentSizeChange={this._handleSize}
       >
         {this.state.previous.map(previousMatchDay =>
           this._renderMatchDay(previousMatchDay),
