@@ -196,7 +196,8 @@ class GameList extends Component {
   }
 
   _handleSize = (width, height) => {
-    if (this.posY) {
+    const PREVIOUS_POINT = 300;
+    if (this.posY && this.posY < PREVIOUS_POINT) {
       const position = this.posY + height - this.height;
       this.scroll.scrollTo({ x: 0, y: position, animated: false });
     }
