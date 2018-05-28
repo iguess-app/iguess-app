@@ -20,6 +20,7 @@ class GameList extends Component {
   constructor(props) {
     super(props);
     this.state = { previous: [], next: [], loading: false };
+    this.firstRun = true;
   }
 
   _keyExtractor = item => item.matchRef;
@@ -146,7 +147,7 @@ class GameList extends Component {
   }
 
   _loadMatchdays({ contentOffset, contentSize }) {
-    const { next } = this.state;
+    const { next, previous } = this.state;
 
     const LOAD_NEXT_DISTANCE = 1200;
     const LOAD_PREVIOUS_DISTANCE = 400;
@@ -160,7 +161,11 @@ class GameList extends Component {
           this.loadNext();
         }
       } else if (contentOffset.y < LOAD_PREVIOUS_DISTANCE) {
-        // Will load previous matchDay
+        if (this.state.previous.length > 0) {
+          this.loadPrevious(previous[previous.length - 1].matchDayIsoDate);
+        } else {
+          this.loadPrevious();
+        }
       }
     }
   }
@@ -204,9 +209,14 @@ class GameList extends Component {
           this._renderMatchDay(previousMatchDay),
         )}
         <View
-          onLayout={({ nativeEvent }) =>
-            this.scroll.scrollTo({ y: nativeEvent.layout.y, animated: true })
-          }
+          onLayout={({ nativeEvent }) => {
+            if (this.firstRun) {
+              this.scroll.scrollTo({
+                y: nativeEvent.layout.y,
+                animated: false,
+              });
+            }
+          }}
         >
           <Header
             title={base.matchDayHumanified.mainInfoDate}
