@@ -19,13 +19,7 @@ import DeviceInfo from 'react-native-device-info';
 class GameList extends Component {
   constructor(props) {
     super(props);
-    this.state = { previous: [], next: [] };
-    this.loading = false;
-  }
-
-  componentWillMount() {
-    this.loadNext();
-    this.loadPrevious();
+    this.state = { previous: [], next: [], loading: false };
   }
 
   _keyExtractor = item => item.matchRef;
@@ -107,54 +101,64 @@ class GameList extends Component {
     return;
   }
 
-  loadPrevious() {
-    this.loading = true;
+  loadPrevious(date) {
+    this.setState({ loading: true });
 
-    get(
-      `https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=${DeviceInfo.getTimezone()}&page=previous&dateReference=${
-        this.props.base.matchDayIsoDate
-      }`,
-    ).then(response => {
-      this.loading = false;
+    if (this.props.base) {
+      const isodate = date ? date : this.props.base.matchDayIsoDate;
 
-      if (response.statusCode !== 404) {
-        const previous = [response].concat(this.state.previous);
-        this.setState({ previous }, () =>
-          console.log('Previous', this.state.previous),
-        );
-      } else {
-        console.log('No previous games');
-      }
-    });
+      get(
+        `https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=${DeviceInfo.getTimezone()}&page=previous&dateReference=${isodate}`,
+      ).then(response => {
+        if (response.statusCode !== 404) {
+          const previous = this.state.previous.concat(response);
+          this.setState({ previous }, () => {
+            console.log('Previous', this.state.previous);
+            this.setState({ loading: false });
+          });
+        } else {
+          console.log('No previous games');
+        }
+      });
+    }
   }
 
-  loadNext() {
-    this.loading = true;
+  loadNext(date) {
+    if (this.props.base) {
+      this.setState({ loading: true });
 
-    get(
-      `https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=${DeviceInfo.getTimezone()}&page=next&dateReference=${
-        this.props.base.matchDayIsoDate
-      }`,
-    ).then(response => {
-      this.loading = false;
+      const isodate = date ? date : this.props.base.matchDayIsoDate;
 
-      if (response.statusCode !== 404) {
-        const next = [response].concat(this.state.next);
-        this.setState({ next }, () => console.log('Next', this.state.next));
-      } else {
-        console.log('No games next');
-      }
-    });
+      get(
+        `https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=${DeviceInfo.getTimezone()}&page=next&dateReference=${isodate}`,
+      ).then(response => {
+        if (response.statusCode !== 404) {
+          const next = this.state.next.concat(response);
+          this.setState({ next }, () => {
+            console.log('Next', this.state.next);
+            this.setState({ loading: false });
+          });
+        } else {
+          console.log('No games next');
+        }
+      });
+    }
   }
 
   _loadMatchdays({ contentOffset, contentSize }) {
+    const { next } = this.state;
+
     const LOAD_NEXT_DISTANCE = 1200;
     const LOAD_PREVIOUS_DISTANCE = 400;
     const distanceBottom = contentSize.height - contentOffset.y;
 
-    if (!this.loading) {
+    if (!this.state.loading) {
       if (distanceBottom < LOAD_NEXT_DISTANCE) {
-        // Will load next matchDay
+        if (this.state.next.length > 0) {
+          this.loadNext(next[next.length - 1].matchDayIsoDate);
+        } else {
+          this.loadNext();
+        }
       } else if (contentOffset.y < LOAD_PREVIOUS_DISTANCE) {
         // Will load previous matchDay
       }
@@ -163,14 +167,14 @@ class GameList extends Component {
 
   _renderMatchDay(matchDay) {
     return (
-      <View key={`${matchDay.matchRef}View`}>
+      <View key={`${matchDay.matchDayIsoDate}View`}>
         <Header
-          key={`${matchDay.matchRef}Header`}
+          key={`${matchDay.matchDayIsoDate}Header`}
           title={matchDay.matchDayHumanified.mainInfoDate}
           subtitle={matchDay.matchDayHumanified.subInfoDate}
         />
         <List
-          key={`${matchDay.matchRef}List`}
+          key={`${matchDay.matchDayIsoDate}List`}
           data={matchDay.games}
           keyExtractor={this._keyExtractor}
           renderItem={({ item }) => this._renderCard(item)}
