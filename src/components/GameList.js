@@ -8,7 +8,6 @@ import {
   CARD_LIST_SUBTITLE_COLOR,
   WIDTH_REL,
   HEIGHT_REL,
-  RATIO,
 } from '@theme';
 import { clockwise, spinner } from '@assets/images';
 import { TextBaseBold } from '@components/Scene';
@@ -230,12 +229,12 @@ const HeaderWrapper = styled.View`
 `;
 
 const Title = styled(TextBaseBold)`
-  font-size: ${28 * RATIO};
+  font-size: ${28 * HEIGHT_REL};
   color: ${CARD_LIST_TITLE_COLOR};
 `;
 
 const SubTitle = styled(TextBaseBold)`
-  font-size: ${12 * RATIO};
+  font-size: ${12 * HEIGHT_REL};
   margin-top: ${7 * HEIGHT_REL};
   color: ${CARD_LIST_SUBTITLE_COLOR};
 `;

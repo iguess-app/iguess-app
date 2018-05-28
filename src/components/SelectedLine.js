@@ -5,7 +5,6 @@ import {
   SELECT_LINE_POINTS_TEXT,
   WIDTH_REL,
   HEIGHT_REL,
-  RATIO,
 } from '@theme';
 import I18n from '../i18n';
 import { TextBaseBold } from '@components/Scene';
@@ -38,7 +37,7 @@ const Wrapper = styled.View`
 
 const Season = styled(TextBaseBold)`
   height: ${17 * HEIGHT_REL};
-  font-size: ${14 * RATIO};
+  font-size: ${14 * HEIGHT_REL};
   text-align: left;
   color: ${SELECT_LINE_PRIMARY_TEXT};
   opacity: ${props => props.opacity};
@@ -46,7 +45,7 @@ const Season = styled(TextBaseBold)`
 
 const LineName = styled(TextBaseBold)`
   width: ${289 * WIDTH_REL};
-  font-size: ${24 * RATIO};
+  font-size: ${24 * HEIGHT_REL};
   text-align: left;
   color: ${SELECT_LINE_PRIMARY_TEXT};
   margin-top: ${12 * HEIGHT_REL};
@@ -58,20 +57,20 @@ const PointsView = styled.View`
   justify-content: center;
   width: ${104 * WIDTH_REL};
   height: ${40 * HEIGHT_REL};
-  border-radius: ${24 * RATIO};
+  border-radius: ${24 * HEIGHT_REL};
   background-color: ${SELECT_LINE_PRIMARY_TEXT};
-  margin-top: ${24 * RATIO};
+  margin-top: ${16 * HEIGHT_REL};
 `;
 
 const Points = styled(TextBaseBold)`
-  font-size: ${18 * RATIO};
+  font-size: ${20 * HEIGHT_REL};
   color: ${SELECT_LINE_POINTS_TEXT};
   margin-right: ${4 * WIDTH_REL};
   align-self: center;
 `;
 
 const PointsText = styled(TextBaseBold)`
-  font-size: ${14 * RATIO};
+  font-size: ${14 * HEIGHT_REL};
   color: ${SELECT_LINE_POINTS_TEXT};
   align-self: center;
   margin-top: ${4 * HEIGHT_REL};

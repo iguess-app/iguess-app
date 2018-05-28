@@ -98,7 +98,7 @@ const ErrorMessage = props => {
 };
 
 const ErrorText = styled(TextBase)`
-  font-size: ${14 * RATIO};
+  font-size: ${14 * HEIGHT_REL};
   margin-left: ${8 * WIDTH_REL};
   color: ${INPUT_ERROR_COLOR};
 `;

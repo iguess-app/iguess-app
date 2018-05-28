@@ -60,7 +60,7 @@ const Title = styled.Text`
   flex-direction: row;
   flex: 1;
   text-align: center;
-  font-size: ${14 * RATIO};
+  font-size: ${14 * HEIGHT_REL};
   color: ${HEADER_TEXT_COLOR};
   margin-right: ${64 * WIDTH_REL};
 `;

@@ -43,8 +43,8 @@ const HomeText = styled(TextBase)`
   color: ${HOME_TEXT_COLOR};
   padding-left: ${40 * WIDTH_REL};
   padding-right: ${40 * WIDTH_REL};
-  margin-top: ${186 * HEIGHT_REL};
-  margin-bottom: ${192 * HEIGHT_REL};
+  margin-top: ${194 * HEIGHT_REL};
+  margin-bottom: ${216 * HEIGHT_REL};
 `;
 
 const TermsButton = () => {

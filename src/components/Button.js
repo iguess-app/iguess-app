@@ -50,7 +50,7 @@ const WhiteBorderTouchable = styled.TouchableOpacity`
   border-width: ${2 * RATIO};
   border-color: white;
   background-color: rgba(42, 43, 86, 0.65);
-  margin-top: ${26 * HEIGHT_REL};
+  margin-top: ${18 * HEIGHT_REL};
   align-items: center;
   justify-content: center;
 `;
@@ -71,7 +71,7 @@ const Inative = styled.View`
 `;
 
 const WhiteText = styled(TextBaseBold)`
-  font-size: ${15 * RATIO};
+  font-size: ${15 * HEIGHT_REL};
   text-align: center;
   color: ${PRIMARY_BUTTON_TEXT_COLOR};
 `;

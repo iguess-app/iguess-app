@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CARD_TEAM_NAME_COLOR, WIDTH_REL, HEIGHT_REL, RATIO } from '@theme';
+import { CARD_TEAM_NAME_COLOR, WIDTH_REL, HEIGHT_REL } from '@theme';
 import { TextBaseBold } from '@components/Scene';
 
 const Team = props => {
@@ -23,7 +23,7 @@ const TeamView = styled.View`
 
 const TeamName = styled(TextBaseBold)`
   opacity: 0.8;
-  font-size: ${12 * RATIO};
+  font-size: ${11 * HEIGHT_REL};
   margin-top: ${4 * HEIGHT_REL};
   color: ${CARD_TEAM_NAME_COLOR};
   text-align: center;

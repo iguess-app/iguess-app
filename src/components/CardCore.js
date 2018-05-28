@@ -245,7 +245,7 @@ const ProgressContainer = styled.View`
 `;
 
 const Time = styled(TextBase)`
-  font-size: ${12 * RATIO};
+  font-size: ${12 * HEIGHT_REL};
   color: #4d6980;
 `;
 
@@ -263,7 +263,7 @@ const VS = styled.Image.attrs({
 `;
 
 const ScheduledTime = styled(TextBase)`
-  font-size: ${9 * RATIO};
+  font-size: ${9 * HEIGHT_REL};
   color: ${SCHEDULED_TIME_COLOR};
 `;
 
