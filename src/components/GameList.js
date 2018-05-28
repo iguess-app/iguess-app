@@ -23,6 +23,11 @@ class GameList extends Component {
     this.firstRun = true;
   }
 
+  componentWillMount() {
+    this.loadNext();
+    this.loadPrevious();
+  }
+
   _keyExtractor = item => item.matchRef;
 
   _renderCard(item) {
