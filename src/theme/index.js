@@ -48,4 +48,4 @@ export const WIDTH_REL = width / 375;
 export const HEIGHT_REL = height / 667;
 
 // For fonts and square images
-export const RATIO = WIDTH_REL * HEIGHT_REL;
+export const RATIO = (WIDTH_REL + HEIGHT_REL) / 2;
