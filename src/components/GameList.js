@@ -226,6 +226,7 @@ class GameList extends Component {
                 y: nativeEvent.layout.y,
                 animated: false,
               });
+              this.firstRun = false;
             }
           }}
         >
