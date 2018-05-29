@@ -19,7 +19,12 @@ import DeviceInfo from 'react-native-device-info';
 class GameList extends Component {
   constructor(props) {
     super(props);
-    this.state = { previous: [], next: [], loading: false };
+    this.state = {
+      previous: [],
+      next: [],
+      loadingNext: false,
+      loadingPrevious: false,
+    };
     this.firstRun = true;
   }
 
@@ -108,7 +113,7 @@ class GameList extends Component {
   }
 
   loadPrevious(date) {
-    this.setState({ loading: true });
+    this.setState({ loadingPrevious: true });
 
     if (this.props.base) {
       const isodate = date ? date : this.props.base.matchDayIsoDate;
@@ -120,10 +125,12 @@ class GameList extends Component {
           const previous = [response].concat(this.state.previous);
           this.setState({ previous }, () => {
             console.log('Previous', this.state.previous);
-            this.setState({ loading: false });
+
+            setTimeout(() => this.setState({ loadingPrevious: false }), 2500);
           });
         } else {
           console.log('No previous games');
+          this.setState({ loadingPrevious: false });
         }
       });
     }
@@ -131,7 +138,7 @@ class GameList extends Component {
 
   loadNext(date) {
     if (this.props.base) {
-      this.setState({ loading: true });
+      this.setState({ loadingNext: true });
 
       const isodate = date ? date : this.props.base.matchDayIsoDate;
 
@@ -142,10 +149,12 @@ class GameList extends Component {
           const next = this.state.next.concat(response);
           this.setState({ next }, () => {
             console.log('Next', this.state.next);
-            this.setState({ loading: false });
+
+            setTimeout(() => this.setState({ loadingNext: false }), 2500);
           });
         } else {
           console.log('No games next');
+          this.setState({ loadingNext: false });
         }
       });
     }
@@ -160,7 +169,7 @@ class GameList extends Component {
     const LOAD_PREVIOUS_DISTANCE = 400;
     const distanceBottom = contentSize.height - contentOffset.y;
 
-    if (!this.state.loading) {
+    if (!this.state.loadingNext && !this.state.loadingPrevious) {
       if (distanceBottom < LOAD_NEXT_DISTANCE) {
         if (this.state.next.length > 0) {
           this.loadNext(next[next.length - 1].matchDayIsoDate);
@@ -210,10 +219,13 @@ class GameList extends Component {
     if (loading || !this.state.previous || !this.state.next) {
       return (
         <ScrollWrapper>
-          <Spinner />
+          <LoadingAll />
         </ScrollWrapper>
       );
     }
+
+    const nextSpinner = this.state.loadingNext ? <Loading /> : null;
+    const previousSpinner = this.state.loadingPrevious ? <Loading /> : null;
 
     return (
       <ScrollWrapper
@@ -222,6 +234,7 @@ class GameList extends Component {
         scrollEventThrottle={13}
         onContentSizeChange={this._handleSize}
       >
+        {previousSpinner}
         {this.state.previous.map(previousMatchDay =>
           this._renderMatchDay(previousMatchDay),
         )}
@@ -250,6 +263,7 @@ class GameList extends Component {
         {this.state.next.map(nextMatchDay =>
           this._renderMatchDay(nextMatchDay),
         )}
+        {nextSpinner}
       </ScrollWrapper>
     );
   }
@@ -312,13 +326,23 @@ const Clockwise = styled.Image.attrs({
   resize-mode: contain;
 `;
 
-const Spinner = styled.Image.attrs({
+const LoadingAll = styled.Image.attrs({
   source: spinner,
 })`
   width: ${44 * WIDTH_REL};
   height: ${42 * HEIGHT_REL};
   align-self: center;
   margin-top: ${120 * HEIGHT_REL}
+  resize-mode: contain;
+`;
+
+const Loading = styled.Image.attrs({
+  source: spinner,
+})`
+  width: ${44 * WIDTH_REL};
+  height: ${42 * HEIGHT_REL};
+  align-self: center;
+  margin-vertical: ${15 * HEIGHT_REL}
   resize-mode: contain;
 `;
 
