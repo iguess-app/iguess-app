@@ -30,7 +30,6 @@ class GameList extends Component {
 
   componentWillMount() {
     this.loadNext();
-    this.loadPrevious();
   }
 
   _keyExtractor = item => item.matchRef;
@@ -166,8 +165,9 @@ class GameList extends Component {
     this.posY = contentOffset.y;
 
     const LOAD_NEXT_DISTANCE = 1200;
-    const LOAD_PREVIOUS_DISTANCE = 400;
     const distanceBottom = contentSize.height - contentOffset.y;
+
+    console.log(contentOffset.y);
 
     if (!this.state.loadingNext && !this.state.loadingPrevious) {
       if (distanceBottom < LOAD_NEXT_DISTANCE) {
@@ -176,7 +176,7 @@ class GameList extends Component {
         } else {
           this.loadNext();
         }
-      } else if (contentOffset.y < LOAD_PREVIOUS_DISTANCE) {
+      } else if (contentOffset.y <= 0) {
         if (this.state.previous.length > 0) {
           this.loadPrevious(previous[0].matchDayIsoDate);
         } else {
@@ -204,14 +204,14 @@ class GameList extends Component {
     );
   }
 
-  _handleSize = (width, height) => {
-    const PREVIOUS_POINT = 300;
-    if (this.posY && this.posY < PREVIOUS_POINT) {
-      const position = this.posY + height - this.height;
-      this.scroll.scrollTo({ x: 0, y: position, animated: false });
-    }
-    this.height = height;
-  };
+  // _handleSize = (width, height) => {
+  //   const PREVIOUS_POINT = 300;
+  //   if (this.posY && this.posY < PREVIOUS_POINT) {
+  //     const position = this.posY + height - this.height;
+  //     this.scroll.scrollTo({ x: 0, y: position, animated: false });
+  //   }
+  //   this.height = height;
+  // };
 
   render() {
     const { base, loading } = this.props;
@@ -232,29 +232,17 @@ class GameList extends Component {
         innerRef={ref => (this.scroll = ref)}
         onScroll={({ nativeEvent }) => this._handleScroll(nativeEvent)}
         scrollEventThrottle={13}
-        onContentSizeChange={this._handleSize}
+        // onContentSizeChange={this._handleSize}
       >
         {previousSpinner}
         {this.state.previous.map(previousMatchDay =>
           this._renderMatchDay(previousMatchDay),
         )}
-        <View
-          onLayout={({ nativeEvent }) => {
-            if (this.firstRun) {
-              this.scroll.scrollTo({
-                y: nativeEvent.layout.y,
-                animated: false,
-              });
-              this.firstRun = false;
-            }
-          }}
-        >
-          <Header
-            title={base.matchDayHumanified.mainInfoDate}
-            subtitle={base.matchDayHumanified.subInfoDate}
-            onPressRefresh={() => this.props.dispatch(fetchLine())}
-          />
-        </View>
+        <Header
+          title={base.matchDayHumanified.mainInfoDate}
+          subtitle={base.matchDayHumanified.subInfoDate}
+          onPressRefresh={() => this.props.dispatch(fetchLine())}
+        />
         <List
           data={base.games}
           keyExtractor={this._keyExtractor}
