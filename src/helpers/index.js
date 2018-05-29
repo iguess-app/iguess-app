@@ -17,8 +17,8 @@ const _buildDefaultHeaders = token => {
   return new Headers({
     'Content-type': 'application/json',
     token,
-    request_id: 'postmanRequest',
-    hardware_fingerprint: 'postmanRequest',
+    request_id: DeviceInfo.getUniqueID() + Date.now(),
+    hardware_fingerprint: DeviceInfo.getUniqueID(),
     platform: DeviceInfo.getSystemName(),
     os_version: DeviceInfo.getSystemVersion(),
     app_version: DeviceInfo.getVersion(),
