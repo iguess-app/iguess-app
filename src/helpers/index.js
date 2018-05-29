@@ -2,6 +2,7 @@ import { StatusBar, AsyncStorage } from 'react-native';
 import { storedLogin } from '@redux/authentication/actions';
 import { store } from '../index';
 import DeviceInfo from 'react-native-device-info';
+import { getLanguages } from 'react-native-i18n';
 
 export const setStatusBarStyle = style => {
   if (style === 'dark') {
@@ -10,6 +11,14 @@ export const setStatusBarStyle = style => {
     StatusBar.setBarStyle('light-content');
   } else {
     StatusBar.setBarStyle('default');
+  }
+};
+
+const getLocale = () => {
+  if (DeviceInfo.getDeviceLocale().includes('pt')) {
+    return 'pt-br';
+  } else {
+    return 'en-us';
   }
 };
 
@@ -24,6 +33,7 @@ const _buildDefaultHeaders = token => {
     app_version: DeviceInfo.getVersion(),
     phone_model: DeviceInfo.getModel(),
     phone_fabricator: DeviceInfo.getBrand(),
+    language: getLocale(),
   });
 };
 
