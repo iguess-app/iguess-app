@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 import Team from '@components/Team';
 import {
@@ -14,6 +15,7 @@ import {
   SCORE_FONT_COLOR,
   INPUT_ERROR_COLOR,
   GUESS_DEFAULT_TEXT_COLOR,
+  TRY_AGAIN_SET_PREDICTION,
   HEIGHT_REL,
   WIDTH_REL,
   RATIO,
@@ -64,6 +66,7 @@ class GameCard extends Component {
             scheduled={this.props.initTime}
             gameRef={this.props.gameRef}
             error={() => this.setState({ error: true })}
+            ref={ref => (this.allowPredict = ref)}
           />
         );
       case gameStatus.NOT_ALLOW_PREDICT:
@@ -114,7 +117,14 @@ class GameCard extends Component {
     const { homeTeam, awayTeam } = this.props;
 
     const core = this._defineCore();
-    const error = true ? <Error /> : null;
+    const error = this.state.error ? (
+      <Error
+        onPress={() => {
+          this.setState({ error: false });
+          this.allowPredict.update();
+        }}
+      />
+    ) : null;
 
     return (
       <Wrapper>
@@ -206,12 +216,15 @@ const Card = styled.View`
   justify-content: center;
 `;
 
-const Error = () => (
+const Error = ({ onPress }) => (
   <ErrorView>
     <ErrorTitle>Ooops!</ErrorTitle>
     <ErrorDescription>
       Não conseguimos enviar seu palpite, tente novamente.
     </ErrorDescription>
+    <TouchableOpacity onPress={onPress}>
+      <TryAgainText>Tentar novamente</TryAgainText>
+    </TouchableOpacity>
   </ErrorView>
 );
 
@@ -233,6 +246,13 @@ const ErrorDescription = styled.Text`
   font-size: ${14 * HEIGHT_REL};
   margin-top: ${10 * HEIGHT_REL};
   text-align: center;
+`;
+
+const TryAgainText = styled.Text`
+  color: ${TRY_AGAIN_SET_PREDICTION};
+  text-decoration-line: underline;
+  margin-top: ${10 * HEIGHT_REL};
+  font-weight: bold;
 `;
 
 export default GameCard;

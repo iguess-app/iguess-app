@@ -33,6 +33,7 @@ export const SCORE_BOARD_COLOR = CARD_SCORE_COLOR; // purple
 export const SCORE_FONT_COLOR = '#FFF';
 export const PROGRESS_TINT_COLOR = '#694CFE'; // purple
 export const PROGRESS_BACKGROUND_COLOR = '#E1DBFF'; // gray-purple
+export const TRY_AGAIN_SET_PREDICTION = CARD_LIST_TITLE_COLOR;
 
 // BACKGROUND
 
