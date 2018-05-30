@@ -1,6 +1,7 @@
 import * as types from './actionTypes';
-import { get } from '@helpers';
+import { get, setStoredToken } from '@helpers';
 import DeviceInfo from 'react-native-device-info';
+import { Actions } from 'react-native-router-flux';
 
 export function fetchLine() {
   return dispatch => {
@@ -11,7 +12,12 @@ export function fetchLine() {
       `https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=${DeviceInfo.getTimezone()}`,
     )
       .then(line => {
-        dispatch(fetchLineSuccess(line));
+        if (line.statusCode === 401) {
+          setStoredToken('');
+          Actions.reset('home');
+        } else {
+          dispatch(fetchLineSuccess(line));
+        }
       })
       .catch(() => fetchLineError('Error fetching data'));
   };
