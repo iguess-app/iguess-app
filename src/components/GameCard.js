@@ -20,7 +20,7 @@ import {
   WIDTH_REL,
   RATIO,
 } from '@theme';
-import { TextBaseBold } from '@components/Scene';
+import { TextBaseBold, TextBase } from '@components/Scene';
 import { warning } from '@assets/images';
 import I18n from '../i18n';
 
@@ -130,8 +130,6 @@ class GameCard extends Component {
 
   render() {
     const { homeTeam, awayTeam } = this.props;
-
-    console.log('ERROR MSG', this.errorMsg);
 
     const core = this._defineCore();
     const error = this.state.error ? (
@@ -268,25 +266,24 @@ const ErrorView = styled(Card)`
   padding-horizontal: ${32 * WIDTH_REL};
 `;
 
-const ErrorTitle = styled.Text`
+const ErrorTitle = styled(TextBaseBold)`
   color: ${INPUT_ERROR_COLOR};
   font-size: ${28 * HEIGHT_REL};
   margin-top: ${4 * HEIGHT_REL};
-  font-weight: 800;
 `;
 
-const ErrorDescription = styled.Text`
+const ErrorDescription = styled(TextBase)`
   color: ${GUESS_DEFAULT_TEXT_COLOR};
   font-size: ${14 * HEIGHT_REL};
   margin-top: ${5 * HEIGHT_REL};
   text-align: center;
 `;
 
-const TryAgainText = styled.Text`
+const TryAgainText = styled(TextBaseBold)`
   color: ${TRY_AGAIN_SET_PREDICTION};
+  font-size: ${14 * HEIGHT_REL};
   text-decoration-line: underline;
   margin-top: ${10 * HEIGHT_REL};
-  font-weight: bold;
 `;
 
 const Warning = styled.Image.attrs({
