@@ -81,10 +81,12 @@ export class AllowPredict extends Component {
             this._updateStatus(LOADED);
           } else {
             this.props.error();
+            this._updateStatus(DEFAULT);
           }
         })
         .catch(() => {
           this.props.error();
+          this._updateStatus(DEFAULT);
         });
     } else if (status === LOADED) {
       this.setState({ status: LOADED });

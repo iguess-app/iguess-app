@@ -42,6 +42,12 @@ class GameCard extends Component {
     };
   }
 
+  componentDidUpdate() {
+    if (this.state.error) {
+      setTimeout(() => this.setState({ error: false }), 5000);
+    }
+  }
+
   _treatValue = value => {
     if (value > 99) {
       return 99;
@@ -220,10 +226,10 @@ const Card = styled.View`
 const Error = ({ onPress }) => (
   <ErrorView>
     <Warning />
-    <ErrorTitle>Ooops!</ErrorTitle>
-    <ErrorDescription>Não conseguimos enviar seu palpite.</ErrorDescription>
+    <ErrorTitle>{I18n.t('errorPredictionTitle')}</ErrorTitle>
+    <ErrorDescription>{I18n.t('errorPredictionDescription')}</ErrorDescription>
     <TouchableOpacity onPress={onPress}>
-      <TryAgainText>Tentar novamente</TryAgainText>
+      <TryAgainText>{I18n.t('errorPredictionButton')}</TryAgainText>
     </TouchableOpacity>
   </ErrorView>
 );

@@ -67,4 +67,8 @@ export default {
   aboutFeedback: 'Send feedback',
   aboutRate: 'Rate app',
   aboutFollow: 'Follow us on social media',
+
+  errorPredictionTitle: 'Ooops!',
+  errorPredictionDescription: 'We had some problem sending your prediction.',
+  errorPredictionButton: 'Try again',
 };
