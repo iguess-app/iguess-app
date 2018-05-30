@@ -2,7 +2,6 @@ import { StatusBar, AsyncStorage } from 'react-native';
 import { storedLogin } from '@redux/authentication/actions';
 import { store } from '../index';
 import DeviceInfo from 'react-native-device-info';
-import { getLanguages } from 'react-native-i18n';
 
 export const setStatusBarStyle = style => {
   if (style === 'dark') {
@@ -106,6 +105,7 @@ export async function loginWithStoredToken() {
     }
   } catch (error) {
     // Error retrieving data
+    return loggedIn;
   }
 
   return loggedIn;

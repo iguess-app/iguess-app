@@ -1,20 +1,11 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
 import styled from 'styled-components';
 import GameList from '@components/GameList';
 import SelectedLine from '@components/SelectedLine';
 import { SceneWrapper } from '@components/Scene';
 import SettingsButton from '@components/SettingsButton';
 import Loading from '@scenes/Loading';
-import { chevronDown } from '@assets/images';
-import {
-  SELECT_LINE_PRIMARY_TEXT,
-  DEFAULT_BACKGROUND,
-  WIDTH_REL,
-  HEIGHT_REL,
-  RATIO,
-} from '@theme';
-import { TextBaseBold } from '@components/Scene';
+import { DEFAULT_BACKGROUND, WIDTH_REL, HEIGHT_REL } from '@theme';
 import { connect } from 'react-redux';
 import * as linesActions from '@redux/lines/actions';
 
@@ -73,24 +64,24 @@ class Lines extends Component {
   }
 }
 
-const SecondarySelectedLine = props => {
-  const { name, scroll, principalOpacity } = props;
+// const SecondarySelectedLine = props => {
+//   const { name, scroll, principalOpacity } = props;
 
-  if (principalOpacity < 0.2) {
-    const inversionConstant = 2.5;
-    const inversalOpacity = opacity => 1 - inversionConstant * opacity;
-    const initialPosition = { x: 0, y: 0, animated: true };
+//   if (principalOpacity < 0.2) {
+//     const inversionConstant = 2.5;
+//     const inversalOpacity = opacity => 1 - inversionConstant * opacity;
+//     const initialPosition = { x: 0, y: 0, animated: true };
 
-    return (
-      <NavTouchable onPress={() => scroll.scrollTo(initialPosition)}>
-        <NavText opacity={inversalOpacity(principalOpacity)}>{name}</NavText>
-        <Chevron opacity={inversalOpacity(principalOpacity)} />
-      </NavTouchable>
-    );
-  }
+//     return (
+//       <NavTouchable onPress={() => scroll.scrollTo(initialPosition)}>
+//         <NavText opacity={inversalOpacity(principalOpacity)}>{name}</NavText>
+//         <Chevron opacity={inversalOpacity(principalOpacity)} />
+//       </NavTouchable>
+//     );
+//   }
 
-  return null;
-};
+//   return null;
+// };
 
 const Navigation = styled.View`
   flex-direction: row;
@@ -98,27 +89,27 @@ const Navigation = styled.View`
   margin-horizontal: ${32 * WIDTH_REL};
 `;
 
-const NavTouchable = styled.TouchableOpacity`
-  flex: 1;
-  flex-direction: row;
-  justify-content: flex-end;
-  margin-top: ${2 * HEIGHT_REL};
-`;
+// const NavTouchable = styled.TouchableOpacity`
+//   flex: 1;
+//   flex-direction: row;
+//   justify-content: flex-end;
+//   margin-top: ${2 * HEIGHT_REL};
+// `;
 
-const NavText = styled(TextBaseBold)`
-  font-size: ${16 * RATIO};
-  color: ${SELECT_LINE_PRIMARY_TEXT};
-  opacity: ${props => props.opacity};
-  margin-right: ${16 * WIDTH_REL};
-`;
+// const NavText = styled(TextBaseBold)`
+//   font-size: ${16 * RATIO};
+//   color: ${SELECT_LINE_PRIMARY_TEXT};
+//   opacity: ${props => props.opacity};
+//   margin-right: ${16 * WIDTH_REL};
+// `;
 
-const Chevron = styled.Image.attrs({
-  source: chevronDown,
-})`
-  width: ${14 * WIDTH_REL};
-  resize-mode: contain;
-  margin-top: ${4 * HEIGHT_REL};
-`;
+// const Chevron = styled.Image.attrs({
+//   source: chevronDown,
+// })`
+//   width: ${14 * WIDTH_REL};
+//   resize-mode: contain;
+//   margin-top: ${4 * HEIGHT_REL};
+// `;
 
 const mapStateToProps = state => {
   return {

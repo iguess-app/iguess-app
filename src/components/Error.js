@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { thumbsDown } from '@assets/images';
-import { INPUT_ERROR_COLOR, HEIGHT_REL, WIDTH_REL, RATIO } from '@theme';
+import { INPUT_ERROR_COLOR, HEIGHT_REL, WIDTH_REL } from '@theme';
 import { TextBase } from '@components/Scene';
 
 export default class Error extends Component {
