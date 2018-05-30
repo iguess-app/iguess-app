@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BackHandler } from 'react-native';
 import Lines from '@scenes/Lines';
 import Settings from '@scenes/Settings';
 import { setStatusBarStyle } from '@helpers';
@@ -6,8 +7,18 @@ import Swiper from 'react-native-swiper';
 import { connect } from 'react-redux';
 import { swipe } from '@redux/flags/actions';
 import styled from 'styled-components';
+import { Actions } from 'react-native-router-flux';
 
 class Core extends Component<void, void, void> {
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', () => {
+      if (Actions.currentScene === 'core') {
+        BackHandler.exitApp();
+        return true;
+      }
+    });
+  }
+
   render() {
     const { dispatch, activeSwiperScreen } = this.props;
 
