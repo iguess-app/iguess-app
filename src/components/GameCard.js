@@ -40,11 +40,16 @@ class GameCard extends Component {
       status: props.status ? props.status : gameStatus.ALLOW_PREDICT,
       error: false,
     };
+
+    this.errorMsg = '';
   }
 
   componentDidUpdate() {
     if (this.state.error) {
-      setTimeout(() => this.setState({ error: false }), 5000);
+      setTimeout(() => {
+        this.setState({ error: false });
+        this.errorMsg = '';
+      }, 5000);
     }
   }
 
@@ -72,7 +77,10 @@ class GameCard extends Component {
             awayGuess={awayGuess}
             scheduled={this.props.initTime}
             gameRef={this.props.gameRef}
-            error={() => this.setState({ error: true })}
+            error={errorMsg => {
+              this.errorMsg = errorMsg;
+              this.setState({ error: true });
+            }}
             ref={ref => (this.allowPredict = ref)}
           />
         );
@@ -123,6 +131,8 @@ class GameCard extends Component {
   render() {
     const { homeTeam, awayTeam } = this.props;
 
+    console.log('ERROR MSG', this.errorMsg);
+
     const core = this._defineCore();
     const error = this.state.error ? (
       <Error
@@ -130,7 +140,9 @@ class GameCard extends Component {
           this.setState({ error: false });
           this.allowPredict.update();
         }}
-      />
+      >
+        {this.errorMsg}
+      </Error>
     ) : null;
 
     return (
@@ -223,16 +235,30 @@ const Card = styled.View`
   justify-content: center;
 `;
 
-const Error = ({ onPress }) => (
-  <ErrorView>
-    <Warning />
-    <ErrorTitle>{I18n.t('errorPredictionTitle')}</ErrorTitle>
-    <ErrorDescription>{I18n.t('errorPredictionDescription')}</ErrorDescription>
-    <TouchableOpacity onPress={onPress}>
-      <TryAgainText>{I18n.t('errorPredictionButton')}</TryAgainText>
-    </TouchableOpacity>
-  </ErrorView>
-);
+const Error = ({ onPress, children }) => {
+  if (children) {
+    return (
+      <ErrorView>
+        <Warning />
+        <ErrorTitle>{I18n.t('errorPredictionTitle')}</ErrorTitle>
+        <ErrorDescription>{children}</ErrorDescription>
+      </ErrorView>
+    );
+  }
+
+  return (
+    <ErrorView>
+      <Warning />
+      <ErrorTitle>{I18n.t('errorPredictionTitle')}</ErrorTitle>
+      <ErrorDescription>
+        {I18n.t('errorPredictionDescription')}
+      </ErrorDescription>
+      <TouchableOpacity onPress={onPress}>
+        <TryAgainText>{I18n.t('errorPredictionButton')}</TryAgainText>
+      </TouchableOpacity>
+    </ErrorView>
+  );
+};
 
 const ErrorView = styled(Card)`
   flex-direction: column;
