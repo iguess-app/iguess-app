@@ -12,6 +12,8 @@ import {
   CARD_BORDER_COLOR,
   SCORE_BOARD_COLOR,
   SCORE_FONT_COLOR,
+  INPUT_ERROR_COLOR,
+  GUESS_DEFAULT_TEXT_COLOR,
   HEIGHT_REL,
   WIDTH_REL,
   RATIO,
@@ -33,6 +35,7 @@ class GameCard extends Component {
 
     this.state = {
       status: props.status ? props.status : gameStatus.ALLOW_PREDICT,
+      error: false,
     };
   }
 
@@ -60,6 +63,7 @@ class GameCard extends Component {
             awayGuess={awayGuess}
             scheduled={this.props.initTime}
             gameRef={this.props.gameRef}
+            error={() => this.setState({ error: true })}
           />
         );
       case gameStatus.NOT_ALLOW_PREDICT:
@@ -110,6 +114,7 @@ class GameCard extends Component {
     const { homeTeam, awayTeam } = this.props;
 
     const core = this._defineCore();
+    const error = true ? <Error /> : null;
 
     return (
       <Wrapper>
@@ -126,6 +131,7 @@ class GameCard extends Component {
             name={awayTeam.shortName}
             image={{ uri: awayTeam.logo.mini }}
           />
+          {error}
         </Card>
       </Wrapper>
     );
@@ -198,6 +204,35 @@ const Card = styled.View`
   align-self: center;
   align-items: center;
   justify-content: center;
+`;
+
+const Error = () => (
+  <ErrorView>
+    <ErrorTitle>Ooops!</ErrorTitle>
+    <ErrorDescription>
+      Não conseguimos enviar seu palpite, tente novamente.
+    </ErrorDescription>
+  </ErrorView>
+);
+
+const ErrorView = styled(Card)`
+  flex-direction: column;
+  background-color: white;
+  opacity: 0.95;
+  position: absolute;
+`;
+
+const ErrorTitle = styled.Text`
+  color: ${INPUT_ERROR_COLOR};
+  font-size: ${28 * HEIGHT_REL};
+  font-weight: 800;
+`;
+
+const ErrorDescription = styled.Text`
+  color: ${GUESS_DEFAULT_TEXT_COLOR};
+  font-size: ${14 * HEIGHT_REL};
+  margin-top: ${10 * HEIGHT_REL};
+  text-align: center;
 `;
 
 export default GameCard;

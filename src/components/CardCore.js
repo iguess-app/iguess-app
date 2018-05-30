@@ -76,9 +76,15 @@ export class AllowPredict extends Component {
         'https://iguess-666666.appspot.com/guessline/setPredictions',
         predictionBody,
       )
-        .then(() => this._updateStatus(LOADED))
+        .then(response => {
+          if (response.statusCode === 200) {
+            this._updateStatus(LOADED);
+          } else {
+            this.props.error();
+          }
+        })
         .catch(() => {
-          throw new Error('Error setting prediction');
+          this.props.error();
         });
     } else if (status === LOADED) {
       this.setState({ status: LOADED });
