@@ -23,7 +23,7 @@ const TeamView = styled.View`
 
 const TeamName = styled(TextBaseBold)`
   opacity: 0.8;
-  font-size: 12;
+  font-size: ${11 * HEIGHT_REL};
   margin-top: ${4 * HEIGHT_REL};
   color: ${CARD_TEAM_NAME_COLOR};
   text-align: center;

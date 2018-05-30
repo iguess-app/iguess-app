@@ -10,7 +10,7 @@ import {
   instagramIcon,
 } from '@assets/images';
 import styled from 'styled-components';
-import { WIDTH_REL, HEIGHT_REL, TEXT_SECONDARY_SCENE } from '@theme';
+import { WIDTH_REL, HEIGHT_REL, RATIO, TEXT_SECONDARY_SCENE } from '@theme';
 import I18n from 'react-native-i18n';
 import { TextBaseBold } from '@components/Scene';
 
@@ -73,7 +73,7 @@ const TouchableIcon = props => {
 };
 
 const SectionTitle = styled(TextBaseBold)`
-  font-size: 28;
+  font-size: ${28 * RATIO};
   margin-horizontal: ${32 * WIDTH_REL};
   margin-top: ${24 * HEIGHT_REL};
   color: ${TEXT_SECONDARY_SCENE};
@@ -97,13 +97,13 @@ const Scroll = styled.ScrollView`
 
 const HeaderImage = styled.Image`
   opacity: 0.9;
-  height: 160;
+  height: ${160 * HEIGHT_REL};
   width: 100%;
 `;
 
 const FollowText = styled(TextBaseBold)`
   align-self: center;
-  font-size: 16;
+  font-size: ${16 * RATIO};
   color: black;
   margin-bottom: ${16 * HEIGHT_REL};
 `;
@@ -113,11 +113,12 @@ const FollowRow = styled.View`
   justify-content: space-between;
   margin-top: ${8 * HEIGHT_REL};
   margin-horizontal: ${80 * WIDTH_REL};
+  margin-bottom: ${10 * HEIGHT_REL};
 `;
 
 const Icon = styled.Image`
-  width: 56;
-  height: 56;
+  width: ${56 * RATIO};
+  height: ${56 * RATIO};
 `;
 
 export default About;

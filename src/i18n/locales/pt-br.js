@@ -68,4 +68,8 @@ export default {
   aboutFeedback: 'Enviar uma sugestão',
   aboutRate: 'AVALIAR APLICATIVO',
   aboutFollow: 'Siga-nos nas redes sociais',
+
+  errorPredictionTitle: 'Ooops!',
+  errorPredictionDescription: 'Não conseguimos enviar seu palpite.',
+  errorPredictionButton: 'Tentar novamente',
 };

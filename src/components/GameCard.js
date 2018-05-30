@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 import Team from '@components/Team';
 import {
@@ -12,10 +13,15 @@ import {
   CARD_BORDER_COLOR,
   SCORE_BOARD_COLOR,
   SCORE_FONT_COLOR,
+  INPUT_ERROR_COLOR,
+  GUESS_DEFAULT_TEXT_COLOR,
+  TRY_AGAIN_SET_PREDICTION,
   HEIGHT_REL,
   WIDTH_REL,
+  RATIO,
 } from '@theme';
-import { TextBaseBold } from '@components/Scene';
+import { TextBaseBold, TextBase } from '@components/Scene';
+import { warning } from '@assets/images';
 import I18n from '../i18n';
 
 export const gameStatus = {
@@ -32,7 +38,19 @@ class GameCard extends Component {
 
     this.state = {
       status: props.status ? props.status : gameStatus.ALLOW_PREDICT,
+      error: false,
     };
+
+    this.errorMsg = '';
+  }
+
+  componentDidUpdate() {
+    if (this.state.error) {
+      setTimeout(() => {
+        this.setState({ error: false });
+        this.errorMsg = '';
+      }, 5000);
+    }
   }
 
   _treatValue = value => {
@@ -59,6 +77,11 @@ class GameCard extends Component {
             awayGuess={awayGuess}
             scheduled={this.props.initTime}
             gameRef={this.props.gameRef}
+            error={errorMsg => {
+              this.errorMsg = errorMsg;
+              this.setState({ error: true });
+            }}
+            ref={ref => (this.allowPredict = ref)}
           />
         );
       case gameStatus.NOT_ALLOW_PREDICT:
@@ -109,6 +132,16 @@ class GameCard extends Component {
     const { homeTeam, awayTeam } = this.props;
 
     const core = this._defineCore();
+    const error = this.state.error ? (
+      <Error
+        onPress={() => {
+          this.setState({ error: false });
+          this.allowPredict.update();
+        }}
+      >
+        {this.errorMsg}
+      </Error>
+    ) : null;
 
     return (
       <Wrapper>
@@ -125,6 +158,7 @@ class GameCard extends Component {
             name={awayTeam.shortName}
             image={{ uri: awayTeam.logo.mini }}
           />
+          {error}
         </Card>
       </Wrapper>
     );
@@ -164,7 +198,7 @@ const Score = styled(TextBaseBold)`
 `;
 
 const PointsText = styled(TextBaseBold)`
-  font-size: 12;
+  font-size: ${12 * HEIGHT_REL};
   color: ${SCORE_FONT_COLOR};
 `;
 
@@ -186,17 +220,78 @@ const cardShadow = {
 
 const Card = styled.View`
   flex-direction: row;
-  width: ${327 * WIDTH_REL};
+  width: ${330 * WIDTH_REL};
   height: ${156 * HEIGHT_REL};
   margin-bottom: ${40 * HEIGHT_REL};
   border-color: ${CARD_BORDER_COLOR};
   background-color: ${CARD_BACKGROUND_COLOR};
-  padding-vertical: 20;
-  border-radius: 4;
-  border-width: 1;
+  padding-vertical: ${20 * HEIGHT_REL};
+  border-radius: ${4 * RATIO};
+  border-width: ${1 * RATIO};
   align-self: center;
   align-items: center;
   justify-content: center;
+`;
+
+const Error = ({ onPress, children }) => {
+  if (children) {
+    return (
+      <ErrorView>
+        <Warning />
+        <ErrorTitle>{I18n.t('errorPredictionTitle')}</ErrorTitle>
+        <ErrorDescription>{children}</ErrorDescription>
+      </ErrorView>
+    );
+  }
+
+  return (
+    <ErrorView>
+      <Warning />
+      <ErrorTitle>{I18n.t('errorPredictionTitle')}</ErrorTitle>
+      <ErrorDescription>
+        {I18n.t('errorPredictionDescription')}
+      </ErrorDescription>
+      <TouchableOpacity onPress={onPress}>
+        <TryAgainText>{I18n.t('errorPredictionButton')}</TryAgainText>
+      </TouchableOpacity>
+    </ErrorView>
+  );
+};
+
+const ErrorView = styled(Card)`
+  flex-direction: column;
+  background-color: white;
+  opacity: 0.95;
+  position: absolute;
+  padding-horizontal: ${32 * WIDTH_REL};
+`;
+
+const ErrorTitle = styled(TextBaseBold)`
+  color: ${INPUT_ERROR_COLOR};
+  font-size: ${28 * HEIGHT_REL};
+  margin-top: ${4 * HEIGHT_REL};
+`;
+
+const ErrorDescription = styled(TextBase)`
+  color: ${GUESS_DEFAULT_TEXT_COLOR};
+  font-size: ${14 * HEIGHT_REL};
+  margin-top: ${5 * HEIGHT_REL};
+  text-align: center;
+`;
+
+const TryAgainText = styled(TextBaseBold)`
+  color: ${TRY_AGAIN_SET_PREDICTION};
+  font-size: ${14 * HEIGHT_REL};
+  text-decoration-line: underline;
+  margin-top: ${10 * HEIGHT_REL};
+`;
+
+const Warning = styled.Image.attrs({
+  source: warning,
+})`
+  width: ${27 * WIDTH_REL};
+  height: ${24 * HEIGHT_REL};
+  resize-mode: contain;
 `;
 
 export default GameCard;

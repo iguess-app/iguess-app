@@ -3,6 +3,7 @@ import { SceneWrapper } from '@components/Scene';
 import { NavBar, Content, SceneDescription } from '@components/Scene';
 import styled from 'styled-components';
 import I18n from 'react-native-i18n';
+import { HEIGHT_REL } from '@theme';
 
 const Terms = () => {
   return (
@@ -47,7 +48,7 @@ const Terms = () => {
 };
 
 const Scroll = styled.ScrollView`
-  margin-bottom: 24;
+  margin-bottom: ${24 * HEIGHT_REL};
 `;
 
 export default Terms;

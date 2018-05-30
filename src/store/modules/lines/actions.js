@@ -1,5 +1,7 @@
 import * as types from './actionTypes';
-import { get } from '@helpers';
+import { get, setStoredToken } from '@helpers';
+import DeviceInfo from 'react-native-device-info';
+import { Actions } from 'react-native-router-flux';
 
 export function fetchLine() {
   return dispatch => {
@@ -7,13 +9,22 @@ export function fetchLine() {
     dispatch(fetchLineBegin());
 
     get(
-      'https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=America/Sao_Paulo',
+      `https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=${DeviceInfo.getTimezone()}`,
     )
       .then(line => {
-        dispatch(fetchLineSuccess(line));
+        if (line.statusCode === 401) {
+          setStoredToken('');
+          Actions.reset('home');
+        } else {
+          dispatch(fetchLineSuccess(line));
+        }
       })
       .catch(() => fetchLineError('Error fetching data'));
   };
+}
+
+export function resetLine() {
+  return { type: types.RESET_LINE };
 }
 
 export const fetchLineBegin = () => ({ type: types.FETCH_LINE_BEGIN });
