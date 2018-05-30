@@ -77,15 +77,12 @@ export class AllowPredict extends Component {
         predictionBody,
       )
         .then(response => {
-          if (response.statusCode === 200) {
-            this._updateStatus(LOADED);
-          } else if (response.statusCode === 401) {
+          if (response.statusCode > 400) {
             this.props.error(response.message);
             this._updateStatus(DEFAULT);
-          } else {
-            this.props.error();
-            this._updateStatus(DEFAULT);
           }
+
+          this._updateStatus(LOADED);
         })
         .catch(() => {
           this.props.error();
