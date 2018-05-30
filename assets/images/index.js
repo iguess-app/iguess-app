@@ -24,6 +24,7 @@ export const thumbsDown = require('./thumbsDown.png');
 export const clockwise = require('./clockwise.png');
 export const check = require('./check.png');
 export const whistle = require('./whistle.png');
+export const warning = require('./warning.png');
 
 // GIF
 export const ballGif = require('./ball.gif');

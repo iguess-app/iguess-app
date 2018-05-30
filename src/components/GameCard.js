@@ -21,6 +21,7 @@ import {
   RATIO,
 } from '@theme';
 import { TextBaseBold } from '@components/Scene';
+import { warning } from '@assets/images';
 import I18n from '../i18n';
 
 export const gameStatus = {
@@ -218,10 +219,9 @@ const Card = styled.View`
 
 const Error = ({ onPress }) => (
   <ErrorView>
+    <Warning />
     <ErrorTitle>Ooops!</ErrorTitle>
-    <ErrorDescription>
-      Não conseguimos enviar seu palpite, tente novamente.
-    </ErrorDescription>
+    <ErrorDescription>Não conseguimos enviar seu palpite.</ErrorDescription>
     <TouchableOpacity onPress={onPress}>
       <TryAgainText>Tentar novamente</TryAgainText>
     </TouchableOpacity>
@@ -233,18 +233,20 @@ const ErrorView = styled(Card)`
   background-color: white;
   opacity: 0.95;
   position: absolute;
+  padding-horizontal: ${32 * WIDTH_REL};
 `;
 
 const ErrorTitle = styled.Text`
   color: ${INPUT_ERROR_COLOR};
   font-size: ${28 * HEIGHT_REL};
+  margin-top: ${4 * HEIGHT_REL};
   font-weight: 800;
 `;
 
 const ErrorDescription = styled.Text`
   color: ${GUESS_DEFAULT_TEXT_COLOR};
   font-size: ${14 * HEIGHT_REL};
-  margin-top: ${10 * HEIGHT_REL};
+  margin-top: ${5 * HEIGHT_REL};
   text-align: center;
 `;
 
@@ -253,6 +255,14 @@ const TryAgainText = styled.Text`
   text-decoration-line: underline;
   margin-top: ${10 * HEIGHT_REL};
   font-weight: bold;
+`;
+
+const Warning = styled.Image.attrs({
+  source: warning,
+})`
+  width: ${27 * WIDTH_REL};
+  height: ${24 * HEIGHT_REL};
+  resize-mode: contain;
 `;
 
 export default GameCard;
