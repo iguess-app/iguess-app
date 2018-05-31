@@ -6,7 +6,7 @@ import SelectedLine from '@components/SelectedLine';
 import { SceneWrapper, TextBaseBold } from '@components/Scene';
 import Loading from '@scenes/Loading';
 import { alignLeft } from '@assets/images';
-import { DEFAULT_BACKGROUND, WIDTH_REL, HEIGHT_REL, RATIO } from '@theme';
+import { DEFAULT_BACKGROUND, MENU_COLOR, WIDTH_REL, HEIGHT_REL } from '@theme';
 import { connect } from 'react-redux';
 import * as linesActions from '@redux/lines/actions';
 
@@ -112,7 +112,7 @@ const MenuIcon = styled.Image.attrs({
 const MenuText = styled(TextBaseBold)`
   font-size: ${12 * HEIGHT_REL};
   margin-left: ${8 * WIDTH_REL};
-  color: white;
+  color: ${MENU_COLOR};
 `;
 
 // const NavTouchable = styled.TouchableOpacity`
