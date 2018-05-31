@@ -14,6 +14,7 @@ import {
 import { TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import I18n from '../i18n';
+import { logo } from '@assets/images';
 import { TextBaseBold, TextBase } from '@components/Scene';
 
 const Home = () => {
@@ -21,7 +22,10 @@ const Home = () => {
 
   return (
     <SceneWrapper background={HOME_BACKGROUND}>
-      <HomeText>{I18n.t('homeGreeting')}</HomeText>
+      <LogoContainer>
+        <LogoIcon source={logo} />
+      </LogoContainer>
+
       <ButtonsView>
         <MainButton
           text={I18n.t('homeSignUp')}
@@ -31,20 +35,21 @@ const Home = () => {
           text={I18n.t('homeSignIn')}
           onPress={() => Actions.signin()}
         />
+        <TermsButton />
       </ButtonsView>
-      <TermsButton />
     </SceneWrapper>
   );
 };
 
-const HomeText = styled(TextBase)`
-  font-size: ${26 * RATIO};
-  text-align: center;
-  color: ${HOME_TEXT_COLOR};
-  padding-left: ${40 * WIDTH_REL};
-  padding-right: ${40 * WIDTH_REL};
-  margin-top: ${194 * HEIGHT_REL};
-  margin-bottom: ${216 * HEIGHT_REL};
+const LogoContainer = styled.View`
+  flex: 2;
+  justify-content: center;
+  align-items: center;
+`;
+
+const LogoIcon = styled.Image`
+  height: 87;
+  width: 223;
 `;
 
 const TermsButton = () => {
@@ -64,8 +69,9 @@ const TermsText = styled(TextBaseBold)`
 `;
 
 const ButtonsView = styled.View`
-  align-self: center;
-  margin-horizontal: ${32 * WIDTH_REL};
+  flex: 1;
+  justify-content: center;
+  align-items: center;
 `;
 
 export default Home;
