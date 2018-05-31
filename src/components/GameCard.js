@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Platform } from 'react-native';
 import styled from 'styled-components';
 import Team from '@components/Team';
 import {
@@ -224,12 +224,12 @@ const Card = styled.View`
   flex-direction: row;
   width: ${330 * WIDTH_REL};
   height: ${156 * HEIGHT_REL};
-  margin-bottom: ${40 * HEIGHT_REL};
+  margin-bottom: ${Platform.OS === 'ios' ? 40 * HEIGHT_REL : 28 * HEIGHT_REL};
   border-color: ${CARD_BORDER_COLOR};
   background-color: ${CARD_BACKGROUND_COLOR};
   padding-vertical: ${20 * HEIGHT_REL};
   border-radius: ${16 * RATIO};
-  border-width: ${0.5 * RATIO};
+  border-width: ${1 * RATIO};
   align-self: center;
   align-items: center;
   justify-content: center;
