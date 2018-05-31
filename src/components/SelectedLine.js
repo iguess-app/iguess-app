@@ -42,7 +42,6 @@ const Season = styled(TextBaseBold)`
 `;
 
 const LineName = styled(TextBaseBold)`
-  width: ${289 * WIDTH_REL};
   font-size: ${24 * HEIGHT_REL};
   text-align: left;
   color: ${SELECT_LINE_PRIMARY_TEXT};
