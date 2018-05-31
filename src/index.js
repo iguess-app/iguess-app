@@ -10,6 +10,7 @@ import {
   SignUp,
   SignIn,
   Loading,
+  HowItWorks,
 } from '@scenes';
 import { Provider } from 'react-redux';
 import createStore from '@store/create';
@@ -51,6 +52,11 @@ export default class Kernel extends Component {
               <Scene key="support" component={Support} hideNavBar={true} />
               <Scene key="terms" component={Terms} hideNavBar={true} />
               <Scene key="about" component={About} hideNavBar={true} />
+              <Scene
+                key="howitworks"
+                component={HowItWorks}
+                hideNavBar={true}
+              />
             </Stack>
           </Router>
         </Provider>
