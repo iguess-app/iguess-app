@@ -25,7 +25,7 @@ export default {
   signInButton: 'Acessar minha conta',
   signInError: 'Login e senha precisam ser preenchidos',
 
-  settingsTitle: 'CONFIGURAÇÕES',
+  settingsTitle: 'MENU',
   settingsSupport: 'Suporte',
   settingsTerms: 'Termos de uso',
   settingsAbout: 'Sobre nós',

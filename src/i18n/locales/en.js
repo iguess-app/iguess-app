@@ -25,7 +25,7 @@ export default {
   signInButton: 'Sign in',
   signInError: "Login and input can't be blank",
 
-  settingsTitle: 'SETTINGS',
+  settingsTitle: 'MENU',
   settingsSupport: 'Support',
   settingsTerms: 'Terms and Conditions',
   settingsAbout: 'About us',
