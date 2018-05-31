@@ -271,12 +271,13 @@ const VS = styled.Image.attrs({
 `;
 
 const ScheduledTime = styled(TextBase)`
-  font-size: ${9 * HEIGHT_REL};
+  font-size: ${12 * WIDTH_REL};
   color: ${SCHEDULED_TIME_COLOR};
+  text-align: center;
 `;
 
 const MidWrapper = styled.View`
-  width: ${45 * WIDTH_REL};
+  width: ${52 * WIDTH_REL};
   flex-direction: column;
   justify-content: center;
   align-items: center;
