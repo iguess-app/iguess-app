@@ -137,7 +137,7 @@ class GameCard extends Component {
       <Error
         onPress={() => {
           this.setState({ error: false });
-          this.allowPredict.update();
+          this.allowPredict.updateNow();
         }}
       >
         {this.errorMsg}

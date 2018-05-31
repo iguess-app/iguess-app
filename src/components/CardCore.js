@@ -55,6 +55,10 @@ export class AllowPredict extends Component {
     }, 1500);
   }
 
+  updateNow() {
+    this._updateStatus(predictStatus.LOADING);
+  }
+
   _updateStatus(status) {
     const { DEFAULT, LOADING, LOADED } = predictStatus;
 
