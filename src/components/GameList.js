@@ -261,9 +261,9 @@ const List = styled.FlatList`
   margin-top: ${8 * HEIGHT_REL};
 `;
 
-export const ScrollWrapper = styled.ScrollView`
+const ScrollWrapper = styled.ScrollView`
   background-color: ${SCENE_BACKGROUND_COLOR};
-  margin-top: ${24 * HEIGHT_REL};
+  margin-top: ${16 * HEIGHT_REL};
   padding-top: ${20 * HEIGHT_REL};
 `;
 
