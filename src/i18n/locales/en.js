@@ -27,6 +27,7 @@ export default {
 
   settingsTitle: 'MENU',
   settingsSupport: 'Support',
+  settingsHowWorks: 'How it works',
   settingsTerms: 'Terms and Conditions',
   settingsAbout: 'About us',
   settingsLogoutButton: 'Log out',

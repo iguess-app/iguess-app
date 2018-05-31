@@ -27,6 +27,7 @@ export default {
 
   settingsTitle: 'MENU',
   settingsSupport: 'Suporte',
+  settingsHowWorks: 'Como funciona a pontuação?',
   settingsTerms: 'Termos de uso',
   settingsAbout: 'Sobre nós',
   settingsLogoutButton: 'Sair da minha conta',
