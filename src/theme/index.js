@@ -41,6 +41,7 @@ export const ABOUT_SECTION_TITLE = '#553DD1';
 export const SEPARATOR_COLOR = '#CAD2D9';
 export const HIGHLITENED_CONTENT = '#553DD1';
 export const BOARD_BORDER_COLOR = '#D2D8DE';
+export const BOARD_TITLE_COLOR = '#FFF';
 
 // BACKGROUND
 
