@@ -40,15 +40,7 @@ const About = () => {
         <RateView>
           <MainButton
             text={I18n.t('aboutFeedback')}
-            onPress={() => {
-              throw new Error('Not implemented. TODO: Feedback');
-            }}
-          />
-          <DarkBorderButton
-            text={I18n.t('aboutRate')}
-            onPress={() => {
-              throw new Error('Not implemented. TODO: Rate app');
-            }}
+            onPress={() => Linking.openURL('mailto:support@iguessteam.com')}
           />
         </RateView>
         <FollowText>{I18n.t('aboutFollow')}</FollowText>
@@ -122,7 +114,7 @@ const FollowRow = styled.View`
   justify-content: space-between;
   margin-top: ${8 * HEIGHT_REL};
   margin-horizontal: ${80 * WIDTH_REL};
-  margin-bottom: ${10 * HEIGHT_REL};
+  margin-bottom: ${30 * HEIGHT_REL};
 `;
 
 const Icon = styled.Image`
