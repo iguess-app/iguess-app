@@ -78,7 +78,7 @@ class Settings extends Component {
         <TouchableRow
           icon={conversation}
           text={I18n.t('settingsHowWorks')}
-          onPress={() => console.log('Redirect to how it works')}
+          onPress={() => Actions.howitworks()}
         />
         <TouchableRow
           icon={blog}
