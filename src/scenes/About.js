@@ -10,9 +10,16 @@ import {
   instagramIcon,
 } from '@assets/images';
 import styled from 'styled-components';
-import { WIDTH_REL, HEIGHT_REL, RATIO, TEXT_SECONDARY_SCENE } from '@theme';
+import {
+  WIDTH_REL,
+  HEIGHT_REL,
+  RATIO,
+  ABOUT_SECTION_TITLE,
+  VERSION_COLOR,
+} from '@theme';
 import I18n from 'react-native-i18n';
 import { TextBaseBold } from '@components/Scene';
+import DeviceInfo from 'react-native-device-info';
 
 const About = () => {
   return (
@@ -21,7 +28,9 @@ const About = () => {
       <Scroll>
         <HeaderImage source={aboutImage} />
         <SceneDescription>{I18n.t('aboutDescription')}</SceneDescription>
-        <BoldContent>{I18n.t('aboutVersion')}: 1.0.1</BoldContent>
+        <BoldContent>
+          {I18n.t('aboutVersion')}: {DeviceInfo.getVersion()}
+        </BoldContent>
         <SectionTitle>{I18n.t('aboutSectionATitle')}</SectionTitle>
         <Content>{I18n.t('aboutSectionAContent')}</Content>
         <SectionTitle>{I18n.t('aboutSectionBTitle')}</SectionTitle>
@@ -76,7 +85,7 @@ const SectionTitle = styled(TextBaseBold)`
   font-size: ${28 * RATIO};
   margin-horizontal: ${32 * WIDTH_REL};
   margin-top: ${24 * HEIGHT_REL};
-  color: ${TEXT_SECONDARY_SCENE};
+  color: ${ABOUT_SECTION_TITLE};
 `;
 
 const RateView = styled.View`
@@ -88,11 +97,11 @@ const RateView = styled.View`
 const BoldContent = styled(Content)`
   font-family: 'KievitOffc-Bold';
   margin-top: ${16 * HEIGHT_REL};
-  margin-bottom: ${8 * HEIGHT_REL};
+  color: ${VERSION_COLOR};
 `;
 
 const Scroll = styled.ScrollView`
-  margin-bottom: ${24 * HEIGHT_REL};
+  margin-bottom: ${4 * HEIGHT_REL};
 `;
 
 const HeaderImage = styled.Image`
