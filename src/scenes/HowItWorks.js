@@ -17,49 +17,28 @@ import I18n from 'react-native-i18n';
 const HowItWorks = () => {
   return (
     <SceneWrapper>
-      <NavBar title="Como o app funciona" />
+      <NavBar title={I18n.t('howItWorksTitle')} />
       <Scroll>
         <HeaderImage source={howItWorksImage} />
-        <SceneDescription>Ficou em dúvida sobre a pontuação?</SceneDescription>
-        <Content>
-          Então vamos lá, agora vamos te explicar como chegamos na pontuação do
-          seu palpite.
-        </Content>
-        <Content>
-          Para pontuar é necessário acertar o vencedor da partida, a pontuação
-          de um jogo é a subtração entre a pontuação máxima e a diferença de
-          gols.
-        </Content>
-        <Content>
-          A pontuação para quem acertar o placar exato é de 10 pontos.
-        </Content>
+        <SceneDescription>{I18n.t('howItWorksDescription1')}</SceneDescription>
+        <Content>{I18n.t('howItWorksContent1')}</Content>
+        <Content>{I18n.t('howItWorksContent2')}</Content>
+        <Content>{I18n.t('howItWorksContent3')}</Content>
         <Board />
-        <SceneDescription>Ficou em dúvida sobre a pontuação?</SceneDescription>
-        <Content>
-          {
-            'Palpite: Inglaterra 1 x 2 Argentina\nResultado: Inglaterra 1 x 4 Argentina\nPontuação = 10 - | (1 + 2) - (1 + 4) | = 8'
-          }
-        </Content>
-        <Content>
-          A pontuação mínima para quem acertou o vencedor é de 2 pontos.
-        </Content>
+        <SceneDescription>{I18n.t('howItWorksDescription2')}</SceneDescription>
+        <Content>{I18n.t('howItWorksContent4')}</Content>
+        <Content>{I18n.t('howItWorksContent5')}</Content>
         <Separator />
-        <HighlightenedContent>Em caso de empate:</HighlightenedContent>
-        <CustomContent>
-          {
-            'Palpite: Brasil 0 x 0 Holanda\nResultado: Brasil 2 x 2 Holanda\nPontuação = 10 - | (0 + 0) - (2 + 2) | = 6'
-          }
-        </CustomContent>
-        <HighlightenedContent>Em caso de erro:</HighlightenedContent>
-        <CustomContent>
-          {
-            'Palpite: Uruguai 0 x 2 Portugal\nResultado: Uruguai 2 x 1 Portugal\nPontuação = 0'
-          }
-        </CustomContent>
+        <HighlightenedContent>
+          {I18n.t('howItWorksContent6')}
+        </HighlightenedContent>
+        <CustomContent>{I18n.t('howItWorksContent7')}</CustomContent>
+        <HighlightenedContent>
+          {I18n.t('howItWorksContent8')}
+        </HighlightenedContent>
+        <CustomContent>{I18n.t('howItWorksContent9')}</CustomContent>
         <Separator />
-        <Content>
-          1h antes do jogo a permissão de palpite para partida é bloqueada.
-        </Content>
+        <Content>{I18n.t('howItWorksContent10')}</Content>
         <BottomSpacing />
       </Scroll>
     </SceneWrapper>
@@ -86,13 +65,9 @@ const Separator = styled.View`
 const Board = () => (
   <BoardBorder>
     <BoardHeader>
-      <BoardTitle>PP = PM - | (SGP) - (SGR) |</BoardTitle>
+      <BoardTitle>{I18n.t('howItWorksBoardTitle')}</BoardTitle>
     </BoardHeader>
-    <BoardContent>
-      {
-        'PP - Pontuação da Partida\nPM - Pontuação Máxima\nSGP - Soma de gols do palpite\nSGR - Soma de gols do resultado'
-      }
-    </BoardContent>
+    <BoardContent>{I18n.t('howItWorksBoardContent')}</BoardContent>
   </BoardBorder>
 );
 
