@@ -11,7 +11,8 @@ import {
 import {
   CARD_BACKGROUND_COLOR,
   CARD_BORDER_COLOR,
-  SCORE_BOARD_COLOR,
+  GREEN_SCOREBOARD,
+  GRAY_SCOREBOARD,
   SCORE_FONT_COLOR,
   INPUT_ERROR_COLOR,
   GUESS_DEFAULT_TEXT_COLOR,
@@ -166,7 +167,7 @@ class GameCard extends Component {
 }
 
 const ScoreBoard = ({ score }) => (
-  <ScoreBoardWrapper>
+  <ScoreBoardWrapper score={score}>
     <Score>{score}</Score>
     <PointsText>
       {I18n.t(score === 1 ? 'point' : 'points').toUpperCase()}
@@ -185,7 +186,8 @@ const ScoreBoardWrapper = styled.View`
   width: ${92 * WIDTH_REL};
   height: ${26 * HEIGHT_REL};
   border-radius: ${26 * HEIGHT_REL};
-  background-color: ${SCORE_BOARD_COLOR};
+  background-color: ${props =>
+    props.score > 0 ? GREEN_SCOREBOARD : GRAY_SCOREBOARD};
   top: ${13 * HEIGHT_REL};
   z-index: 1;
 `;
