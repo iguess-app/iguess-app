@@ -8,6 +8,7 @@ import {
   SCENE_BACKGROUND_COLOR,
   WIDTH_REL,
   HEIGHT_REL,
+  RATIO,
 } from '@theme';
 
 export const SceneWrapper = props => {
@@ -50,15 +51,15 @@ export const TextBaseBold = styled.Text`
 `;
 
 export const Content = styled(TextBase)`
-  font-size: 16;
-  line-height: ${1.5 * 16};
+  font-size: ${16 * RATIO};
+  line-height: ${1.5 * 16 * RATIO};
   color: ${TEXT_SECONDARY_SCENE};
   margin-top: ${16 * HEIGHT_REL};
   padding-horizontal: ${32 * WIDTH_REL};
 `;
 
 export const SceneDescription = styled(TextBaseBold)`
-  font-size: 26;
+  font-size: ${26 * RATIO};
   line-height: ${1.29 * 26};
   text-align: left;
   color: ${SETTINGS_TEXT_COLOR};

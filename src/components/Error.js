@@ -60,6 +60,6 @@ const Icon = styled.Image.attrs({
 
 const ErrorText = styled(TextBase)`
   width: ${272 * WIDTH_REL};
-  font-size: 16;
+  font-size: ${16 * HEIGHT_REL};
   color: white;
 `;

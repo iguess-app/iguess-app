@@ -11,6 +11,7 @@ import {
   PROGRESS_BACKGROUND_COLOR,
   HEIGHT_REL,
   WIDTH_REL,
+  RATIO,
 } from '@theme';
 import { TextBase } from '@components/Scene';
 import { put } from '@helpers';
@@ -27,7 +28,12 @@ export class AllowPredict extends Component {
 
     const { homeGuess, awayGuess } = props;
 
-    this.state = { status: predictStatus.DEFAULT, homeGuess, awayGuess };
+    this.state = {
+      status: predictStatus.DEFAULT,
+      homeGuess,
+      awayGuess,
+      blocked: false,
+    };
   }
 
   update() {
@@ -64,15 +70,23 @@ export class AllowPredict extends Component {
     };
 
     if (status === LOADING) {
-      this.setState({ status: LOADING });
+      this.setState({ status: LOADING, blocked: true });
 
       put(
         'https://iguess-666666.appspot.com/guessline/setPredictions',
         predictionBody,
       )
-        .then(() => this._updateStatus(LOADED))
+        .then(response => {
+          if (response.statusCode > 400) {
+            this.props.error(response.message);
+            this._updateStatus(DEFAULT);
+          }
+
+          this._updateStatus(LOADED);
+        })
         .catch(() => {
-          throw new Error('Error setting prediction');
+          this.props.error();
+          this._updateStatus(DEFAULT);
         });
     } else if (status === LOADED) {
       this.setState({ status: LOADED });
@@ -80,7 +94,9 @@ export class AllowPredict extends Component {
       // Set status as DEFAULT after 1 second
       setTimeout(() => this._updateStatus(DEFAULT), 1000);
     } else {
-      this.setState({ status: DEFAULT });
+      this.setState({ status: DEFAULT }, () =>
+        this.setState({ blocked: false }),
+      );
     }
   }
 
@@ -117,12 +133,14 @@ export class AllowPredict extends Component {
           value={this.state.homeGuess}
           updateCore={() => this.update()}
           ref={ref => (this.home = ref)}
+          blocked={this.state.blocked}
         />
         {this._mid()}
         <Guess
           value={this.state.awayGuess}
           updateCore={() => this.update()}
           ref={ref => (this.away = ref)}
+          blocked={this.state.blocked}
         />
       </CardCore>
     );
@@ -186,8 +204,8 @@ export const Finished = props => {
 const Whistle = styled.Image.attrs({
   source: whistle,
 })`
-  width: 30;
-  height: 30;
+  width: ${30 * RATIO};
+  height: ${30 * RATIO};
   resize-mode: contain;
 `;
 
@@ -220,7 +238,7 @@ const Checked = styled.Image.attrs({
 })`
   width: ${34 * WIDTH_REL};
   height: ${24 * HEIGHT_REL};
-  margin-horizontal: 5;
+  margin-horizontal: ${5 * WIDTH_REL};
   resize-mode: contain;
 `;
 
@@ -228,14 +246,14 @@ const ProgressContainer = styled.View`
   position: absolute;
   top: 0;
   left: 0;
-  width: 26;
-  height: 26;
+  width: ${26 * WIDTH_REL};
+  height: ${26 * WIDTH_REL};
   align-items: center;
   justify-content: center;
 `;
 
 const Time = styled(TextBase)`
-  font-size: 12;
+  font-size: ${12 * HEIGHT_REL};
   color: #4d6980;
 `;
 
@@ -249,11 +267,11 @@ const VS = styled.Image.attrs({
   width: ${40 * WIDTH_REL};
   height: ${52 * HEIGHT_REL};
   resize-mode: contain;
-  margin-top: 8;
+  margin-top: ${8 * HEIGHT_REL};
 `;
 
 const ScheduledTime = styled(TextBase)`
-  font-size: 10;
+  font-size: ${9 * HEIGHT_REL};
   color: ${SCHEDULED_TIME_COLOR};
 `;
 

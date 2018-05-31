@@ -51,7 +51,7 @@ export default {
     'Oops! Nossos servidores estão se comportando mal. Tente novamente mais tarde.',
 
   loadingTitle: 'Dá uma segurada aí, boleiro…',
-  loadingSubtitle: 'Aguarde enquanto processamos algumas informações.',
+  loadingSubtitle: 'Estamos ajeitando a marca da cal',
 
   aboutTitle: 'Sobre nós',
   aboutDescription: 'O aplicativo de palpites que você respeita!',
@@ -68,4 +68,8 @@ export default {
   aboutFeedback: 'Enviar uma sugestão',
   aboutRate: 'AVALIAR APLICATIVO',
   aboutFollow: 'Siga-nos nas redes sociais',
+
+  errorPredictionTitle: 'Ooops!',
+  errorPredictionDescription: 'Não conseguimos enviar seu palpite.',
+  errorPredictionButton: 'Tentar novamente',
 };

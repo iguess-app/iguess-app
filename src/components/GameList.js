@@ -9,18 +9,26 @@ import {
   WIDTH_REL,
   HEIGHT_REL,
 } from '@theme';
-import { clockwise } from '@assets/images';
+import { clockwise, spinner } from '@assets/images';
 import { TextBaseBold } from '@components/Scene';
 import { get } from '@helpers';
+import { connect } from 'react-redux';
+import { fetchLine } from '@redux/lines/actions';
+import DeviceInfo from 'react-native-device-info';
 
 class GameList extends Component {
   constructor(props) {
     super(props);
-    this.state = { previous: [], next: [] };
+    this.state = {
+      previous: [],
+      next: [],
+      loadingNext: false,
+      loadingPrevious: false,
+    };
+    this.firstRun = true;
   }
 
-  componentDidMount() {
-    console.log('Request result', this.props.base);
+  componentWillMount() {
     this.loadNext();
   }
 
@@ -103,67 +111,164 @@ class GameList extends Component {
     return;
   }
 
-  loadNext() {
-    get(
-      `https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=America/Sao_Paulo&page=next&dateReference=${
-        this.props.base.matchDayIsoDate
-      }`,
-    ).then(response => {
-      const next = [response].concat(this.state.next);
-      this.setState({ next }, () => console.log(this.state.next));
-    });
+  loadPrevious(date) {
+    this.setState({ loadingPrevious: true });
+
+    if (this.props.base) {
+      const isodate = date ? date : this.props.base.matchDayIsoDate;
+
+      get(
+        `https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=${DeviceInfo.getTimezone()}&page=previous&dateReference=${isodate}`,
+      ).then(response => {
+        if (response.statusCode !== 404) {
+          const previous = [response].concat(this.state.previous);
+          this.setState({ previous }, () => {
+            console.log('Previous', this.state.previous);
+
+            setTimeout(() => this.setState({ loadingPrevious: false }), 2500);
+          });
+        } else {
+          console.log('No previous games');
+          this.setState({ loadingPrevious: false });
+        }
+      });
+    }
   }
 
+  loadNext(date) {
+    if (this.props.base) {
+      this.setState({ loadingNext: true });
+
+      const isodate = date ? date : this.props.base.matchDayIsoDate;
+
+      get(
+        `https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=${DeviceInfo.getTimezone()}&page=next&dateReference=${isodate}`,
+      ).then(response => {
+        if (response.statusCode !== 404) {
+          const next = this.state.next.concat(response);
+          this.setState({ next }, () => {
+            console.log('Next', this.state.next);
+
+            setTimeout(() => this.setState({ loadingNext: false }), 2500);
+          });
+        } else {
+          console.log('No games next');
+          this.setState({ loadingNext: false });
+        }
+      });
+    }
+  }
+
+  _handleScroll({ contentOffset, contentSize }) {
+    const { next, previous } = this.state;
+
+    this.posY = contentOffset.y;
+
+    const LOAD_NEXT_DISTANCE = 1200;
+    const distanceBottom = contentSize.height - contentOffset.y;
+
+    console.log(contentOffset.y);
+
+    if (!this.state.loadingNext && !this.state.loadingPrevious) {
+      if (distanceBottom < LOAD_NEXT_DISTANCE) {
+        if (this.state.next.length > 0) {
+          this.loadNext(next[next.length - 1].matchDayIsoDate);
+        } else {
+          this.loadNext();
+        }
+      } else if (contentOffset.y <= 0) {
+        if (this.state.previous.length > 0) {
+          this.loadPrevious(previous[0].matchDayIsoDate);
+        } else {
+          this.loadPrevious();
+        }
+      }
+    }
+  }
+
+  _renderMatchDay(matchDay) {
+    return (
+      <View key={`${matchDay.matchDayIsoDate}View`}>
+        <Header
+          key={`${matchDay.matchDayIsoDate}Header`}
+          title={matchDay.matchDayHumanified.mainInfoDate}
+          subtitle={matchDay.matchDayHumanified.subInfoDate}
+        />
+        <List
+          key={`${matchDay.matchDayIsoDate}List`}
+          data={matchDay.games}
+          keyExtractor={this._keyExtractor}
+          renderItem={({ item }) => this._renderCard(item)}
+        />
+      </View>
+    );
+  }
+
+  // _handleSize = (width, height) => {
+  //   const PREVIOUS_POINT = 300;
+  //   if (this.posY && this.posY < PREVIOUS_POINT) {
+  //     const position = this.posY + height - this.height;
+  //     this.scroll.scrollTo({ x: 0, y: position, animated: false });
+  //   }
+  //   this.height = height;
+  // };
+
   render() {
-    const { base } = this.props;
+    const { base, loading } = this.props;
+
+    if (loading || !this.state.previous || !this.state.next) {
+      return (
+        <ScrollWrapper>
+          <LoadingAll />
+        </ScrollWrapper>
+      );
+    }
+
+    const nextSpinner = this.state.loadingNext ? <Loading /> : null;
+    const previousSpinner = this.state.loadingPrevious ? <Loading /> : null;
 
     return (
-      <Wrapper>
+      <ScrollWrapper
+        innerRef={ref => (this.scroll = ref)}
+        onScroll={({ nativeEvent }) => this._handleScroll(nativeEvent)}
+        scrollEventThrottle={13}
+        // onContentSizeChange={this._handleSize}
+      >
+        {previousSpinner}
+        {this.state.previous.map(previousMatchDay =>
+          this._renderMatchDay(previousMatchDay),
+        )}
         <Header
           title={base.matchDayHumanified.mainInfoDate}
           subtitle={base.matchDayHumanified.subInfoDate}
+          onPressRefresh={() => this.props.dispatch(fetchLine())}
         />
         <List
           data={base.games}
           keyExtractor={this._keyExtractor}
           renderItem={({ item }) => this._renderCard(item)}
         />
-        {this.state.next.map(nextMatchDay => {
-          return (
-            <View key={`${nextMatchDay.matchRef}View`}>
-              <Header
-                key={`${nextMatchDay.matchRef}Header`}
-                title={nextMatchDay.matchDayHumanified.mainInfoDate}
-                subtitle={nextMatchDay.matchDayHumanified.subInfoDate}
-              />
-              <List
-                key={`${nextMatchDay.matchRef}List`}
-                data={nextMatchDay.games}
-                keyExtractor={this._keyExtractor}
-                renderItem={({ item }) => this._renderCard(item)}
-              />
-            </View>
-          );
-        })}
-      </Wrapper>
+        {this.state.next.map(nextMatchDay =>
+          this._renderMatchDay(nextMatchDay),
+        )}
+        {nextSpinner}
+      </ScrollWrapper>
     );
   }
 }
 
 const List = styled.FlatList`
-  margin-top: ${16 * HEIGHT_REL};
+  margin-top: ${8 * HEIGHT_REL};
 `;
 
-export const Wrapper = styled.ScrollView`
-  flex: 1;
+export const ScrollWrapper = styled.ScrollView`
   background-color: ${SCENE_BACKGROUND_COLOR};
-  min-height: ${420 * HEIGHT_REL};
-  margin-top: ${60 * HEIGHT_REL};
+  margin-top: ${24 * HEIGHT_REL};
   padding-top: ${20 * HEIGHT_REL};
 `;
 
 const Header = props => {
-  const { title, subtitle, refresh } = props;
+  const { title, subtitle, onPressRefresh } = props;
 
   return (
     <HeaderWrapper>
@@ -171,7 +276,7 @@ const Header = props => {
         <Title>{title.toUpperCase()}</Title>
         <SubTitle>{subtitle.toUpperCase()}</SubTitle>
       </View>
-      {refresh ? <Refresh /> : null}
+      {onPressRefresh ? <Refresh onPress={() => onPressRefresh()} /> : null}
     </HeaderWrapper>
   );
 };
@@ -180,24 +285,23 @@ const HeaderWrapper = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 0;
   margin-bottom: ${6 * HEIGHT_REL};
   margin-horizontal: ${32 * WIDTH_REL};
 `;
 
 const Title = styled(TextBaseBold)`
-  font-size: 28;
+  font-size: ${28 * HEIGHT_REL};
   color: ${CARD_LIST_TITLE_COLOR};
 `;
 
 const SubTitle = styled(TextBaseBold)`
-  font-size: 12;
+  font-size: ${12 * HEIGHT_REL};
   margin-top: ${7 * HEIGHT_REL};
   color: ${CARD_LIST_SUBTITLE_COLOR};
 `;
 
 const Refresh = ({ onPress }) => (
-  <TouchableOpacity onPress={() => onPress}>
+  <TouchableOpacity onPress={() => onPress()}>
     <Clockwise />
   </TouchableOpacity>
 );
@@ -210,9 +314,24 @@ const Clockwise = styled.Image.attrs({
   resize-mode: contain;
 `;
 
-const ErrorText = styled(TextBaseBold)`
-  margin-horizontal: ${32 * WIDTH_REL};
+const LoadingAll = styled.Image.attrs({
+  source: spinner,
+})`
+  width: ${44 * WIDTH_REL};
+  height: ${42 * HEIGHT_REL};
   align-self: center;
+  margin-top: ${120 * HEIGHT_REL}
+  resize-mode: contain;
 `;
 
-export default GameList;
+const Loading = styled.Image.attrs({
+  source: spinner,
+})`
+  width: ${44 * WIDTH_REL};
+  height: ${42 * HEIGHT_REL};
+  align-self: center;
+  margin-vertical: ${15 * HEIGHT_REL}
+  resize-mode: contain;
+`;
+
+export default connect()(GameList);

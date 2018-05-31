@@ -5,6 +5,7 @@ import {
   PRIMARY_BUTTON_TEXT_COLOR,
   HEIGHT_REL,
   WIDTH_REL,
+  RATIO,
 } from '@theme';
 import { TextBaseBold } from '@components/Scene';
 
@@ -35,7 +36,7 @@ export const InativeButton = ({ text }) => (
 const MainTouchable = styled.TouchableOpacity`
   width: ${311 * WIDTH_REL};
   height: ${56 * HEIGHT_REL};
-  border-radius: 38;
+  border-radius: ${38 * RATIO};
   background-color: ${PRIMARY_BUTTON_COLOR};
   align-items: center;
   justify-content: center;
@@ -44,12 +45,12 @@ const MainTouchable = styled.TouchableOpacity`
 const WhiteBorderTouchable = styled.TouchableOpacity`
   width: ${311 * WIDTH_REL};
   height: ${56 * HEIGHT_REL};
-  border-radius: 38;
+  border-radius: ${38 * RATIO};
   border-style: solid;
-  border-width: 2;
+  border-width: ${2 * RATIO};
   border-color: white;
   background-color: rgba(42, 43, 86, 0.65);
-  margin-top: 5%;
+  margin-top: ${18 * HEIGHT_REL};
   align-items: center;
   justify-content: center;
 `;
@@ -62,7 +63,7 @@ const DarkBorderTouchable = styled(WhiteBorderTouchable)`
 const Inative = styled.View`
   width: ${311 * WIDTH_REL};
   height: ${56 * HEIGHT_REL};
-  border-radius: 38;
+  border-radius: ${38 * RATIO};
   background-color: ${PRIMARY_BUTTON_COLOR};
   opacity: 0.32;
   align-items: center;
@@ -70,7 +71,7 @@ const Inative = styled.View`
 `;
 
 const WhiteText = styled(TextBaseBold)`
-  font-size: 15;
+  font-size: ${15 * HEIGHT_REL};
   text-align: center;
   color: ${PRIMARY_BUTTON_TEXT_COLOR};
 `;

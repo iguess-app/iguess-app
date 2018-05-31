@@ -40,7 +40,7 @@ export default {
     'Talk with someone of our team or contact in social media.',
   supportFacebook: 'Talk with us on facebook',
   supportTwitter: 'Talk with us on twitter',
-  supportInstagram: 'Talk with us on instragram',
+  supportInstagram: 'Talk with us on instagram',
 
   termsTitle: 'Terms and conditions',
 
@@ -49,22 +49,26 @@ export default {
 
   serverErrorDefault: 'Something wrong ocurred. Try again later.',
 
-  loadingTitle: 'Wait just a little bit...',
-  loadingSubtitle: 'we are processing some information',
+  loadingTitle: 'Calm down mate...',
+  loadingSubtitle: "we're just watering the lawn",
 
   aboutTitle: 'About us',
   aboutDescription: 'Your favorite guess app!',
   aboutVersion: 'Version',
   aboutSectionATitle: 'Our vibe',
   aboutSectionAContent:
-    'O cuidado em identificar pontos críticos na mobilidade dos capitais internacionais pode nos levar a considerar a reestruturação dos paradigmas corporativos.',
-  aboutSectionBTitle: 'Our breeze',
+    "Iguess just came! Focused on you, fan of sports. Our vibe is give you the 'thing' you need to hunch free in any sport, now mainly in the world cup matches, and compete with your mates from school, college and work, geting to know whos the best.",
+  aboutSectionBTitle: 'Our superbowl goals',
   aboutSectionBContent:
-    'Por conseguinte, a expansão dos mercados mundiais estende o alcance e a importância dos paradigmas corporativos.',
-  aboutSectionCTitle: 'Our roll',
+    "We want everyone who like sports using our app, hunchin' and chillin' with your mates. Try to imagine you and your friends guessing whos' gonna be the winner of the today's F1 race gambleing a beer pack and our app tells you who won, our superbowl goal is to reach that level. The path is harsh, starts with only one championship, the world cup, and we count on you to get there, because in the end thats the easiest way to get your bets in one platform.",
+  aboutSectionCTitle: 'Our major',
   aboutSectionCContent:
-    'Evidentemente, o fenômeno da Internet estimula a padronização do retorno esperado a longo prazo.',
+    "We came from a world of tecnology where we always seen people beting to each other for fun and we just want to organize that so your bro cant cheat on you, we're focused in you and your necessities, we want to hear your voice and create solutions to give you the best experience we can provide you in our app.",
   aboutFeedback: 'Send feedback',
   aboutRate: 'Rate app',
   aboutFollow: 'Follow us on social media',
+
+  errorPredictionTitle: 'Ooops!',
+  errorPredictionDescription: 'We had some problem sending your prediction.',
+  errorPredictionButton: 'Try again',
 };

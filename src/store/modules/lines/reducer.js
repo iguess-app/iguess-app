@@ -23,6 +23,12 @@ export default function reduce(state = initialState, action) {
         error: action.payload.error,
         activeLine: [],
       });
+    case types.RESET_LINE:
+      return state.merge({
+        activeLine: [],
+        loading: false,
+        error: null,
+      });
     default:
       return state;
   }

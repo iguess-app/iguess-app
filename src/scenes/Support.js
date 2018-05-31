@@ -10,7 +10,7 @@ import {
   twitterIcon,
   instagramIcon,
 } from '@assets/images';
-import { TEXT_SECONDARY_SCENE, HEIGHT_REL, WIDTH_REL } from '@theme';
+import { TEXT_SECONDARY_SCENE, HEIGHT_REL, WIDTH_REL, RATIO } from '@theme';
 import I18n from 'react-native-i18n';
 import { TextBase } from '@components/Scene';
 
@@ -74,7 +74,7 @@ const OptionIcon = styled.Image`
 `;
 
 const OptionText = styled(TextBase)`
-  font-size: 16;
+  font-size: ${16 * RATIO};
   width: ${250 * WIDTH_REL};
   color: ${TEXT_SECONDARY_SCENE};
 `;
@@ -82,8 +82,8 @@ const OptionText = styled(TextBase)`
 const Chevron = styled.Image.attrs({
   source: chevronRight,
 })`
-  height: 16;
-  width: 9;
+  height: ${16 * HEIGHT_REL};
+  width: ${9 * WIDTH_REL};
 `;
 
 export default Support;

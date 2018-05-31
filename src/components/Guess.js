@@ -19,7 +19,10 @@ class Guess extends Component {
   }
 
   componentWillReceiveProps(props) {
-    this.setState({ value: this._treatValue(props.value) });
+    this.setState({
+      value: this._treatValue(props.value),
+      blocked: props.blocked,
+    });
   }
 
   _treatValue(propValue) {
@@ -117,9 +120,9 @@ const Wrapper = styled.View`
 `;
 
 const ButtonImage = styled.Image`
-  width: ${24 * WIDTH_REL};
+  width: ${24 * HEIGHT_REL};
   height: ${24 * HEIGHT_REL};
-  margin-horizontal: ${10 * WIDTH_REL};
+  margin-horizontal: ${6 * WIDTH_REL};
   margin-vertical: ${16 * HEIGHT_REL};
 `;
 

@@ -13,6 +13,9 @@
 #import <React/RCTRootView.h>
 #import "Orientation.h"
 #import "SplashScreen.h"
+#if RCT_DEV
+#import <React/RCTDevLoadingView.h>
+#endif
 
 @implementation AppDelegate
 
@@ -22,16 +25,23 @@
 
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 
-  RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
-                                                      moduleName:@"iGuess"
-                                               initialProperties:nil
-                                                   launchOptions:launchOptions];
+  RCTBridge *bridge = [[RCTBridge alloc] initWithBundleURL:jsCodeLocation
+                        moduleProvider:nil launchOptions:launchOptions];
+
+  #if RCT_DEV
+  [bridge moduleForClass:[RCTDevLoadingView class]];
+  #endif
+
+  RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
+                                                   moduleName:@"iGuess"
+                                            initialProperties:nil];
   rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
+                                              
   [self.window makeKeyAndVisible];
   
   [SplashScreen show];

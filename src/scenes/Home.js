@@ -1,10 +1,16 @@
 import React from 'react';
 import { SceneWrapper } from '@components/Scene';
 import { MainButton, WhiteBorderButton } from '@components/Button';
-import { HOME_BACKGROUND } from '@theme';
 import styled from 'styled-components';
 import { setStatusBarStyle } from '@helpers';
-import { HOME_TEXT_COLOR, PRIMARY_BUTTON_TEXT_COLOR } from '@theme';
+import {
+  HOME_TEXT_COLOR,
+  PRIMARY_BUTTON_TEXT_COLOR,
+  HOME_BACKGROUND,
+  WIDTH_REL,
+  HEIGHT_REL,
+  RATIO,
+} from '@theme';
 import { TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import I18n from '../i18n';
@@ -32,13 +38,13 @@ const Home = () => {
 };
 
 const HomeText = styled(TextBase)`
-  font-size: 26;
+  font-size: ${26 * RATIO};
   text-align: center;
   color: ${HOME_TEXT_COLOR};
-  padding-left: 40;
-  padding-right: 40;
-  margin-top: 46%;
-  margin-bottom: 56%;
+  padding-left: ${40 * WIDTH_REL};
+  padding-right: ${40 * WIDTH_REL};
+  margin-top: ${194 * HEIGHT_REL};
+  margin-bottom: ${216 * HEIGHT_REL};
 `;
 
 const TermsButton = () => {
@@ -50,16 +56,16 @@ const TermsButton = () => {
 };
 
 const TermsText = styled(TextBaseBold)`
-  font-size: 14;
+  font-size: ${14 * RATIO};
   color: ${PRIMARY_BUTTON_TEXT_COLOR};
   text-decoration-line: underline;
   align-self: center;
-  margin-top: 8%;
+  margin-top: ${24 * HEIGHT_REL};
 `;
 
 const ButtonsView = styled.View`
   align-self: center;
-  margin-horizontal: 5%;
+  margin-horizontal: ${32 * WIDTH_REL};
 `;
 
 export default Home;
