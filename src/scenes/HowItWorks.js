@@ -7,6 +7,7 @@ import {
   WIDTH_REL,
   HEIGHT_REL,
   RATIO,
+  BOARD_BORDER_COLOR,
   SEPARATOR_COLOR,
   HIGHLITENED_CONTENT,
 } from '@theme';
@@ -31,6 +32,7 @@ const HowItWorks = () => {
         <Content>
           A pontuação para quem acertar o placar exato é de 10 pontos.
         </Content>
+        <Board />
         <SceneDescription>Ficou em dúvida sobre a pontuação?</SceneDescription>
         <Content>
           {
@@ -78,6 +80,29 @@ const Separator = styled.View`
   background-color: ${SEPARATOR_COLOR};
   margin-horizontal: ${32 * WIDTH_REL};
   margin-vertical: ${16 * HEIGHT_REL};
+`;
+
+const Board = () => (
+  <BoardBorder>
+    <BoardHeader />
+  </BoardBorder>
+);
+
+const BoardBorder = styled.View`
+  height: ${180 * HEIGHT_REL};
+  margin-horizontal: ${32 * WIDTH_REL};
+  margin-vertical: ${32 * HEIGHT_REL};
+  border-radius: ${16 * RATIO};
+  border-width: 1;
+  border-color: ${BOARD_BORDER_COLOR};
+`;
+
+const BoardHeader = styled.View`
+  width: 100%;
+  height: ${56 * HEIGHT_REL};
+  background-color: ${HIGHLITENED_CONTENT};
+  border-top-left-radius: ${16 * RATIO};
+  border-top-right-radius: ${16 * RATIO};
 `;
 
 const HighlightenedContent = styled(TextBaseBold)`
