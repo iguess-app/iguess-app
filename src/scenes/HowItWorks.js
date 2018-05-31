@@ -9,6 +9,7 @@ import {
   RATIO,
   BOARD_BORDER_COLOR,
   SEPARATOR_COLOR,
+  BOARD_TITLE_COLOR,
   HIGHLITENED_CONTENT,
 } from '@theme';
 import I18n from 'react-native-i18n';
@@ -84,7 +85,9 @@ const Separator = styled.View`
 
 const Board = () => (
   <BoardBorder>
-    <BoardHeader />
+    <BoardHeader>
+      <BoardTitle>PP = PM - | (SGP) - (SGR) |</BoardTitle>
+    </BoardHeader>
   </BoardBorder>
 );
 
@@ -103,6 +106,13 @@ const BoardHeader = styled.View`
   background-color: ${HIGHLITENED_CONTENT};
   border-top-left-radius: ${16 * RATIO};
   border-top-right-radius: ${16 * RATIO};
+  align-items: center;
+  justify-content: center;
+`;
+
+const BoardTitle = styled(TextBaseBold)`
+  font-size: ${24 * HEIGHT_REL};
+  color: ${BOARD_TITLE_COLOR};
 `;
 
 const HighlightenedContent = styled(TextBaseBold)`
