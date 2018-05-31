@@ -12,6 +12,7 @@
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
 #import "Orientation.h"
+#import "SplashScreen.h"
 #if RCT_DEV
 #import <React/RCTDevLoadingView.h>
 #endif
@@ -42,6 +43,8 @@
   self.window.rootViewController = rootViewController;
                                               
   [self.window makeKeyAndVisible];
+  
+  [SplashScreen show];
   return YES;
 }
 

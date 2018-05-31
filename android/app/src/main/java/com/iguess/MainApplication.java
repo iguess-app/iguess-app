@@ -3,6 +3,7 @@ package com.iguess;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.github.yamill.orientation.OrientationPackage;
@@ -27,10 +28,11 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNDeviceInfo(),
-            new RNI18nPackage(),
-            new OrientationPackage(),
-            new ReactMaterialKitPackage()
+          new SplashScreenReactPackage(),
+          new RNDeviceInfo(),
+          new RNI18nPackage(),
+          new OrientationPackage(),
+          new ReactMaterialKitPackage()
       );
     }
 
