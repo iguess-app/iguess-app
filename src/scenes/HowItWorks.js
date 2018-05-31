@@ -88,6 +88,11 @@ const Board = () => (
     <BoardHeader>
       <BoardTitle>PP = PM - | (SGP) - (SGR) |</BoardTitle>
     </BoardHeader>
+    <BoardContent>
+      {
+        'PP - Pontuação da Partida\nPM - Pontuação Máxima\nSGP - Soma de gols do palpite\nSGR - Soma de gols do resultado'
+      }
+    </BoardContent>
   </BoardBorder>
 );
 
@@ -113,6 +118,12 @@ const BoardHeader = styled.View`
 const BoardTitle = styled(TextBaseBold)`
   font-size: ${24 * HEIGHT_REL};
   color: ${BOARD_TITLE_COLOR};
+`;
+
+const BoardContent = styled(Content)`
+  font-size: ${14 * WIDTH_REL};
+  text-align: center;
+  justify-content: center;
 `;
 
 const HighlightenedContent = styled(TextBaseBold)`
