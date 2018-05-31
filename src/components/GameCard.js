@@ -228,8 +228,8 @@ const Card = styled.View`
   border-color: ${CARD_BORDER_COLOR};
   background-color: ${CARD_BACKGROUND_COLOR};
   padding-vertical: ${20 * HEIGHT_REL};
-  border-radius: ${4 * RATIO};
-  border-width: ${1 * RATIO};
+  border-radius: ${16 * RATIO};
+  border-width: ${0.5 * RATIO};
   align-self: center;
   align-items: center;
   justify-content: center;
