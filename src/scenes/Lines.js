@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 import GameList from '@components/GameList';
 import SelectedLine from '@components/SelectedLine';
-import { SceneWrapper } from '@components/Scene';
-import SettingsButton from '@components/SettingsButton';
+import { SceneWrapper, TextBaseBold } from '@components/Scene';
 import Loading from '@scenes/Loading';
-import { DEFAULT_BACKGROUND, WIDTH_REL, HEIGHT_REL } from '@theme';
+import { alignLeft } from '@assets/images';
+import { DEFAULT_BACKGROUND, WIDTH_REL, HEIGHT_REL, RATIO } from '@theme';
 import { connect } from 'react-redux';
 import * as linesActions from '@redux/lines/actions';
 
@@ -50,7 +51,7 @@ class Lines extends Component {
     return (
       <SceneWrapper background={DEFAULT_BACKGROUND}>
         <Navigation>
-          <SettingsButton onPress={swipe} />
+          <Menu onPress={swipe} />
         </Navigation>
         <SelectedLine
           season={season}
@@ -87,6 +88,31 @@ const Navigation = styled.View`
   flex-direction: row;
   margin-top: ${46 * HEIGHT_REL};
   margin-horizontal: ${32 * WIDTH_REL};
+`;
+
+const Menu = ({ onPress }) => (
+  <TouchableOpacity onPress={onPress}>
+    <MenuWrapper>
+      <MenuIcon />
+      <MenuText>MENU</MenuText>
+    </MenuWrapper>
+  </TouchableOpacity>
+);
+
+const MenuWrapper = styled.View`
+  flex-direction: row;
+`;
+const MenuIcon = styled.Image.attrs({
+  source: alignLeft,
+})`
+  width: ${24 * WIDTH_REL};
+  height: ${15 * HEIGHT_REL};
+`;
+
+const MenuText = styled(TextBaseBold)`
+  font-size: ${12 * HEIGHT_REL};
+  margin-left: ${8 * WIDTH_REL};
+  color: white;
 `;
 
 // const NavTouchable = styled.TouchableOpacity`
