@@ -27,7 +27,7 @@ export default {
 
   settingsTitle: 'MENU',
   settingsSupport: 'Support',
-  settingsHowWorks: 'How it works',
+  settingsHowWorks: 'How it works?',
   settingsTerms: 'Terms and Conditions',
   settingsAbout: 'About us',
   settingsLogoutButton: 'Log out',
@@ -73,28 +73,28 @@ export default {
   errorPredictionDescription: 'We had some problem sending your prediction.',
   errorPredictionButton: 'Try again',
 
-  howItWorksTitle: 'Como o app funciona',
-  howItWorksDescription1: 'Ficou em dúvida sobre a pontuação?',
+  howItWorksTitle: 'How the app works',
+  howItWorksDescription1: 'Any doubt about the pontuation?',
   howItWorksContent1:
-    'Então vamos lá, agora vamos te explicar como chegamos na pontuação do seu palpite.',
+    'So here we go, we will explain how we get at pontuation with your predict.',
   howItWorksContent2:
-    'Para pontuar é necessário acertar o vencedor da partida, a pontuação de um jogo é a subtração entre a pontuação máxima e a diferença de gols.',
+    'To score it is necessary hit the winner of the match, so a match\'s pontuation is the subtract between the top pontuation and the diff of goals.',
   howItWorksContent3:
-    'A pontuação para quem acertar o placar exato é de 10 pontos.',
-  howItWorksBoardTitle: 'PP = PM - | (SGP) - (SGR) |',
+    'Who hit exactly the scoreboard gains 10 points.',
+  howItWorksBoardTitle: 'MP = TP - | (PSG) - (RSG) |',
   howItWorksBoardContent:
-    'PP - Pontuação da Partida\nPM - Pontuação Máxima\nSGP - Soma de gols do palpite\nSGR - Soma de gols do resultado',
-  howItWorksDescription2: 'Exemplos:',
+    'MP - Match Pontuation\nTP - Top Pontuation\nPSG - Predict Sum of goals\nRSG - Result Sum of goals',
+  howItWorksDescription2: 'Examples:',
   howItWorksContent4:
-    'Palpite: Inglaterra 1 x 2 Argentina\nResultado: Inglaterra 1 x 4 Argentina\nPontuação = 10 - | (1 + 2) - (1 + 4) | = 8',
+    'Predict: England 1 x 2 Argentina\nResult: England 1 x 4 Argentina\nPontuation = 10 - | (1+2) - (1+4) | = 8',
   howItWorksContent5:
-    'A pontuação mínima para quem acertou o vencedor é de 2 pontos.',
-  howItWorksContent6: 'Em caso de empate:',
+    'The min pontuation for someone who hit the winner it is 2 points',
+  howItWorksContent6: 'In case of draw:',
   howItWorksContent7:
-    'Palpite: Brasil 0 x 0 Holanda\nResultado: Brasil 2 x 2 Holanda\nPontuação = 10 - | (0 + 0) - (2 + 2) | = 6',
-  howItWorksContent8: 'Em caso de erro:',
+    'Predict: Brazil 0 x 0 Netherlands\nResult: Brazil 2 x 2 Netherlands\nPontuation = 10 - | (0+0) - (2+2) | = 6',
+  howItWorksContent8: 'In case of error:',
   howItWorksContent9:
-    'Palpite: Uruguai 0 x 2 Portugal\nResultado: Uruguai 2 x 1 Portugal\nPontuação = 0',
+    'Predict: Uruguay 0 x 2 Portugal\nResult: Uruguay 2 x 1 Portugal\Pontuation = 0',
   howItWorksContent10:
-    '1h antes do jogo a permissão de palpite para partida é bloqueada.',
+    '1h before the match starts the predicts to the match are blocked.',
 };
