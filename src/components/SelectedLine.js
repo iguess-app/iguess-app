@@ -29,40 +29,41 @@ export default class SelectedLine extends Component {
 }
 
 const Wrapper = styled.View`
-  margin-top: ${24 * HEIGHT_REL};
-  padding-left: ${32 * WIDTH_REL};
-  padding-right: ${32 * WIDTH_REL};
+  margin-top: ${20 * HEIGHT_REL};
 `;
 
 const Season = styled(TextBaseBold)`
   height: ${17 * HEIGHT_REL};
-  font-size: ${14 * HEIGHT_REL};
+  font-size: ${16 * HEIGHT_REL};
   text-align: left;
   color: ${SELECT_LINE_PRIMARY_TEXT};
   opacity: ${props => props.opacity};
+  padding-horizontal: ${32 * WIDTH_REL};
 `;
 
 const LineName = styled(TextBaseBold)`
-  width: ${289 * WIDTH_REL};
   font-size: ${24 * HEIGHT_REL};
   text-align: left;
   color: ${SELECT_LINE_PRIMARY_TEXT};
-  margin-top: ${12 * HEIGHT_REL};
+  margin-top: ${4 * HEIGHT_REL};
   opacity: ${props => props.opacity};
+  padding-horizontal: ${32 * WIDTH_REL};
 `;
 
 const PointsView = styled.View`
   flex-direction: row;
   justify-content: center;
-  width: ${104 * WIDTH_REL};
+  width: ${132 * WIDTH_REL};
   height: ${40 * HEIGHT_REL};
-  border-radius: ${24 * HEIGHT_REL};
+  border-radius: ${26 * HEIGHT_REL};
   background-color: ${SELECT_LINE_PRIMARY_TEXT};
   margin-top: ${16 * HEIGHT_REL};
+  margin-left: ${-16 * WIDTH_REL};
+  padding-left: ${20 * WIDTH_REL};
 `;
 
 const Points = styled(TextBaseBold)`
-  font-size: ${20 * HEIGHT_REL};
+  font-size: ${22 * HEIGHT_REL};
   color: ${SELECT_LINE_POINTS_TEXT};
   margin-right: ${4 * WIDTH_REL};
   align-self: center;
@@ -72,5 +73,4 @@ const PointsText = styled(TextBaseBold)`
   font-size: ${14 * HEIGHT_REL};
   color: ${SELECT_LINE_POINTS_TEXT};
   align-self: center;
-  margin-top: ${4 * HEIGHT_REL};
 `;

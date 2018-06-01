@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Platform } from 'react-native';
 import styled from 'styled-components';
 import Team from '@components/Team';
 import {
@@ -11,7 +11,8 @@ import {
 import {
   CARD_BACKGROUND_COLOR,
   CARD_BORDER_COLOR,
-  SCORE_BOARD_COLOR,
+  GREEN_SCOREBOARD,
+  GRAY_SCOREBOARD,
   SCORE_FONT_COLOR,
   INPUT_ERROR_COLOR,
   GUESS_DEFAULT_TEXT_COLOR,
@@ -136,7 +137,7 @@ class GameCard extends Component {
       <Error
         onPress={() => {
           this.setState({ error: false });
-          this.allowPredict.update();
+          this.allowPredict.updateNow();
         }}
       >
         {this.errorMsg}
@@ -166,7 +167,7 @@ class GameCard extends Component {
 }
 
 const ScoreBoard = ({ score }) => (
-  <ScoreBoardWrapper>
+  <ScoreBoardWrapper score={score}>
     <Score>{score}</Score>
     <PointsText>
       {I18n.t(score === 1 ? 'point' : 'points').toUpperCase()}
@@ -185,7 +186,8 @@ const ScoreBoardWrapper = styled.View`
   width: ${92 * WIDTH_REL};
   height: ${26 * HEIGHT_REL};
   border-radius: ${26 * HEIGHT_REL};
-  background-color: ${SCORE_BOARD_COLOR};
+  background-color: ${props =>
+    props.score > 0 ? GREEN_SCOREBOARD : GRAY_SCOREBOARD};
   top: ${13 * HEIGHT_REL};
   z-index: 1;
 `;
@@ -222,11 +224,11 @@ const Card = styled.View`
   flex-direction: row;
   width: ${330 * WIDTH_REL};
   height: ${156 * HEIGHT_REL};
-  margin-bottom: ${40 * HEIGHT_REL};
+  margin-bottom: ${Platform.OS === 'ios' ? 40 * HEIGHT_REL : 28 * HEIGHT_REL};
   border-color: ${CARD_BORDER_COLOR};
   background-color: ${CARD_BACKGROUND_COLOR};
   padding-vertical: ${20 * HEIGHT_REL};
-  border-radius: ${4 * RATIO};
+  border-radius: ${16 * RATIO};
   border-width: ${1 * RATIO};
   align-self: center;
   align-items: center;

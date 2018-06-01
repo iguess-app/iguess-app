@@ -7,8 +7,9 @@ export const CARD_TEAM_NAME_COLOR = '#4D6980'; // gray
 export const CARD_BACKGROUND_COLOR = '#FFF'; // white
 export const CARD_BORDER_COLOR = 'rgba(149, 177, 205, 0.25)'; // light gray
 export const SCHEDULED_TIME_COLOR = CARD_TEAM_NAME_COLOR; // white
+export const MENU_COLOR = CARD_BACKGROUND_COLOR; // white
 export const SELECT_LINE_PRIMARY_TEXT = CARD_BACKGROUND_COLOR; // white
-export const SELECT_LINE_POINTS_TEXT = '#694CFE'; // purple-blue
+export const SELECT_LINE_POINTS_TEXT = '#553DD1'; // purple-blue
 export const GUESS_GUESSED_TEXT_COLOR = CARD_TEAM_NAME_COLOR; // gray
 export const GUESS_DEFAULT_TEXT_COLOR = '#043874'; // darker gray
 export const SETTINGS_TEXT_COLOR = '#553DD1'; // purple
@@ -29,11 +30,14 @@ export const LOADING_SUBTITLE_COLOR = GUESS_DEFAULT_TEXT_COLOR; // darker-gray
 export const CARD_LIST_TITLE_COLOR = '#5435D4'; // purple
 export const CARD_LIST_SUBTITLE_COLOR = '#4D6980'; // light gray
 export const CARD_SCORE_COLOR = SETTINGS_TEXT_COLOR; // purple
-export const SCORE_BOARD_COLOR = CARD_SCORE_COLOR; // purple
+export const GREEN_SCOREBOARD = '#19D88C';
+export const GRAY_SCOREBOARD = '#7E7E7E';
 export const SCORE_FONT_COLOR = '#FFF';
 export const PROGRESS_TINT_COLOR = '#694CFE'; // purple
 export const PROGRESS_BACKGROUND_COLOR = '#E1DBFF'; // gray-purple
 export const TRY_AGAIN_SET_PREDICTION = CARD_LIST_TITLE_COLOR;
+export const VERSION_COLOR = '#333333';
+export const ABOUT_SECTION_TITLE = '#553DD1';
 
 // BACKGROUND
 
