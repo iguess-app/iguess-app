@@ -1,4 +1,5 @@
 export Settings from '@scenes/Settings';
+export HowItWorks from '@scenes/HowItWorks';
 export Core from '@scenes/Core';
 export Support from '@scenes/Support';
 export Terms from '@scenes/Terms';

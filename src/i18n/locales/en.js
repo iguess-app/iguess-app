@@ -27,6 +27,7 @@ export default {
 
   settingsTitle: 'MENU',
   settingsSupport: 'Support',
+  settingsHowWorks: 'How it works?',
   settingsTerms: 'Terms and Conditions',
   settingsAbout: 'About us',
   settingsLogoutButton: 'Log out',
@@ -71,4 +72,28 @@ export default {
   errorPredictionTitle: 'Ooops!',
   errorPredictionDescription: 'We had some problem sending your prediction.',
   errorPredictionButton: 'Try again',
+
+  howItWorksTitle: 'How the app works',
+  howItWorksDescription1: 'Any doubt about the pontuation?',
+  howItWorksContent1:
+    'So here we go, we will explain how we get at pontuation with your predict.',
+  howItWorksContent2:
+    "To score it is necessary hit the winner of the match, so a match's pontuation is the subtract between the top pontuation and the diff of goals.",
+  howItWorksContent3: 'Who hit exactly the scoreboard gains 10 points.',
+  howItWorksBoardTitle: 'MP = TP - | (PSG) - (RSG) |',
+  howItWorksBoardContent:
+    'MP - Match Pontuation\nTP - Top Pontuation\nPSG - Predict Sum of goals\nRSG - Result Sum of goals',
+  howItWorksDescription2: 'Examples:',
+  howItWorksContent4:
+    'Predict: England 1 x 2 Argentina\nResult: England 1 x 4 Argentina\nPontuation = 10 - | (1+2) - (1+4) | = 8',
+  howItWorksContent5:
+    'The min pontuation for someone who hit the winner it is 2 points',
+  howItWorksContent6: 'In case of draw:',
+  howItWorksContent7:
+    'Predict: Brazil 0 x 0 Netherlands\nResult: Brazil 2 x 2 Netherlands\nPontuation = 10 - | (0+0) - (2+2) | = 6',
+  howItWorksContent8: 'In case of error:',
+  howItWorksContent9:
+    'Predict: Uruguay 0 x 2 Portugal\nResult: Uruguay 2 x 1 Portugal\nPontuation = 0',
+  howItWorksContent10:
+    '1h before the match starts the predicts to the match are blocked.',
 };

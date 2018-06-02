@@ -1,4 +1,4 @@
-package com.iguess;
+package com.br.iguess;
 
 import android.app.Application;
 

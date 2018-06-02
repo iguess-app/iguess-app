@@ -27,6 +27,7 @@ export default {
 
   settingsTitle: 'MENU',
   settingsSupport: 'Suporte',
+  settingsHowWorks: 'Como funciona a pontuação?',
   settingsTerms: 'Termos de uso',
   settingsAbout: 'Sobre nós',
   settingsLogoutButton: 'Sair da minha conta',
@@ -72,4 +73,29 @@ export default {
   errorPredictionTitle: 'Ooops!',
   errorPredictionDescription: 'Não conseguimos enviar seu palpite.',
   errorPredictionButton: 'Tentar novamente',
+
+  howItWorksTitle: 'Como o app funciona',
+  howItWorksDescription1: 'Ficou em dúvida sobre a pontuação?',
+  howItWorksContent1:
+    'Então vamos lá, agora vamos te explicar como chegamos na pontuação do seu palpite.',
+  howItWorksContent2:
+    'Para pontuar é necessário acertar o vencedor da partida, a pontuação de um jogo é a subtração entre a pontuação máxima e a diferença de gols.',
+  howItWorksContent3:
+    'A pontuação para quem acertar o placar exato é de 10 pontos.',
+  howItWorksBoardTitle: 'PP = PM - | (SGP) - (SGR) |',
+  howItWorksBoardContent:
+    'PP - Pontuação da Partida\nPM - Pontuação Máxima\nSGP - Soma de gols do palpite\nSGR - Soma de gols do resultado',
+  howItWorksDescription2: 'Exemplos:',
+  howItWorksContent4:
+    'Palpite: Inglaterra 1 x 2 Argentina\nResultado: Inglaterra 1 x 4 Argentina\nPontuação = 10 - | (1 + 2) - (1 + 4) | = 8',
+  howItWorksContent5:
+    'A pontuação mínima para quem acertou o vencedor é de 2 pontos.',
+  howItWorksContent6: 'Em caso de empate:',
+  howItWorksContent7:
+    'Palpite: Brasil 0 x 0 Holanda\nResultado: Brasil 2 x 2 Holanda\nPontuação = 10 - | (0 + 0) - (2 + 2) | = 6',
+  howItWorksContent8: 'Em caso de erro:',
+  howItWorksContent9:
+    'Palpite: Uruguai 0 x 2 Portugal\nResultado: Uruguai 2 x 1 Portugal\nPontuação = 0',
+  howItWorksContent10:
+    '1h antes do jogo a permissão de palpite para partida é bloqueada.',
 };

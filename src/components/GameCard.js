@@ -152,12 +152,12 @@ class GameCard extends Component {
         <Card style={cardShadow}>
           <HomeTeam
             name={homeTeam.shortName}
-            image={{ uri: homeTeam.logo.mini }}
+            image={{ uri: homeTeam.logo.small }}
           />
           {core}
           <AwayTeam
             name={awayTeam.shortName}
-            image={{ uri: awayTeam.logo.mini }}
+            image={{ uri: awayTeam.logo.small }}
           />
           {error}
         </Card>

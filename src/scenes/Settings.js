@@ -76,6 +76,11 @@ class Settings extends Component {
           onPress={() => Actions.support()}
         />
         <TouchableRow
+          icon={conversation}
+          text={I18n.t('settingsHowWorks')}
+          onPress={() => Actions.howitworks()}
+        />
+        <TouchableRow
           icon={blog}
           text={I18n.t('settingsTerms')}
           onPress={() => Actions.terms()}
@@ -169,7 +174,7 @@ const CustomText = styled(TextBaseBold)`
 const LogoutTouchable = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
-  margin-top: ${216 * HEIGHT_REL};
+  margin-top: ${157 * HEIGHT_REL};
 `;
 
 export default connect()(Settings);
