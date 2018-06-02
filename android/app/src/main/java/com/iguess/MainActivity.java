@@ -1,4 +1,4 @@
-package com.iguess;
+package com.br.iguess;
 
 import com.facebook.react.ReactActivity;
 import org.devio.rn.splashscreen.SplashScreen;
