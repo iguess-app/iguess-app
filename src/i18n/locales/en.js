@@ -93,7 +93,7 @@ export default {
     'Predict: Brazil 0 x 0 Netherlands\nResult: Brazil 2 x 2 Netherlands\nPontuation = 10 - | (0+0) - (2+2) | = 6',
   howItWorksContent8: 'In case of error:',
   howItWorksContent9:
-    'Predict: Uruguay 0 x 2 Portugal\nResult: Uruguay 2 x 1 PortugalPontuation = 0',
+    'Predict: Uruguay 0 x 2 Portugal\nResult: Uruguay 2 x 1 Portugal\nPontuation = 0',
   howItWorksContent10:
     '1h before the match starts the predicts to the match are blocked.',
 };

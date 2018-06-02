@@ -40,8 +40,8 @@ const Subtitle = styled(TextBase)`
 const AnimatedBall = styled.Image.attrs({
   source: ballGif,
 })`
-  width: ${180 * WIDTH_REL};
-  height: ${220 * HEIGHT_REL};
+  width: ${150 * WIDTH_REL};
+  height: ${183 * HEIGHT_REL};
   margin-top: ${20 * HEIGHT_REL};
   align-self: center;
 `;
