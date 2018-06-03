@@ -52,7 +52,7 @@ export default {
     'Oops! Nossos servidores estão se comportando mal. Tente novamente mais tarde.',
 
   loadingTitle: 'Dá uma segurada aí, boleiro…',
-  loadingSubtitle: 'Estamos ajeitando a marca da cal',
+  loadingSubtitle: 'To vestindo a dez e colocando a faixa',
 
   aboutTitle: 'Sobre nós',
   aboutDescription: 'O aplicativo de palpites que você respeita!',

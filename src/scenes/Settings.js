@@ -7,7 +7,14 @@ import { Actions } from 'react-native-router-flux';
 import { apiDelete } from '@helpers';
 import { connect } from 'react-redux';
 import { logout } from '@redux/authentication/actions';
-import { conversation, closeSettings, blog, store, exit } from '@assets/images';
+import {
+  conversation,
+  closeSettings,
+  blog,
+  store,
+  question,
+  exit,
+} from '@assets/images';
 import {
   SETTINGS_TEXT_COLOR,
   SETTINGS_BORDER_COLOR,
@@ -76,7 +83,7 @@ class Settings extends Component {
           onPress={() => Actions.support()}
         />
         <TouchableRow
-          icon={conversation}
+          icon={question}
           text={I18n.t('settingsHowWorks')}
           onPress={() => Actions.howitworks()}
         />

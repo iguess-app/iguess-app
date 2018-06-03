@@ -1,5 +1,4 @@
 export const aboutImage = require('./aboutImage.png');
-export const arsenal = require('./arsenal.png');
 export const blog = require('./blog.png');
 export const chevronDown = require('./chevronDown.png');
 export const chevronLeft = require('./chevronLeft.png');
@@ -8,7 +7,6 @@ export const closeSettings = require('./closeSettings.png');
 export const conversation = require('./conversation.png');
 export const exit = require('./exit.png');
 export const facebookIcon = require('./facebookIcon.png');
-export const liverpool = require('./liverpool.png');
 export const mail = require('./mail.png');
 export const minus = require('./minus.png');
 export const minusDisabled = require('./minusDisabled.png');
@@ -27,6 +25,7 @@ export const warning = require('./warning.png');
 export const logo = require('./logo.png');
 export const alignLeft = require('./alignLeft.png');
 export const howItWorksImage = require('./howItWorksImage.png');
+export const question = require('./question.png');
 
 // GIF
 export const ballGif = require('./ball.gif');
