@@ -181,7 +181,7 @@ const CustomText = styled(TextBaseBold)`
 const LogoutTouchable = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
-  margin-top: ${157 * HEIGHT_REL};
+  margin-top: ${137 * HEIGHT_REL};
 `;
 
 export default connect()(Settings);
