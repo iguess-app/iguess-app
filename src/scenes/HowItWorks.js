@@ -73,7 +73,7 @@ const Board = () => (
 
 const BoardBorder = styled.View`
   height: ${180 * HEIGHT_REL};
-  margin-horizontal: ${32 * WIDTH_REL};
+  margin-horizontal: ${24 * WIDTH_REL};
   margin-vertical: ${32 * HEIGHT_REL};
   border-radius: ${16 * RATIO};
   border-width: 1;
@@ -96,7 +96,7 @@ const BoardTitle = styled(TextBaseBold)`
 `;
 
 const BoardContent = styled(Content)`
-  font-size: ${14 * WIDTH_REL};
+  font-size: ${12 * WIDTH_REL};
   text-align: center;
   justify-content: center;
 `;
