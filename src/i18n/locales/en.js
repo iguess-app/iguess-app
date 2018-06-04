@@ -58,13 +58,13 @@ export default {
   aboutVersion: 'Version',
   aboutSectionATitle: 'Our vibe',
   aboutSectionAContent:
-    "Iguess just came! Focused on you, fan of sports. Our vibe is give you the 'thing' you need to hunch free in any sport, now mainly in the world cup matches. Compete with your mates from school, college and work, getting to know whos the best.",
+    "Iguess just came! Focused on you, fan of sports. Our vibe is to give the 'thing' you need to hunch free in any sport, now mainly in the world cup matches. Compete with your mates from school, college and work, getting to know whos the best.",
   aboutSectionBTitle: 'Our superbowl goals',
   aboutSectionBContent:
-    "We want everyone who like sports using our app, hunchin' and chillin' with your mates. Try to imagine you and your friends guessing whos' gonna be the winner of the today's F1 race gambleing a beer pack and our app tells you who won, our superbowl goal is to reach that level. The path is harsh, starts with only one championship, the world cup, and we count on you to get there, because in the end thats the easiest way to get your bets in one platform.",
+    "We want everyone who like sports using our app, hunchin' and chillin' with your mates. Try to imagine you and your friends guessing who is gonna be the winner of the today's F1 race betting a beer pack and our app tells you who won, our superbowl goal is to reach that level. The path is harsh, starts with only one championship, the world cup, and we count on you to get there, because in the end thats the easiest way to get your bets in one platform.",
   aboutSectionCTitle: 'Our major',
   aboutSectionCContent:
-    "We came from a world of tecnology where we always seen people beting to each other for fun and we just want to organize that so your bro cant cheat on you, we're focused in you and your necessities, we want to hear your voice and create solutions to give you the best experience we can provide you in our app.",
+    "We came from a world of tecnology where we always see people betting to each other for fun and we just want to organize that, so your bro can't cheat on you, we're focused in you and your necessities, we want to hear your voice and create solutions to give the best experience we can provide you in our app.",
   aboutFeedback: 'Send feedback',
   aboutRate: 'Rate app',
   aboutFollow: 'Follow us on social media',
@@ -80,9 +80,9 @@ export default {
   howItWorksContent2:
     "To score it is necessary hit the winner of the match, so a match's pontuation is the subtract between the top pontuation and the diff of goals.",
   howItWorksContent3: 'Who hit exactly the scoreboard gains 10 points.',
-  howItWorksBoardTitle: 'MP = TP - | (SHT) - (SAT) |',
+  howItWorksBoardTitle: 'MP = TP - | (HTS) - (ATS) |',
   howItWorksBoardContent:
-    'MP - Match Pontuation\nTP - Top Pontuation\nSHT - Home Team subtract of goals (Predict and Score)\nSAT - Away Team subtract of goals (Predict and Score)',
+    'MP - Match Pontuation\nTP - Top Pontuation\nHTS - Home Team Subtract Predict/Score\nATS - Home Team Subtract Predict/Score',
   howItWorksDescription2: 'Examples:',
   howItWorksContent4:
     'Predict: England 1 x 2 Argentina\nResult: England 1 x 4 Argentina\nPontuation = 10 - | (1 - 1) + (2 - 4) | = 8',

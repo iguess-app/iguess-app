@@ -84,7 +84,7 @@ export default {
     'A pontuação para quem acertar o placar exato é de 10 pontos.',
   howItWorksBoardTitle: 'PP = PM - | (STC) + (STV) |',
   howItWorksBoardContent:
-    'PP - Pontuação da Partida\nPM - Pontuação Máxima\nSGP - Subtração de gols do time da casa (Palpite e Placar)\nSGR - Subtração de gols do time visitante (Palpite e Placar)',
+    'PP - Pontuação da Partida\nPM - Pontuação Máxima\nSGP - Subtração palpite/placar do time da casa\nSGR - Subtração palpite/placar do time visitante',
   howItWorksDescription2: 'Exemplos:',
   howItWorksContent4:
     'Palpite: Inglaterra 1 x 2 Argentina\nResultado: Inglaterra 1 x 4 Argentina\nPontuação = 10 - | (1 - 1) + (2 - 4) | = 8',
