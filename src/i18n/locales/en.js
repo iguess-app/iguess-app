@@ -26,7 +26,7 @@ export default {
 
   settingsTitle: 'MENU',
   settingsSupport: 'Support',
-  settingsHowWorks: 'How it works?',
+  settingsHowWorks: 'How it does works?',
   settingsTerms: 'Terms and Conditions',
   settingsAbout: 'About us',
   settingsLogoutButton: 'Log out',
@@ -72,7 +72,7 @@ export default {
   errorPredictionDescription: 'We had some problem sending your prediction.',
   errorPredictionButton: 'Try again',
 
-  howItWorksTitle: 'How the app works',
+  howItWorksTitle: 'How the app does works',
   howItWorksDescription1: 'Any doubt about how to score?',
   howItWorksContent1:
     'So here we go, we will explain how we get the score with your predict.',
