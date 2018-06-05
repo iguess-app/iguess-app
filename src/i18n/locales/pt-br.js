@@ -17,7 +17,7 @@ export default {
   signUpInputErrorUsername: 'O seu username precisa ter 4 ou mais caracteres',
   signUpInputErrorEMail: 'Oops! Isso não parece ser um e-mail válido...',
   signUpInputErrorPassword:
-    'A senha tem que conter pelo menos 8 caracteres, 1 letra e 1 número',
+    'Deve conter ao menos 8 caracteres e não pode ter espaços',
 
   signInTitle: 'Acessar minha conta',
   signInLogin: 'Meu nome de usuário ou e-mail',

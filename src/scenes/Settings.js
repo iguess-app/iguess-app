@@ -87,11 +87,11 @@ class Settings extends Component {
           text={I18n.t('settingsHowWorks')}
           onPress={() => Actions.howitworks()}
         />
-        <TouchableRow
+        {/*         <TouchableRow
           icon={blog}
           text={I18n.t('settingsTerms')}
           onPress={() => Actions.terms()}
-        />
+        /> */}
         <TouchableRow
           icon={store}
           text={I18n.t('settingsAbout')}
@@ -144,7 +144,7 @@ const CloseImage = styled.Image.attrs({
   width: ${16 * WIDTH_REL};
   height: ${16 * HEIGHT_REL};
   margin-left: ${32 * WIDTH_REL};
-  margin-top: ${52 * HEIGHT_REL};
+  margin-top: ${26 * HEIGHT_REL};
 `;
 
 const Title = styled(TextBaseBold)`
@@ -181,7 +181,7 @@ const CustomText = styled(TextBaseBold)`
 const LogoutTouchable = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
-  margin-top: ${137 * HEIGHT_REL};
+  margin-top: ${235 * HEIGHT_REL};
 `;
 
 export default connect()(Settings);

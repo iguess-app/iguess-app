@@ -35,7 +35,7 @@ const Home = () => {
           text={I18n.t('homeSignIn')}
           onPress={() => Actions.signin()}
         />
-        <TermsButton />
+        {/* <TermsButton /> */}
       </ButtonsView>
     </SceneWrapper>
   );
@@ -52,7 +52,7 @@ const LogoIcon = styled.Image`
   width: 223;
 `;
 
-const TermsButton = () => {
+/* const TermsButton = () => {
   return (
     <TouchableOpacity onPress={() => Actions.terms()}>
       <TermsText>{I18n.t('homeTerms')}</TermsText>
@@ -66,7 +66,7 @@ const TermsText = styled(TextBaseBold)`
   text-decoration-line: underline;
   align-self: center;
   margin-top: ${24 * HEIGHT_REL};
-`;
+`; */
 
 const ButtonsView = styled.View`
   flex: 1;

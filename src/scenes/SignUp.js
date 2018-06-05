@@ -108,15 +108,16 @@ class SignUp extends Component {
   _verifyPassword() {
     let correct = false;
 
-    // A regex will be defined
-    const regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-    if (regex.test(this.state.password)) {
+    if (this.state.password.length === 0) {
+      this.passwordInput.error(I18n.t('signUpInputErrorEmpty'));
+    } else if (
+      this.state.password.length < 8 ||
+      this.state.password.includes(' ')
+    ) {
+      this.passwordInput.error(I18n.t('signUpInputErrorPassword'));
+    } else {
       this.passwordInput.success();
       correct = true;
-    } else if (this.state.password.length === 0) {
-      this.passwordInput.error(I18n.t('signUpInputErrorEmpty'));
-    } else {
-      this.passwordInput.error(I18n.t('signUpInputErrorPassword'));
     }
 
     return correct;
@@ -230,12 +231,12 @@ class SignUp extends Component {
               onPress={() => this._submit()}
             />
           </ButtonView>
-          <Terms>
+          {/*           <Terms>
             {I18n.t('signUpTermsText')}{' '}
             <TextLink onPress={() => Actions.terms()}>
               {I18n.t('signUpTermsLink')}
             </TextLink>.
-          </Terms>
+          </Terms> */}
         </WrapperKeyboardAware>
       </InputSceneWrapper>
     );
@@ -257,7 +258,7 @@ const WrapperKeyboardAware = styled(KeyboardAwareScrollView)`
   margin-bottom: ${30 * HEIGHT_REL};
 `;
 
-const Terms = styled(TextBase)`
+/* const Terms = styled(TextBase)`
   font-size: 14;
   color: ${SIGN_UP_TERMS_COLOR};
   align-self: center;
@@ -267,6 +268,6 @@ const Terms = styled(TextBase)`
 const TextLink = Terms.extend`
   font-family: 'KievitOffc-Bold';
   text-decoration-line: underline;
-`;
+`; */
 
 export default connect()(SignUp);

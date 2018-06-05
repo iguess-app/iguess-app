@@ -86,7 +86,7 @@ class Lines extends Component {
 
 const Navigation = styled.View`
   flex-direction: row;
-  margin-top: ${46 * HEIGHT_REL};
+  margin-top: ${23 * HEIGHT_REL};
   margin-horizontal: ${32 * WIDTH_REL};
 `;
 

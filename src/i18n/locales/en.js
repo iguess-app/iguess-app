@@ -16,8 +16,7 @@ export default {
   signUpInputErrorName: 'Name should have 3 or more characters',
   signUpInputErrorUsername: 'Username should have 4 or more characters',
   signUpInputErrorEMail: "Doesn't look like an e-mail...",
-  signUpInputErrorPassword:
-    'Password should contain at least 8 characters, 1 letter and 1 number',
+  signUpInputErrorPassword: 'Should contain at least 8 chars with no spaces',
 
   signInTitle: 'Sign in',
   signInLogin: 'My username or e-mail',
@@ -51,7 +50,7 @@ export default {
   serverErrorDefault: 'Something wrong ocurred. Try again later.',
 
   loadingTitle: 'Calm down mate...',
-  loadingSubtitle: "we're just watering the lawn",
+  loadingSubtitle: "I'm just putting my football boots",
 
   aboutTitle: 'About us',
   aboutDescription: 'Your favorite guess app!',
@@ -82,7 +81,7 @@ export default {
   howItWorksContent3: 'Who hit exactly the scoreboard gains 10 points.',
   howItWorksBoardTitle: 'MP = TP - | (HTS) - (ATS) |',
   howItWorksBoardContent:
-    'MP - Match Pontuation\nTP - Top Pontuation\nHTS - Home Team Subtract Predict/Score\nATS - Home Team Subtract Predict/Score',
+    'MP - Match Pontuation\nTP - Top Pontuation\nHTS - Home Team Subtract Predict/Score\nATS - Away Team Subtract Predict/Score',
   howItWorksDescription2: 'Examples:',
   howItWorksContent4:
     'Predict: England 1 x 2 Argentina\nResult: England 1 x 4 Argentina\nPontuation = 10 - | (1 - 1) + (2 - 4) | = 8',

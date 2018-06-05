@@ -123,12 +123,9 @@ class GameList extends Component {
         if (response.statusCode !== 404) {
           const previous = [response].concat(this.state.previous);
           this.setState({ previous }, () => {
-            console.log('Previous', this.state.previous);
-
             setTimeout(() => this.setState({ loadingPrevious: false }), 2500);
           });
         } else {
-          console.log('No previous games');
           this.setState({ loadingPrevious: false });
         }
       });
@@ -147,12 +144,9 @@ class GameList extends Component {
         if (response.statusCode !== 404) {
           const next = this.state.next.concat(response);
           this.setState({ next }, () => {
-            console.log('Next', this.state.next);
-
             setTimeout(() => this.setState({ loadingNext: false }), 2500);
           });
         } else {
-          console.log('No games next');
           this.setState({ loadingNext: false });
         }
       });
@@ -167,20 +161,18 @@ class GameList extends Component {
     const LOAD_NEXT_DISTANCE = 1200;
     const distanceBottom = contentSize.height - contentOffset.y;
 
-    console.log(contentOffset.y);
-
     if (!this.state.loadingNext && !this.state.loadingPrevious) {
       if (distanceBottom < LOAD_NEXT_DISTANCE) {
         if (this.state.next.length > 0) {
           this.loadNext(next[next.length - 1].matchDayIsoDate);
         } else {
-          this.loadNext();
+          /* this.loadNext(); */
         }
       } else if (contentOffset.y <= 0) {
         if (this.state.previous.length > 0) {
-          this.loadPrevious(previous[0].matchDayIsoDate);
+          /* this.loadPrevious(previous[0].matchDayIsoDate); */
         } else {
-          this.loadPrevious();
+          /* this.loadPrevious(); */
         }
       }
     }

@@ -35,6 +35,7 @@ class Core extends Component<void, void, void> {
         >
           <Settings swipe={() => this.swiper.scrollBy(1)} />
           <Lines swipe={() => this.swiper.scrollBy(-1)} />
+          {/* <Settings swipe={() => this.swiper.scrollBy(-2)} /> */}
         </Swiper>
       </BackgroundContainer>
     );
