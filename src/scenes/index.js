@@ -9,3 +9,6 @@ export SignUp from '@scenes/SignUp';
 export SignIn from '@scenes/SignIn';
 export Loading from '@scenes/Loading';
 export PreviousLines from '@scenes/PreviousLines';
+export Leagues from '@scenes/Leagues';
+export CreateLeague from '@scenes/CreateLeague';
+export AddFriends from '@scenes/AddFriends';

@@ -12,6 +12,9 @@ import {
   Loading,
   HowItWorks,
   PreviousLines,
+  Leagues,
+  CreateLeague,
+  AddFriends,
 } from '@scenes';
 import { Provider } from 'react-redux';
 import createStore from '@store/create';
@@ -53,6 +56,17 @@ export default class Kernel extends Component {
               <Scene key="support" component={Support} hideNavBar={true} />
               <Scene key="terms" component={Terms} hideNavBar={true} />
               <Scene key="about" component={About} hideNavBar={true} />
+              <Scene key="leagues" component={Leagues} hideNavBar={true} />
+              <Scene
+                key="createleague"
+                component={CreateLeague}
+                hideNavBar={true}
+              />
+              <Scene
+                key="addfriends"
+                component={AddFriends}
+                hideNavBar={true}
+              />
               <Scene
                 key="howitworks"
                 component={HowItWorks}

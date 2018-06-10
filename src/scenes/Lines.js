@@ -5,10 +5,11 @@ import GameList from '@components/GameList';
 import SelectedLine from '@components/SelectedLine';
 import { SceneWrapper, TextBaseBold } from '@components/Scene';
 import Loading from '@scenes/Loading';
-import { alignLeft } from '@assets/images';
+import { alignLeft, league } from '@assets/images';
 import { DEFAULT_BACKGROUND, MENU_COLOR, WIDTH_REL, HEIGHT_REL } from '@theme';
 import { connect } from 'react-redux';
 import * as linesActions from '@redux/lines/actions';
+import { Actions } from 'react-native-router-flux';
 
 class Lines extends Component {
   constructor(props) {
@@ -35,7 +36,13 @@ class Lines extends Component {
   }
 
   render() {
-    const { activeLine, swipe, championship, pontuation } = this.props;
+    const {
+      activeLine,
+      swipe,
+      swipeLeagues,
+      championship,
+      pontuation,
+    } = this.props;
 
     if (
       championship === undefined ||
@@ -51,7 +58,10 @@ class Lines extends Component {
     return (
       <SceneWrapper background={DEFAULT_BACKGROUND}>
         <Navigation>
-          <Menu onPress={swipe} />
+          <NavBarContainer>
+            <Menu onPress={swipe} />
+            <Leagues onPress={swipeLeagues} />
+          </NavBarContainer>
         </Navigation>
         <SelectedLine
           season={season}
@@ -99,6 +109,21 @@ const Menu = ({ onPress }) => (
   </TouchableOpacity>
 );
 
+const Leagues = ({ onPress }) => (
+  <TouchableOpacity onPress={onPress}>
+    <MenuWrapper>
+      <LeagueIcon />
+      <MenuText>LIGAS</MenuText>
+    </MenuWrapper>
+  </TouchableOpacity>
+);
+
+const NavBarContainer = styled.View`
+  width: 100%;
+  flex-direction: row
+  justify-content: space-between;
+`;
+
 const MenuWrapper = styled.View`
   flex-direction: row;
 `;
@@ -107,6 +132,13 @@ const MenuIcon = styled.Image.attrs({
 })`
   width: ${24 * WIDTH_REL};
   height: ${15 * HEIGHT_REL};
+`;
+
+const LeagueIcon = styled.Image.attrs({
+  source: league,
+})`
+  width: ${26 * WIDTH_REL};
+  height: ${24 * HEIGHT_REL};
 `;
 
 const MenuText = styled(TextBaseBold)`

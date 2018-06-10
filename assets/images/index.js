@@ -24,6 +24,10 @@ export const whistle = require('./whistle.png');
 export const warning = require('./warning.png');
 export const logo = require('./logo.png');
 export const alignLeft = require('./alignLeft.png');
+export const chevronLeftPurple = require('./chevron-left.png');
+export const leagueBig = require('./league-big.png');
+export const plusIcon = require('./plus-icon.png');
+export const league = require('./league.png');
 export const howItWorksImage = require('./howItWorksImage.png');
 export const question = require('./question.png');
 
