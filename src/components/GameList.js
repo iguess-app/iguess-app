@@ -43,7 +43,7 @@ class GameList extends Component {
     if (
       this.props.base.hasPastMatchDays &&
       this.props.prev &&
-      (!this.posY || this.posY === 0 || (this.posY >= 60 && this.posY <= 61))
+      (!this.posY || this.posY < 120)
     ) {
       setTimeout(() => this.scroll.scrollTo({ x: 0, y: 60 }), 100);
     }
@@ -140,7 +140,7 @@ class GameList extends Component {
         if (response.statusCode !== 404) {
           const previous = this.state.previous.concat(response);
           this.setState({ previous }, () => {
-            setTimeout(() => this.setState({ loadingNext: false }), 2500);
+            setTimeout(() => this.setState({ loadingNext: false }), 1000);
           });
         } else {
           this.setState({ loadingNext: false });
@@ -161,7 +161,7 @@ class GameList extends Component {
         if (response.statusCode !== 404) {
           const next = this.state.next.concat(response);
           this.setState({ next }, () => {
-            setTimeout(() => this.setState({ loadingNext: false }), 2500);
+            setTimeout(() => this.setState({ loadingNext: false }), 1000);
           });
         } else {
           this.setState({ loadingNext: false });
