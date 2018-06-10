@@ -230,6 +230,7 @@ class GameList extends Component {
     return (
       <ScrollWrapper
         innerRef={ref => (this.scroll = ref)}
+        contentOffset={{ x: 0, y: 60 }}
         onScroll={({ nativeEvent }) => this._handleScroll(nativeEvent)}
         scrollEventThrottle={13}
         // onContentSizeChange={this._handleSize}
