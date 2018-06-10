@@ -40,8 +40,8 @@ class GameList extends Component {
   }
 
   componentWillUpdate() {
-    console.log(this.posY);
     if (
+      this.props.base.hasPastMatchDays &&
       this.props.prev &&
       (!this.posY || this.posY === 0 || (this.posY >= 60 && this.posY <= 61))
     ) {
