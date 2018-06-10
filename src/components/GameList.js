@@ -40,9 +40,13 @@ class GameList extends Component {
   }
 
   componentWillUpdate() {
-    console.log('Update');
-
-    setTimeout(() => this.scroll.scrollTo({ x: 0, y: 60 }), 100);
+    console.log(this.posY);
+    if (
+      this.props.prev &&
+      (!this.posY || this.posY === 0 || (this.posY >= 60 && this.posY <= 61))
+    ) {
+      setTimeout(() => this.scroll.scrollTo({ x: 0, y: 60 }), 100);
+    }
   }
 
   _keyExtractor = item => item.matchRef;
@@ -157,7 +161,6 @@ class GameList extends Component {
         if (response.statusCode !== 404) {
           const next = this.state.next.concat(response);
           this.setState({ next }, () => {
-            this.scroll.scrollTo({ x: 0, y: 60 });
             setTimeout(() => this.setState({ loadingNext: false }), 2500);
           });
         } else {
