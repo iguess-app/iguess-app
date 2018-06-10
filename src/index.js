@@ -11,6 +11,7 @@ import {
   SignIn,
   Loading,
   HowItWorks,
+  PreviousLines,
 } from '@scenes';
 import { Provider } from 'react-redux';
 import createStore from '@store/create';
@@ -57,6 +58,7 @@ export default class Kernel extends Component {
                 component={HowItWorks}
                 hideNavBar={true}
               />
+              <Scene key="previouslines" component={PreviousLines} hideNavBar />
             </Stack>
           </Router>
         </Provider>

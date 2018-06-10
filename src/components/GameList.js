@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import GameCard, { gameStatus } from './GameCard';
 import styled from 'styled-components';
+import { PastButton, ButtonPastContainer } from '@components/Button';
+import { Actions } from 'react-native-router-flux';
 import {
   SCENE_BACKGROUND_COLOR,
   CARD_LIST_TITLE_COLOR,
@@ -9,7 +11,7 @@ import {
   WIDTH_REL,
   HEIGHT_REL,
 } from '@theme';
-import { clockwise, spinner } from '@assets/images';
+import { clockwise, spinner, closeSettings } from '@assets/images';
 import { TextBaseBold } from '@components/Scene';
 import { get } from '@helpers';
 import { connect } from 'react-redux';
@@ -28,8 +30,12 @@ class GameList extends Component {
     this.firstRun = true;
   }
 
-  componentWillMount() {
-    this.loadNext();
+  componentDidMount() {
+    if (this.props.prev) {
+      this.loadNext();
+    } else {
+      this.loadPrevious();
+    }
   }
 
   _keyExtractor = item => item.matchRef;
@@ -112,7 +118,7 @@ class GameList extends Component {
   }
 
   loadPrevious(date) {
-    this.setState({ loadingPrevious: true });
+    this.setState({ loadingNext: true });
 
     if (this.props.base) {
       const isodate = date ? date : this.props.base.matchDayIsoDate;
@@ -121,12 +127,12 @@ class GameList extends Component {
         `https://iguess-666666.appspot.com/guessline/getGuessLine?userTimezone=${DeviceInfo.getTimezone()}&page=previous&dateReference=${isodate}`,
       ).then(response => {
         if (response.statusCode !== 404) {
-          const previous = [response].concat(this.state.previous);
+          const previous = this.state.previous.concat(response);
           this.setState({ previous }, () => {
-            setTimeout(() => this.setState({ loadingPrevious: false }), 2500);
+            setTimeout(() => this.setState({ loadingNext: false }), 2500);
           });
         } else {
-          this.setState({ loadingPrevious: false });
+          this.setState({ loadingNext: false });
         }
       });
     }
@@ -163,16 +169,19 @@ class GameList extends Component {
 
     if (!this.state.loadingNext && !this.state.loadingPrevious) {
       if (distanceBottom < LOAD_NEXT_DISTANCE) {
-        if (this.state.next.length > 0) {
-          this.loadNext(next[next.length - 1].matchDayIsoDate);
+        if (this.props.prev) {
+          if (this.state.next.length > 0) {
+            this.loadNext(next[next.length - 1].matchDayIsoDate);
+          } else {
+            this.loadNext();
+          }
         } else {
-          /* this.loadNext(); */
-        }
-      } else if (contentOffset.y <= 0) {
-        if (this.state.previous.length > 0) {
-          /* this.loadPrevious(previous[0].matchDayIsoDate); */
-        } else {
-          /* this.loadPrevious(); */
+          if (this.state.previous.length > 0) {
+            console.log('previa');
+            this.loadPrevious(previous[previous.length - 1].matchDayIsoDate);
+          } else {
+            this.loadPrevious();
+          }
         }
       }
     }
@@ -217,7 +226,6 @@ class GameList extends Component {
     }
 
     const nextSpinner = this.state.loadingNext ? <Loading /> : null;
-    const previousSpinner = this.state.loadingPrevious ? <Loading /> : null;
 
     return (
       <ScrollWrapper
@@ -226,23 +234,39 @@ class GameList extends Component {
         scrollEventThrottle={13}
         // onContentSizeChange={this._handleSize}
       >
-        {previousSpinner}
-        {this.state.previous.map(previousMatchDay =>
-          this._renderMatchDay(previousMatchDay),
+        {!this.props.prev && <Close />}
+        {this.props.prev &&
+          base.hasPastMatchDays && (
+            <ButtonPastContainer>
+              <PastButton
+                text="Ver Jogos Anteriores"
+                onPress={() => Actions.push('previouslines')}
+              />
+            </ButtonPastContainer>
+          )}
+        {this.props.prev && (
+          <Header
+            title={base.matchDayHumanified.mainInfoDate}
+            subtitle={base.matchDayHumanified.subInfoDate}
+            onPressRefresh={() => this.props.dispatch(fetchLine())}
+          />
         )}
-        <Header
-          title={base.matchDayHumanified.mainInfoDate}
-          subtitle={base.matchDayHumanified.subInfoDate}
-          onPressRefresh={() => this.props.dispatch(fetchLine())}
-        />
-        <List
-          data={base.games}
-          keyExtractor={this._keyExtractor}
-          renderItem={({ item }) => this._renderCard(item)}
-        />
-        {this.state.next.map(nextMatchDay =>
-          this._renderMatchDay(nextMatchDay),
+        {this.props.prev && (
+          <List
+            data={base.games}
+            keyExtractor={this._keyExtractor}
+            renderItem={({ item }) => this._renderCard(item)}
+          />
         )}
+        {!this.props.prev &&
+          this.state.previous.map(previousMatchDay =>
+            this._renderMatchDay(previousMatchDay),
+          )}
+        {this.props.prev &&
+          this.state.next.map(nextMatchDay =>
+            this._renderMatchDay(nextMatchDay),
+          )}
+
         {nextSpinner}
       </ScrollWrapper>
     );
@@ -304,6 +328,23 @@ const Clockwise = styled.Image.attrs({
   width: ${24 * WIDTH_REL};
   height: ${20.6 * HEIGHT_REL};
   resize-mode: contain;
+`;
+
+const Close = () => {
+  return (
+    <TouchableOpacity onPress={() => Actions.pop()}>
+      <CloseImage />
+    </TouchableOpacity>
+  );
+};
+
+const CloseImage = styled.Image.attrs({
+  source: closeSettings,
+})`
+  width: ${16 * WIDTH_REL};
+  height: ${16 * HEIGHT_REL};
+  margin-left: ${32 * WIDTH_REL};
+  margin-bottom: ${52 * HEIGHT_REL};
 `;
 
 const LoadingAll = styled.Image.attrs({

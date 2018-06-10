@@ -8,3 +8,4 @@ export Home from '@scenes/Home';
 export SignUp from '@scenes/SignUp';
 export SignIn from '@scenes/SignIn';
 export Loading from '@scenes/Loading';
+export PreviousLines from '@scenes/PreviousLines';
