@@ -31,7 +31,7 @@ class Lines extends Component {
 
     const wait = loading || !activeLine ? true : false;
 
-    return <GameList base={activeLine} loading={wait} />;
+    return <GameList prev base={activeLine} loading={wait} />;
   }
 
   render() {

@@ -79,3 +79,32 @@ const WhiteText = styled(TextBaseBold)`
 const DarkText = styled(WhiteText)`
   color: #333333;
 `;
+
+export const ButtonPastContainer = styled.View`
+  align-items: center;
+  justify-content: center;
+`;
+
+export const PastButton = ({ text, onPress }) => (
+  <GrayBorderTouchable onPress={() => onPress()}>
+    <GrayText>{text.toUpperCase()}</GrayText>
+  </GrayBorderTouchable>
+);
+
+const GrayBorderTouchable = styled.TouchableOpacity`
+  width: ${167 * WIDTH_REL};
+  height: ${40 * HEIGHT_REL};
+  border-radius: ${28 * RATIO};
+  border: solid 0.5px rgba(149, 177, 205, 0.48);
+  background-color: #fff;
+  margin-top: ${12 * HEIGHT_REL};
+  margin-bottom: ${12 * HEIGHT_REL};
+  align-items: center;
+  justify-content: center;
+`;
+
+const GrayText = styled(TextBaseBold)`
+  font-size: ${10 * HEIGHT_REL};
+  text-align: center;
+  color: #7e7e7e;
+`;
