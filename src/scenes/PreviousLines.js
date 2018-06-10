@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import GameList from '@components/GameList';
-import { SceneWrapper } from '@components/Scene';
+import { SceneWrapper, NavBar } from '@components/Scene';
 import Loading from '@scenes/Loading';
 import { connect } from 'react-redux';
+import I18n from 'react-native-i18n';
 import * as linesActions from '@redux/lines/actions';
 
 class PreviousLines extends Component {
@@ -34,7 +35,12 @@ class PreviousLines extends Component {
       return <Loading />;
     }
 
-    return <SceneWrapper>{this._renderGames()}</SceneWrapper>;
+    return (
+      <SceneWrapper>
+        <NavBar title={I18n.t('pastMatchs')} />
+        {this._renderGames()}
+      </SceneWrapper>
+    );
   }
 }
 

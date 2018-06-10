@@ -98,4 +98,6 @@ export default {
     'Palpite: Uruguai 0 x 2 Portugal\nResultado: Uruguai 2 x 1 Portugal\nPontuação = 0',
   howItWorksContent10:
     '1h antes do jogo a permissão de palpite para partida é bloqueada.',
+  showPastMatchs: 'Ver Jogos Anteriores',
+  pastMatchs: 'Jogos Anteriores',
 };

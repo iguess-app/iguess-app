@@ -11,12 +11,13 @@ import {
   WIDTH_REL,
   HEIGHT_REL,
 } from '@theme';
-import { clockwise, spinner, closeSettings } from '@assets/images';
+import { clockwise, spinner } from '@assets/images';
 import { TextBaseBold } from '@components/Scene';
 import { get } from '@helpers';
 import { connect } from 'react-redux';
 import { fetchLine } from '@redux/lines/actions';
 import DeviceInfo from 'react-native-device-info';
+import I18n from 'react-native-i18n';
 
 class GameList extends Component {
   constructor(props) {
@@ -177,7 +178,6 @@ class GameList extends Component {
           }
         } else {
           if (this.state.previous.length > 0) {
-            console.log('previa');
             this.loadPrevious(previous[previous.length - 1].matchDayIsoDate);
           } else {
             this.loadPrevious();
@@ -234,12 +234,11 @@ class GameList extends Component {
         scrollEventThrottle={13}
         // onContentSizeChange={this._handleSize}
       >
-        {!this.props.prev && <Close />}
         {this.props.prev &&
           base.hasPastMatchDays && (
             <ButtonPastContainer>
               <PastButton
-                text="Ver Jogos Anteriores"
+                text={I18n.t('showPastMatchs')}
                 onPress={() => Actions.push('previouslines')}
               />
             </ButtonPastContainer>
@@ -328,23 +327,6 @@ const Clockwise = styled.Image.attrs({
   width: ${24 * WIDTH_REL};
   height: ${20.6 * HEIGHT_REL};
   resize-mode: contain;
-`;
-
-const Close = () => {
-  return (
-    <TouchableOpacity onPress={() => Actions.pop()}>
-      <CloseImage />
-    </TouchableOpacity>
-  );
-};
-
-const CloseImage = styled.Image.attrs({
-  source: closeSettings,
-})`
-  width: ${16 * WIDTH_REL};
-  height: ${16 * HEIGHT_REL};
-  margin-left: ${32 * WIDTH_REL};
-  margin-bottom: ${52 * HEIGHT_REL};
 `;
 
 const LoadingAll = styled.Image.attrs({
