@@ -95,4 +95,6 @@ export default {
     'Predict: Uruguay 0 x 2 Portugal\nResult: Uruguay 2 x 1 Portugal\nMatch Score Point = 0',
   howItWorksContent10:
     '1h before the match starts the predicts to the match are blocked.',
+  showPastMatchs: 'Show past matches',
+  pastMatchs: 'Past matches',
 };
