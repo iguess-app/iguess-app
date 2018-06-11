@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { TouchableOpacity, Text, Image } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
-import { chevronLeftPurple, plus } from '@assets/images';
+import { chevronLeftPurple, minus, plus } from '@assets/images';
 import { HEIGHT_REL, WIDTH_REL } from '@theme';
 import { MainButton } from '@components/Button';
 import I18n from 'react-native-i18n';
@@ -17,9 +17,14 @@ class AddFriends extends Component {
     super(props);
     this.state = {
       friends: [],
+      addedFriends: [],
       username: '',
       loading: false,
     };
+  }
+
+  _addFriend(user) {
+    this.setState({ friends: [...this.state.addedFriends, user] });
   }
 
   searchUsers(username) {
@@ -44,7 +49,7 @@ class AddFriends extends Component {
           <RowTitle>{item.name}</RowTitle>
           <RowSubTitle>{`@${item.userName}`}</RowSubTitle>
         </TextContainer>
-        <AddButton />
+        <AddButton user={item} />
       </ItemRow>
     );
   }
@@ -85,9 +90,11 @@ class AddFriends extends Component {
   }
 }
 
-const AddButton = () => (
-  <TouchableOpacity>
-    <ButtonImage source={plus} />
+const AddButton = ({ item }) => (
+  <TouchableOpacity onPress={this._addFriend(item)}>
+    <ButtonImage
+      source={this.state.addedFriends.includes(item) ? minus : plus}
+    />
   </TouchableOpacity>
 );
 

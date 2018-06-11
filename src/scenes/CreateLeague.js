@@ -11,28 +11,38 @@ import { Actions } from 'react-native-router-flux';
 import { LOADING_TITLE_COLOR } from '@theme';
 import Input from '@components/Input';
 
-const CreateLeague = () => {
-  return (
-    <SceneWrapper>
-      <Close onPress={() => Actions.pop()} />
-      <Title>CRIAR LIGAS</Title>
-      <Subtitle>Criei uma liga e chame seus amigos para competir</Subtitle>
-      <TextInput
-        placeholder="Nome da sua Liga"
-        //       value={this.state.name}
-        //       onChangeText={value => this.setState({ name: value })}
-        autoCapitalize="none"
-        maxLength={25}
-      />
-      <ButtonsView>
-        <MainButton
-          text="Continuar"
-          onPress={() => Actions.push('addfriends')}
+class CreateLeague extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+    };
+  }
+  render() {
+    return (
+      <SceneWrapper>
+        <Close onPress={() => Actions.pop()} />
+        <Title>CRIAR LIGAS</Title>
+        <Subtitle>Criei uma liga e chame seus amigos para competir</Subtitle>
+        <TextInput
+          placeholder="Nome da sua Liga"
+          value={this.state.name}
+          onChangeText={value => this.setState({ name: value })}
+          autoCapitalize="none"
+          maxLength={25}
         />
-      </ButtonsView>
-    </SceneWrapper>
-  );
-};
+        <ButtonsView>
+          <MainButton
+            text="Continuar"
+            onPress={() =>
+              Actions.push('addfriends', { name: this.state.name })
+            }
+          />
+        </ButtonsView>
+      </SceneWrapper>
+    );
+  }
+}
 
 const Close = props => {
   const { onPress } = props;

@@ -112,8 +112,8 @@ const Menu = ({ onPress }) => (
 const Leagues = ({ onPress }) => (
   <TouchableOpacity onPress={onPress}>
     <MenuWrapper>
-      <LeagueIcon />
       <MenuText>LIGAS</MenuText>
+      <LeagueIcon />
     </MenuWrapper>
   </TouchableOpacity>
 );
