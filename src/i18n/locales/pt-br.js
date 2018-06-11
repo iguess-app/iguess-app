@@ -6,7 +6,7 @@ export default {
 
   signUpTitle: 'Cadastre-se',
   signUpName: 'Nome',
-  signUpUsername: '@username',
+  signUpUsername: '@usuario',
   signUpEMail: 'E-mail',
   signUpPassword: 'Senha',
   signUpButton: 'Criar minha conta',
