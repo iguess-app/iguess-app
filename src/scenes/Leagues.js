@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { TouchableOpacity, Text } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
@@ -9,28 +9,57 @@ import I18n from 'react-native-i18n';
 import { TextBase, TextBaseBold } from '@components/Scene';
 import { Actions } from 'react-native-router-flux';
 import { LOADING_TITLE_COLOR, LOADING_SUBTITLE_COLOR } from '@theme';
+import { get } from '@helpers';
 
-const Leagues = ({ swipe }) => {
-  return (
-    <SceneWrapper>
-      <Close onPress={swipe} />
-      <ButtonsView>
-        <Title>MINHAS LIGAS</Title>
-        <Subtitle>
-          Aqui você pode competir com seus amigos e ver quem acerta mais
-          palpites
-        </Subtitle>
-        <LeagueBig />
-        <SubtitleGray>Você ainda não tem nenhuma liga</SubtitleGray>
-        <MainButton
-          text="Criar uma Liga"
-          onPress={() => Actions.push('createleague')}
-        />
-      </ButtonsView>
-    </SceneWrapper>
-  );
-};
+class Leagues extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      leagues: [],
+    };
+  }
 
+  componentDidMount() {
+    this.loadLeagues();
+  }
+
+  loadLeagues() {
+    get(
+      `https://iguess-666666.appspot.com/guessleague/listGuessesLeagues`,
+    ).then(response => {
+      if (response.statusCode !== 404) {
+        this.setState({ leagues: response.guessLeaguesList });
+      }
+    });
+  }
+
+  render() {
+    return (
+      <SceneWrapper>
+        <Close onPress={this.props.swipe} />
+        {this.state.leagues.length <= 0 && (
+          <ButtonsView>
+            <Title>MINHAS LIGAS</Title>
+            <Subtitle>
+              Aqui você pode competir com seus amigos e ver quem acerta mais
+              palpites
+            </Subtitle>
+            <LeagueBig />
+            <SubtitleGray>Você ainda não tem nenhuma liga</SubtitleGray>
+            <MainButton
+              text="Criar uma Liga"
+              onPress={() => Actions.push('createleague')}
+            />
+          </ButtonsView>
+        )}
+
+        {this.state.leagues.map(item => (
+          <Text key={item._id}>{item.guessLeagueName}</Text>
+        ))}
+      </SceneWrapper>
+    );
+  }
+}
 const Close = props => {
   const { onPress } = props;
 

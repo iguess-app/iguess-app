@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
@@ -10,6 +10,8 @@ import { TextBase, TextBaseBold } from '@components/Scene';
 import { Actions } from 'react-native-router-flux';
 import { LOADING_TITLE_COLOR } from '@theme';
 import Input from '@components/Input';
+import * as leaguesActions from '@redux/leagues/actions';
+import { connect } from 'react-redux';
 
 class CreateLeague extends Component {
   constructor(props) {
@@ -18,6 +20,11 @@ class CreateLeague extends Component {
       name: '',
     };
   }
+
+  _updateLeagueName() {
+    this.props.dispatch(leaguesActions.updateLeagueName(this.state.name));
+  }
+
   render() {
     return (
       <SceneWrapper>
@@ -34,9 +41,10 @@ class CreateLeague extends Component {
         <ButtonsView>
           <MainButton
             text="Continuar"
-            onPress={() =>
-              Actions.push('addfriends', { name: this.state.name })
-            }
+            onPress={() => {
+              this._updateLeagueName();
+              Actions.push('addfriends');
+            }}
           />
         </ButtonsView>
       </SceneWrapper>
@@ -93,4 +101,4 @@ const ButtonsView = styled.View`
   align-items: center;
 `;
 
-export default CreateLeague;
+export default connect()(CreateLeague);

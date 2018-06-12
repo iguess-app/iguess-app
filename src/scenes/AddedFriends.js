@@ -10,102 +10,69 @@ import { TextBase, TextBaseBold } from '@components/Scene';
 import { Actions } from 'react-native-router-flux';
 import { LOADING_TITLE_COLOR } from '@theme';
 import Input from '@components/Input';
-import { get } from '@helpers';
-import * as leaguesActions from '@redux/leagues/actions';
+import { post } from '@helpers';
 import { connect } from 'react-redux';
 
-class AddFriends extends Component {
+class AddedFriends extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      friends: [],
-      addedFriends: [],
-      username: '',
-      loading: false,
+  }
+
+  _createLeague() {
+    const body = {
+      guessLeagueName: this.props.leagueName,
+      championshipRef: this.props.championship.championshipRef,
+      userRefInviteads: this.props.addedFriends.map(item => item._id),
     };
+
+    post(
+      'https://iguess-666666.appspot.com/guessleague/createGuessLeague',
+      body,
+    )
+      .then(response => {
+        if (response.statusCode === 401) {
+          console.log('errroooou');
+        } else {
+          Actions.reset('leagues');
+        }
+      })
+      .catch(() =>
+        this.setState({
+          errorMsg: I18n.t('serverErrorDefault'),
+          loading: false,
+        }),
+      );
   }
 
-  _addFriend(user) {
-    this.setState({ addedFriends: this.state.addedFriends.concat([user]) });
-  }
-
-  _updateAddedFriends() {
-    this.props.dispatch(
-      leaguesActions.updateAddedFriends(this.state.addedFriends),
-    );
-  }
-
-  searchUsers(username) {
-    this.setState({ loading: true });
-    get(
-      `https://iguess-666666.appspot.com/profiles/search?searchField=${username}`,
-    ).then(response => {
-      if (response.statusCode !== 404) {
-        this.setState({ friends: response }, () => {
-          setTimeout(() => this.setState({ loading: false }), 2500);
-        });
-      } else {
-        this.setState({ loading: false });
-      }
-    });
-  }
+  _removeFriend() {}
 
   _renderCard(item) {
-    const isAdded = this.state.addedFriends.find(
-      friend => friend._id === item._id,
-    );
-
     return (
       <ItemRow>
         <TextContainer>
           <RowTitle>{item.name}</RowTitle>
           <RowSubTitle>{`@${item.userName}`}</RowSubTitle>
         </TextContainer>
-        <TouchableOpacity
-          onPress={!isAdded ? () => this._addFriend(item) : null}
-        >
-          <ButtonImage source={isAdded ? minus : plus} />
+        <TouchableOpacity onPress={() => this._removeFriend(item)}>
+          <ButtonImage source={minus} />
         </TouchableOpacity>
       </ItemRow>
     );
   }
 
   render() {
+    const { addedFriends } = this.props;
     return (
       <SceneWrapper>
         <Close onPress={() => Actions.pop()} />
-        <Title>ADICIONAR AMIGOS</Title>
-        <TextInput
-          placeholder="Buscar por @usuario"
-          value={this.state.username}
-          onChangeText={value =>
-            this.setState({ username: value }, () => {
-              if (value && value.length > 3) {
-                this.searchUsers(value);
-              } else {
-                this.setState({
-                  friends: [],
-                });
-              }
-            })
-          }
-          autoCapitalize="none"
-          maxLength={25}
-        />
-
+        <Title>AMIGOS ADICIONADOS</Title>
         <List
-          data={this.state.friends}
+          data={addedFriends}
           renderItem={({ item }) => this._renderCard(item)}
           keyExtractor={(item, index) => index}
         />
         <ButtonsView>
-          <MainButton
-            text="Continuar"
-            onPress={() => {
-              this._updateAddedFriends();
-              Actions.push('addedfriends');
-            }}
-          />
+          <MainButton text="Criar Minha Liga" onPress={this._createLeague()} />
         </ButtonsView>
       </SceneWrapper>
     );
@@ -170,16 +137,18 @@ const CloseImage = styled.Image.attrs({
   margin-top: ${26 * HEIGHT_REL};
 `;
 
-const TextInput = styled(Input)`
-  margin-top: ${48 * HEIGHT_REL};
-  margin-horizontal: ${32 * WIDTH_REL};
-`;
-
 const ButtonsView = styled.View`
   flex: 1;
   margin-bottom: ${40 * HEIGHT_REL};
   justify-content: flex-end;
   align-items: center;
 `;
+const mapStateToProps = state => {
+  return {
+    leagueName: state.leagues.leagueName,
+    addedFriends: state.leagues.addedFriends,
+    championship: state.lines.activeLine.championship,
+  };
+};
 
-export default connect()(AddFriends);
+export default connect(mapStateToProps)(AddedFriends);
