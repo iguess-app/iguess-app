@@ -112,7 +112,7 @@ const Menu = ({ onPress }) => (
 const Leagues = ({ onPress }) => (
   <TouchableOpacity onPress={onPress}>
     <MenuWrapper>
-      <MenuText>LIGAS</MenuText>
+      <MenuLeagueText>LIGAS</MenuLeagueText>
       <LeagueIcon />
     </MenuWrapper>
   </TouchableOpacity>
@@ -137,13 +137,19 @@ const MenuIcon = styled.Image.attrs({
 const LeagueIcon = styled.Image.attrs({
   source: league,
 })`
-  width: ${26 * WIDTH_REL};
-  height: ${24 * HEIGHT_REL};
+  width: ${18 * WIDTH_REL};
+  height: ${16 * HEIGHT_REL};
 `;
 
 const MenuText = styled(TextBaseBold)`
   font-size: ${12 * HEIGHT_REL};
   margin-left: ${8 * WIDTH_REL};
+  color: ${MENU_COLOR};
+`;
+
+const MenuLeagueText = styled(TextBaseBold)`
+  font-size: ${12 * HEIGHT_REL};
+  margin-right: ${8 * WIDTH_REL};
   color: ${MENU_COLOR};
 `;
 

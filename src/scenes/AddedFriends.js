@@ -30,6 +30,7 @@ class AddedFriends extends Component {
       body,
     )
       .then(response => {
+        console.log(response);
         if (response.statusCode === 401) {
           console.log('errroooou');
         } else {
@@ -72,7 +73,10 @@ class AddedFriends extends Component {
           keyExtractor={(item, index) => index}
         />
         <ButtonsView>
-          <MainButton text="Criar Minha Liga" onPress={this._createLeague()} />
+          <MainButton
+            text="Criar Minha Liga"
+            onPress={() => this._createLeague()}
+          />
         </ButtonsView>
       </SceneWrapper>
     );

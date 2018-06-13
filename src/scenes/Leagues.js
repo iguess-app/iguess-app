@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacity, Text, View, Platform } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
 import { chevronLeftPurple, plusIcon, leagueBig } from '@assets/images';
@@ -8,7 +8,7 @@ import { MainButton } from '@components/Button';
 import I18n from 'react-native-i18n';
 import { TextBase, TextBaseBold } from '@components/Scene';
 import { Actions } from 'react-native-router-flux';
-import { LOADING_TITLE_COLOR, LOADING_SUBTITLE_COLOR } from '@theme';
+import { LOADING_TITLE_COLOR, LOADING_SUBTITLE_COLOR, RATIO } from '@theme';
 import { get } from '@helpers';
 
 class Leagues extends Component {
@@ -33,12 +33,25 @@ class Leagues extends Component {
     });
   }
 
+  _renderCard(item) {
+    return (
+      <Card key={item._id}>
+        <Text>{item.guessLeagueName}</Text>
+        <Text>{item.championship.championship}</Text>
+        <Text>{`${item.numberOfUsersAtLeague} usuários`}</Text>
+      </Card>
+    );
+  }
+
   render() {
+    const { swipe } = this.props;
+    console.log(this.state.leagues);
     return (
       <SceneWrapper>
-        <Close onPress={this.props.swipe} />
+        <Close onPress={swipe ? swipe : () => Actions.push('core')} />
+
         {this.state.leagues.length <= 0 && (
-          <ButtonsView>
+          <ContainerView>
             <Title>MINHAS LIGAS</Title>
             <Subtitle>
               Aqui você pode competir com seus amigos e ver quem acerta mais
@@ -46,16 +59,21 @@ class Leagues extends Component {
             </Subtitle>
             <LeagueBig />
             <SubtitleGray>Você ainda não tem nenhuma liga</SubtitleGray>
-            <MainButton
-              text="Criar uma Liga"
-              onPress={() => Actions.push('createleague')}
-            />
-          </ButtonsView>
+          </ContainerView>
         )}
 
-        {this.state.leagues.map(item => (
-          <Text key={item._id}>{item.guessLeagueName}</Text>
-        ))}
+        <List
+          data={this.state.leagues}
+          keyExtractor={item => item._id}
+          renderItem={({ item }) => this._renderCard(item)}
+        />
+
+        <ButtonsView>
+          <MainButton
+            text="Criar uma Liga"
+            onPress={() => Actions.push('createleague')}
+          />
+        </ButtonsView>
       </SceneWrapper>
     );
   }
@@ -69,6 +87,23 @@ const Close = props => {
     </TouchableOpacity>
   );
 };
+
+const List = styled.FlatList`
+  margin-top: ${8 * HEIGHT_REL};
+`;
+
+const Card = styled.View`
+  flex-direction: column;
+  width: ${280 * WIDTH_REL};
+  height: ${80 * HEIGHT_REL};
+  margin-bottom: ${Platform.OS === 'ios' ? 40 * HEIGHT_REL : 28 * HEIGHT_REL};
+  border-color: #d7e2ec;
+  background-color: #fff;
+  padding-vertical: ${20 * HEIGHT_REL};
+  border-radius: ${16 * RATIO};
+  border-width: ${1 * RATIO};
+  align-self: center;
+`;
 
 const Subtitle = styled(TextBase)`
   text-align: center;
@@ -110,8 +145,15 @@ const CloseImage = styled.Image.attrs({
   margin-top: ${26 * HEIGHT_REL};
 `;
 
-const ButtonsView = styled.View`
+const ContainerView = styled.View`
   justify-content: center;
+  align-items: center;
+`;
+
+const ButtonsView = styled.View`
+  flex: 1;
+  margin-bottom: ${40 * HEIGHT_REL};
+  justify-content: flex-end;
   align-items: center;
 `;
 
