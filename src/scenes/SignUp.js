@@ -212,7 +212,7 @@ class SignUp extends Component {
             }
             keyboardType="email-address"
             autoCapitalize="none"
-            maxLength={30}
+            maxLength={45}
             onBlur={() => this._verifyMail()}
             innerRef={ref => (this.emailInput = ref)}
           />
