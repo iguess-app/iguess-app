@@ -19,14 +19,20 @@ export default class SelectedLine extends Component {
       <Wrapper>
         <Season opacity={opacity}>{season}</Season>
         <LineName opacity={opacity}>{name}</LineName>
-        <PointsView opacity={opacity}>
-          <Points>{points}</Points>
-          <PointsText>{pointsLabel.toUpperCase()}</PointsText>
-        </PointsView>
+        <PointsWrapper>
+          <PointsView opacity={opacity}>
+            <Points>{200000000}</Points>
+            <PointsText>{pointsLabel.toUpperCase()}</PointsText>
+          </PointsView>
+        </PointsWrapper>
       </Wrapper>
     );
   }
 }
+
+const PointsWrapper = styled.View`
+  flex-direction: row;
+`;
 
 const Wrapper = styled.View`
   margin-top: ${20 * HEIGHT_REL};
@@ -52,7 +58,6 @@ const LineName = styled(TextBaseBold)`
 
 const PointsView = styled.View`
   flex-direction: row;
-  width: ${190 * WIDTH_REL};
   height: ${40 * HEIGHT_REL};
   border-radius: ${26 * HEIGHT_REL};
   background-color: ${SELECT_LINE_PRIMARY_TEXT};
@@ -71,5 +76,6 @@ const Points = styled(TextBaseBold)`
 const PointsText = styled(TextBaseBold)`
   font-size: ${14 * HEIGHT_REL};
   color: ${SELECT_LINE_POINTS_TEXT};
+  margin-right: ${10 * WIDTH_REL};
   align-self: center;
 `;
