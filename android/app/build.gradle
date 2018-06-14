@@ -110,8 +110,8 @@ android {
         applicationId "com.br.iguess"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 4
-        versionName "0.0.5"
+        versionCode 11
+        versionName "0.1.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
