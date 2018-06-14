@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Platform } from 'react-native';
 import styled from 'styled-components';
 import GameList from '@components/GameList';
 import SelectedLine from '@components/SelectedLine';
@@ -56,7 +56,7 @@ class Lines extends Component {
         <SelectedLine
           season={season}
           name={championshipName}
-          points={pontuation}
+          points={99999}
           opacity={this.state.selectedOpacity}
         />
         {this._renderGames()}
@@ -86,7 +86,7 @@ class Lines extends Component {
 
 const Navigation = styled.View`
   flex-direction: row;
-  margin-top: ${23 * HEIGHT_REL};
+  margin-top: ${Platform.OS === 'ios' ? 50 * HEIGHT_REL : 23 * HEIGHT_REL};
   margin-horizontal: ${32 * WIDTH_REL};
 `;
 

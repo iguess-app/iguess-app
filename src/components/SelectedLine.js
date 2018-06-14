@@ -52,20 +52,19 @@ const LineName = styled(TextBaseBold)`
 
 const PointsView = styled.View`
   flex-direction: row;
-  justify-content: center;
-  width: ${132 * WIDTH_REL};
+  width: ${190 * WIDTH_REL};
   height: ${40 * HEIGHT_REL};
   border-radius: ${26 * HEIGHT_REL};
   background-color: ${SELECT_LINE_PRIMARY_TEXT};
   margin-top: ${16 * HEIGHT_REL};
-  margin-left: ${-16 * WIDTH_REL};
-  padding-left: ${20 * WIDTH_REL};
+  margin-left: ${-20 * WIDTH_REL};
 `;
 
 const Points = styled(TextBaseBold)`
-  font-size: ${22 * HEIGHT_REL};
+  font-size: ${20 * HEIGHT_REL};
   color: ${SELECT_LINE_POINTS_TEXT};
   margin-right: ${4 * WIDTH_REL};
+  margin-left: ${52 * WIDTH_REL};
   align-self: center;
 `;
 

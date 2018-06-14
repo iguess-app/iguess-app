@@ -49,7 +49,7 @@ class SignIn extends Component {
               this.props.dispatch(login(response.token));
 
               // redirect to core scene
-              Actions.popAndPush('core');
+              Actions.reset('core');
             }
           })
           .catch(() =>

@@ -144,7 +144,7 @@ const CloseImage = styled.Image.attrs({
   width: ${16 * WIDTH_REL};
   height: ${16 * HEIGHT_REL};
   margin-left: ${32 * WIDTH_REL};
-  margin-top: ${26 * HEIGHT_REL};
+  margin-top: ${50 * HEIGHT_REL};
 `;
 
 const Title = styled(TextBaseBold)`
