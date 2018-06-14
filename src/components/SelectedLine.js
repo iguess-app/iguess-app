@@ -21,7 +21,7 @@ export default class SelectedLine extends Component {
         <LineName opacity={opacity}>{name}</LineName>
         <PointsWrapper>
           <PointsView opacity={opacity}>
-            <Points>{200000000}</Points>
+            <Points>{points}</Points>
             <PointsText>{pointsLabel.toUpperCase()}</PointsText>
           </PointsView>
         </PointsWrapper>
