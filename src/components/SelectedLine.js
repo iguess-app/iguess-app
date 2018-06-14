@@ -19,14 +19,20 @@ export default class SelectedLine extends Component {
       <Wrapper>
         <Season opacity={opacity}>{season}</Season>
         <LineName opacity={opacity}>{name}</LineName>
-        <PointsView opacity={opacity}>
-          <Points>{points}</Points>
-          <PointsText>{pointsLabel.toUpperCase()}</PointsText>
-        </PointsView>
+        <PointsWrapper>
+          <PointsView opacity={opacity}>
+            <Points>{points}</Points>
+            <PointsText>{pointsLabel.toUpperCase()}</PointsText>
+          </PointsView>
+        </PointsWrapper>
       </Wrapper>
     );
   }
 }
+
+const PointsWrapper = styled.View`
+  flex-direction: row;
+`;
 
 const Wrapper = styled.View`
   margin-top: ${20 * HEIGHT_REL};
@@ -52,25 +58,24 @@ const LineName = styled(TextBaseBold)`
 
 const PointsView = styled.View`
   flex-direction: row;
-  justify-content: center;
-  width: ${132 * WIDTH_REL};
   height: ${40 * HEIGHT_REL};
   border-radius: ${26 * HEIGHT_REL};
   background-color: ${SELECT_LINE_PRIMARY_TEXT};
   margin-top: ${16 * HEIGHT_REL};
-  margin-left: ${-16 * WIDTH_REL};
-  padding-left: ${20 * WIDTH_REL};
+  margin-left: ${-20 * WIDTH_REL};
 `;
 
 const Points = styled(TextBaseBold)`
-  font-size: ${22 * HEIGHT_REL};
+  font-size: ${20 * HEIGHT_REL};
   color: ${SELECT_LINE_POINTS_TEXT};
   margin-right: ${4 * WIDTH_REL};
+  margin-left: ${52 * WIDTH_REL};
   align-self: center;
 `;
 
 const PointsText = styled(TextBaseBold)`
   font-size: ${14 * HEIGHT_REL};
   color: ${SELECT_LINE_POINTS_TEXT};
+  margin-right: ${10 * WIDTH_REL};
   align-self: center;
 `;

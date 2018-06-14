@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, Alert } from 'react-native';
+import { TouchableOpacity, Alert, Platform } from 'react-native';
 import styled from 'styled-components';
 import { SceneWrapper } from '@components/Scene';
 import Error from '@components/Error';
@@ -144,7 +144,7 @@ const CloseImage = styled.Image.attrs({
   width: ${16 * WIDTH_REL};
   height: ${16 * HEIGHT_REL};
   margin-left: ${32 * WIDTH_REL};
-  margin-top: ${26 * HEIGHT_REL};
+  margin-top: ${Platform.OS === 'ios' ? 50 * HEIGHT_REL : 26 * HEIGHT_REL};
 `;
 
 const Title = styled(TextBaseBold)`
