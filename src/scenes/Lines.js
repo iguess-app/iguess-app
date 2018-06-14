@@ -56,7 +56,7 @@ class Lines extends Component {
         <SelectedLine
           season={season}
           name={championshipName}
-          points={99999}
+          points={pontuation}
           opacity={this.state.selectedOpacity}
         />
         {this._renderGames()}
