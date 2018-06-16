@@ -84,7 +84,7 @@ class SignIn extends Component {
             value={this.state.login}
             onChangeText={value => this.setState({ login: value })}
             autoCapitalize="none"
-            maxLength={25}
+            maxLength={45}
             innerRef={ref => (this.loginInput = ref)}
           />
           <TextInput
