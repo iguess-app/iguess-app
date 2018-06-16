@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, Text, Image } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
-import { chevronLeftPurple, minus, plus } from '@assets/images';
+import { chevronLeftPurple, added, plus } from '@assets/images';
 import { HEIGHT_REL, WIDTH_REL } from '@theme';
 import { MainButton } from '@components/Button';
-import I18n from 'react-native-i18n';
-import { TextBase, TextBaseBold } from '@components/Scene';
+import { TextBaseBold } from '@components/Scene';
 import { Actions } from 'react-native-router-flux';
 import { LOADING_TITLE_COLOR } from '@theme';
 import Input from '@components/Input';
@@ -64,7 +63,7 @@ class AddFriends extends Component {
         <TouchableOpacity
           onPress={!isAdded ? () => this._addFriend(item) : null}
         >
-          <ButtonImage source={isAdded ? minus : plus} />
+          <ButtonImage source={isAdded ? added : plus} />
         </TouchableOpacity>
       </ItemRow>
     );

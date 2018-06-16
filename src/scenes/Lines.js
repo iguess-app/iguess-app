@@ -9,7 +9,6 @@ import { alignLeft, league } from '@assets/images';
 import { DEFAULT_BACKGROUND, MENU_COLOR, WIDTH_REL, HEIGHT_REL } from '@theme';
 import { connect } from 'react-redux';
 import * as linesActions from '@redux/lines/actions';
-import { Actions } from 'react-native-router-flux';
 
 class Lines extends Component {
   constructor(props) {

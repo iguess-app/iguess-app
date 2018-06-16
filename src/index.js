@@ -16,6 +16,7 @@ import {
   CreateLeague,
   AddFriends,
   AddedFriends,
+  LeagueDetails,
 } from '@scenes';
 import { Provider } from 'react-redux';
 import createStore from '@store/create';
@@ -71,6 +72,11 @@ export default class Kernel extends Component {
               <Scene
                 key="addedfriends"
                 component={AddedFriends}
+                hideNavBar={true}
+              />
+              <Scene
+                key="leaguedetails"
+                component={LeagueDetails}
                 hideNavBar={true}
               />
               <Scene

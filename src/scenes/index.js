@@ -13,3 +13,4 @@ export Leagues from '@scenes/Leagues';
 export CreateLeague from '@scenes/CreateLeague';
 export AddFriends from '@scenes/AddFriends';
 export AddedFriends from '@scenes/AddedFriends';
+export LeagueDetails from '@scenes/LeagueDetails';

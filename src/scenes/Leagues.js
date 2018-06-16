@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, Text, View, Platform } from 'react-native';
-import { SceneWrapper } from '@components/Scene';
+import { TouchableOpacity } from 'react-native';
+import { NavBar, SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
-import { chevronLeftPurple, plusIcon, leagueBig } from '@assets/images';
+import { chevronLeftPurple, leagueBig, trophyRank } from '@assets/images';
 import { HEIGHT_REL, WIDTH_REL } from '@theme';
-import { MainButton } from '@components/Button';
-import I18n from 'react-native-i18n';
+import { MainIconButton } from '@components/Button';
 import { TextBase, TextBaseBold } from '@components/Scene';
 import { Actions } from 'react-native-router-flux';
-import { LOADING_TITLE_COLOR, LOADING_SUBTITLE_COLOR, RATIO } from '@theme';
+import { LOADING_TITLE_COLOR, RATIO } from '@theme';
 import { get } from '@helpers';
 
 class Leagues extends Component {
@@ -35,41 +34,59 @@ class Leagues extends Component {
 
   _renderCard(item) {
     return (
-      <Card key={item._id}>
-        <Text>{item.guessLeagueName}</Text>
-        <Text>{item.championship.championship}</Text>
-        <Text>{`${item.numberOfUsersAtLeague} usuários`}</Text>
+      <Card
+        key={item._id}
+        onPress={() => Actions.push('leaguedetails', { leagueId: item._id })}
+      >
+        <TrophyIcon />
+        <Content>
+          <LeagueNameText>{item.guessLeagueName}</LeagueNameText>
+          <ChampionshipNameText>
+            {item.championship.championship}
+          </ChampionshipNameText>
+          <NumberUsersText>{`${
+            item.numberOfUsersAtLeague
+          } usuários`}</NumberUsersText>
+        </Content>
       </Card>
     );
   }
 
   render() {
     const { swipe } = this.props;
-    console.log(this.state.leagues);
+    const back = swipe
+      ? swipe
+      : () => Actions.push('core', { activeSwiperScreen: 2 });
+
     return (
       <SceneWrapper>
-        <Close onPress={swipe ? swipe : () => Actions.push('core')} />
-
-        {this.state.leagues.length <= 0 && (
-          <ContainerView>
-            <Title>MINHAS LIGAS</Title>
-            <Subtitle>
-              Aqui você pode competir com seus amigos e ver quem acerta mais
-              palpites
-            </Subtitle>
-            <LeagueBig />
-            <SubtitleGray>Você ainda não tem nenhuma liga</SubtitleGray>
-          </ContainerView>
+        {this.state.leagues.length > 0 && (
+          <Content>
+            <NavBar title="Ligas" onPress={back} />
+            <List
+              data={this.state.leagues}
+              keyExtractor={item => item._id}
+              renderItem={({ item }) => this._renderCard(item)}
+            />
+          </Content>
         )}
 
-        <List
-          data={this.state.leagues}
-          keyExtractor={item => item._id}
-          renderItem={({ item }) => this._renderCard(item)}
-        />
-
+        {this.state.leagues.length <= 0 && (
+          <Content>
+            <Close onPress={back} />
+            <ContainerView>
+              <Title>MINHAS LIGAS</Title>
+              <Subtitle>
+                Aqui você pode competir com seus amigos e ver quem acerta mais
+                palpites
+              </Subtitle>
+              <LeagueIcon />
+              <SubtitleGray>Você ainda não tem nenhuma liga</SubtitleGray>
+            </ContainerView>
+          </Content>
+        )}
         <ButtonsView>
-          <MainButton
+          <MainIconButton
             text="Criar uma Liga"
             onPress={() => Actions.push('createleague')}
           />
@@ -90,20 +107,41 @@ const Close = props => {
 
 const List = styled.FlatList`
   margin-top: ${8 * HEIGHT_REL};
+  height: ${480 * HEIGHT_REL};
 `;
 
-const Card = styled.View`
-  flex-direction: column;
-  width: ${280 * WIDTH_REL};
-  height: ${80 * HEIGHT_REL};
-  margin-bottom: ${Platform.OS === 'ios' ? 40 * HEIGHT_REL : 28 * HEIGHT_REL};
+const LeagueNameText = styled.Text`
+  margin-bottom: ${5 * HEIGHT_REL};
+  color: ${LOADING_TITLE_COLOR};
+  font-size: ${14 * HEIGHT_REL};
+  font-weight: bold;
+`;
+
+const ChampionshipNameText = styled.Text`
+  margin-bottom: ${5 * HEIGHT_REL};
+  font-size: ${12 * HEIGHT_REL};
+`;
+
+const NumberUsersText = styled.Text`
+  margin-bottom: ${5 * HEIGHT_REL};
+  font-size: ${10 * HEIGHT_REL};
+  color: #b2b7bb;
+`;
+
+const Card = styled.TouchableOpacity`
+  flex-direction: row;
+  width: ${340 * WIDTH_REL};
+  height: ${100 * HEIGHT_REL};
+  margin-top: ${28 * HEIGHT_REL};
   border-color: #d7e2ec;
   background-color: #fff;
-  padding-vertical: ${20 * HEIGHT_REL};
   border-radius: ${16 * RATIO};
   border-width: ${1 * RATIO};
   align-self: center;
+  align-items: center;
 `;
+
+const Content = styled.View``;
 
 const Subtitle = styled(TextBase)`
   text-align: center;
@@ -128,12 +166,21 @@ const Title = styled(TextBaseBold)`
   font-size: ${32 * WIDTH_REL};
 `;
 
-const LeagueBig = styled.Image.attrs({
+const LeagueIcon = styled.Image.attrs({
   source: leagueBig,
 })`
   margin-top: ${60 * HEIGHT_REL};
   width: ${73 * WIDTH_REL};
   height: ${67 * HEIGHT_REL};
+`;
+
+const TrophyIcon = styled.Image.attrs({
+  source: trophyRank,
+})`
+  margin-left: ${15 * WIDTH_REL};
+  margin-right: ${15 * WIDTH_REL};
+  width: ${26 * WIDTH_REL};
+  height: ${24 * HEIGHT_REL};
 `;
 
 const CloseImage = styled.Image.attrs({
@@ -151,10 +198,8 @@ const ContainerView = styled.View`
 `;
 
 const ButtonsView = styled.View`
-  flex: 1;
-  margin-bottom: ${40 * HEIGHT_REL};
-  justify-content: flex-end;
   align-items: center;
+  margin-top: ${20 * HEIGHT_REL};
 `;
 
 export default Leagues;

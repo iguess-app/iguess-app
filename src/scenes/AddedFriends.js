@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, Text, Image } from 'react-native';
+import { TouchableOpacity, Alert } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
-import { chevronLeftPurple, minus, plus } from '@assets/images';
+import { chevronLeftPurple, remove } from '@assets/images';
 import { HEIGHT_REL, WIDTH_REL } from '@theme';
 import { MainButton } from '@components/Button';
 import I18n from 'react-native-i18n';
-import { TextBase, TextBaseBold } from '@components/Scene';
+import { TextBaseBold } from '@components/Scene';
 import { Actions } from 'react-native-router-flux';
 import { LOADING_TITLE_COLOR } from '@theme';
-import Input from '@components/Input';
 import { post } from '@helpers';
 import { connect } from 'react-redux';
+import * as leaguesActions from '@redux/leagues/actions';
 
 class AddedFriends extends Component {
   constructor(props) {
@@ -30,11 +30,10 @@ class AddedFriends extends Component {
       body,
     )
       .then(response => {
-        console.log(response);
         if (response.statusCode === 401) {
           console.log('errroooou');
         } else {
-          Actions.reset('leagues');
+          Actions.reset('core', { activeSwiperScreen: 2 });
         }
       })
       .catch(() =>
@@ -45,7 +44,27 @@ class AddedFriends extends Component {
       );
   }
 
-  _removeFriend() {}
+  _removeFriend(user) {
+    const { addedFriends, dispatch } = this.props;
+    Alert.alert(
+      'Deseja remover o usuário selecionado?',
+      `Você está tentando remover o usuário ${user.name} da sua liga`,
+      [
+        { text: 'Cancelar' },
+        {
+          text: 'Remover',
+          onPress: () => {
+            dispatch(
+              leaguesActions.updateAddedFriends(
+                addedFriends.filter(item => item._id !== user._id),
+              ),
+            );
+          },
+        },
+      ],
+      { cancelable: false },
+    );
+  }
 
   _renderCard(item) {
     return (
@@ -55,7 +74,7 @@ class AddedFriends extends Component {
           <RowSubTitle>{`@${item.userName}`}</RowSubTitle>
         </TextContainer>
         <TouchableOpacity onPress={() => this._removeFriend(item)}>
-          <ButtonImage source={minus} />
+          <ButtonImage source={remove} />
         </TouchableOpacity>
       </ItemRow>
     );

@@ -12,24 +12,20 @@ import {
 } from '@theme';
 
 const NavBar = props => {
-  const { title } = props;
+  const { title, onPress } = props;
 
   setStatusBarStyle('white');
 
   return (
     <NavWrapper source={DEFAULT_BACKGROUND}>
-      <Back />
+      <Back onPress={onPress} />
       <Title>{title.toUpperCase()}</Title>
     </NavWrapper>
   );
 };
 
-const Back = () => (
-  <BackTouchable
-    onPress={() => {
-      Actions.pop();
-    }}
-  >
+const Back = ({ onPress }) => (
+  <BackTouchable onPress={() => (onPress ? onPress() : Actions.pop())}>
     <BackImage />
   </BackTouchable>
 );

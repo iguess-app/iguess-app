@@ -29,7 +29,7 @@ class Core extends Component<void, void, void> {
       <BackgroundContainer>
         <Swiper
           loop={false}
-          index={1}
+          index={activeSwiperScreen ? activeSwiperScreen : 1}
           showsPagination={false}
           onIndexChanged={index => dispatch(swipe(index))}
           ref={ref => (this.swiper = ref)}

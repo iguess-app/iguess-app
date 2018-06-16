@@ -27,9 +27,15 @@ export const alignLeft = require('./alignLeft.png');
 export const chevronLeftPurple = require('./chevron-left.png');
 export const leagueBig = require('./league-big.png');
 export const plusIcon = require('./plus-icon.png');
-export const league = require('./league.png');
+export const league = require('./trophy.png');
+export const trophyRank = require('./trophy-rank.png');
 export const howItWorksImage = require('./howItWorksImage.png');
 export const question = require('./question.png');
+export const added = require('./added.png');
+export const remove = require('./remove.png');
+export const gold = require('./gold.png');
+export const silver = require('./silver.png');
+export const bronze = require('./bronze.png');
 
 // GIF
 export const ballGif = require('./ball.gif');

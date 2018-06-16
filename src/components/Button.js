@@ -7,12 +7,20 @@ import {
   WIDTH_REL,
   RATIO,
 } from '@theme';
+import { plusIcon } from '@assets/images';
 import { TextBaseBold } from '@components/Scene';
 
 export const MainButton = ({ text, onPress }) => (
   <MainTouchable onPress={() => onPress()}>
     <WhiteText>{text.toUpperCase()}</WhiteText>
   </MainTouchable>
+);
+
+export const MainIconButton = ({ text, onPress }) => (
+  <MainIconTouchable onPress={() => onPress()}>
+    <PlusIcon />
+    <WhiteText>{text.toUpperCase()}</WhiteText>
+  </MainIconTouchable>
 );
 
 export const WhiteBorderButton = ({ text, onPress }) => (
@@ -32,6 +40,24 @@ export const InativeButton = ({ text }) => (
     <WhiteText>{text.toUpperCase()}</WhiteText>
   </Inative>
 );
+
+const PlusIcon = styled.Image.attrs({
+  source: plusIcon,
+})`
+  width: ${16 * WIDTH_REL};
+  height: ${16 * HEIGHT_REL};
+  margin-right: ${10 * WIDTH_REL};
+`;
+
+const MainIconTouchable = styled.TouchableOpacity`
+  width: ${311 * WIDTH_REL};
+  height: ${56 * HEIGHT_REL};
+  border-radius: ${38 * RATIO};
+  background-color: ${PRIMARY_BUTTON_COLOR};
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`;
 
 const MainTouchable = styled.TouchableOpacity`
   width: ${311 * WIDTH_REL};
