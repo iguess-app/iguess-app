@@ -257,7 +257,10 @@ class GameList extends Component {
           <Header
             title={base.matchDayHumanified.mainInfoDate}
             subtitle={base.matchDayHumanified.subInfoDate}
-            onPressRefresh={() => this.props.dispatch(fetchLine())}
+            onPressRefresh={() => {
+              this.props.dispatch(fetchLine());
+              this.setState({ next: [] }, this.loadNext());
+            }}
           />
         )}
         {this.props.prev && (
