@@ -3,7 +3,14 @@ import { NavBarWithMenu } from '@components/NavBar';
 import { SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
 import Modal from 'react-native-modal';
-import { gold, bronze, silver, exit, plusPurple } from '@assets/images';
+import {
+  gold,
+  bronze,
+  silver,
+  exit,
+  plusPurple,
+  captain,
+} from '@assets/images';
 import { HEIGHT_REL, WIDTH_REL } from '@theme';
 import { TextBase, TextBaseBold } from '@components/Scene';
 import { Actions } from 'react-native-router-flux';
@@ -84,8 +91,9 @@ class Leagues extends Component {
           </RankPosition>
         )}
         <UserContent>
-          <NameText>{item.name}</NameText>
+          <NameText>{item.loggedUser ? 'Você' : item.name}</NameText>
           <UserNameText>{`@${item.userName}`}</UserNameText>
+          {item.captain && <IconCap source={captain} />}
         </UserContent>
         <Points>
           <PointsText>{item.totalPontuation}</PointsText>
@@ -166,6 +174,12 @@ const MenuText = styled.Text`
   margin-bottom: ${20 * HEIGHT_REL};
 `;
 
+const IconCap = styled.Image`
+  height: ${25 * RATIO};
+  width: ${25 * RATIO};
+  resize-mode: contain;
+`;
+
 const Icon = styled.Image`
   height: ${25 * RATIO};
   width: ${25 * RATIO};
@@ -213,6 +227,7 @@ const LeagueName = styled(TextBaseBold)`
 const List = styled.FlatList`
   margin-top: ${8 * HEIGHT_REL};
   width: ${320 * WIDTH_REL};
+  margin-bottom: ${5 * WIDTH_REL};
 `;
 
 const UserNameText = styled(TextBase)`
@@ -274,7 +289,8 @@ const Card = styled.View`
   height: ${70 * HEIGHT_REL};
   background-color: #fff;
   align-self: center;
-  align-items: center;
+  align-items: flex-start;
+  margin-top: ${5 * HEIGHT_REL};
 `;
 
 const Content = styled.View``;
@@ -307,6 +323,8 @@ const NormalListContent = styled.View`
   align-self: center;
   align-items: center;
   justify-content: center;
+  margin-top: ${20 * HEIGHT_REL};
+  height: ${200 * HEIGHT_REL};
 `;
 
 const UserContent = styled.View`
