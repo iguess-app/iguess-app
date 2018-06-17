@@ -97,15 +97,17 @@ class AddFriends extends Component {
           renderItem={({ item }) => this._renderCard(item)}
           keyExtractor={(item, index) => index}
         />
-        <ButtonsView>
-          <MainButton
-            text="Continuar"
-            onPress={() => {
-              this._updateAddedFriends();
-              Actions.push('addedfriends');
-            }}
-          />
-        </ButtonsView>
+        {this.props.leagueId && (
+          <ButtonsView>
+            <MainButton
+              text="Continuar"
+              onPress={() => {
+                this._updateAddedFriends();
+                Actions.push('addedfriends', { leagueId: this.props.leagueId });
+              }}
+            />
+          </ButtonsView>
+        )}
       </SceneWrapper>
     );
   }

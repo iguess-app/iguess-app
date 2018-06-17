@@ -9,13 +9,37 @@ import I18n from 'react-native-i18n';
 import { TextBaseBold } from '@components/Scene';
 import { Actions } from 'react-native-router-flux';
 import { LOADING_TITLE_COLOR } from '@theme';
-import { post } from '@helpers';
+import { post, patch } from '@helpers';
 import { connect } from 'react-redux';
 import * as leaguesActions from '@redux/leagues/actions';
 
 class AddedFriends extends Component {
   constructor(props) {
     super(props);
+  }
+
+  _addToLeague() {
+    const body = {
+      guessLeagueRef: this.props.leagueId,
+      championshipRef: this.props.championship.championshipRef,
+      userRefsToAdd: this.props.addedFriends.map(item => item._id),
+    };
+
+    patch(
+      'https://iguess-666666.appspot.com/guessleague/addToGuessLeague',
+      body,
+    )
+      .then(response => {
+        if (response.statusCode !== 404) {
+          Actions.reset('leaguedetails', { leagueId: this.props.leagueId });
+        }
+      })
+      .catch(() =>
+        this.setState({
+          errorMsg: I18n.t('serverErrorDefault'),
+          loading: false,
+        }),
+      );
   }
 
   _createLeague() {
@@ -81,7 +105,8 @@ class AddedFriends extends Component {
   }
 
   render() {
-    const { addedFriends } = this.props;
+    const { addedFriends, leagueId } = this.props;
+
     return (
       <SceneWrapper>
         <Close onPress={() => Actions.pop()} />
@@ -91,12 +116,18 @@ class AddedFriends extends Component {
           renderItem={({ item }) => this._renderCard(item)}
           keyExtractor={(item, index) => index}
         />
-        <ButtonsView>
-          <MainButton
-            text="Criar Minha Liga"
-            onPress={() => this._createLeague()}
-          />
-        </ButtonsView>
+        {leagueId && (
+          <ButtonsView>
+            <MainButton
+              text={leagueId ? 'Adicionar' : 'Criar Minha Liga'}
+              onPress={
+                leagueId
+                  ? () => this._addToLeague()
+                  : () => this._createLeague()
+              }
+            />
+          </ButtonsView>
+        )}
       </SceneWrapper>
     );
   }

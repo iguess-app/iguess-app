@@ -36,6 +36,7 @@ export const remove = require('./remove.png');
 export const gold = require('./gold.png');
 export const silver = require('./silver.png');
 export const bronze = require('./bronze.png');
+export const plusPurple = require('./plus-purple.png');
 
 // GIF
 export const ballGif = require('./ball.gif');
