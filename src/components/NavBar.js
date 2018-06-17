@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Actions } from 'react-native-router-flux';
-import { chevronLeft, alignLeft } from '@assets/images';
+import { chevronLeft, dots } from '@assets/images';
 import { setStatusBarStyle } from '@helpers';
 import {
   HEADER_TEXT_COLOR,
@@ -67,10 +67,10 @@ const BackImage = styled.Image.attrs({
 `;
 
 const MenuImage = styled.Image.attrs({
-  source: alignLeft,
+  source: dots,
 })`
-  width: ${16 * RATIO};
-  height: ${16 * RATIO};
+  width: ${18 * RATIO};
+  height: ${18 * RATIO};
   resize-mode: contain;
 `;
 

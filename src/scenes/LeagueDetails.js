@@ -19,13 +19,6 @@ class Leagues extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log('foi', nextProps);
-    if (nextProps.refresh) {
-      Actions.refresh();
-    }
-  }
-
   componentDidMount() {
     this.loadLeagues();
   }
@@ -184,6 +177,7 @@ const Icon = styled.Image`
 const ModalView = styled.View`
   background-color: #fff;
   justify-content: center;
+  height: ${160 * HEIGHT_REL};
 `;
 
 const bottomModal = {
@@ -218,7 +212,7 @@ const LeagueName = styled(TextBaseBold)`
 
 const List = styled.FlatList`
   margin-top: ${8 * HEIGHT_REL};
-  width: ${300 * WIDTH_REL};
+  width: ${320 * WIDTH_REL};
 `;
 
 const UserNameText = styled(TextBase)`
@@ -244,7 +238,7 @@ const Points = styled.View`
 `;
 
 const Podium = styled.ImageBackground`
-  width: ${23 * WIDTH_REL};
+  width: ${28 * WIDTH_REL};
   height: ${40 * HEIGHT_REL};
   align-items: center;
   justify-content: center;
@@ -253,7 +247,7 @@ const Podium = styled.ImageBackground`
 `;
 
 const RankPosition = styled.View`
-  width: ${23 * WIDTH_REL};
+  width: ${28 * WIDTH_REL};
   height: ${23 * HEIGHT_REL};
   border-radius: ${16 * RATIO};
   align-items: center;

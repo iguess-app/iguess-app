@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Platform } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
 import { chevronLeftPurple } from '@assets/images';
@@ -83,10 +83,10 @@ const Title = styled(TextBaseBold)`
 const CloseImage = styled.Image.attrs({
   source: chevronLeftPurple,
 })`
-  width: ${10 * WIDTH_REL};
+  width: ${12 * WIDTH_REL};
   height: ${16 * HEIGHT_REL};
   margin-left: ${32 * WIDTH_REL};
-  margin-top: ${26 * HEIGHT_REL};
+  margin-top: ${Platform.OS === 'ios' ? 50 * HEIGHT_REL : 26 * HEIGHT_REL};
 `;
 
 const TextInput = styled(Input)`

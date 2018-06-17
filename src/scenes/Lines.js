@@ -136,7 +136,7 @@ const MenuIcon = styled.Image.attrs({
 const LeagueIcon = styled.Image.attrs({
   source: league,
 })`
-  width: ${18 * WIDTH_REL};
+  width: ${22 * WIDTH_REL};
   height: ${16 * HEIGHT_REL};
 `;
 

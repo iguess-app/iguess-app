@@ -179,7 +179,7 @@ const TrophyIcon = styled.Image.attrs({
 })`
   margin-left: ${15 * WIDTH_REL};
   margin-right: ${15 * WIDTH_REL};
-  width: ${26 * WIDTH_REL};
+  width: ${32 * WIDTH_REL};
   height: ${24 * HEIGHT_REL};
 `;
 
@@ -199,7 +199,6 @@ const ContainerView = styled.View`
 
 const ButtonsView = styled.View`
   align-items: center;
-  margin-top: ${20 * HEIGHT_REL};
 `;
 
 export default Leagues;
