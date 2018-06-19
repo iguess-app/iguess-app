@@ -79,7 +79,7 @@ class AddFriends extends Component {
           value={this.state.username}
           onChangeText={value =>
             this.setState({ username: value }, () => {
-              if (value && value.length > 3) {
+              if (value && value.length >= 3) {
                 this.searchUsers(value);
               } else {
                 this.setState({
@@ -91,15 +91,17 @@ class AddFriends extends Component {
           autoCapitalize="none"
           maxLength={25}
         />
-
-        <List
-          data={this.state.friends}
-          renderItem={({ item }) => this._renderCard(item)}
-          keyExtractor={(item, index) => index}
-        />
+        <Content>
+          <List
+            data={this.state.friends}
+            renderItem={({ item }) => this._renderCard(item)}
+            keyExtractor={(item, index) => index}
+          />
+        </Content>
         <ButtonsView>
           <MainButton
             text="Continuar"
+            isDisable={this.state.addedFriends.length <= 0}
             onPress={() => {
               this._updateAddedFriends();
               Actions.push('addedfriends', { leagueId: this.props.leagueId });
@@ -139,6 +141,7 @@ const RowSubTitle = styled.Text`
 
 const List = styled.FlatList`
   margin-top: ${8 * HEIGHT_REL};
+  height: ${290 * HEIGHT_REL};
 `;
 
 const Close = props => {
@@ -175,10 +178,11 @@ const TextInput = styled(Input)`
 `;
 
 const ButtonsView = styled.View`
-  flex: 1;
-  margin-bottom: ${40 * HEIGHT_REL};
-  justify-content: flex-end;
   align-items: center;
+  justify-content: center;
+  margin-top: ${10 * HEIGHT_REL};
 `;
+
+const Content = styled.View``;
 
 export default connect()(AddFriends);

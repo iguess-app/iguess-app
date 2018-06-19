@@ -10,8 +10,11 @@ import {
 import { plusIcon } from '@assets/images';
 import { TextBaseBold } from '@components/Scene';
 
-export const MainButton = ({ text, onPress }) => (
-  <MainTouchable onPress={() => onPress()}>
+export const MainButton = ({ text, onPress, isDisable }) => (
+  <MainTouchable
+    isDisable={isDisable}
+    onPress={isDisable ? null : () => onPress()}
+  >
     <WhiteText>{text.toUpperCase()}</WhiteText>
   </MainTouchable>
 );
@@ -63,7 +66,8 @@ const MainTouchable = styled.TouchableOpacity`
   width: ${311 * WIDTH_REL};
   height: ${56 * HEIGHT_REL};
   border-radius: ${38 * RATIO};
-  background-color: ${PRIMARY_BUTTON_COLOR};
+  background-color: ${props =>
+    props.isDisable ? '#c6ccd2' : PRIMARY_BUTTON_COLOR};
   align-items: center;
   justify-content: center;
 `;

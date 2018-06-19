@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Platform } from 'react-native';
 import { NavBar, SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
+import Loading from '@scenes/Loading';
 import { chevronLeftPurple, leagueBig, trophyRank } from '@assets/images';
 import { HEIGHT_REL, WIDTH_REL } from '@theme';
 import { MainIconButton } from '@components/Button';
@@ -15,6 +16,7 @@ class Leagues extends Component {
     super(props);
     this.state = {
       leagues: [],
+      loading: true,
     };
   }
 
@@ -27,7 +29,12 @@ class Leagues extends Component {
       `https://iguess-666666.appspot.com/guessleague/listGuessesLeagues`,
     ).then(response => {
       if (response.statusCode !== 404) {
-        this.setState({ leagues: response.guessLeaguesList });
+        this.setState(
+          {
+            leagues: response.guessLeaguesList,
+          },
+          () => this.setState({ loading: false }),
+        );
       }
     });
   }
@@ -57,6 +64,10 @@ class Leagues extends Component {
     const back = swipe
       ? swipe
       : () => Actions.push('core', { activeSwiperScreen: 2 });
+
+    if (this.state.loading) {
+      return <Loading />;
+    }
 
     return (
       <SceneWrapper>
@@ -172,6 +183,7 @@ const LeagueIcon = styled.Image.attrs({
   margin-top: ${60 * HEIGHT_REL};
   width: ${73 * WIDTH_REL};
   height: ${67 * HEIGHT_REL};
+  resize-mode: contain;
 `;
 
 const TrophyIcon = styled.Image.attrs({
@@ -180,16 +192,17 @@ const TrophyIcon = styled.Image.attrs({
   margin-left: ${15 * WIDTH_REL};
   margin-right: ${15 * WIDTH_REL};
   width: ${32 * WIDTH_REL};
-  height: ${24 * HEIGHT_REL};
+  height: ${30 * HEIGHT_REL};
+  resize-mode: contain;
 `;
 
 const CloseImage = styled.Image.attrs({
   source: chevronLeftPurple,
 })`
-  width: ${10 * WIDTH_REL};
+  width: ${12 * WIDTH_REL};
   height: ${16 * HEIGHT_REL};
   margin-left: ${32 * WIDTH_REL};
-  margin-top: ${26 * HEIGHT_REL};
+  margin-top: ${Platform.OS === 'ios' ? 50 * HEIGHT_REL : 26 * HEIGHT_REL};
 `;
 
 const ContainerView = styled.View`
@@ -199,6 +212,8 @@ const ContainerView = styled.View`
 
 const ButtonsView = styled.View`
   align-items: center;
+  justify-content: center;
+  margin-top: ${10 * HEIGHT_REL};
 `;
 
 export default Leagues;

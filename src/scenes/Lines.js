@@ -131,13 +131,15 @@ const MenuIcon = styled.Image.attrs({
 })`
   width: ${24 * WIDTH_REL};
   height: ${15 * HEIGHT_REL};
+  resize-mode: contain;
 `;
 
 const LeagueIcon = styled.Image.attrs({
   source: league,
 })`
   width: ${22 * WIDTH_REL};
-  height: ${16 * HEIGHT_REL};
+  height: ${20 * HEIGHT_REL};
+  resize-mode: contain;
 `;
 
 const MenuText = styled(TextBaseBold)`

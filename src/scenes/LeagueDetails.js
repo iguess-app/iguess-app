@@ -3,6 +3,7 @@ import { NavBarWithMenu } from '@components/NavBar';
 import { SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
 import Modal from 'react-native-modal';
+import Loading from '@scenes/Loading';
 import {
   gold,
   bronze,
@@ -10,6 +11,7 @@ import {
   exit,
   plusPurple,
   captain,
+  trophyGray,
 } from '@assets/images';
 import { HEIGHT_REL, WIDTH_REL } from '@theme';
 import { TextBase, TextBaseBold } from '@components/Scene';
@@ -23,6 +25,7 @@ class Leagues extends Component {
     this.state = {
       league: null,
       visibleModal: false,
+      loading: true,
     };
   }
 
@@ -37,7 +40,9 @@ class Leagues extends Component {
       }`,
     ).then(response => {
       if (response.statusCode !== 404) {
-        this.setState({ league: response });
+        this.setState({ league: response }, () =>
+          this.setState({ loading: false }),
+        );
       }
     });
   }
@@ -63,10 +68,12 @@ class Leagues extends Component {
 
   _renderModalContent = () => (
     <ModalView>
-      <Row onPress={() => this.addFriends()}>
-        <Icon source={plusPurple} />
-        <MenuText>Adicionar um Amigo</MenuText>
-      </Row>
+      {this.state.league.isCaptain && (
+        <Row onPress={() => this.addFriends()}>
+          <Icon source={plusPurple} />
+          <MenuText>Adicionar um Amigo</MenuText>
+        </Row>
+      )}
       <Row onPress={() => this.quitLeague()}>
         <Icon source={exit} />
         <MenuText>Sair da Liga</MenuText>
@@ -93,8 +100,10 @@ class Leagues extends Component {
         <UserContent>
           <NameText>{item.loggedUser ? 'Você' : item.name}</NameText>
           <UserNameText>{`@${item.userName}`}</UserNameText>
-          {item.captain && <IconCap source={captain} />}
         </UserContent>
+        <IconContent>
+          {item.captain && <IconCap source={captain} />}
+        </IconContent>
         <Points>
           <PointsText>{item.totalPontuation}</PointsText>
         </Points>
@@ -104,6 +113,10 @@ class Leagues extends Component {
 
   render() {
     const { league } = this.state;
+
+    if (this.state.loading) {
+      return <Loading />;
+    }
 
     return (
       league && (
@@ -119,20 +132,9 @@ class Leagues extends Component {
               championship={league.championship.championship}
               guessLeagueName={league.guessLeagueName}
             />
-            <ListContent style={cardShadow}>
-              <List
-                data={league.players.filter(item =>
-                  [1, 2, 3].includes(item.rankingPosition),
-                )}
-                keyExtractor={item => item.userRef}
-                renderItem={({ item }) => this._renderCard(item)}
-              />
-            </ListContent>
             <NormalListContent>
               <List
-                data={league.players.filter(
-                  item => ![1, 2, 3].includes(item.rankingPosition),
-                )}
+                data={league.players}
                 keyExtractor={item => item.userRef}
                 renderItem={({ item }) => this._renderCard(item)}
               />
@@ -157,7 +159,10 @@ const HeaderLeague = ({ season, championship, guessLeagueName }) => (
   <NavWrapper source={DEFAULT_BACKGROUND}>
     <Year>{season}</Year>
     <Championship>{championship}</Championship>
-    <LeagueName>{guessLeagueName}</LeagueName>
+    <ContentIcon>
+      <LeagueName>{guessLeagueName}</LeagueName>
+      <TrophyIcon />
+    </ContentIcon>
   </NavWrapper>
 );
 
@@ -171,7 +176,7 @@ const MenuText = styled.Text`
   color: #553dd1;
   font-size: ${12 * HEIGHT_REL};
   margin-top: ${25 * HEIGHT_REL};
-  margin-bottom: ${20 * HEIGHT_REL};
+  margin-bottom: ${30 * HEIGHT_REL};
 `;
 
 const IconCap = styled.Image`
@@ -200,7 +205,7 @@ const bottomModal = {
 };
 
 const NavWrapper = styled.ImageBackground`
-  height: ${140 * HEIGHT_REL};
+  height: ${100 * HEIGHT_REL};
   z-index: 1;
 `;
 const Year = styled(TextBaseBold)`
@@ -220,14 +225,20 @@ const LeagueName = styled(TextBaseBold)`
   font-weight: bold;
   font-size: ${30 * HEIGHT_REL};
   margin-left: ${35 * WIDTH_REL};
-  margin-top: ${10 * WIDTH_REL};
-  margin-bottom: ${20 * WIDTH_REL};
+  margin-top: ${10 * HEIGHT_REL};
 `;
 
 const List = styled.FlatList`
-  margin-top: ${8 * HEIGHT_REL};
-  width: ${320 * WIDTH_REL};
-  margin-bottom: ${5 * WIDTH_REL};
+  margin-bottom: ${20 * HEIGHT_REL};
+`;
+
+const TrophyIcon = styled.Image.attrs({
+  source: trophyGray,
+})`
+  width: ${80 * WIDTH_REL};
+  height: ${80 * HEIGHT_REL};
+  margin-top: ${-35 * HEIGHT_REL};
+  resize-mode: contain;
 `;
 
 const UserNameText = styled(TextBase)`
@@ -247,29 +258,31 @@ const Points = styled.View`
   width: ${50 * WIDTH_REL};
   height: ${30 * HEIGHT_REL};
   background: ${LOADING_TITLE_COLOR};
+  margin-left: ${15 * WIDTH_REL};
   border-radius: ${16 * RATIO};
   align-items: center;
   justify-content: center;
 `;
 
-const Podium = styled.ImageBackground`
-  width: ${28 * WIDTH_REL};
-  height: ${40 * HEIGHT_REL};
+const Podium = styled.Image`
+  width: ${30 * WIDTH_REL};
+  height: ${42 * HEIGHT_REL};
+  margin-right: ${20 * WIDTH_REL};
+  margin-left: ${35 * WIDTH_REL};
   align-items: center;
   justify-content: center;
-  margin-right: ${20 * WIDTH_REL};
-  margin-left: ${18 * WIDTH_REL};
+  resize-mode: contain;
 `;
 
 const RankPosition = styled.View`
-  width: ${28 * WIDTH_REL};
+  width: ${30 * WIDTH_REL};
   height: ${23 * HEIGHT_REL};
   border-radius: ${16 * RATIO};
   align-items: center;
   justify-content: center;
   background-color: #18ec98;
   margin-right: ${20 * WIDTH_REL};
-  margin-left: ${18 * WIDTH_REL};
+  margin-left: ${35 * WIDTH_REL};
 `;
 const RankText = styled(TextBaseBold)`
   font-weight: bold;
@@ -285,50 +298,36 @@ const PointsText = styled(TextBase)`
 
 const Card = styled.View`
   flex-direction: row;
-  width: ${330 * WIDTH_REL};
+  width: ${370 * WIDTH_REL};
   height: ${70 * HEIGHT_REL};
   background-color: #fff;
   align-self: center;
-  align-items: flex-start;
-  margin-top: ${5 * HEIGHT_REL};
+  align-items: center;
 `;
 
 const Content = styled.View``;
 
-const cardShadow = {
-  elevation: 10,
-  shadowOpacity: 0.16,
-  shadowColor: '#4D6980',
-  shadowOffset: {
-    width: 8,
-    height: 16,
-  },
-  shadowRadius: 8,
-};
+const ContentIcon = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+`;
 
-const ListContent = styled.View`
-  width: ${330 * WIDTH_REL};
-  border-radius: ${16 * RATIO};
-  margin-top: ${-40 * HEIGHT_REL};
-  background: #fff;
-  align-self: center;
-  align-items: center;
-  justify-content: center;
-  z-index: 1;
+const IconContent = styled.View`
+  width: ${30 * WIDTH_REL};
+  margin-left: ${-10 * WIDTH_REL};
 `;
 
 const NormalListContent = styled.View`
-  width: ${330 * WIDTH_REL};
   background: #fff;
   align-self: center;
   align-items: center;
   justify-content: center;
-  margin-top: ${20 * HEIGHT_REL};
-  height: ${200 * HEIGHT_REL};
+  height: ${480 * HEIGHT_REL};
+  margin-top: ${10 * HEIGHT_REL};
 `;
 
 const UserContent = styled.View`
-  width: ${200 * WIDTH_REL};
+  width: ${165 * WIDTH_REL};
 `;
 
 export default Leagues;

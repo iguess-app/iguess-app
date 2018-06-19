@@ -41,6 +41,7 @@ class CreateLeague extends Component {
         <ButtonsView>
           <MainButton
             text="Continuar"
+            isDisable={this.state.name.length < 3}
             onPress={() => {
               this._updateLeagueName();
               Actions.push('addfriends');
