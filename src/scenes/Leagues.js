@@ -36,6 +36,7 @@ class Leagues extends Component {
           () => this.setState({ loading: false }),
         );
       }
+      this.setState({ loading: false });
     });
   }
 
@@ -118,7 +119,7 @@ const Close = props => {
 
 const List = styled.FlatList`
   margin-top: ${8 * HEIGHT_REL};
-  height: ${480 * HEIGHT_REL};
+  height: ${Platform.OS === 'ios' ? 480 * HEIGHT_REL : 460 * HEIGHT_REL};
 `;
 
 const LeagueNameText = styled.Text`

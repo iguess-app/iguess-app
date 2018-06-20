@@ -18,20 +18,17 @@ class AddFriends extends Component {
     super(props);
     this.state = {
       friends: [],
-      addedFriends: [],
       username: '',
       loading: false,
     };
   }
 
   _addFriend(user) {
-    this.setState({ addedFriends: this.state.addedFriends.concat([user]) });
+    this._updateAddedFriends(this.props.addedFriends.concat([user]));
   }
 
-  _updateAddedFriends() {
-    this.props.dispatch(
-      leaguesActions.updateAddedFriends(this.state.addedFriends),
-    );
+  _updateAddedFriends(addedFriends) {
+    this.props.dispatch(leaguesActions.updateAddedFriends(addedFriends));
   }
 
   searchUsers(username) {
@@ -50,7 +47,7 @@ class AddFriends extends Component {
   }
 
   _renderCard(item) {
-    const isAdded = this.state.addedFriends.find(
+    const isAdded = this.props.addedFriends.find(
       friend => friend._id === item._id,
     );
 
@@ -101,9 +98,12 @@ class AddFriends extends Component {
         <ButtonsView>
           <MainButton
             text="Continuar"
-            isDisable={this.state.addedFriends.length <= 0}
+            isDisable={this.props.addedFriends.length <= 0}
             onPress={() => {
-              this._updateAddedFriends();
+              this.setState({
+                username: '',
+                friends: [],
+              });
               Actions.push('addedfriends', { leagueId: this.props.leagueId });
             }}
           />
@@ -185,4 +185,10 @@ const ButtonsView = styled.View`
 
 const Content = styled.View``;
 
-export default connect()(AddFriends);
+const mapStateToProps = state => {
+  return {
+    addedFriends: state.leagues.addedFriends,
+  };
+};
+
+export default connect(mapStateToProps)(AddFriends);

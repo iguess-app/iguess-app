@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Alert } from 'react-native';
 import { NavBarWithMenu } from '@components/NavBar';
 import { SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
@@ -66,6 +67,25 @@ class Leagues extends Component {
     });
   }
 
+  confirmQuitLeague() {
+    Alert.alert(
+      'Sair da liga?',
+      `Você tem certeza que deseja sair da liga "${
+        this.state.league.guessLeagueName
+      }" ?`,
+      [
+        { text: 'Cancelar' },
+        {
+          text: 'Sair',
+          onPress: () => {
+            this.quitLeague();
+          },
+        },
+      ],
+      { cancelable: false },
+    );
+  }
+
   _renderModalContent = () => (
     <ModalView>
       {this.state.league.isCaptain && (
@@ -74,7 +94,7 @@ class Leagues extends Component {
           <MenuText>Adicionar um Amigo</MenuText>
         </Row>
       )}
-      <Row onPress={() => this.quitLeague()}>
+      <Row onPress={() => this.confirmQuitLeague()}>
         <Icon source={exit} />
         <MenuText>Sair da Liga</MenuText>
       </Row>
