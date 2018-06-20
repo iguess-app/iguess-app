@@ -51,8 +51,9 @@ export default {
   serverErrorDefault:
     'Oops! Nossos servidores estão se comportando mal. Tente novamente mais tarde.',
 
-  loadingTitle: 'Dá uma segurada aí, boleiro…',
-  loadingSubtitle: 'To vestindo a dez e colocando a faixa',
+  loadingTitle: 'Dá uma segurada aí chefe...',
+  loadingSubtitle: 'To limpando a sala de troféus',
+  //loadingSubtitle: 'To vestindo a dez e colocando a faixa',
 
   aboutTitle: 'Sobre nós',
   aboutDescription: 'O aplicativo de palpites que você respeita!',
@@ -82,17 +83,17 @@ export default {
     'Para pontuar é necessário acertar o vencedor da partida, a pontuação de um jogo é a subtração entre a pontuação máxima e a diferença de gols.',
   howItWorksContent3:
     'A pontuação para quem acertar o placar exato é de 10 pontos.',
-  howItWorksBoardTitle: 'PP = PM - | (STC) + (STV) |',
+  howItWorksBoardTitle: 'PP = PM - ( |STC| + |STV| )',
   howItWorksBoardContent:
     'PP - Pontuação da Partida\nPM - Pontuação Máxima\nSTC - Subtração palpite/placar do time da casa\nSTV - Subtração palpite/placar do time visitante',
   howItWorksDescription2: 'Exemplos:',
   howItWorksContent4:
-    'Palpite: Inglaterra 1 x 2 Argentina\nResultado: Inglaterra 1 x 4 Argentina\nPontuação = 10 - | (1 - 1) + (2 - 4) | = 8',
+    'Palpite: Inglaterra 1 x 2 Argentina\nResultado: Inglaterra 1 x 4 Argentina\nPontuação = 10 - ( |(1 - 1)| + |(2 - 4)| ) = 8',
   howItWorksContent5:
     'A pontuação mínima para quem acertou o vencedor é de 2 pontos.',
   howItWorksContent6: 'Em caso de empate:',
   howItWorksContent7:
-    'Palpite: Brasil 0 x 0 Holanda\nResultado: Brasil 2 x 2 Holanda\nPontuação = 10 - | (0 - 2) + (0 - 2) | = 6',
+    'Palpite: Brasil 0 x 0 Holanda\nResultado: Brasil 2 x 2 Holanda\nPontuação = 10 - ( |(0 - 2)| + |(0 - 2)| ) = 6',
   howItWorksContent8: 'Em caso de erro:',
   howItWorksContent9:
     'Palpite: Uruguai 0 x 2 Portugal\nResultado: Uruguai 2 x 1 Portugal\nPontuação = 0',
