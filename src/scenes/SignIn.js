@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Keyboard } from 'react-native';
+import UXCam from 'react-native-ux-cam';
 import { InputSceneWrapper } from '@components/Scene';
 import { MainButton } from '@components/Button';
 import Input from '@components/Input';
@@ -25,7 +26,7 @@ class SignIn extends Component {
   }
 
   _login() {
-    this.setState({ errorMsg: null }, () => {
+    this.setState({ errorMsg: null }, async () => {
       if (this.state.login && this.state.password) {
         Keyboard.dismiss();
         this.setState({ loading: true });
@@ -34,6 +35,9 @@ class SignIn extends Component {
           login: this.state.login,
           password: this.state.password,
         };
+
+        UXCam.startWithKey('20f7d8b48c2c0c0');
+        UXCam.tagScreenName('SignIn');
 
         post('https://iguess-666666.appspot.com/login/signIn', body)
           .then(response => {

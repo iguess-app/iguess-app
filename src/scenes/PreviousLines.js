@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import UXCam from 'react-native-ux-cam';
 import GameList from '@components/GameList';
 import { SceneWrapper, NavBar } from '@components/Scene';
 import Loading from '@scenes/Loading';
@@ -25,6 +26,9 @@ class PreviousLines extends Component {
   }
 
   render() {
+    UXCam.startWithKey('20f7d8b48c2c0c0');
+    UXCam.tagScreenName('PreviousLines');
+
     const { activeLine, championship, pontuation } = this.props;
 
     if (

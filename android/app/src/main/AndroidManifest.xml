@@ -16,6 +16,7 @@
       android:label="@string/app_name"
       android:icon="@mipmap/ic_launcher"
       android:theme="@style/AppTheme">
+      <service android:name="com.uxcam.service.HttpPostService"/>
       
       <activity
         android:name=".SplashActivity"
@@ -34,7 +35,7 @@
         android:windowSoftInputMode="adjustPan"
         android:exported="true">
       </activity>
-
+      
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
     </application>
 

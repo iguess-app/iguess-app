@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Keyboard } from 'react-native';
+import UXCam from 'react-native-ux-cam';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styled from 'styled-components';
 import { InputSceneWrapper } from '@components/Scene';
@@ -172,6 +173,9 @@ class SignUp extends Component {
   }
 
   render() {
+    UXCam.startWithKey('20f7d8b48c2c0c0');
+    UXCam.tagScreenName('SignIn');
+
     const errorCard =
       this.state.errorMsg !== null ? (
         <Error input>{this.state.errorMsg}</Error>
