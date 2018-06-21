@@ -62,9 +62,7 @@ class Leagues extends Component {
 
   render() {
     const { swipe } = this.props;
-    const back = swipe
-      ? swipe
-      : () => Actions.push('core', { activeSwiperScreen: 2 });
+    const back = swipe ? swipe : () => Actions.reset('core');
 
     if (this.state.loading) {
       return <Loading />;

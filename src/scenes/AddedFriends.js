@@ -12,6 +12,7 @@ import { LOADING_TITLE_COLOR } from '@theme';
 import { post, patch } from '@helpers';
 import { connect } from 'react-redux';
 import * as leaguesActions from '@redux/leagues/actions';
+import { debounce } from 'lodash';
 
 class AddedFriends extends Component {
   constructor(props) {
@@ -54,10 +55,8 @@ class AddedFriends extends Component {
       body,
     )
       .then(response => {
-        if (response.statusCode === 401) {
-          console.log('errroooou');
-        } else {
-          Actions.reset('core', { activeSwiperScreen: 2 });
+        if (response.statusCode !== 404) {
+          Actions.reset('leagues');
         }
       })
       .catch(() =>
@@ -106,6 +105,9 @@ class AddedFriends extends Component {
 
   render() {
     const { addedFriends, leagueId } = this.props;
+    const onPress = leagueId
+      ? () => this._addToLeague()
+      : () => this._createLeague();
 
     return (
       <SceneWrapper>
@@ -119,9 +121,10 @@ class AddedFriends extends Component {
         <ButtonsView>
           <MainButton
             text={leagueId ? 'Adicionar' : 'Criar Minha Liga'}
-            onPress={
-              leagueId ? () => this._addToLeague() : () => this._createLeague()
-            }
+            onPress={debounce(onPress, 1000, {
+              leading: true,
+              trailing: false,
+            })}
           />
         </ButtonsView>
       </SceneWrapper>

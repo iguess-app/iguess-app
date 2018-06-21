@@ -62,7 +62,7 @@ class Leagues extends Component {
       body,
     ).then(response => {
       if (response.statusCode !== 404) {
-        Actions.reset('core', { activeSwiperScreen: 2 });
+        Actions.reset('leagues');
       }
     });
   }

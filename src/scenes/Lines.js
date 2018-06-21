@@ -9,6 +9,7 @@ import { alignLeft, league } from '@assets/images';
 import { DEFAULT_BACKGROUND, MENU_COLOR, WIDTH_REL, HEIGHT_REL } from '@theme';
 import { connect } from 'react-redux';
 import * as linesActions from '@redux/lines/actions';
+import { Actions } from 'react-native-router-flux';
 
 class Lines extends Component {
   constructor(props) {
@@ -35,13 +36,7 @@ class Lines extends Component {
   }
 
   render() {
-    const {
-      activeLine,
-      swipe,
-      swipeLeagues,
-      championship,
-      pontuation,
-    } = this.props;
+    const { activeLine, swipe, championship, pontuation } = this.props;
 
     if (
       championship === undefined ||
@@ -59,7 +54,7 @@ class Lines extends Component {
         <Navigation>
           <NavBarContainer>
             <Menu onPress={swipe} />
-            <Leagues onPress={swipeLeagues} />
+            <Leagues />
           </NavBarContainer>
         </Navigation>
         <SelectedLine
@@ -108,8 +103,8 @@ const Menu = ({ onPress }) => (
   </TouchableOpacity>
 );
 
-const Leagues = ({ onPress }) => (
-  <TouchableOpacity onPress={onPress}>
+const Leagues = () => (
+  <TouchableOpacity onPress={() => Actions.push('leagues')}>
     <MenuWrapper>
       <MenuLeagueText>LIGAS</MenuLeagueText>
       <LeagueIcon />

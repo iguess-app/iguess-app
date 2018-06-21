@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BackHandler } from 'react-native';
 import Lines from '@scenes/Lines';
-import Leagues from '@scenes/Leagues';
 import Settings from '@scenes/Settings';
 import { setStatusBarStyle } from '@helpers';
 import Swiper from 'react-native-swiper';
@@ -39,7 +38,6 @@ class Core extends Component<void, void, void> {
             swipe={() => this.swiper.scrollBy(-1)}
             swipeLeagues={() => this.swiper.scrollBy(1)}
           />
-          <Leagues swipe={() => this.swiper.scrollBy(-1)} />
         </Swiper>
       </BackgroundContainer>
     );
