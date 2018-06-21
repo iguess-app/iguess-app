@@ -23,6 +23,10 @@ class AddFriends extends Component {
     };
   }
 
+  componentWillUnmount() {
+    this._updateAddedFriends([]);
+  }
+
   _addFriend(user) {
     this._updateAddedFriends(this.props.addedFriends.concat([user]));
   }
