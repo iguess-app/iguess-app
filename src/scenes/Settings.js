@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, Alert, Platform } from 'react-native';
+import Appsee from 'react-native-appsee';
 import styled from 'styled-components';
 import { SceneWrapper } from '@components/Scene';
 import Error from '@components/Error';
@@ -10,7 +11,6 @@ import { logout } from '@redux/authentication/actions';
 import {
   conversation,
   closeSettings,
-  blog,
   store,
   question,
   exit,
@@ -66,6 +66,7 @@ class Settings extends Component {
   };
 
   render() {
+    Appsee.startScreen('Settings');
     const { swipe } = this.props;
 
     const errorCard =

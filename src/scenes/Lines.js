@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, Platform } from 'react-native';
-import UXCam from 'react-native-ux-cam';
+import Appsee from 'react-native-appsee';
 import styled from 'styled-components';
 import GameList from '@components/GameList';
 import SelectedLine from '@components/SelectedLine';
@@ -36,10 +36,8 @@ class Lines extends Component {
   }
 
   render() {
+    Appsee.startScreen('Lines');
     const { activeLine, swipe, championship, pontuation } = this.props;
-
-    UXCam.startWithKey('20f7d8b48c2c0c0');
-    UXCam.tagScreenName('Lines');
 
     if (
       championship === undefined ||

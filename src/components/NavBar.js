@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Appsee from 'react-native-appsee';
 import { Actions } from 'react-native-router-flux';
 import { chevronLeft } from '@assets/images';
 import { setStatusBarStyle } from '@helpers';
@@ -27,6 +28,7 @@ const NavBar = props => {
 const Back = () => (
   <BackTouchable
     onPress={() => {
+      Appsee.addEvent('BackButton');
       Actions.pop();
     }}
   >

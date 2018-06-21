@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BackHandler } from 'react-native';
-import UXCam from 'react-native-ux-cam';
+import Appsee from 'react-native-appsee';
 import Lines from '@scenes/Lines';
 import Settings from '@scenes/Settings';
 import { setStatusBarStyle } from '@helpers';
@@ -21,8 +21,7 @@ class Core extends Component<void, void, void> {
   }
 
   render() {
-    UXCam.startWithKey('20f7d8b48c2c0c0');
-    UXCam.tagScreenName('Core');
+    Appsee.startScreen('Core');
 
     const { dispatch, activeSwiperScreen } = this.props;
 
