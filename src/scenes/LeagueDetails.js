@@ -74,13 +74,13 @@ class Leagues extends Component {
         this.state.league.guessLeagueName
       }" ?`,
       [
-        { text: 'Cancelar' },
         {
           text: 'Sair',
           onPress: () => {
             this.quitLeague();
           },
         },
+        { text: 'Cancelar' },
       ],
       { cancelable: false },
     );
