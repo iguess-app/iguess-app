@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, Platform } from 'react-native';
+import Appsee from 'react-native-appsee';
 import { SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
 import { chevronLeftPurple } from '@assets/images';
@@ -26,6 +27,7 @@ class CreateLeague extends Component {
   }
 
   render() {
+    Appsee.startScreen('CreateLeague');
     return (
       <SceneWrapper>
         <Close onPress={() => Actions.pop()} />
@@ -43,6 +45,7 @@ class CreateLeague extends Component {
             text={I18n.t('continueText')}
             isDisable={this.state.name.length < 3}
             onPress={() => {
+              Appsee.addEvent('CreateLeagueNext');
               this._updateLeagueName();
               Actions.push('addfriends');
             }}
