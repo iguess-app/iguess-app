@@ -154,7 +154,7 @@ class SignUp extends Component {
             this.props.dispatch(login(response.token));
 
             // redirect to core scene
-            Actions.core();
+            Actions.reset('core');
           } else if (response.statusCode === 406) {
             if (response.errorCode === errors.usernameAlreadyUsed) {
               this.usernameInput.error(response.message);

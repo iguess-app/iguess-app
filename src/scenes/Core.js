@@ -28,14 +28,16 @@ class Core extends Component<void, void, void> {
       <BackgroundContainer>
         <Swiper
           loop={false}
-          index={1}
+          index={activeSwiperScreen ? activeSwiperScreen : 1}
           showsPagination={false}
           onIndexChanged={index => dispatch(swipe(index))}
           ref={ref => (this.swiper = ref)}
         >
           <Settings swipe={() => this.swiper.scrollBy(1)} />
-          <Lines swipe={() => this.swiper.scrollBy(-1)} />
-          {/* <Settings swipe={() => this.swiper.scrollBy(-2)} /> */}
+          <Lines
+            swipe={() => this.swiper.scrollBy(-1)}
+            swipeLeagues={() => this.swiper.scrollBy(1)}
+          />
         </Swiper>
       </BackgroundContainer>
     );

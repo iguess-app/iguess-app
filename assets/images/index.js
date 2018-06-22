@@ -1,7 +1,7 @@
 export const aboutImage = require('./aboutImage.png');
 export const blog = require('./blog.png');
 export const chevronDown = require('./chevronDown.png');
-export const chevronLeft = require('./chevronLeft.png');
+export const chevronLeftWhite = require('./chevronLeftWhite.png');
 export const chevronRight = require('./chevronRight.png');
 export const closeSettings = require('./closeSettings.png');
 export const conversation = require('./conversation.png');
@@ -24,8 +24,22 @@ export const whistle = require('./whistle.png');
 export const warning = require('./warning.png');
 export const logo = require('./logo.png');
 export const alignLeft = require('./alignLeft.png');
+export const chevronLeftPurple = require('./chevron-left.png');
+export const leagueBig = require('./league-big.png');
+export const plusIcon = require('./plus-icon.png');
+export const league = require('./trophy.png');
+export const trophyRank = require('./trophy-rank.png');
 export const howItWorksImage = require('./howItWorksImage.png');
 export const question = require('./question.png');
+export const added = require('./added.png');
+export const remove = require('./remove.png');
+export const gold = require('./gold.png');
+export const silver = require('./silver.png');
+export const bronze = require('./bronze.png');
+export const plusPurple = require('./plus-purple.png');
+export const dots = require('./dots.png');
+export const trophyGray = require('./trophy-gray.png');
+export const captain = require('./captain.png');
 
 // GIF
 export const ballGif = require('./ball.gif');

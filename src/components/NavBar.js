@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Actions } from 'react-native-router-flux';
-import { chevronLeft } from '@assets/images';
+import { chevronLeftWhite, dots } from '@assets/images';
 import { setStatusBarStyle } from '@helpers';
 import {
   HEADER_TEXT_COLOR,
@@ -12,25 +12,41 @@ import {
 } from '@theme';
 
 const NavBar = props => {
-  const { title } = props;
+  const { title, onPress } = props;
 
   setStatusBarStyle('white');
 
   return (
     <NavWrapper source={DEFAULT_BACKGROUND}>
-      <Back />
+      <Back onPress={onPress} />
       <Title>{title.toUpperCase()}</Title>
     </NavWrapper>
   );
 };
 
-const Back = () => (
-  <BackTouchable
-    onPress={() => {
-      Actions.pop();
-    }}
-  >
+export const NavBarWithMenu = props => {
+  const { title, back, menu } = props;
+
+  setStatusBarStyle('white');
+
+  return (
+    <NavWrapper source={DEFAULT_BACKGROUND}>
+      <Back onPress={back} />
+      <Title>{title.toUpperCase()}</Title>
+      <Menu onPress={menu} />
+    </NavWrapper>
+  );
+};
+
+const Back = ({ onPress }) => (
+  <BackTouchable onPress={() => (onPress ? onPress() : Actions.pop())}>
     <BackImage />
+  </BackTouchable>
+);
+
+const Menu = ({ onPress }) => (
+  <BackTouchable onPress={() => onPress()}>
+    <MenuImage />
   </BackTouchable>
 );
 
@@ -43,10 +59,18 @@ const NavWrapper = styled.ImageBackground`
 `;
 
 const BackImage = styled.Image.attrs({
-  source: chevronLeft,
+  source: chevronLeftWhite,
 })`
   width: ${16 * RATIO};
   height: ${16 * RATIO};
+  resize-mode: contain;
+`;
+
+const MenuImage = styled.Image.attrs({
+  source: dots,
+})`
+  width: ${18 * RATIO};
+  height: ${18 * RATIO};
   resize-mode: contain;
 `;
 
