@@ -1,7 +1,7 @@
 export const aboutImage = require('./aboutImage.png');
 export const blog = require('./blog.png');
 export const chevronDown = require('./chevronDown.png');
-export const chevronLeft = require('./chevronLeft.png');
+export const chevronLeftWhite = require('./chevronLeftWhite.png');
 export const chevronRight = require('./chevronRight.png');
 export const closeSettings = require('./closeSettings.png');
 export const conversation = require('./conversation.png');

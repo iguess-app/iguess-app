@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Actions } from 'react-native-router-flux';
-import { chevronLeft, dots } from '@assets/images';
+import { chevronLeftWhite, dots } from '@assets/images';
 import { setStatusBarStyle } from '@helpers';
 import {
   HEADER_TEXT_COLOR,
@@ -59,7 +59,7 @@ const NavWrapper = styled.ImageBackground`
 `;
 
 const BackImage = styled.Image.attrs({
-  source: chevronLeft,
+  source: chevronLeftWhite,
 })`
   width: ${16 * RATIO};
   height: ${16 * RATIO};
