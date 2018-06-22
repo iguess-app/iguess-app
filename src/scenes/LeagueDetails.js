@@ -145,7 +145,7 @@ class Leagues extends Component {
           <Content>
             <NavBarWithMenu
               title=""
-              back={() => Actions.reset('core', { activeSwiperScreen: 2 })}
+              back={() => Actions.pop()}
               menu={() => this.setState({ visibleModal: true })}
             />
             <HeaderLeague
@@ -190,6 +190,12 @@ const HeaderLeague = ({ season, championship, guessLeagueName }) => (
 const Row = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
+  height: ${80 * HEIGHT_REL};
+`;
+
+const ModalView = styled.View`
+  background-color: #fff;
+  justify-content: center;
 `;
 
 const MenuText = styled.Text`
@@ -212,12 +218,6 @@ const Icon = styled.Image`
   resize-mode: contain;
   margin-left: ${32 * WIDTH_REL};
   margin-right: ${20 * WIDTH_REL};
-`;
-
-const ModalView = styled.View`
-  background-color: #fff;
-  justify-content: center;
-  height: ${160 * HEIGHT_REL};
 `;
 
 const bottomModal = {

@@ -171,8 +171,9 @@ const Title = styled(TextBaseBold)`
 const CloseImage = styled.Image.attrs({
   source: chevronLeftPurple,
 })`
-  width: ${12 * WIDTH_REL};
+  width: ${16 * WIDTH_REL};
   height: ${16 * HEIGHT_REL};
+  resize-mode: contain;
   margin-left: ${32 * WIDTH_REL};
   margin-top: ${Platform.OS === 'ios' ? 50 * HEIGHT_REL : 26 * HEIGHT_REL};
 `;
