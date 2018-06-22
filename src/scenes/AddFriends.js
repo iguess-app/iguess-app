@@ -12,6 +12,7 @@ import Input from '@components/Input';
 import { get } from '@helpers';
 import * as leaguesActions from '@redux/leagues/actions';
 import { connect } from 'react-redux';
+import I18n from 'react-native-i18n';
 
 class AddFriends extends Component {
   constructor(props) {
@@ -74,9 +75,9 @@ class AddFriends extends Component {
     return (
       <SceneWrapper>
         <Close onPress={() => Actions.pop()} />
-        <Title>ADICIONAR AMIGOS</Title>
+        <Title>{I18n.t('addFriendsTitle').toLocaleUpperCase()}</Title>
         <TextInput
-          placeholder="Buscar por @usuario"
+          placeholder={I18n.t('searchUserText')}
           value={this.state.username}
           onChangeText={value =>
             this.setState({ username: value }, () => {
@@ -101,7 +102,7 @@ class AddFriends extends Component {
         </Content>
         <ButtonsView>
           <MainButton
-            text="Continuar"
+            text={I18n.t('continueText')}
             isDisable={this.props.addedFriends.length <= 0}
             onPress={() => {
               this.setState({

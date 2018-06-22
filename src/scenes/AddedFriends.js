@@ -70,12 +70,12 @@ class AddedFriends extends Component {
   _removeFriend(user) {
     const { addedFriends, dispatch } = this.props;
     Alert.alert(
-      'Deseja remover o usuário selecionado?',
-      `Você está tentando remover o usuário ${user.name} da sua liga`,
+      I18n.t('confirmRemoveFriendTitle'),
+      I18n.t('confirmRemoveFriendText', { text: user.name }),
       [
-        { text: 'Cancelar' },
+        { text: I18n.t('cancelText') },
         {
-          text: 'Remover',
+          text: I18n.t('removeText'),
           onPress: () => {
             dispatch(
               leaguesActions.updateAddedFriends(
@@ -112,7 +112,7 @@ class AddedFriends extends Component {
     return (
       <SceneWrapper>
         <Close onPress={() => Actions.pop()} />
-        <Title>AMIGOS ADICIONADOS</Title>
+        <Title>{I18n.t('addeFriendsTitle').toLocaleUpperCase()}</Title>
         <List
           data={addedFriends}
           renderItem={({ item }) => this._renderCard(item)}
@@ -120,7 +120,7 @@ class AddedFriends extends Component {
         />
         <ButtonsView>
           <MainButton
-            text={leagueId ? 'Adicionar' : 'Criar Minha Liga'}
+            text={leagueId ? I18n.t('addText') : I18n.t('createMyleagueText')}
             onPress={debounce(onPress, 1000, {
               leading: true,
               trailing: false,

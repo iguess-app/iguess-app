@@ -29,10 +29,10 @@ class CreateLeague extends Component {
     return (
       <SceneWrapper>
         <Close onPress={() => Actions.pop()} />
-        <Title>CRIAR LIGAS</Title>
-        <Subtitle>Criei uma liga e chame seus amigos para competir</Subtitle>
+        <Title>{I18n.t('createLeagueTitle').toLocaleUpperCase()}</Title>
+        <Subtitle>{I18n.t('createLeagueSubTitle')}</Subtitle>
         <TextInput
-          placeholder="Nome da sua Liga"
+          placeholder={I18n.t('nameOfLeagueLabel')}
           value={this.state.name}
           onChangeText={value => this.setState({ name: value })}
           autoCapitalize="none"
@@ -40,7 +40,7 @@ class CreateLeague extends Component {
         />
         <ButtonsView>
           <MainButton
-            text="Continuar"
+            text={I18n.t('continueText')}
             isDisable={this.state.name.length < 3}
             onPress={() => {
               this._updateLeagueName();

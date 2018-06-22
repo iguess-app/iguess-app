@@ -19,6 +19,7 @@ import { TextBase, TextBaseBold } from '@components/Scene';
 import { Actions } from 'react-native-router-flux';
 import { LOADING_TITLE_COLOR, RATIO, DEFAULT_BACKGROUND } from '@theme';
 import { get, apiDelete } from '@helpers';
+import I18n from 'react-native-i18n';
 
 class Leagues extends Component {
   constructor(props) {
@@ -69,18 +70,18 @@ class Leagues extends Component {
 
   confirmQuitLeague() {
     Alert.alert(
-      'Sair da liga?',
-      `Você tem certeza que deseja sair da liga "${
-        this.state.league.guessLeagueName
-      }" ?`,
+      I18n.t('exitLeagueTitle'),
+      I18n.t('confirmExitLeagueText', {
+        text: this.state.league.guessLeagueName,
+      }),
       [
         {
-          text: 'Sair',
+          text: I18n.t('exitText'),
           onPress: () => {
             this.quitLeague();
           },
         },
-        { text: 'Cancelar' },
+        { text: I18n.t('cancelText') },
       ],
       { cancelable: false },
     );
@@ -91,12 +92,12 @@ class Leagues extends Component {
       {this.state.league.isCaptain && (
         <Row onPress={() => this.addFriends()}>
           <Icon source={plusPurple} />
-          <MenuText>Adicionar um Amigo</MenuText>
+          <MenuText>{I18n.t('addFriendText')}</MenuText>
         </Row>
       )}
       <Row onPress={() => this.confirmQuitLeague()}>
         <Icon source={exit} />
-        <MenuText>Sair da Liga</MenuText>
+        <MenuText>{I18n.t('exitLeagueText')}</MenuText>
       </Row>
     </ModalView>
   );
@@ -118,7 +119,7 @@ class Leagues extends Component {
           </RankPosition>
         )}
         <UserContent>
-          <NameText>{item.loggedUser ? 'Você' : item.name}</NameText>
+          <NameText>{item.loggedUser ? I18n.t('youText') : item.name}</NameText>
           <UserNameText>{`@${item.userName}`}</UserNameText>
         </UserContent>
         <IconContent>

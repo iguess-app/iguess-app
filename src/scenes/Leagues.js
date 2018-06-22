@@ -10,6 +10,7 @@ import { TextBase, TextBaseBold } from '@components/Scene';
 import { Actions } from 'react-native-router-flux';
 import { LOADING_TITLE_COLOR, RATIO } from '@theme';
 import { get } from '@helpers';
+import I18n from 'react-native-i18n';
 
 class Leagues extends Component {
   constructor(props) {
@@ -52,9 +53,9 @@ class Leagues extends Component {
           <ChampionshipNameText>
             {item.championship.championship}
           </ChampionshipNameText>
-          <NumberUsersText>{`${
-            item.numberOfUsersAtLeague
-          } usuários`}</NumberUsersText>
+          <NumberUsersText>{`${item.numberOfUsersAtLeague} ${I18n.t(
+            'users',
+          )}`}</NumberUsersText>
         </Content>
       </Card>
     );
@@ -72,7 +73,7 @@ class Leagues extends Component {
       <SceneWrapper>
         {this.state.leagues.length > 0 && (
           <Content>
-            <NavBar title="Ligas" onPress={back} />
+            <NavBar title={I18n.t('leaguesTitle')} onPress={back} />
             <List
               data={this.state.leagues}
               keyExtractor={item => item._id}
@@ -85,19 +86,16 @@ class Leagues extends Component {
           <Content>
             <Close onPress={back} />
             <ContainerView>
-              <Title>MINHAS LIGAS</Title>
-              <Subtitle>
-                Aqui você pode competir com seus amigos e ver quem acerta mais
-                palpites
-              </Subtitle>
+              <Title>{I18n.t('myLeaguesTitle')}</Title>
+              <Subtitle>{I18n.t('myLeaguesSubTitle')}</Subtitle>
               <LeagueIcon />
-              <SubtitleGray>Você ainda não tem nenhuma liga</SubtitleGray>
+              <SubtitleGray>{I18n.t('emptyLeaguesText')}</SubtitleGray>
             </ContainerView>
           </Content>
         )}
         <ButtonsView>
           <MainIconButton
-            text="Criar uma Liga"
+            text={I18n.t('createLeagueText')}
             onPress={() => Actions.push('createleague')}
           />
         </ButtonsView>

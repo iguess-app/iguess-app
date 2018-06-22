@@ -10,6 +10,7 @@ import { DEFAULT_BACKGROUND, MENU_COLOR, WIDTH_REL, HEIGHT_REL } from '@theme';
 import { connect } from 'react-redux';
 import * as linesActions from '@redux/lines/actions';
 import { Actions } from 'react-native-router-flux';
+import I18n from 'react-native-i18n';
 
 class Lines extends Component {
   constructor(props) {
@@ -106,7 +107,9 @@ const Menu = ({ onPress }) => (
 const Leagues = () => (
   <TouchableOpacity onPress={() => Actions.push('leagues')}>
     <MenuWrapper>
-      <MenuLeagueText>LIGAS</MenuLeagueText>
+      <MenuLeagueText>
+        {I18n.t('leaguesTitle').toLocaleUpperCase()}
+      </MenuLeagueText>
       <LeagueIcon />
     </MenuWrapper>
   </TouchableOpacity>
