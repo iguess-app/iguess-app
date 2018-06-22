@@ -6,10 +6,12 @@ import GameList from '@components/GameList';
 import SelectedLine from '@components/SelectedLine';
 import { SceneWrapper, TextBaseBold } from '@components/Scene';
 import Loading from '@scenes/Loading';
-import { alignLeft } from '@assets/images';
+import { alignLeft, league } from '@assets/images';
 import { DEFAULT_BACKGROUND, MENU_COLOR, WIDTH_REL, HEIGHT_REL } from '@theme';
 import { connect } from 'react-redux';
 import * as linesActions from '@redux/lines/actions';
+import { Actions } from 'react-native-router-flux';
+import I18n from 'react-native-i18n';
 
 class Lines extends Component {
   constructor(props) {
@@ -53,7 +55,10 @@ class Lines extends Component {
     return (
       <SceneWrapper background={DEFAULT_BACKGROUND}>
         <Navigation>
-          <Menu onPress={swipe} />
+          <NavBarContainer>
+            <Menu onPress={swipe} />
+            <Leagues />
+          </NavBarContainer>
         </Navigation>
         <SelectedLine
           season={season}
@@ -101,6 +106,23 @@ const Menu = ({ onPress }) => (
   </TouchableOpacity>
 );
 
+const Leagues = () => (
+  <TouchableOpacity onPress={() => Actions.push('leagues')}>
+    <MenuWrapper>
+      <MenuLeagueText>
+        {I18n.t('leaguesTitle').toLocaleUpperCase()}
+      </MenuLeagueText>
+      <LeagueIcon />
+    </MenuWrapper>
+  </TouchableOpacity>
+);
+
+const NavBarContainer = styled.View`
+  width: 100%;
+  flex-direction: row
+  justify-content: space-between;
+`;
+
 const MenuWrapper = styled.View`
   flex-direction: row;
 `;
@@ -109,11 +131,26 @@ const MenuIcon = styled.Image.attrs({
 })`
   width: ${24 * WIDTH_REL};
   height: ${15 * HEIGHT_REL};
+  resize-mode: contain;
+`;
+
+const LeagueIcon = styled.Image.attrs({
+  source: league,
+})`
+  width: ${22 * WIDTH_REL};
+  height: ${20 * HEIGHT_REL};
+  resize-mode: contain;
 `;
 
 const MenuText = styled(TextBaseBold)`
   font-size: ${12 * HEIGHT_REL};
   margin-left: ${8 * WIDTH_REL};
+  color: ${MENU_COLOR};
+`;
+
+const MenuLeagueText = styled(TextBaseBold)`
+  font-size: ${12 * HEIGHT_REL};
+  margin-right: ${8 * WIDTH_REL};
   color: ${MENU_COLOR};
 `;
 

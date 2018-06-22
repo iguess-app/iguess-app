@@ -61,8 +61,13 @@ export const get = url => {
   return request(url, requestInfo());
 };
 
-export const apiDelete = url => {
-  let info = requestInfo('DELETE');
+export const apiDelete = (url, body) => {
+  let info = requestInfo('DELETE', JSON.stringify(body));
+  return request(url, info);
+};
+
+export const patch = (url, body) => {
+  let info = requestInfo('PATCH', JSON.stringify(body));
   return request(url, info);
 };
 

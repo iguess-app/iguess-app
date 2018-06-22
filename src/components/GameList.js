@@ -46,7 +46,10 @@ class GameList extends Component {
       this.props.prev &&
       (!this.posY || this.posY < 120)
     ) {
-      setTimeout(() => this.scroll.scrollTo({ x: 0, y: 60 }), 100);
+      setTimeout(
+        () => this.scroll && this.scroll.scrollTo({ x: 0, y: 60 }),
+        100,
+      );
     }
   }
 

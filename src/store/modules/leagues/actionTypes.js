@@ -1,0 +1,2 @@
+export const UPDATE_LEAGUE_NAME = 'leagues.UPDATE_LEAGUE_NAME';
+export const UPDATE_ADDED_FRIENDS = 'leagues.UPDATE_ADDED_FRIENDS';
