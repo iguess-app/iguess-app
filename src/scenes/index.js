@@ -14,3 +14,7 @@ export CreateLeague from '@scenes/CreateLeague';
 export AddFriends from '@scenes/AddFriends';
 export AddedFriends from '@scenes/AddedFriends';
 export LeagueDetails from '@scenes/LeagueDetails';
+export ForgotMyPassword from '@scenes/ForgotMyPassword';
+export ConfirmToken from '@scenes/ConfirmToken';
+export ConfirmSendMail from '@scenes/ConfirmSendMail';
+export RedefinePassword from '@scenes/RedefinePassword';

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Keyboard } from 'react-native';
+import { Keyboard, TouchableOpacity } from 'react-native';
 import { InputSceneWrapper } from '@components/Scene';
 import { MainButton } from '@components/Button';
 import Input from '@components/Input';
@@ -12,6 +12,7 @@ import { post } from '@helpers';
 import { WIDTH_REL, HEIGHT_REL } from '@theme';
 import I18n from '../i18n';
 import { spinner } from '@assets/images';
+import { TextBaseBold } from '@components/Scene';
 
 class SignIn extends Component {
   constructor(props) {
@@ -101,12 +102,21 @@ class SignIn extends Component {
               onPress={() => this._login()}
             />
           </ButtonView>
+          <TouchableOpacity onPress={() => Actions.push('forgotpassword')}>
+            <TextLink>Esqueci a minha senha</TextLink>
+          </TouchableOpacity>
           {loader}
         </Wrapper>
       </InputSceneWrapper>
     );
   }
 }
+
+const TextLink = styled(TextBaseBold)`
+  color: #553dd1;
+  align-self: center;
+  text-decoration: underline;
+`;
 
 const Wrapper = styled.View`
   margin-horizontal: ${32 * WIDTH_REL};
