@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Appsee from 'react-native-appsee';
 import { TouchableOpacity, Platform } from 'react-native';
 import { NavBar, SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
@@ -45,7 +46,10 @@ class Leagues extends Component {
     return (
       <Card
         key={item._id}
-        onPress={() => Actions.push('leaguedetails', { leagueId: item._id })}
+        onPress={() => {
+          Appsee.addEvent('leagueDetails');
+          return Actions.push('leaguedetails', { leagueId: item._id });
+        }}
       >
         <TrophyIcon />
         <Content>
@@ -62,6 +66,7 @@ class Leagues extends Component {
   }
 
   render() {
+    Appsee.startScreen('LeagueList');
     const { swipe } = this.props;
     const back = swipe ? swipe : () => Actions.reset('core');
 
@@ -96,7 +101,10 @@ class Leagues extends Component {
         <ButtonsView>
           <MainIconButton
             text={I18n.t('createLeagueText')}
-            onPress={() => Actions.push('createleague')}
+            onPress={() => {
+              Appsee.addEvent('createLeagueStart');
+              return Actions.push('createleague');
+            }}
           />
         </ButtonsView>
       </SceneWrapper>

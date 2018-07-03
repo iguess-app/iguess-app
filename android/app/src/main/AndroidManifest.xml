@@ -34,7 +34,7 @@
         android:windowSoftInputMode="adjustPan"
         android:exported="true">
       </activity>
-
+      
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
     </application>
 

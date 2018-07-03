@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BackHandler } from 'react-native';
+import Appsee from 'react-native-appsee';
 import Lines from '@scenes/Lines';
 import Settings from '@scenes/Settings';
 import { setStatusBarStyle } from '@helpers';
@@ -20,6 +21,8 @@ class Core extends Component<void, void, void> {
   }
 
   render() {
+    Appsee.startScreen('Core');
+
     const { dispatch, activeSwiperScreen } = this.props;
 
     setStatusBarStyle(activeSwiperScreen == 0 ? 'black' : 'white');
