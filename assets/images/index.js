@@ -40,6 +40,7 @@ export const plusPurple = require('./plus-purple.png');
 export const dots = require('./dots.png');
 export const trophyGray = require('./trophy-gray.png');
 export const captain = require('./captain.png');
+export const confirmMail = require('./confirm-mail.png');
 
 // GIF
 export const ballGif = require('./ball.gif');

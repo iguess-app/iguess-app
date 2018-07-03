@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { TouchableOpacity } from 'react-native';
-import { SceneWrapper } from '@components/Scene';
-import { NavBar, SceneDescription, Content } from '@components/Scene';
+import { InputSceneWrapper } from '@components/Scene';
+import { SceneDescription, Content } from '@components/Scene';
 import { MainButton } from '@components/Button';
+import Error from '@components/Error';
 import styled from 'styled-components';
 import Input from '@components/Input';
 import { Actions } from 'react-native-router-flux';
@@ -44,9 +45,14 @@ class ForgotMyPassword extends Component {
   }
 
   render() {
+    let errorCard =
+      this.state.errorMsg !== null ? (
+        <Error input>{this.state.errorMsg}</Error>
+      ) : null;
+
     return (
-      <SceneWrapper>
-        <NavBar title="Esqueci minha senha" />
+      <InputSceneWrapper title="Esqueci minha senha">
+        {errorCard}
         <SceneDescription>
           Vamos enviar um e-mail com um número de token para você redefinir sua
           senha.
@@ -75,7 +81,7 @@ class ForgotMyPassword extends Component {
         <TouchableOpacity onPress={() => Actions.push('confirmtoken')}>
           <TextLink>Já tenho o token para redefinição</TextLink>
         </TouchableOpacity>
-      </SceneWrapper>
+      </InputSceneWrapper>
     );
   }
 }
