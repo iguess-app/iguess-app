@@ -3,6 +3,10 @@ package com.br.iguess;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.analytics.RNFirebaseAnalyticsPackage;
+import io.invertase.firebase.auth.RNFirebaseAuthPackage;
+import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 import com.appsee.reactnative.AppseeReactPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
@@ -29,6 +33,10 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+          new RNFirebasePackage(),
+          new RNFirebaseAnalyticsPackage(),
+          new RNFirebaseAuthPackage(),
+          new RNFirebaseMessagingPackage(),
           new AppseeReactPackage(),
           new SplashScreenReactPackage(),
           new RNDeviceInfo(),

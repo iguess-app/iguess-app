@@ -21,8 +21,18 @@ import {
 import { Provider } from 'react-redux';
 import createStore from '@store/create';
 import { loginWithStoredToken } from '@helpers';
+import firebase from 'react-native-firebase';
 
 export const store = createStore();
+
+firebase
+  .auth()
+  .signInAnonymouslyAndRetrieveData()
+  .then(credential => {
+    if (credential) {
+      console.log('default app user ->', credential.user.toJSON());
+    }
+  });
 
 export default class Kernel extends Component {
   constructor(props) {
