@@ -25,15 +25,6 @@ import firebase from 'react-native-firebase';
 
 export const store = createStore();
 
-firebase
-  .auth()
-  .signInAnonymouslyAndRetrieveData()
-  .then(credential => {
-    if (credential) {
-      console.log('default app user ->', credential.user.toJSON());
-    }
-  });
-
 export default class Kernel extends Component {
   constructor(props) {
     super(props);
@@ -42,6 +33,10 @@ export default class Kernel extends Component {
 
   async componentDidMount() {
     Orientation.lockToPortrait();
+    const notification = new firebase.notifications.Notification();
+    notification.android
+      .setChannelId('channelId')
+      .android.setSmallIcon('ic_launcher');
     const logged = await loginWithStoredToken();
     this.setState({ loggedIn: logged });
   }
