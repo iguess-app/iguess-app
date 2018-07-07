@@ -44,7 +44,7 @@ const About = () => {
             text={I18n.t('aboutFeedback')}
             onPress={() => {
               Appsee.addEvent('mailToSupport');
-              return Linking.openURL('mailto:support@iguessteam.com');
+              return Linking.openURL('mailto:support@iguess.app');
             }}
           />
         </RateView>

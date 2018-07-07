@@ -6,7 +6,7 @@ export default {
 
   signUpTitle: 'Cadastre-se',
   signUpName: 'Nome',
-  signUpUsername: '@usuario',
+  signUpUsername: 'Apelido',
   signUpEMail: 'E-mail',
   signUpPassword: 'Senha',
   signUpButton: 'Criar minha conta',
@@ -88,12 +88,12 @@ export default {
     'PP - Pontuação da Partida\nPM - Pontuação Máxima\nSTC - Subtração palpite/placar do time da casa\nSTV - Subtração palpite/placar do time visitante',
   howItWorksDescription2: 'Exemplos:',
   howItWorksContent4:
-    'Palpite: Inglaterra 1 x 2 Argentina\nResultado: Inglaterra 1 x 4 Argentina\nPontuação = 10 - ( |(1 - 1)| + |(2 - 4)| ) = 8',
+    'Palpite: Inglaterra 1 x 2 Argentina\nResultado: Inglaterra 1 x 4 Argentina\nPontuação = 10 - (|1 - 1| + |2 - 4|) = 8',
   howItWorksContent5:
     'A pontuação mínima para quem acertou o vencedor é de 2 pontos.',
   howItWorksContent6: 'Em caso de empate:',
   howItWorksContent7:
-    'Palpite: Brasil 0 x 0 Holanda\nResultado: Brasil 2 x 2 Holanda\nPontuação = 10 - ( |(0 - 2)| + |(0 - 2)| ) = 6',
+    'Palpite: Brasil 0 x 0 Holanda\nResultado: Brasil 2 x 2 Holanda\nPontuação = 10 - (|0 - 2| + |0 - 2|) = 6',
   howItWorksContent8: 'Em caso de erro:',
   howItWorksContent9:
     'Palpite: Uruguai 0 x 2 Portugal\nResultado: Uruguai 2 x 1 Portugal\nPontuação = 0',

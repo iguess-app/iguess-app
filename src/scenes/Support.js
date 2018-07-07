@@ -25,8 +25,8 @@ const Support = () => {
         <Option
           chevron={false}
           icon={mail}
-          text="support@iguessteam.com"
-          url="mailto:support@iguessteam.com"
+          text="support@iguess.app"
+          url="mailto:support@iguess.app"
         />
         <Option
           icon={facebookIcon}
