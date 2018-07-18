@@ -128,4 +128,12 @@ export default {
   confirmRemoveFriendTitle: 'Deseja remover o usuário selecionado?',
   confirmRemoveFriendText:
     'Você está tentando remover o usuário {{text}} da sua liga',
+  forgotMyPasswordTitle: 'Esqueci minha senha',
+  forgotMyPasswordText:
+    'Vamos enviar um e-mail com um número de token para você redefinir sua senha.',
+  forgotMyPasswordDescription:
+    'Informe seu endereço de e-mail, após isso confira sua caixa de entrada e copie o número do token enviado.',
+  emailPlaceholder: 'Informe seu endereço de email',
+  redefinePassword: 'Redefinir minha senha',
+  iHaveToken: 'Já tenho o token para redefinição',
 };

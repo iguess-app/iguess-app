@@ -21,65 +21,78 @@ class ForgotMyPassword extends Component {
     };
   }
 
-  sendEmail() {
-    const body = {
-      emailOrUsername: this.state.email,
-    };
+  _verifyMail() {
+    let correct = false;
+    const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (regex.test(this.state.email)) {
+      this.emailInput.success();
+      correct = true;
+    } else if (this.state.email.length === 0) {
+      this.emailInput.error(I18n.t('signUpInputErrorEmpty'));
+    } else {
+      this.emailInput.error(I18n.t('signUpInputErrorEMail'));
+    }
 
-    post('https://iguess-666666.appspot.com/forgotMyPass/sendEmail', body)
-      .then(response => {
+    return correct;
+  }
+
+  sendEmail() {
+    this.setState({ errorMsg: null }, () => {
+      if (!this._verifyMail()) {
+        return;
+      }
+
+      const body = {
+        emailOrUsername: this.state.email,
+      };
+
+      post(
+        'https://iguess-666666.appspot.com/forgotMyPass/sendEmail',
+        body,
+      ).then(response => {
         if (response.statusCode !== 404) {
           Actions.push('confirmsendmail', { email: response.emailHiddened });
-        } else {
-          this.setState({
-            errorMsg: response.message,
-          });
         }
-      })
-      .catch(() =>
+
         this.setState({
-          errorMsg: I18n.t('serverErrorDefault'),
-          loading: false,
-        }),
-      );
+          errorMsg: response.message,
+        });
+      });
+    });
   }
 
   render() {
-    let errorCard =
+    const errorCard =
       this.state.errorMsg !== null ? (
         <Error input>{this.state.errorMsg}</Error>
       ) : null;
 
     return (
-      <InputSceneWrapper title="Esqueci minha senha">
+      <InputSceneWrapper title={I18n.t('forgotMyPasswordTitle')}>
         {errorCard}
-        <SceneDescription>
-          Vamos enviar um e-mail com um número de token para você redefinir sua
-          senha.
-        </SceneDescription>
-        <Content>
-          Informe seu endereço de e-mail, após isso confira sua caixa de entrada
-          e copie o número do token enviado.
-        </Content>
+        <SceneDescription>{I18n.t('forgotMyPasswordText')}</SceneDescription>
+        <Content>{I18n.t('forgotMyPasswordDescription')}</Content>
 
         <Wrapper>
           <TextInput
-            placeholder="Informe seu endereço de email"
+            placeholder={I18n.t('emailPlaceholder')}
             value={this.state.email}
             onChangeText={value => this.setState({ email: value })}
             autoCapitalize="none"
             maxLength={45}
+            onBlur={() => this._verifyMail()}
+            innerRef={ref => (this.emailInput = ref)}
           />
         </Wrapper>
 
         <RateView>
           <MainButton
-            text="Redefinir minha senha"
+            text={I18n.t('redefinePassword')}
             onPress={() => this.sendEmail()}
           />
         </RateView>
         <TouchableOpacity onPress={() => Actions.push('confirmtoken')}>
-          <TextLink>Já tenho o token para redefinição</TextLink>
+          <TextLink>{I18n.t('iHaveToken')}</TextLink>
         </TouchableOpacity>
       </InputSceneWrapper>
     );

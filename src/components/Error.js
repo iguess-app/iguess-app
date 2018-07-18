@@ -13,7 +13,7 @@ export default class Error extends Component {
   componentDidMount() {
     this.timer = setInterval(() => {
       this.setState({ opacity: this.state.opacity - 0.01 });
-    }, 25);
+    }, 30);
   }
 
   componentWillUnmount() {
@@ -39,6 +39,7 @@ export default class Error extends Component {
 const Wrapper = styled.KeyboardAvoidingView`
   width: 100%;
   position: absolute;
+  z-index: 1;
 `;
 
 const ErrorView = styled.View`
