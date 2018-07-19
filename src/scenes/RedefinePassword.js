@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { patch } from '@helpers';
 import { Actions } from 'react-native-router-flux';
 import { WIDTH_REL, HEIGHT_REL } from '@theme';
+import I18n from '../i18n';
 
 class RedefinePassword extends Component {
   constructor(props) {
@@ -14,6 +15,24 @@ class RedefinePassword extends Component {
     this.state = {
       password: '',
     };
+  }
+
+  _verifyPassword() {
+    let correct = false;
+
+    if (this.state.password.length === 0) {
+      this.passwordInput.error(I18n.t('signUpInputErrorEmpty'));
+    } else if (
+      this.state.password.length < 8 ||
+      this.state.password.includes(' ')
+    ) {
+      this.passwordInput.error(I18n.t('signUpInputErrorPassword'));
+    } else {
+      this.passwordInput.success();
+      correct = true;
+    }
+
+    return correct;
   }
 
   redefinePassword() {
@@ -35,25 +54,25 @@ class RedefinePassword extends Component {
   render() {
     return (
       <SceneWrapper>
-        <NavBar title="Esqueci minha senha" />
-        <SceneDescription>Defina sua nova senha.</SceneDescription>
-        <Content>
-          Lembre-se senhas forte incluem números, letras e sinais de pontuação.
-        </Content>
+        <NavBar title={I18n.t('forgotMyPasswordTitle')} />
+        <SceneDescription>{I18n.t('defineNewPasswordLabel')}</SceneDescription>
+        <Content>{I18n.t('defineNewPasswordTip')}</Content>
         <Wrapper>
           <TextInput
-            placeholder="Minha senha"
+            placeholder={I18n.t('myPassword')}
             value={this.state.password}
             onChangeText={value => this.setState({ password: value })}
             password={true}
             autoCapitalize="none"
             maxLength={30}
+            onBlur={() => this._verifyPassword()}
+            innerRef={ref => (this.passwordInput = ref)}
           />
         </Wrapper>
 
         <RateView>
           <MainButton
-            text="Continuar"
+            text={I18n.t('continueText')}
             onPress={() => this.redefinePassword()}
           />
         </RateView>

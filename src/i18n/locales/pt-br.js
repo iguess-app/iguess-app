@@ -136,4 +136,16 @@ export default {
   emailPlaceholder: 'Informe seu endereço de email',
   redefinePassword: 'Redefinir minha senha',
   iHaveToken: 'Já tenho o token para redefinição',
+  defineNewPasswordLabel: 'Defina sua nova senha.',
+  defineNewPasswordTip:
+    'Lembre-se senhas forte incluem números, letras e sinais de pontuação.',
+  myPassword: 'Minha senha',
+  verifyYourMail: 'Verifique seu e-mail',
+  sendedMailText:
+    'Enviamos um e-mail para {{email}}, copie o número do token enviado.',
+  mailTip:
+    'Caso não consiga ver o e-mail, verifique outros lugares onde ele possa estar, como sua pasta de lixo eletrônico, spam, social ou outras.',
+  infoTokenNumber: 'Informe número do token',
+  tokenDescription: 'Vamos lá você ja possui o número do token né?',
+  tokenTip: 'Informe agora no campo abaixo e clique no botão para continuar',
 };

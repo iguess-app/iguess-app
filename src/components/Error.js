@@ -12,8 +12,8 @@ export default class Error extends Component {
 
   componentDidMount() {
     this.timer = setInterval(() => {
-      this.setState({ opacity: this.state.opacity - 0.01 });
-    }, 30);
+      this.setState({ opacity: this.state.opacity - 0.03 });
+    }, 100);
   }
 
   componentWillUnmount() {
