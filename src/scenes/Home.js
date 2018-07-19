@@ -1,5 +1,6 @@
 import React from 'react';
 import { SceneWrapper } from '@components/Scene';
+import Appsee from 'react-native-appsee';
 import { MainButton, WhiteBorderButton } from '@components/Button';
 import styled from 'styled-components';
 import { setStatusBarStyle } from '@helpers';
@@ -19,7 +20,7 @@ import { TextBaseBold, TextBase } from '@components/Scene';
 
 const Home = () => {
   setStatusBarStyle('white');
-
+  Appsee.startScreen('WelcomeScreenHome');
   return (
     <SceneWrapper background={HOME_BACKGROUND}>
       <LogoContainer>
@@ -29,11 +30,17 @@ const Home = () => {
       <ButtonsView>
         <MainButton
           text={I18n.t('homeSignUp')}
-          onPress={() => Actions.signup()}
+          onPress={() => {
+            Appsee.addEvent('signUpButton');
+            return Actions.signup();
+          }}
         />
         <WhiteBorderButton
           text={I18n.t('homeSignIn')}
-          onPress={() => Actions.signin()}
+          onPress={() => {
+            Appsee.addEvent('signUpButton');
+            return Actions.signin();
+          }}
         />
         {/* <TermsButton /> */}
       </ButtonsView>

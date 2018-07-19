@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Appsee from 'react-native-appsee';
 import { TouchableOpacity, Platform } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
@@ -72,9 +73,15 @@ class AddFriends extends Component {
   }
 
   render() {
+    Appsee.startScreen('AddFriends');
     return (
       <SceneWrapper>
-        <Close onPress={() => Actions.pop()} />
+        <Close
+          onPress={() => {
+            Appsee.addEvent('BackFromAddFriendsToCreateLeague');
+            return Actions.pop();
+          }}
+        />
         <Title>{I18n.t('addFriendsTitle').toLocaleUpperCase()}</Title>
         <TextInput
           placeholder={I18n.t('searchUserText')}
@@ -105,6 +112,7 @@ class AddFriends extends Component {
             text={I18n.t('continueText')}
             isDisable={this.props.addedFriends.length <= 0}
             onPress={() => {
+              Appsee.addEvent('AddFriendToList');
               this.setState({
                 username: '',
                 friends: [],

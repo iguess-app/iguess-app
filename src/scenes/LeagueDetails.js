@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Alert } from 'react-native';
+import Appsee from 'react-native-appsee';
 import { NavBarWithMenu } from '@components/NavBar';
 import { SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
@@ -78,6 +79,7 @@ class Leagues extends Component {
         {
           text: I18n.t('exitText'),
           onPress: () => {
+            Appsee.addEvent('confirmQuitLeague');
             this.quitLeague();
           },
         },
@@ -90,12 +92,22 @@ class Leagues extends Component {
   _renderModalContent = () => (
     <ModalView>
       {this.state.league.isCaptain && (
-        <Row onPress={() => this.addFriends()}>
+        <Row
+          onPress={() => {
+            Appsee.addEvent('addFriendsButton');
+            return this.addFriends();
+          }}
+        >
           <Icon source={plusPurple} />
           <MenuText>{I18n.t('addFriendText')}</MenuText>
         </Row>
       )}
-      <Row onPress={() => this.confirmQuitLeague()}>
+      <Row
+        onPress={() => {
+          Appsee.addEvent('quitLeague');
+          return this.confirmQuitLeague();
+        }}
+      >
         <Icon source={exit} />
         <MenuText>{I18n.t('exitLeagueText')}</MenuText>
       </Row>
@@ -133,6 +145,7 @@ class Leagues extends Component {
   }
 
   render() {
+    Appsee.startScreen('LeagueDetails');
     const { league } = this.state;
 
     if (this.state.loading) {
@@ -165,7 +178,10 @@ class Leagues extends Component {
             isVisible={this.state.visibleModal}
             backdropColor={'#553dd1'}
             backdropOpacity={0.8}
-            onBackdropPress={() => this.setState({ visibleModal: false })}
+            onBackdropPress={() => {
+              Appsee.addEvent('quitModal');
+              return this.setState({ visibleModal: false });
+            }}
             style={bottomModal}
           >
             {this._renderModalContent()}

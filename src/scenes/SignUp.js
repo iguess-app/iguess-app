@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Keyboard } from 'react-native';
+import Appsee from 'react-native-appsee';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styled from 'styled-components';
 import { InputSceneWrapper } from '@components/Scene';
@@ -9,10 +10,9 @@ import Input from '@components/Input';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import { login } from '@redux/authentication/actions';
-import { WIDTH_REL, HEIGHT_REL, SIGN_UP_TERMS_COLOR } from '@theme';
+import { WIDTH_REL, HEIGHT_REL } from '@theme';
 import { get, post } from '@helpers';
 import I18n from '../i18n';
-import { TextBase } from '@components/Scene';
 
 var errors = Object.freeze({
   usernameAlreadyUsed: 20003,
@@ -172,6 +172,8 @@ class SignUp extends Component {
   }
 
   render() {
+    Appsee.startScreen('SignUp');
+
     const errorCard =
       this.state.errorMsg !== null ? (
         <Error input>{this.state.errorMsg}</Error>
@@ -228,7 +230,10 @@ class SignUp extends Component {
           <ButtonView>
             <MainButton
               text={I18n.t('signUpButton')}
-              onPress={() => this._submit()}
+              onPress={() => {
+                Appsee.addEvent('effectiveSignUpButton');
+                return this._submit();
+              }}
             />
           </ButtonView>
           {/*           <Terms>

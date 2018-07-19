@@ -1,8 +1,9 @@
 import React from 'react';
+import Appsee from 'react-native-appsee';
 import { TouchableOpacity, Linking } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import { NavBar, SceneDescription, Content } from '@components/Scene';
-import { DarkBorderButton, MainButton } from '@components/Button';
+import { MainButton } from '@components/Button';
 import {
   aboutImage,
   facebookIcon,
@@ -22,6 +23,7 @@ import { TextBaseBold } from '@components/Scene';
 import DeviceInfo from 'react-native-device-info';
 
 const About = () => {
+  Appsee.startScreen('About Us');
   return (
     <SceneWrapper>
       <NavBar title={I18n.t('aboutTitle')} />
@@ -40,7 +42,10 @@ const About = () => {
         <RateView>
           <MainButton
             text={I18n.t('aboutFeedback')}
-            onPress={() => Linking.openURL('mailto:support@iguessteam.com')}
+            onPress={() => {
+              Appsee.addEvent('mailToSupport');
+              return Linking.openURL('mailto:support@iguess.app');
+            }}
           />
         </RateView>
         <FollowText>{I18n.t('aboutFollow')}</FollowText>

@@ -1,3 +1,4 @@
+import Appsee from 'react-native-appsee';
 import React, { Component } from 'react';
 import { TouchableOpacity, Alert, Platform } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
@@ -96,7 +97,12 @@ class AddedFriends extends Component {
           <RowTitle>{item.name}</RowTitle>
           <RowSubTitle>{`@${item.userName}`}</RowSubTitle>
         </TextContainer>
-        <TouchableOpacity onPress={() => this._removeFriend(item)}>
+        <TouchableOpacity
+          onPress={() => {
+            Appsee.addEvent('removeFriendFromList');
+            return this._removeFriend(item);
+          }}
+        >
           <ButtonImage source={remove} />
         </TouchableOpacity>
       </ItemRow>
@@ -104,14 +110,26 @@ class AddedFriends extends Component {
   }
 
   render() {
+    Appsee.startScreen('AddedFriends');
     const { addedFriends, leagueId } = this.props;
     const onPress = leagueId
-      ? () => this._addToLeague()
-      : () => this._createLeague();
+      ? () => {
+          Appsee.addEvent('addToLeague');
+          return this._addToLeague();
+        }
+      : () => {
+          Appsee.addEvent('createLeague');
+          return this._createLeague();
+        };
 
     return (
       <SceneWrapper>
-        <Close onPress={() => Actions.pop()} />
+        <Close
+          onPress={() => {
+            Appsee.addEvent('BackFromAddedFriendsToAddFriends');
+            return Actions.pop();
+          }}
+        />
         <Title>{I18n.t('addeFriendsTitle').toLocaleUpperCase()}</Title>
         <List
           data={addedFriends}
