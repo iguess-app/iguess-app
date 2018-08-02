@@ -130,9 +130,9 @@ export default {
     'Você está tentando remover o usuário {{text}} da sua liga',
   forgotMyPasswordTitle: 'Esqueci minha senha',
   forgotMyPasswordText:
-    'Vamos enviar um e-mail com um número de token para você redefinir sua senha.',
+    'Vamos enviar um e-mail com um token para você redefinir sua senha.',
   forgotMyPasswordDescription:
-    'Informe seu endereço de e-mail, após isso confira sua caixa de entrada e copie o número do token enviado.',
+    'Informe seu endereço de e-mail, após isso confira sua caixa de entrada e copie o token enviado.',
   emailPlaceholder: 'Informe seu endereço de email',
   redefinePassword: 'Redefinir minha senha',
   iHaveToken: 'Já tenho o token para redefinição',
@@ -141,11 +141,10 @@ export default {
     'Lembre-se senhas forte incluem números, letras e sinais de pontuação.',
   myPassword: 'Minha senha',
   verifyYourMail: 'Verifique seu e-mail',
-  sendedMailText:
-    'Enviamos um e-mail para {{email}}, copie o número do token enviado.',
+  sendedMailText: 'Enviamos um e-mail para {{email}}, copie o token enviado.',
   mailTip:
     'Caso não consiga ver o e-mail, verifique outros lugares onde ele possa estar, como sua pasta de lixo eletrônico, spam, social ou outras.',
-  infoTokenNumber: 'Informe número do token',
-  tokenDescription: 'Vamos lá você ja possui o número do token né?',
+  infoTokenNumber: 'Informe o token',
+  tokenDescription: 'Vamos lá você ja possui oC token né?',
   tokenTip: 'Informe agora no campo abaixo e clique no botão para continuar',
 };

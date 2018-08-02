@@ -124,24 +124,24 @@ export default {
   confirmRemoveFriendTitle: 'Do you want to remove the selected user?',
   confirmRemoveFriendText:
     'You are trying to remove the {{text}} user from your league',
-  forgotMyPasswordTitle: 'Esqueci minha senha',
+  forgotMyPasswordTitle: 'Forgot My Password',
   forgotMyPasswordText:
-    'Vamos enviar um e-mail com um número de token para você redefinir sua senha.',
+    "We will send you a e-mail with a token, so you'll can redefine you password.",
   forgotMyPasswordDescription:
-    'Informe seu endereço de e-mail, após isso confira sua caixa de entrada e copie o número do token enviado.',
-  emailPlaceholder: 'Informe seu endereço de email',
-  redefinePassword: 'Redefinir minha senha',
-  iHaveToken: 'Já tenho o token para redefinição',
-  defineNewPasswordLabel: 'Defina sua nova senha.',
+    'Put your e-mail below and check your inbox and copy the token sent.',
+  emailPlaceholder: 'Let us know your e-mail',
+  redefinePassword: 'Redefine my password',
+  iHaveToken: 'I already have the reset token',
+  defineNewPasswordLabel: 'Define your new password.',
   defineNewPasswordTip:
-    'Lembre-se senhas forte incluem números, letras e sinais de pontuação.',
-  myPassword: 'Minha senha',
-  verifyYourMail: 'Verifique seu e-mail',
+    'Remember to use strong passwords, with number, letters and special chars.',
+  myPassword: 'My password',
+  verifyYourMail: 'Verify your e-mail',
   sendedMailText:
-    'Enviamos um e-mail para {{email}}, copie o número do token enviado.',
+    'We sent a e-mail to {{email}}. Copy the reset token that you received.',
   mailTip:
-    'Caso não consiga ver o e-mail, verifique outros lugares onde ele possa estar, como sua pasta de lixo eletrônico, spam, social ou outras.',
-  infoTokenNumber: 'Informe número do token',
-  tokenDescription: 'Vamos lá você ja possui o número do token né?',
-  tokenTip: 'Informe agora no campo abaixo e clique no botão para continuar',
+    "If you don't find the email, check others places like spam, social etc.",
+  infoTokenNumber: 'Please, your token',
+  tokenDescription: 'Nice, you already have the reset token right?',
+  tokenTip: 'Now paste the token at the field below and press next button',
 };
