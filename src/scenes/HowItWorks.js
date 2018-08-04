@@ -1,5 +1,4 @@
 import React from 'react';
-import Appsee from 'react-native-appsee';
 import { SceneWrapper, TextBaseBold } from '@components/Scene';
 import { NavBar, SceneDescription, Content } from '@components/Scene';
 import { howItWorksImage } from '@assets/images';
@@ -16,7 +15,6 @@ import {
 import I18n from 'react-native-i18n';
 
 const HowItWorks = () => {
-  Appsee.startScreen('About Us');
   return (
     <SceneWrapper>
       <NavBar title={I18n.t('howItWorksTitle')} />

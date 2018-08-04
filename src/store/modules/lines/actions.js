@@ -1,12 +1,10 @@
 import * as types from './actionTypes';
 import { get, setStoredToken } from '@helpers';
-import Appsee from 'react-native-appsee';
 import DeviceInfo from 'react-native-device-info';
 import { Actions } from 'react-native-router-flux';
 
 export function fetchLine() {
   return dispatch => {
-    Appsee.addEvent('fetchLine');
     // Inform to reducer that fetch beginned
     dispatch(fetchLineBegin());
 

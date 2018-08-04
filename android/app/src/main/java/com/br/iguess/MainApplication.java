@@ -3,7 +3,6 @@ package com.br.iguess;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.appsee.reactnative.AppseeReactPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
@@ -29,7 +28,6 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-          new AppseeReactPackage(),
           new SplashScreenReactPackage(),
           new RNDeviceInfo(),
           new RNI18nPackage(),

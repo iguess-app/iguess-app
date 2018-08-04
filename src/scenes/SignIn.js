@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Keyboard, TouchableOpacity } from 'react-native';
-import Appsee from 'react-native-appsee';
 import { InputSceneWrapper } from '@components/Scene';
 import { MainButton } from '@components/Button';
 import Input from '@components/Input';
@@ -27,7 +26,6 @@ class SignIn extends Component {
   }
 
   _login() {
-    Appsee.addEvent('loginButtonFired');
     this.setState({ errorMsg: null }, async () => {
       if (this.state.login && this.state.password) {
         Keyboard.dismiss();
@@ -71,7 +69,6 @@ class SignIn extends Component {
   }
 
   render() {
-    Appsee.startScreen('Login');
     let errorCard =
       this.state.errorMsg !== null ? (
         <Error input>{this.state.errorMsg}</Error>
@@ -103,7 +100,6 @@ class SignIn extends Component {
             <MainButton
               text={I18n.t('signInButton')}
               onPress={() => {
-                Appsee.addEvent('effectiveSignInButton');
                 return this._login();
               }}
             />

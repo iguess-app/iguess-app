@@ -45,12 +45,11 @@ class ConfirmToken extends Component {
       ).then(response => {
         if (response.statusCode !== 404 && response.statusCode !== 400) {
           Actions.push('redefinepassword', { softToken: response.softToken });
-          this.setState({ token: '' });
+        } else {
+          this.setState({
+            errorMsg: response.message,
+          });
         }
-
-        this.setState({
-          errorMsg: response.message,
-        });
       });
     });
   }

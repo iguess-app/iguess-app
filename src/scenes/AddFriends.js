@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Appsee from 'react-native-appsee';
 import { TouchableOpacity, Platform } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
@@ -73,12 +72,10 @@ class AddFriends extends Component {
   }
 
   render() {
-    Appsee.startScreen('AddFriends');
     return (
       <SceneWrapper>
         <Close
           onPress={() => {
-            Appsee.addEvent('BackFromAddFriendsToCreateLeague');
             return Actions.pop();
           }}
         />
@@ -112,7 +109,6 @@ class AddFriends extends Component {
             text={I18n.t('continueText')}
             isDisable={this.props.addedFriends.length <= 0}
             onPress={() => {
-              Appsee.addEvent('AddFriendToList');
               this.setState({
                 username: '',
                 friends: [],

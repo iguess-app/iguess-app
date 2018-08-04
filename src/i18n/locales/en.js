@@ -126,7 +126,7 @@ export default {
     'You are trying to remove the {{text}} user from your league',
   forgotMyPasswordTitle: 'Forgot My Password',
   forgotMyPasswordText:
-    "We will send you a e-mail with a token, so you'll can redefine you password.",
+    'We will send you a e-mail with a token, so you\'ll can redefine you password.',
   forgotMyPasswordDescription:
     'Put your e-mail below and check your inbox and copy the token sent.',
   emailPlaceholder: 'Let us know your e-mail',
@@ -138,9 +138,9 @@ export default {
   myPassword: 'My password',
   verifyYourMail: 'Verify your e-mail',
   sendedMailText:
-    'We sent a e-mail to {{email}}. Copy the reset token that you received.',
+    'We sent a e-mail to {{text}}. Copy the reset token that you received.',
   mailTip:
-    "If you don't find the email, check others places like spam, social etc.",
+    'If you don\'t find the email, check others places like spam, social etc.',
   infoTokenNumber: 'Please, your token',
   tokenDescription: 'Nice, you already have the reset token right?',
   tokenTip: 'Now paste the token at the field below and press next button',

@@ -141,7 +141,7 @@ export default {
     'Lembre-se senhas forte incluem números, letras e sinais de pontuação.',
   myPassword: 'Minha senha',
   verifyYourMail: 'Verifique seu e-mail',
-  sendedMailText: 'Enviamos um e-mail para {{email}}, copie o token enviado.',
+  sendedMailText: 'Enviamos um e-mail para {{text}}, copie o token enviado.',
   mailTip:
     'Caso não consiga ver o e-mail, verifique outros lugares onde ele possa estar, como sua pasta de lixo eletrônico, spam, social ou outras.',
   infoTokenNumber: 'Informe o token',

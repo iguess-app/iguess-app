@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Alert } from 'react-native';
-import Appsee from 'react-native-appsee';
 import { NavBarWithMenu } from '@components/NavBar';
 import { SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
@@ -79,7 +78,6 @@ class Leagues extends Component {
         {
           text: I18n.t('exitText'),
           onPress: () => {
-            Appsee.addEvent('confirmQuitLeague');
             this.quitLeague();
           },
         },
@@ -94,7 +92,6 @@ class Leagues extends Component {
       {this.state.league.isCaptain && (
         <Row
           onPress={() => {
-            Appsee.addEvent('addFriendsButton');
             return this.addFriends();
           }}
         >
@@ -104,7 +101,6 @@ class Leagues extends Component {
       )}
       <Row
         onPress={() => {
-          Appsee.addEvent('quitLeague');
           return this.confirmQuitLeague();
         }}
       >
@@ -145,7 +141,6 @@ class Leagues extends Component {
   }
 
   render() {
-    Appsee.startScreen('LeagueDetails');
     const { league } = this.state;
 
     if (this.state.loading) {
@@ -179,7 +174,6 @@ class Leagues extends Component {
             backdropColor={'#553dd1'}
             backdropOpacity={0.8}
             onBackdropPress={() => {
-              Appsee.addEvent('quitModal');
               return this.setState({ visibleModal: false });
             }}
             style={bottomModal}
