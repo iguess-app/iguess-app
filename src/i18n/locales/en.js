@@ -57,10 +57,10 @@ export default {
   aboutVersion: 'Version',
   aboutSectionATitle: 'Our vibe',
   aboutSectionAContent:
-    "Iguess just came! Focused on you, fan of sports. Our vibe is to give the 'thing' you need to hunch free in any sport, now mainly in the world cup matches. Compete with your mates from school, college and work, getting to know whos the best.",
+    "Iguess arrived, focused on you, fan of sports. Our vibe is to give the 'thing' you need to hunch free in any sport, now mainly on football championships. Compete with your mates from school, college and work, getting to know whos the best.",
   aboutSectionBTitle: 'Our superbowl goals',
   aboutSectionBContent:
-    "We want everyone who like sports using our app, hunchin' and chillin' with your mates. Try to imagine you and your friends guessing who is gonna be the winner of the today's F1 race betting a beer pack and our app tells you who won, our superbowl goal is to reach that level. The path is harsh, starts with only one championship, the world cup, and we count on you to get there, because in the end thats the easiest way to get your bets in one platform.",
+    "We want everyone who like sports using our app, hunchin' and chillin' with your mates. Try to imagine you and your friends guessing who is gonna be the winner of the Tennis Championship at England betting a beer pack and our app tells you who won, our superbowl goal is to reach that level. The path is harsh and we count on you to get there, because in the end thats the easiest way to get your bets in one platform.",
   aboutSectionCTitle: 'Our major',
   aboutSectionCContent:
     "We came from a world of tecnology where we always see people betting to each other for fun and we just want to organize that, so your bro can't cheat on you, we're focused in you and your necessities, we want to hear your voice and create solutions to give the best experience we can provide you in our app.",
@@ -126,7 +126,7 @@ export default {
     'You are trying to remove the {{text}} user from your league',
   forgotMyPasswordTitle: 'Forgot My Password',
   forgotMyPasswordText:
-    'We will send you a e-mail with a token, so you\'ll can redefine you password.',
+    "We will send you a e-mail with a token, so you'll can redefine you password.",
   forgotMyPasswordDescription:
     'Put your e-mail below and check your inbox and copy the token sent.',
   emailPlaceholder: 'Let us know your e-mail',
@@ -140,7 +140,7 @@ export default {
   sendedMailText:
     'We sent a e-mail to {{text}}. Copy the reset token that you received.',
   mailTip:
-    'If you don\'t find the email, check others places like spam, social etc.',
+    "If you don't find the email, check others places like spam, social etc.",
   infoTokenNumber: 'Please, your token',
   tokenDescription: 'Nice, you already have the reset token right?',
   tokenTip: 'Now paste the token at the field below and press next button',
