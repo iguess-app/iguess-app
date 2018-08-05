@@ -57,10 +57,10 @@ export default {
   aboutVersion: 'Version',
   aboutSectionATitle: 'Our vibe',
   aboutSectionAContent:
-    "Iguess just came! Focused on you, fan of sports. Our vibe is to give the 'thing' you need to hunch free in any sport, now mainly in the world cup matches. Compete with your mates from school, college and work, getting to know whos the best.",
+    "Iguess arrived, focused on you, fan of sports. Our vibe is to give the 'thing' you need to hunch free in any sport, now mainly on football championships. Compete with your mates from school, college and work, getting to know whos the best.",
   aboutSectionBTitle: 'Our superbowl goals',
   aboutSectionBContent:
-    "We want everyone who like sports using our app, hunchin' and chillin' with your mates. Try to imagine you and your friends guessing who is gonna be the winner of the today's F1 race betting a beer pack and our app tells you who won, our superbowl goal is to reach that level. The path is harsh, starts with only one championship, the world cup, and we count on you to get there, because in the end thats the easiest way to get your bets in one platform.",
+    "We want everyone who like sports using our app, hunchin' and chillin' with your mates. Try to imagine you and your friends guessing who is gonna be the winner of the Tennis Championship at England betting a beer pack and our app tells you who won, our superbowl goal is to reach that level. The path is harsh and we count on you to get there, because in the end thats the easiest way to get your bets in one platform.",
   aboutSectionCTitle: 'Our major',
   aboutSectionCContent:
     "We came from a world of tecnology where we always see people betting to each other for fun and we just want to organize that, so your bro can't cheat on you, we're focused in you and your necessities, we want to hear your voice and create solutions to give the best experience we can provide you in our app.",
