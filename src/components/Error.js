@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { thumbsDown } from '@assets/images';
-import { INPUT_ERROR_COLOR, HEIGHT_REL, WIDTH_REL } from '@theme';
+import {
+  INPUT_ERROR_COLOR,
+  INPUT_SUCCESS_COLOR,
+  HEIGHT_REL,
+  WIDTH_REL,
+} from '@theme';
 import { TextBase } from '@components/Scene';
 
 export default class Error extends Component {
@@ -11,9 +16,13 @@ export default class Error extends Component {
   }
 
   componentDidMount() {
-    this.timer = setInterval(() => {
-      this.setState({ opacity: this.state.opacity - 0.03 });
-    }, 100);
+    setTimeout(
+      () =>
+        (this.timer = setInterval(() => {
+          this.setState({ opacity: this.state.opacity - 0.05 });
+        }, 100)),
+      1000,
+    );
   }
 
   componentWillUnmount() {
@@ -21,11 +30,13 @@ export default class Error extends Component {
   }
 
   render() {
+    const iconSource = this.props.success ? null : thumbsDown;
+
     if (this.state.opacity > 0) {
       return (
         <Wrapper behavior="position" input>
-          <ErrorView opacity={this.state.opacity}>
-            <Icon />
+          <ErrorView success={this.props.success} opacity={this.state.opacity}>
+            <Icon source={iconSource} />
             <ErrorText>{this.props.children}</ErrorText>
           </ErrorView>
         </Wrapper>
@@ -46,13 +57,12 @@ const ErrorView = styled.View`
   flex-direction: row;
   width: 100%;
   height: ${80 * HEIGHT_REL};
-  background-color: ${INPUT_ERROR_COLOR};
+  background-color: ${props =>
+    props.success ? INPUT_SUCCESS_COLOR : INPUT_ERROR_COLOR};
   align-items: center;
 `;
 
-const Icon = styled.Image.attrs({
-  source: thumbsDown,
-})`
+const Icon = styled.Image`
   width: ${24 * WIDTH_REL};
   height: ${24 * HEIGHT_REL};
   margin-left: ${32 * WIDTH_REL};

@@ -8,12 +8,14 @@ import { patch } from '@helpers';
 import { Actions } from 'react-native-router-flux';
 import { WIDTH_REL, HEIGHT_REL } from '@theme';
 import I18n from '../i18n';
+import Error from '@components/Error';
 
 class RedefinePassword extends Component {
   constructor(props) {
     super(props);
     this.state = {
       password: '',
+      successMsg: null,
     };
   }
 
@@ -36,25 +38,37 @@ class RedefinePassword extends Component {
   }
 
   redefinePassword() {
-    const body = {
-      newPassword: this.state.password,
-      softToken: this.props.softToken,
-    };
+    this.setState({ successMsg: null }, () => {
+      const body = {
+        newPassword: this.state.password,
+        softToken: this.props.softToken,
+      };
 
-    patch(
-      'https://iguess-666666.appspot.com/forgotMyPass/updateNewPassword',
-      body,
-    ).then(response => {
-      if (response.statusCode !== 404) {
-        Actions.reset('signin');
-      }
+      patch(
+        'https://iguess-666666.appspot.com/forgotMyPass/updateNewPassword',
+        body,
+      ).then(response => {
+        if (response.statusCode !== 404) {
+          this.setState({ successMsg: I18n.t('successChangePassword') }, () => {
+            setTimeout(() => Actions.reset('signin'), 3000);
+          });
+        }
+      });
     });
   }
 
   render() {
+    let successCard =
+      this.state.successMsg !== null ? (
+        <Error success input>
+          {this.state.successMsg}
+        </Error>
+      ) : null;
+
     return (
       <SceneWrapper>
         <NavBar title={I18n.t('forgotMyPasswordTitle')} />
+        <MessageWrapper>{successCard}</MessageWrapper>
         <SceneDescription>{I18n.t('defineNewPasswordLabel')}</SceneDescription>
         <Content>{I18n.t('defineNewPasswordTip')}</Content>
         <Wrapper>
@@ -80,6 +94,10 @@ class RedefinePassword extends Component {
     );
   }
 }
+
+const MessageWrapper = styled.View`
+  z-index: 1;
+`;
 
 const RateView = styled.View`
   align-self: center;

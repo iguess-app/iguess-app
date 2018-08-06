@@ -64,9 +64,6 @@ class Leagues extends Component {
   }
 
   render() {
-    const { swipe } = this.props;
-    const back = swipe ? swipe : () => Actions.reset('core');
-
     if (this.state.loading) {
       return <Loading />;
     }
@@ -75,7 +72,10 @@ class Leagues extends Component {
       <SceneWrapper>
         {this.state.leagues.length > 0 && (
           <Content>
-            <NavBar title={I18n.t('leaguesTitle')} onPress={back} />
+            <NavBar
+              title={I18n.t('leaguesTitle')}
+              onPress={() => Actions.reset('core')}
+            />
             <List
               data={this.state.leagues}
               keyExtractor={item => item._id}
@@ -86,7 +86,7 @@ class Leagues extends Component {
 
         {this.state.leagues.length <= 0 && (
           <Content>
-            <Close onPress={back} />
+            <Close onPress={() => Actions.reset('core')} />
             <ContainerView>
               <Title>{I18n.t('myLeaguesTitle')}</Title>
               <Subtitle>{I18n.t('myLeaguesSubTitle')}</Subtitle>

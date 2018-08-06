@@ -144,4 +144,5 @@ export default {
   infoTokenNumber: 'Please, your token',
   tokenDescription: 'Nice, you already have the reset token right?',
   tokenTip: 'Now paste the token at the field below and press next button',
+  successChangePassword: 'Your password has been changed successfully!',
 };

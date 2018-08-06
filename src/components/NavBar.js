@@ -40,9 +40,13 @@ export const NavBarWithMenu = props => {
 
 const Back = ({ onPress }) => (
   <BackTouchable
-    onPress={() => {
-      Actions.pop();
-    }}
+    onPress={
+      onPress
+        ? onPress
+        : () => {
+            Actions.pop();
+          }
+    }
   >
     <BackImage />
   </BackTouchable>

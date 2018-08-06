@@ -147,4 +147,5 @@ export default {
   infoTokenNumber: 'Informe o token',
   tokenDescription: 'Vamos lá você ja possui oC token né?',
   tokenTip: 'Informe agora no campo abaixo e clique no botão para continuar',
+  successChangePassword: 'Sua senha foi alterada com sucesso!',
 };
