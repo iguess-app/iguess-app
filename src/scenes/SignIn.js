@@ -105,7 +105,7 @@ class SignIn extends Component {
             />
           </ButtonView>
           <TouchableOpacity onPress={() => Actions.push('forgotpassword')}>
-            <TextLink>Esqueci a minha senha</TextLink>
+            <TextLink>{I18n.t('forgotMyPasswordTitle')}</TextLink>
           </TouchableOpacity>
           {loader}
         </Wrapper>
