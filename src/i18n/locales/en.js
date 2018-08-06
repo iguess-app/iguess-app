@@ -128,7 +128,7 @@ export default {
   forgotMyPasswordText:
     "We will send you a e-mail with a token, so you'll can redefine you password.",
   forgotMyPasswordDescription:
-    'Put your e-mail below and check your inbox and copy the token sent.',
+    'Put your e-mail below and check your inbox. After that, copy the token in your e-mail to paste on the following steps.',
   emailPlaceholder: 'Let us know your e-mail',
   redefinePassword: 'Redefine my password',
   iHaveToken: 'I already have the reset token',
