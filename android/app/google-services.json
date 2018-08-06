@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "683125773114",
+    "firebase_url": "https://iguess-bce10.firebaseio.com",
+    "project_id": "iguess-bce10",
+    "storage_bucket": "iguess-bce10.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:683125773114:android:0c0ad3aff7a298d1",
+        "android_client_info": {
+          "package_name": "com.br.iguess"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "683125773114-3muinfc6ancr79kni0pi6aq16gnumh1p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDme_tzOccTSdEiRPf2jBHNs4YQsPnJvrM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -21,6 +21,7 @@ import {
 import { Provider } from 'react-redux';
 import createStore from '@store/create';
 import { loginWithStoredToken } from '@helpers';
+import firebase from 'react-native-firebase';
 
 export const store = createStore();
 
@@ -32,6 +33,10 @@ export default class Kernel extends Component {
 
   async componentDidMount() {
     Orientation.lockToPortrait();
+    const notification = new firebase.notifications.Notification();
+    notification.android
+      .setChannelId('channelId')
+      .android.setSmallIcon('ic_launcher');
     const logged = await loginWithStoredToken();
     this.setState({ loggedIn: logged });
   }

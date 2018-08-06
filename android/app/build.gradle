@@ -147,6 +147,15 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-firebase')
+    implementation "com.google.android.gms:play-services-base:15.0.0"
+    implementation "com.google.firebase:firebase-core:15.0.2"
+
+    implementation "com.google.firebase:firebase-analytics:15.0.2"
+    implementation "com.google.firebase:firebase-auth:15.1.0"
+    implementation "com.google.firebase:firebase-messaging:15.0.2"
+    implementation 'me.leolin:ShortcutBadger:1.1.21@aar'
+
     compile project(':react-native-splash-screen')
     compile project(':react-native-device-info')
     compile project(':react-native-i18n')
@@ -169,3 +178,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+
+apply plugin: 'com.google.gms.google-services'
