@@ -18,9 +18,16 @@ export const SceneWrapper = props => {
 };
 
 export const InputSceneWrapper = props => {
-  const { background, children, title = 'UNTITLED', hideNavBar } = props;
+  const {
+    background,
+    children,
+    title = 'UNTITLED',
+    hideNavBar,
+    onPress,
+  } = props;
 
-  const nav = hideNavBar !== false ? <NavBar title={title} /> : null;
+  const nav =
+    hideNavBar !== false ? <NavBar title={title} onPress={onPress} /> : null;
 
   return (
     <SceneBackground source={background}>

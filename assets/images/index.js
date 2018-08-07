@@ -18,6 +18,7 @@ export const vs = require('./vs.png');
 export const instagramIcon = require('./instagramIcon.png');
 export const info = require('./info.png');
 export const thumbsDown = require('./thumbsDown.png');
+export const thumbsUp = require('./thumbs-up.png');
 export const clockwise = require('./clockwise.png');
 export const check = require('./check.png');
 export const whistle = require('./whistle.png');

@@ -77,7 +77,10 @@ class SignIn extends Component {
     const loader = this.state.loading === true ? <Spinner /> : null;
 
     return (
-      <InputSceneWrapper title={I18n.t('signInTitle')}>
+      <InputSceneWrapper
+        onPress={() => Actions.reset('home')}
+        title={I18n.t('signInTitle')}
+      >
         {errorCard}
         <Wrapper>
           <TextInput

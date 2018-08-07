@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { thumbsDown } from '@assets/images';
+import { thumbsDown, thumbsUp } from '@assets/images';
 import {
   INPUT_ERROR_COLOR,
   INPUT_SUCCESS_COLOR,
@@ -30,7 +30,7 @@ export default class Error extends Component {
   }
 
   render() {
-    const iconSource = this.props.success ? null : thumbsDown;
+    const iconSource = this.props.success ? thumbsUp : thumbsDown;
 
     if (this.state.opacity > 0) {
       return (
