@@ -145,7 +145,7 @@ export default {
   mailTip:
     'Caso não consiga ver o e-mail, verifique outros lugares onde ele possa estar, como sua pasta de lixo eletrônico, spam, social ou outras.',
   infoTokenNumber: 'Informe o token',
-  tokenDescription: 'Vamos lá você ja possui oC token né?',
+  tokenDescription: 'Vamos lá você ja possui o token né?',
   tokenTip: 'Informe agora no campo abaixo e clique no botão para continuar',
   successChangePassword: 'Sua senha foi alterada com sucesso!',
 };
