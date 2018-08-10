@@ -124,4 +124,5 @@ export default {
   confirmRemoveFriendTitle: 'Do you want to remove the selected user?',
   confirmRemoveFriendText:
     'You are trying to remove the {{text}} user from your league',
+  emptyMatchesLoading: 'Relax my friend, there are no match days anymore.',
 };
