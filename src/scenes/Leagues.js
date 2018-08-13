@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Appsee from 'react-native-appsee';
 import { TouchableOpacity, Platform } from 'react-native';
 import { NavBar, SceneWrapper } from '@components/Scene';
 import styled from 'styled-components';
@@ -47,7 +46,6 @@ class Leagues extends Component {
       <Card
         key={item._id}
         onPress={() => {
-          Appsee.addEvent('leagueDetails');
           return Actions.push('leaguedetails', { leagueId: item._id });
         }}
       >
@@ -66,10 +64,6 @@ class Leagues extends Component {
   }
 
   render() {
-    Appsee.startScreen('LeagueList');
-    const { swipe } = this.props;
-    const back = swipe ? swipe : () => Actions.reset('core');
-
     if (this.state.loading) {
       return <Loading />;
     }
@@ -78,7 +72,10 @@ class Leagues extends Component {
       <SceneWrapper>
         {this.state.leagues.length > 0 && (
           <Content>
-            <NavBar title={I18n.t('leaguesTitle')} onPress={back} />
+            <NavBar
+              title={I18n.t('leaguesTitle')}
+              onPress={() => Actions.reset('core')}
+            />
             <List
               data={this.state.leagues}
               keyExtractor={item => item._id}
@@ -89,7 +86,7 @@ class Leagues extends Component {
 
         {this.state.leagues.length <= 0 && (
           <Content>
-            <Close onPress={back} />
+            <Close onPress={() => Actions.reset('core')} />
             <ContainerView>
               <Title>{I18n.t('myLeaguesTitle')}</Title>
               <Subtitle>{I18n.t('myLeaguesSubTitle')}</Subtitle>
@@ -102,7 +99,6 @@ class Leagues extends Component {
           <MainIconButton
             text={I18n.t('createLeagueText')}
             onPress={() => {
-              Appsee.addEvent('createLeagueStart');
               return Actions.push('createleague');
             }}
           />

@@ -1,5 +1,4 @@
 import React from 'react';
-import Appsee from 'react-native-appsee';
 import { SceneWrapper } from '@components/Scene';
 import { NavBar, Content, SceneDescription } from '@components/Scene';
 import styled from 'styled-components';
@@ -7,7 +6,6 @@ import I18n from 'react-native-i18n';
 import { HEIGHT_REL } from '@theme';
 
 const Terms = () => {
-  Appsee.startScreen('Terms');
   return (
     <SceneWrapper>
       <NavBar title={I18n.t('termsTitle')} />

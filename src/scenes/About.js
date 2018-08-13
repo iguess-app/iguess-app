@@ -1,5 +1,4 @@
 import React from 'react';
-import Appsee from 'react-native-appsee';
 import { TouchableOpacity, Linking } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import { NavBar, SceneDescription, Content } from '@components/Scene';
@@ -23,7 +22,6 @@ import { TextBaseBold } from '@components/Scene';
 import DeviceInfo from 'react-native-device-info';
 
 const About = () => {
-  Appsee.startScreen('About Us');
   return (
     <SceneWrapper>
       <NavBar title={I18n.t('aboutTitle')} />
@@ -43,7 +41,6 @@ const About = () => {
           <MainButton
             text={I18n.t('aboutFeedback')}
             onPress={() => {
-              Appsee.addEvent('mailToSupport');
               return Linking.openURL('mailto:support@iguess.app');
             }}
           />

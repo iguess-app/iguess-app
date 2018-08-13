@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Keyboard } from 'react-native';
-import Appsee from 'react-native-appsee';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styled from 'styled-components';
 import { InputSceneWrapper } from '@components/Scene';
@@ -172,8 +171,6 @@ class SignUp extends Component {
   }
 
   render() {
-    Appsee.startScreen('SignUp');
-
     const errorCard =
       this.state.errorMsg !== null ? (
         <Error input>{this.state.errorMsg}</Error>
@@ -231,7 +228,6 @@ class SignUp extends Component {
             <MainButton
               text={I18n.t('signUpButton')}
               onPress={() => {
-                Appsee.addEvent('effectiveSignUpButton');
                 return this._submit();
               }}
             />

@@ -1,4 +1,3 @@
-import Appsee from 'react-native-appsee';
 import React, { Component } from 'react';
 import { TouchableOpacity, Alert, Platform } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
@@ -99,7 +98,6 @@ class AddedFriends extends Component {
         </TextContainer>
         <TouchableOpacity
           onPress={() => {
-            Appsee.addEvent('removeFriendFromList');
             return this._removeFriend(item);
           }}
         >
@@ -110,15 +108,12 @@ class AddedFriends extends Component {
   }
 
   render() {
-    Appsee.startScreen('AddedFriends');
     const { addedFriends, leagueId } = this.props;
     const onPress = leagueId
       ? () => {
-          Appsee.addEvent('addToLeague');
           return this._addToLeague();
         }
       : () => {
-          Appsee.addEvent('createLeague');
           return this._createLeague();
         };
 
@@ -126,7 +121,6 @@ class AddedFriends extends Component {
       <SceneWrapper>
         <Close
           onPress={() => {
-            Appsee.addEvent('BackFromAddedFriendsToAddFriends');
             return Actions.pop();
           }}
         />

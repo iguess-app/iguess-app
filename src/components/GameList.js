@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, TouchableOpacity } from 'react-native';
-import Appsee from 'react-native-appsee';
 import GameCard, { gameStatus } from './GameCard';
 import styled from 'styled-components';
 import { PastButton, ButtonPastContainer } from '@components/Button';
@@ -40,7 +39,7 @@ class GameList extends Component {
     }
   }
 
-  componentWillUpdate() {
+  componentDidUpdate() {
     if (
       this.props.base.hasPastMatchDays &&
       this.props.prev &&
@@ -133,7 +132,6 @@ class GameList extends Component {
   }
 
   loadPrevious(date) {
-    Appsee.addEvent('loadPrevious');
     this.setState({ loadingNext: true });
 
     if (this.props.base) {
@@ -155,7 +153,6 @@ class GameList extends Component {
   }
 
   loadNext(date) {
-    Appsee.addEvent('loadNext');
     if (this.props.base) {
       this.setState({ loadingNext: true });
 
@@ -256,7 +253,6 @@ class GameList extends Component {
               <PastButton
                 text={I18n.t('showPastMatchs')}
                 onPress={() => {
-                  Appsee.addEvent(`PastMatchesButton`);
                   return Actions.push('previouslines');
                 }}
               />
@@ -316,7 +312,6 @@ const Header = props => {
       {onPressRefresh ? (
         <Refresh
           onPress={() => {
-            Appsee.addEvent(`refreshLines`);
             return onPressRefresh();
           }}
         />

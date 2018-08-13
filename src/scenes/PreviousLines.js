@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Appsee from 'react-native-appsee';
 import GameList from '@components/GameList';
 import { SceneWrapper, NavBar } from '@components/Scene';
 import Loading from '@scenes/Loading';
@@ -26,8 +25,6 @@ class PreviousLines extends Component {
   }
 
   render() {
-    Appsee.startScreen('Previous Lines');
-
     const { activeLine, championship, pontuation } = this.props;
 
     if (

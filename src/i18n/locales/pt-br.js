@@ -128,4 +128,24 @@ export default {
   confirmRemoveFriendTitle: 'Deseja remover o usuário selecionado?',
   confirmRemoveFriendText:
     'Você está tentando remover o usuário {{text}} da sua liga',
+  forgotMyPasswordTitle: 'Esqueci minha senha',
+  forgotMyPasswordText:
+    'Vamos enviar um e-mail com um token para você redefinir sua senha.',
+  forgotMyPasswordDescription:
+    'Informe seu endereço de e-mail, após isso confira sua caixa de entrada e copie o token enviado.',
+  emailPlaceholder: 'Informe seu endereço de email',
+  redefinePassword: 'Redefinir minha senha',
+  iHaveToken: 'Já tenho o token para redefinição',
+  defineNewPasswordLabel: 'Defina sua nova senha.',
+  defineNewPasswordTip:
+    'Lembre-se senhas forte incluem números, letras e sinais de pontuação.',
+  myPassword: 'Minha senha',
+  verifyYourMail: 'Verifique seu e-mail',
+  sendedMailText: 'Enviamos um e-mail para {{text}}, copie o token enviado.',
+  mailTip:
+    'Caso não consiga ver o e-mail, verifique outros lugares onde ele possa estar, como sua pasta de lixo eletrônico, spam, social ou outras.',
+  infoTokenNumber: 'Informe o token',
+  tokenDescription: 'Vamos lá você ja possui o token né?',
+  tokenTip: 'Informe agora no campo abaixo e clique no botão para continuar',
+  successChangePassword: 'Sua senha foi alterada com sucesso!',
 };

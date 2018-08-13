@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { TouchableOpacity } from 'react-native';
-import Appsee from 'react-native-appsee';
 import { plus, plusDisabled, minus, minusDisabled } from '@assets/images';
 import { GUESS_GUESSED_TEXT_COLOR, HEIGHT_REL, WIDTH_REL } from '@theme';
 import { TextBaseBold } from '@components/Scene';
@@ -53,7 +52,6 @@ class Guess extends Component {
         value={value}
         onPress={result => {
           this.setState({ value: result }, () => {
-            Appsee.addEvent('plusButton');
             return this.props.updateCore();
           });
         }}
@@ -70,7 +68,6 @@ class Guess extends Component {
         value={value}
         onPress={result =>
           this.setState({ value: result }, () => {
-            Appsee.addEvent('minusButton');
             this.props.updateCore();
           })
         }

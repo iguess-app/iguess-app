@@ -1,5 +1,4 @@
 import React from 'react';
-import Appsee from 'react-native-appsee';
 import { Linking } from 'react-native';
 import { SceneWrapper } from '@components/Scene';
 import { NavBar, SceneDescription } from '@components/Scene';
@@ -16,7 +15,6 @@ import I18n from 'react-native-i18n';
 import { TextBase } from '@components/Scene';
 
 const Support = () => {
-  Appsee.startScreen('Support');
   return (
     <SceneWrapper>
       <NavBar title={I18n.t('supportTitle')} />
@@ -52,7 +50,6 @@ const Option = ({ icon, text, url, chevron }) => {
   return (
     <TouchableWrapper
       onPress={() => {
-        Appsee.addEvent(`socialMediaFired ${url}`);
         return Linking.openURL(url);
       }}
     >

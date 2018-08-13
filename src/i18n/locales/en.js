@@ -124,4 +124,25 @@ export default {
   confirmRemoveFriendTitle: 'Do you want to remove the selected user?',
   confirmRemoveFriendText:
     'You are trying to remove the {{text}} user from your league',
+  forgotMyPasswordTitle: 'Forgot My Password',
+  forgotMyPasswordText:
+    "We will send you a e-mail with a token, so you'll can redefine you password.",
+  forgotMyPasswordDescription:
+    'Put your e-mail below and check your inbox. After that, copy the token in your e-mail to paste on the following steps.',
+  emailPlaceholder: 'Let us know your e-mail',
+  redefinePassword: 'Redefine my password',
+  iHaveToken: 'I already have the reset token',
+  defineNewPasswordLabel: 'Define your new password.',
+  defineNewPasswordTip:
+    'Remember to use strong passwords, with number, letters and special chars.',
+  myPassword: 'My password',
+  verifyYourMail: 'Verify your e-mail',
+  sendedMailText:
+    'We sent a e-mail to {{text}}. Copy the reset token that you received.',
+  mailTip:
+    "If you don't find the email, check others places like spam, social etc.",
+  infoTokenNumber: 'Please, your token',
+  tokenDescription: 'Nice, you already have the reset token right?',
+  tokenTip: 'Now paste the token at the field below and press next button',
+  successChangePassword: 'Your password has been changed successfully!',
 };

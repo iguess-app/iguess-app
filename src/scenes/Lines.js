@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { TouchableOpacity, Platform } from 'react-native';
-import Appsee from 'react-native-appsee';
 import styled from 'styled-components';
 import GameList from '@components/GameList';
 import SelectedLine from '@components/SelectedLine';
@@ -19,7 +18,7 @@ class Lines extends Component {
     this.state = { selectedOpacity: 1 };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.dispatch(linesActions.fetchLine());
   }
 
@@ -38,7 +37,6 @@ class Lines extends Component {
   }
 
   render() {
-    Appsee.startScreen('Lines');
     const { activeLine, swipe, championship, pontuation } = this.props;
 
     if (

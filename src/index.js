@@ -17,6 +17,10 @@ import {
   AddFriends,
   AddedFriends,
   LeagueDetails,
+  ConfirmSendMail,
+  ConfirmToken,
+  ForgotMyPassword,
+  RedefinePassword,
 } from '@scenes';
 import { Provider } from 'react-redux';
 import createStore from '@store/create';
@@ -85,6 +89,22 @@ export default class Kernel extends Component {
                 hideNavBar={true}
               />
               <Scene key="previouslines" component={PreviousLines} hideNavBar />
+              <Scene
+                key="forgotpassword"
+                component={ForgotMyPassword}
+                hideNavBar
+              />
+              <Scene
+                key="confirmsendmail"
+                component={ConfirmSendMail}
+                hideNavBar
+              />
+              <Scene key="confirmtoken" component={ConfirmToken} hideNavBar />
+              <Scene
+                key="redefinepassword"
+                component={RedefinePassword}
+                hideNavBar
+              />
             </Stack>
           </Router>
         </Provider>

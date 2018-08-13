@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Keyboard } from 'react-native';
-import Appsee from 'react-native-appsee';
+import { Keyboard, TouchableOpacity } from 'react-native';
 import { InputSceneWrapper } from '@components/Scene';
 import { MainButton } from '@components/Button';
 import Input from '@components/Input';
@@ -13,6 +12,7 @@ import { post } from '@helpers';
 import { WIDTH_REL, HEIGHT_REL } from '@theme';
 import I18n from '../i18n';
 import { spinner } from '@assets/images';
+import { TextBaseBold } from '@components/Scene';
 
 class SignIn extends Component {
   constructor(props) {
@@ -26,7 +26,6 @@ class SignIn extends Component {
   }
 
   _login() {
-    Appsee.addEvent('loginButtonFired');
     this.setState({ errorMsg: null }, async () => {
       if (this.state.login && this.state.password) {
         Keyboard.dismiss();
@@ -70,7 +69,6 @@ class SignIn extends Component {
   }
 
   render() {
-    Appsee.startScreen('Login');
     let errorCard =
       this.state.errorMsg !== null ? (
         <Error input>{this.state.errorMsg}</Error>
@@ -79,7 +77,10 @@ class SignIn extends Component {
     const loader = this.state.loading === true ? <Spinner /> : null;
 
     return (
-      <InputSceneWrapper title={I18n.t('signInTitle')}>
+      <InputSceneWrapper
+        onPress={() => Actions.reset('home')}
+        title={I18n.t('signInTitle')}
+      >
         {errorCard}
         <Wrapper>
           <TextInput
@@ -102,17 +103,25 @@ class SignIn extends Component {
             <MainButton
               text={I18n.t('signInButton')}
               onPress={() => {
-                Appsee.addEvent('effectiveSignInButton');
                 return this._login();
               }}
             />
           </ButtonView>
+          <TouchableOpacity onPress={() => Actions.push('forgotpassword')}>
+            <TextLink>{I18n.t('forgotMyPasswordTitle')}</TextLink>
+          </TouchableOpacity>
           {loader}
         </Wrapper>
       </InputSceneWrapper>
     );
   }
 }
+
+const TextLink = styled(TextBaseBold)`
+  color: #553dd1;
+  align-self: center;
+  text-decoration: underline;
+`;
 
 const Wrapper = styled.View`
   margin-horizontal: ${32 * WIDTH_REL};
