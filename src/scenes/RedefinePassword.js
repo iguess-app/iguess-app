@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { SceneWrapper } from '@components/Scene';
+import { InputSceneWrapper } from '@components/Scene';
 import { NavBar, SceneDescription, Content } from '@components/Scene';
 import { MainButton } from '@components/Button';
 import Input from '@components/Input';
@@ -15,7 +15,8 @@ class RedefinePassword extends Component {
     super(props);
     this.state = {
       password: '',
-      successMsg: null,
+      message: null,
+      success: false,
     };
   }
 
@@ -38,7 +39,7 @@ class RedefinePassword extends Component {
   }
 
   redefinePassword() {
-    this.setState({ successMsg: null }, () => {
+    this.setState({ message: null, success: true }, () => {
       const body = {
         newPassword: this.state.password,
         softToken: this.props.softToken,
@@ -48,8 +49,10 @@ class RedefinePassword extends Component {
         'https://iguess-666666.appspot.com/forgotMyPass/updateNewPassword',
         body,
       ).then(response => {
-        if (response.statusCode !== 404) {
-          this.setState({ successMsg: I18n.t('successChangePassword') }, () => {
+        if (response.statusCode && response.statusCode >= 400) {
+          this.setState({ message: response.message, success: false });
+        } else {
+          this.setState({ message: I18n.t('successChangePassword') }, () => {
             setTimeout(() => Actions.reset('signin'), 3000);
           });
         }
@@ -58,17 +61,15 @@ class RedefinePassword extends Component {
   }
 
   render() {
-    let successCard =
-      this.state.successMsg !== null ? (
-        <Error success input>
-          {this.state.successMsg}
+    const messageCard =
+      this.state.message !== null ? (
+        <Error success={this.state.success} input>
+          {this.state.message}
         </Error>
       ) : null;
-
     return (
-      <SceneWrapper>
-        <NavBar title={I18n.t('forgotMyPasswordTitle')} />
-        <MessageWrapper>{successCard}</MessageWrapper>
+      <InputSceneWrapper title={I18n.t('forgotMyPasswordTitle')}>
+        {messageCard}
         <SceneDescription>{I18n.t('defineNewPasswordLabel')}</SceneDescription>
         <Content>{I18n.t('defineNewPasswordTip')}</Content>
         <Wrapper>
@@ -90,14 +91,10 @@ class RedefinePassword extends Component {
             onPress={() => this.redefinePassword()}
           />
         </RateView>
-      </SceneWrapper>
+      </InputSceneWrapper>
     );
   }
 }
-
-const MessageWrapper = styled.View`
-  z-index: 1;
-`;
 
 const RateView = styled.View`
   align-self: center;

@@ -62,10 +62,9 @@ class ForgotMyPassword extends Component {
   }
 
   render() {
-    const errorCard =
-      this.state.errorMsg !== null ? (
-        <Error input>{this.state.errorMsg}</Error>
-      ) : null;
+    const errorCard = this.state.errorMsg ? (
+      <Error input>{this.state.errorMsg}</Error>
+    ) : null;
 
     return (
       <InputSceneWrapper title={I18n.t('forgotMyPasswordTitle')}>

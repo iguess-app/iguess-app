@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { SceneWrapper } from '@components/Scene';
-import { NavBar, SceneDescription, Content } from '@components/Scene';
+import { InputSceneWrapper } from '@components/Scene';
+import { SceneDescription, Content } from '@components/Scene';
 import { MainButton } from '@components/Button';
 import Input from '@components/Input';
 import Error from '@components/Error';
@@ -61,9 +61,8 @@ class ConfirmToken extends Component {
       ) : null;
 
     return (
-      <SceneWrapper>
-        <NavBar title={I18n.t('forgotMyPasswordTitle')} />
-        <MessageWrapper>{errorCard}</MessageWrapper>
+      <InputSceneWrapper title={I18n.t('forgotMyPasswordTitle')}>
+        {errorCard}
         <SceneDescription>{I18n.t('tokenDescription')}</SceneDescription>
         <Content>{I18n.t('tokenTip')}</Content>
 
@@ -85,7 +84,7 @@ class ConfirmToken extends Component {
             onPress={() => this.confirmToken()}
           />
         </RateView>
-      </SceneWrapper>
+      </InputSceneWrapper>
     );
   }
 }
@@ -98,10 +97,6 @@ const RateView = styled.View`
 
 const Wrapper = styled.View`
   margin-horizontal: ${32 * WIDTH_REL};
-`;
-
-const MessageWrapper = styled.View`
-  z-index: 1;
 `;
 
 const TextInput = styled(Input)`
