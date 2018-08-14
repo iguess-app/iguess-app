@@ -13,7 +13,7 @@ import {
   HEIGHT_REL,
 } from '@theme';
 import { clockwise, spinner } from '@assets/images';
-import { TextBaseBold } from '@components/Scene';
+import { TextBaseBold, TextBase } from '@components/Scene';
 import { get } from '@helpers';
 import { connect } from 'react-redux';
 import { fetchLine } from '@redux/lines/actions';
@@ -28,6 +28,7 @@ class GameList extends Component {
       next: [],
       loadingNext: false,
       loadingPrevious: false,
+      errorMsg: null,
     };
     this.firstRun = true;
   }
@@ -170,6 +171,13 @@ class GameList extends Component {
             setTimeout(() => this.setState({ loadingNext: false }), 1000);
           });
         } else {
+          if (response.errorCode === 20025) {
+            return this.setState({
+              errorMsg: response.message,
+              loadingNext: false,
+              error: true,
+            });
+          }
           this.setState({ loadingNext: false });
         }
       });
@@ -232,6 +240,13 @@ class GameList extends Component {
 
   render() {
     const { base, loading } = this.props;
+    const errorCard =
+      this.state.errorMsg !== null ? (
+        <View>
+          <ErrorIcon>:(</ErrorIcon>
+          <ErrorMessage>{this.state.errorMsg}</ErrorMessage>
+        </View>
+      ) : null;
 
     if (loading || !this.state.previous || !this.state.next) {
       return (
@@ -288,6 +303,7 @@ class GameList extends Component {
             this._renderMatchDay(nextMatchDay),
           )}
 
+        {errorCard}
         {nextSpinner}
       </ScrollWrapper>
     );
@@ -376,6 +392,20 @@ const Loading = styled.Image.attrs({
   align-self: center;
   margin-vertical: ${15 * HEIGHT_REL}
   resize-mode: contain;
+`;
+
+const ErrorIcon = styled(TextBaseBold)`
+  font-size: ${24 * HEIGHT_REL};
+  color: ${CARD_LIST_SUBTITLE_COLOR};
+  align-self: center;
+`;
+
+const ErrorMessage = styled(TextBase)`
+  font-size: ${20 * HEIGHT_REL};
+  color: ${CARD_LIST_SUBTITLE_COLOR};
+  align-self: center;
+  margin-vertical: ${15 * HEIGHT_REL}
+  margin-bottom: ${30 * HEIGHT_REL};
 `;
 
 export default connect()(GameList);

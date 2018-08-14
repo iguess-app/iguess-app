@@ -128,5 +128,4 @@ export default {
   confirmRemoveFriendTitle: 'Deseja remover o usuário selecionado?',
   confirmRemoveFriendText:
     'Você está tentando remover o usuário {{text}} da sua liga',
-  emptyMatchesLoading: 'Calma ai man, não existem mais dias de jogo.',
 };
